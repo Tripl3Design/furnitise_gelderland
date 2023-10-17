@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "furnitise-4bca3"
+  },
+  "targets": {
+    "furnitise-4bca3": {
+      "hosting": {
+        "Pastoe": [
+          "pastoe-amsterdammer"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

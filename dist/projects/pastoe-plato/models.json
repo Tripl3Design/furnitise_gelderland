@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "plato-walnut-black-tray-45",
+        "image": "projects/pastoe-plato/img/thumbnails/plato-walnut-black-tray-45.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "depth": 45,
+        "tray": {
+            "toggle": true,
+            "color": "846553",
+            "path": "projects/pastoe-plato/Textures/475_natural_walnut_soft.jpg"
+        },
+        "colorA": {
+            "color": "846553",
+            "path": "projects/pastoe-plato/Textures/475_natural_walnut_soft.jpg"
+        },
+        "colorB": {
+            "color": "020307"
+        }
+    },
+    {
+        "id": 2,
+        "name": "plato-walnut-black-tray-60",
+        "image": "projects/pastoe-plato/img/thumbnails/plato-walnut-black-tray-60.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "depth": 60,
+        "tray": {
+            "toggle": true,
+            "color": "bba286",
+            "path": "projects/pastoe-plato/Textures/470_natural_oak_soft.jpg"
+        },
+        "colorA": {
+            "color": "846553",
+            "path": "projects/pastoe-plato/Textures/475_natural_walnut_soft.jpg"
+        },
+        "colorB": {
+            "color": "020307"
+        }
+    }
+]

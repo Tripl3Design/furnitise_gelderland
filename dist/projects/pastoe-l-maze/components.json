@@ -1,0 +1,88 @@
+{
+    "maze": {
+        "body": [
+            {
+                "code": "LM11",
+                "width": 133,
+                "height": 144,
+                "price": {
+                    "basic": 1875,
+                    "structure": 1875,
+                    "gloss": 2437,
+                    "veneer": 2437
+                }
+            },
+            {
+                "code": "LM21",
+                "width": 133,
+                "height": 208,
+                "price": {
+                    "basic": 2350,
+                    "structure": 2350,
+                    "gloss": 3055,
+                    "veneer": 3055
+                }
+            }
+        ],
+        "combination": [
+            {
+                "name": "Joost Selection",
+                "code": [
+                    "LM21",
+                    "drawer-drawer"
+                ],
+                "width": 133,
+                "height": 208,
+                "supplement": "drawerset",
+                "color": {
+                    "color": "846553",
+                    "path": "projects/pastoe-l-maze/Textures/475_natural_walnut_soft.jpg",
+                    "lacquer": "veneer"
+                },
+                "interiorColor": {
+                    "color": "3c3c3c",
+                    "lacquer": "structure"
+                },
+                "handleColor": {
+                    "color": "020307"
+                },
+                "price": {
+                    "original": 3705,
+                    "reduced": 2325
+                }
+            }
+        ],
+        "supplement": [
+            {
+                "code": "doorset",
+                "name": "doorset",
+                "price": {
+                    "basic": 350,
+                    "structure": 350,
+                    "gloss": 455,
+                    "veneer": 455
+                }
+            },
+            {
+                "code": "drawerset",
+                "name": "drawerset",
+                "price": {
+                    "basic": 500,
+                    "structure": 500,
+                    "gloss": 650,
+                    "veneer": 650
+                }
+            },
+            {
+                "code": "door-drawer-door",
+                "name": "doorDrawerDoor",
+                "price": {
+                    "basic": 500,
+                    "structure": 500,
+                    "gloss": 650,
+                    "veneer": 650
+                }
+            }
+        ]
+    }
+}

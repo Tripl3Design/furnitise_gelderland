@@ -1,0 +1,62 @@
+{
+    "frameColors": [{
+            "colorCode": "100",
+            "colorName": "paper white",
+            "colorHex": "f1f0ea",
+            "colorBg": "d4d4d4"
+        },
+        {
+            "colorCode": "101",
+            "colorName": "night black",
+            "colorHex": "1f1f21",
+            "colorBg": "d4d4d4"
+        }
+    ],
+    "fabricColors": [{
+            "colorCode": "black",
+            "colorBrand": "camira",
+            "colorName": "camira advantage black",
+            "colorPath": "projects/pastoe-wire/Textures/camira_advantage_black.jpg",
+            "colorPathThumb": "projects/pastoe-wire/Textures/camira_advantage_black_thumb.jpg"
+        },
+        {
+            "colorCode": "mineral",
+            "colorBrand": "camira",
+            "colorName": "camira advantage mineral",
+            "colorPath": "projects/pastoe-wire/Textures/camira_advantage_mineral.jpg",
+            "colorPathThumb": "projects/pastoe-wire/Textures/camira_advantage_mineral_thumb.jpg"
+        },
+        {
+            "colorCode": "storm",
+            "colorBrand": "kvadrat",
+            "colorName": "kvadrat storm",
+            "colorPath": "projects/pastoe-wire/Textures/kvadrat_storm.jpg",
+            "colorPathThumb": "projects/pastoe-wire/Textures/kvadrat_storm_thumb.jpg"
+        },
+        {
+            "colorCode": "ginger",
+            "colorBrand": "kvadrat",
+            "colorName": "kvadrat ginger",
+            "colorPath": "projects/pastoe-wire/Textures/kvadrat_ginger.jpg",
+            "colorPathThumb": "projects/pastoe-wire/Textures/kvadrat_ginger_thumb.jpg"
+        },
+        {
+            "colorCode": "ash",
+            "colorBrand": "kvadrat",
+            "colorName": "kvadrat ash",
+            "colorPath": "projects/pastoe-wire/Textures/kvadrat_ash.jpg",
+            "colorPathThumb": "projects/pastoe-wire/Textures/kvadrat_ash_thumb.jpg"
+        }
+    ],
+    "armrestColors": [{
+            "colorName": "solid oak",
+            "colorPath": "projects/pastoe-wire/Textures/armrest_oak.jpg",
+            "colorPathThumb": "projects/pastoe-wire/Textures/armrest_oak_thumb.jpg"
+        },
+        {
+            "colorName": "solid walnut",
+            "colorPath": "projects/pastoe-wire/Textures/armrest_walnut.jpg",
+            "colorPathThumb": "projects/pastoe-wire/Textures/armrest_walnut_thumb.jpg"
+        }
+    ]
+}

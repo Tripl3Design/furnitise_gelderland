@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "name": "combinationLM11-taupe-storm",
+        "image": "projects/pastoe-l-maze/img/thumbnails/combinationLM11-taupe-storm.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "supplement": "noSupplement",
+        "width": 133,
+        "height": 144,
+        "depth": 36,
+        "color": {
+            "color": "3c3c3c",
+            "lacquer": "basic"
+        },
+        "interiorColor": {
+            "color": "1a2730",
+            "lacquer": "structure"
+        },
+        "handleColor": {
+            "color": "020307"
+        }
+    },
+    {
+        "id": 2,
+        "name": "combinationLM14-snowWhite-ginger",
+        "image": "projects/pastoe-l-maze/img/thumbnails/combinationLM14-snowWhite-ginger.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "supplement": "doorDrawerDoor",
+        "width": 133,
+        "height": 144,
+        "depth": 36,
+        "color": {
+            "color": "f7f6f4",
+            "lacquer": "basic"
+        },
+        "interiorColor": {
+            "color": "cb960a",
+            "lacquer": "structure"
+        },
+        "handleColor": {
+            "color": "020307"
+        }
+    },
+    {
+        "id": 3,
+        "name": "combinationLM23-walnut-basalt",
+        "image": "projects/pastoe-l-maze/img/thumbnails/combinationLM23-walnut-basalt.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "supplement": "drawerset",
+        "width": 133,
+        "height": 208,
+        "depth": 36,
+        "color": {
+            "color": "846553",
+            "path": "projects/pastoe-l-maze/Textures/475_natural_walnut_soft.jpg",
+            "lacquer": "veneer"
+        },
+        "interiorColor": {
+            "color": "3c3c3c",
+            "lacquer": "structure"
+        },
+        "handleColor": {
+            "color": "020307"
+        }
+    }
+]

@@ -1,0 +1,62 @@
+{
+    "fabricColors": [{
+            "colorCode": "comfort dexter",
+            "colorBrand": "textaafoam",
+            "colorName": "textaafoam comfort dexter beige",
+            "colorPath": "projects/pastoe-fm17/Textures/textaafoam_comfort_dexter_beige.jpg",
+            "colorPathThumb": "projects/pastoe-fm17/Textures/textaafoam_comfort_dexter_beige_thumb.jpg",
+            "colorBg": "d4d4d4"
+        },
+        {
+            "colorCode": "comfort dexter",
+            "colorBrand": "textaafoam",
+            "colorName": "textaafoam comfort dexter graphite",
+            "colorPath": "projects/pastoe-fm17/Textures/textaafoam_comfort_dexter_graphite.jpg",
+            "colorPathThumb": "projects/pastoe-fm17/Textures/textaafoam_comfort_dexter_graphite_thumb.jpg",
+            "colorBg": "d4d4d4"
+        },
+        {
+            "colorCode": "comfort dexter",
+            "colorBrand": "textaafoam",
+            "colorName": "textaafoam comfort dexter forest",
+            "colorPath": "projects/pastoe-fm17/Textures/textaafoam_comfort_dexter_forest.jpg",
+            "colorPathThumb": "projects/pastoe-fm17/Textures/textaafoam_comfort_dexter_forest_thumb.jpg",
+            "colorBg": "d4d4d4"
+        },
+        {
+            "colorCode": "storm",
+            "colorBrand": "kvadrat",
+            "colorName": "kvadrat storm",
+            "colorPath": "projects/pastoe-fm17/Textures/kvadrat_storm.jpg",
+            "colorPathThumb": "projects/pastoe-fm17/Textures/kvadrat_storm_thumb.jpg",
+            "colorBg": "d4d4d4"
+        },
+        {
+            "colorCode": "ginger",
+            "colorBrand": "kvadrat",
+            "colorName": "kvadrat ginger",
+            "colorPath": "projects/pastoe-fm17/Textures/kvadrat_ginger.jpg",
+            "colorPathThumb": "projects/pastoe-fm17/Textures/kvadrat_ginger_thumb.jpg",
+            "colorBg": "d4d4d4"
+        },
+        {
+            "colorCode": "ash",
+            "colorBrand": "kvadrat",
+            "colorName": "kvadrat ash",
+            "colorPath": "projects/pastoe-fm17/Textures/kvadrat_ash.jpg",
+            "colorPathThumb": "projects/pastoe-fm17/Textures/kvadrat_ash_thumb.jpg",
+            "colorBg": "d4d4d4"
+        }
+    ],
+    "armrestColors": [{
+            "colorName": "solid oak",
+            "colorPath": "projects/pastoe-fm17/Textures/armrest_oak.jpg",
+            "colorPathThumb": "projects/pastoe-fm17/Textures/armrest_oak_thumb.jpg"
+        },
+        {
+            "colorName": "solid walnut",
+            "colorPath": "projects/pastoe-fm17/Textures/armrest_walnut.jpg",
+            "colorPathThumb": "projects/pastoe-fm17/Textures/armrest_walnut_thumb.jpg"
+        }
+    ]
+}

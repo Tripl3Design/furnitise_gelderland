@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head prefix="og: https://ogp.me/ns#">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script>
+    const brand = 'pastoe';
+    const product = 'amsterdammer';
+    const title = 'a\'dammer';
+    console.log(brand);
+    console.log(product);
+  </script>
+  <!-- Google Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Furnitise CSS -->
+  <link rel="stylesheet" href="css/styles.min.css">
+  <!--<link rel="stylesheet" href="furnitise.css">-->
+  <!-- favicons 
+                  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">-->
+  <!-- <link rel="icon" type="image/png" href="/assets/images/favicon.png"> -->
+
+  <!-- MakePDF -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js'></script>
+
+  <!-- User Agent Parser -->
+  <script src="js/ua-parser.min.js"></script>
+
+  <!--
+    <meta property="og:title" content="pastoe | amsterdammer" />
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://furnitise.nl/pastoe-amsterdammer/img/amsterdammer.jpg">
+    <meta property="og:url" content="https://furnitise.nl/?brand=pastoe&product=amsterdammer">
+    <meta property="og:description" content="Bekijk mijn configuratie van de amsterdammer van pastoe" />
+    -->
+
+  <script src='js/controlpanel.js'></script>
+  <script src='js/colorChanger.js'></script>
+  <script src='js/swiped-events.min.js'></script>
+
+  <script src='projects/pastoe-amsterdammer/Build/pastoe-amsterdammer.loader.js'></script>
+  <script src='projects/pastoe-amsterdammer/settings.js'></script>
+
+  <script>
+    "use strict"
+/*
+    if (window.top == window.self) {
+      window.location.href = 'http://furnitise.nl';
+    }
+*/
+    console.log('%cThis configurator is made by TripleDesign. Visit furnitise.nl for more info!', 'background:red;color:#fff;font-weight: bold;')
+    document.write( /*html*/ `<title>${title.charAt(0).toUpperCase()}${title.slice(1)} | ${brand.charAt(0).toUpperCase()}${brand.slice(1)}</title>`);
+
+    const isWebGL2Supported = () => !!document.createElement('canvas').getContext('webgl2')
+    isWebGL2Supported() ? console.log('This browser supports WebGL 2') : console.log('This browser does NOT support WebGL 2')
+
+    var parser = new UAParser();
+    if (parser.getDevice().type == 'tablet') {
+      console.log('This is a ' + parser.getDevice().model + ' tablet');
+    }
+
+    //console.log('This is a ' + parser.getDevice().model + ' tablet');
+    if (parser.getDevice().type == 'mobile') {
+      screen.orientation.addEventListener("change", (event) => {
+        const type = event.target.type;
+        const angle = event.target.angle;
+        console.log(`ScreenOrientation change: ${type}, ${angle} degrees.`);
+
+        if (type == 'landscape-primary' || type == 'landscape-secondary') {
+          document.write(`ScreenOrientation change: ${type}, ${angle} degrees.`);
+        }
+        else if (type == 'landscape-primary' || type == 'landscape-secondary') {
+          document.write(`ScreenOrientation change: ${type}, ${angle} degrees.`);
+        }
+      });
+    }
+
+    function fullscreenToggle() {
+      var controlpanelCol = document.getElementById('controlpanelCol');
+      var modelviewerCol = document.getElementById('modelviewerCol');
+
+      if (controlpanelCol.classList.contains('d-none')) {
+        modelviewerCol.classList.add('d-block', 'col-md-7', 'col-12');
+        controlpanelCol.classList.remove('d-none');
+        controlpanelCol.classList.add('d-block', 'transition');
+        document.getElementById('fullscreen').innerHTML = '<span class="material-symbols-outlined">open_in_full</span>';
+      } else {
+        modelviewerCol.classList.remove('col-md-7');
+        controlpanelCol.classList.add('d-none');
+        document.getElementById('fullscreen').innerHTML = '<span class="material-symbols-outlined">close_fullscreen</span>';
+      }
+    }
+
+    function loadingProgress() {
+      var loadingProgress = document.getElementById('furnitise-progress-bar');
+      loadingProgress.style.width = 100 * progress + '%';
+    }
+
+    function loadingScreen() {
+      var loadingContainer = document.getElementById('furnitise-loading-container');
+      var loadingBar = document.getElementById('furnitise-loading');
+      setTimeout(function () {
+        loadingBar.classList.add('d-none');
+        loadingContainer.classList.add('d-none');
+      }, 2000);
+    }
+
+    function bodyOnload() {
+      initUnity();
+    }
+  </script>
+</head>
+
+<body>
+
+<p>TEST</p>
+
+<script>
+console.log(ALLMODELS);
+  </script>
+</body>
+
+</html>

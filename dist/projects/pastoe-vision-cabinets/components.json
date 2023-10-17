@@ -1,0 +1,85 @@
+{
+    "visionCabinets": {
+        "body": [
+            {
+                "code": "jubileum",
+                "modelName": "jubileum",
+                "price": {
+                    "basic": 1850,
+                    "structure": 1850,
+                    "gloss": 2405,
+                    "veneer": 2405
+                }
+            },
+            {
+                "code": "square",
+                "modelName": "square",
+                "price": {
+                    "basic": 2000,
+                    "structure": 2000,
+                    "gloss": 2600,
+                    "veneer": 2600
+                }
+            },
+            {
+                "code": "slim",
+                "modelName": "slim",
+                "price": {
+                    "basic": 1650
+                }
+            },
+            {
+                "code": "deStijl",
+                "modelName": "deStijl",
+                "price": {
+                    "basic": 1200
+                }
+            },
+            {
+                "code": "sahara",
+                "modelName": "sahara",
+                "price": {
+                    "basic": 1300
+                }
+            },
+            {
+                "code": "atlasHigh",
+                "modelName": "atlasHigh",
+                "price": {
+                    "basic": 925
+                }
+            },
+            {
+                "code": "atlasLow",
+                "modelName": "atlasLow",
+                "price": {
+                    "basic": 1925
+                }
+            }
+        ],
+        "combination": [
+            {
+                "name": "Joost Selection",
+                "code": [
+                    "combinationL149"
+                ],
+                "variant": "combinationL149",
+                "color": {
+                    "color": "9e8e7e",
+                    "lacquer": "basic"
+                },
+                "interiorColor": {
+                    "color": "4c606b",
+                    "lacquer": "structure"
+                },
+                "handleColor": {
+                    "color": "020307"
+                },
+                "price": {
+                    "original": 3100,
+                    "reduced": 2675
+                }
+            }
+        ]
+    }
+}

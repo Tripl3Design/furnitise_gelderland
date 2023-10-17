@@ -1,0 +1,47 @@
+[{
+        "id": 1,
+        "name": "F07-forest",
+        "image": "projects/pastoe-frame/img/thumbnails/F07-forest.jpg",
+        "background": { "original": "d4d4d4" },
+        "type": "F07",
+        "glasstop": false,
+        "color": { "color": "354140", "lacquer": "basic" }
+    },
+    {
+        "id": 2,
+        "name": "F03-walnut",
+        "image": "projects/pastoe-frame/img/thumbnails/F03-walnut.jpg",
+        "background": { "original": "d4d4d4" },
+        "type": "F03",
+        "glasstop": false,
+        "color": { "color": "846553", "path": "projects/pastoe-frame/Textures/475_natural_walnut_soft.jpg", "lacquer": "veneer" }
+    },
+    {
+        "id": 3,
+        "name": "F02-walnut",
+        "image": "projects/pastoe-frame/img/thumbnails/F02-walnut.jpg",
+        "background": { "original": "d4d4d4" },
+        "type": "F02",
+        "glasstop": false,
+        "color": { "color": "846553", "path": "projects/pastoe-frame/Textures/475_natural_walnut_soft.jpg", "lacquer": "veneer" }
+    },
+    {
+        "id": 4,
+        "name": "F07-walnut",
+        "image": "projects/pastoe-frame/img/thumbnails/F07-walnut.jpg",
+        "background": { "original": "d4d4d4" },
+        "type": "F07",
+        "glasstop": false,
+        "color": { "color": "846553", "path": "projects/pastoe-frame/Textures/475_natural_walnut_soft.jpg", "lacquer": "veneer" }
+    },
+    {
+        "id": 5,
+        "name": "F02-snowWhite-black",
+        "image": "projects/pastoe-frame/img/thumbnails/F02-snowWhite-black.jpg",
+        "background": { "original": "d4d4d4" },
+        "type": "F02",
+        "glasstop": true,
+        "glasstopcolor": "020307",
+        "color": { "color": "f7f6f4", "lacquer": "basic" }
+    }
+]

@@ -1,0 +1,34 @@
+{
+    "dock": {
+        "body": [
+            {
+                "code": "Dock108",
+                "longitude": 188,
+                "price": 2550
+            },
+            {
+                "code": "Dock204",
+                "longitude": 204,
+                "price": 2750
+            },
+            {
+                "code": "Dock236",
+                "longitude": 236,
+                "price": 2950
+            }
+        ],
+        "combination": [
+            {
+                "name": "Joost Selection",
+                "code": [],
+                "generalColor": { "color": null, "path": null },
+                "accentColor": { "color": null },
+                "longitude": null,
+                "price": {
+                    "original": null,
+                    "reduced": null
+                }
+            }
+        ]
+    }
+}

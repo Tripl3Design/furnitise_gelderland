@@ -1,0 +1,141 @@
+[
+    {
+        "id": 1,
+        "name": "JSAT1",
+        "image": "projects/pastoe-amsterdammer/img/thumbnails/twist-desert-basalt.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "type": "sideboardOnFrame",
+        "width": 156,
+        "interior": "two",
+        "outsideColor": {
+            "color": "d4b773",
+            "lacquer": "basic"
+        },
+        "insideColor": {
+            "color": "3e3e3e"
+        },
+        "rollshutter": 100
+    },
+    {
+        "id": 2,
+        "name": "JSAD2",
+        "image": "projects/pastoe-amsterdammer/img/thumbnails/cabinet-copper-basalt.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "type": "cabinet",
+        "width": 37,
+        "height": 205,
+        "winerack": false,
+        "shelves": 0,
+        "outsideColor": {
+            "color": "976856",
+            "lacquer": "basic"
+        },
+        "insideColor": {
+            "color": "3e3e3e"
+        },
+        "rollshutter": 100
+    },
+    {
+        "id": 3,
+        "name": null,
+        "image": "projects/pastoe-amsterdammer/img/thumbnails/twisttv-moss-black.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "type": "sideboardOnFrameTV",
+        "width": 156,
+        "outsideColor": {
+            "color": "495a47",
+            "lacquer": "basic"
+        },
+        "insideColor": {
+            "color": "020307"
+        },
+        "rollshutter": 100
+    },
+    {
+        "id": 4,
+        "name": null,
+        "image": "projects/pastoe-amsterdammer/img/thumbnails/cabinet-walnut-lake.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "type": "cabinet",
+        "width": 37,
+        "height": 205,
+        "winerack": false,
+        "shelves": 0,
+        "outsideColor": {
+            "color": "846553",
+            "path": "projects/pastoe-amsterdammer/Textures/475_natural_walnut_soft.jpg",
+            "lacquer": "veneer"
+        },
+        "insideColor": {
+            "color": "4c606b"
+        },
+        "rollshutter": 100
+    },
+    {
+        "id": 5,
+        "name": null,
+        "image": "projects/pastoe-amsterdammer/img/thumbnails/cabinet-snowWhite-moss.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "type": "cabinet",
+        "width": 37,
+        "height": 205,
+        "winerack": true,
+        "winerackColor": "outsidecolor",
+        "shelves": 3,
+        "outsideColor": {
+            "color": "f7f6f4",
+            "lacquer": "basic"
+        },
+        "insideColor": {
+            "color": "495a47"
+        },
+        "rollshutter": 100
+    },
+    {
+        "id": 6,
+        "name": null,
+        "image": "projects/pastoe-amsterdammer/img/thumbnails/sideboard-ash-moss.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "type": "sideboard",
+        "width": 194,
+        "outsideColor": {
+            "color": "e8e6da",
+            "lacquer": "basic"
+        },
+        "insideColor": {
+            "color": "495a47"
+        },
+        "rollshutter": 100
+    },
+    {
+        "id": 7,
+        "name": null,
+        "image": "projects/pastoe-amsterdammer/img/thumbnails/twist-basalt-ginger.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "type": "sideboardOnFrame",
+        "width": 156,
+        "interior": "one",
+        "outsideColor": {
+            "color": "3e3e3e",
+            "lacquer": "basic"
+        },
+        "insideColor": {
+            "color": "cb960a"
+        },
+        "rollshutter": 100
+    }
+]

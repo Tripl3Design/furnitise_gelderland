@@ -1,0 +1,82 @@
+
+    accordions.selectedComponentColor = {
+        "title": "component color",
+        "options": ['selectedComponentColor'],
+        "display": "d-block",
+        "code": /*html*/ `
+<!--
+        <div class="row m-0 p-0 pb-2">
+            <div class="col-6 m-0 p-0">
+                <div class="row m-0 p-0 pb-2">
+                    <div class="d-flex justify-content-start m-0 p-0">
+                        <div class="card border-0 pb-2"></div>
+                    </div>
+                    <div class="d-flex justify-content-start m-0 p-0">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="selectedComponentLacquer" id="selectedComponentLacquer_basic" value="basic">
+                            <label class="form-check-label" for="selectedComponentLacquer">basic</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="selectedComponentLacquer" id="selectedComponentLacquer_structure" value="structure">
+                            <label class="form-check-label" for="selectedComponentLacquer">structure</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="selectedComponentLacquer" id="selectedComponentLacquer_gloss" value="gloss">
+                            <label class="form-check-label" for="selectedComponentLacquer">gloss</label>
+                        </div>
+                    </div>
+                    <div  id="selectedComponentColorPicker" class="m-0 p-0"></div>
+                </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+                <div class="row m-0 p-0 pb-2">
+                    <div class="d-flex justify-content-start m-0 p-0 ">
+                        <div class="card border-0 pb-2"></div>
+                    </div>
+                    <div class="d-flex justify-content-start m-0 p-0">
+                        <div class="form-check form-check-inline invisible">
+                            <input class="form-check-input" type="radio" name="selectedComponentLacquer" id="selectedComponentLacquer_veneer" value="veneer">
+                            <label class="form-check-label" for="selectedComponentLacquer">veneer</label>
+                        </div>
+                    </div>
+                    <div  id="selectedComponentTexturesPicker" class="m-0 p-0"></div>
+                </div>
+            </div>
+        </div>-->`,
+        "onload": function () {
+            let containerElemselectedComponentColors = document.getElementById("selectedComponentColorPicker");
+            addColors('selectedComponentColor', ALLCOLORS.colors, containerElemselectedComponentColors);
+            let containerElemselectedComponentTextures = document.getElementById("selectedComponentTexturesPicker");
+            addTextures('selectedComponentColor', ALLCOLORS.colors, containerElemselectedComponentTextures);
+        }
+    }
+
+
+
+
+
+
+
+        {
+        "id": 2,
+        "name": "snowWhite-basalt",
+        "image": "projects/pastoe-noon/img/thumbnails/afternoon-snowWhite-basalt.jpg",
+        "background": { "original": "d4d4d4" },
+        "type": "afternoon",
+        "spaceDivider": true,
+        "color": { "color": "bba286", "path": "projects/pastoe-noon/Textures/470_natural_oak_soft.jpg", "lacquer": "veneer" },
+        "interiorColor": { "color": "bba286", "path": "projects/pastoe-noon/Textures/470_natural_oak_soft.jpg", "lacquer": "veneer" },
+        "components": [{
+            "front": { "type": "door", "rotation": "left" },
+            "color": { "color": "f7f6f4", "lacquer": "basic" }
+        },
+        {
+            "front": { "type": "door", "rotation": "left" },
+            "color": { "color": "3e3e3e", "lacquer": "basic" }
+        },
+        {
+            "front": { "type": "drawerset" },
+            "color": { "color": "3e3e3e", "lacquer": "basic" }
+        }
+    ]
+    },

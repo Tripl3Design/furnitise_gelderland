@@ -1,0 +1,1387 @@
+[
+    {
+        "id": 1,
+        "name": "bryce",
+        "image": "projects/pastoe-landscape/img/thumbnails/bryce.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "onFrame",
+            "color": "020307",
+            "lacquer": "basic"
+        },
+        "width": 228,
+        "color": {
+            "color": "020307",
+            "lacquer": "structure"
+        },
+        "layers": [
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "b2312b",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "open",
+                        "color": {
+                            "color": "020307",
+                            "lacquer": "structure"
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 1,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 85.5,
+                        "grid": "double",
+                        "color": {
+                            "color": "846553",
+                            "path": "projects/pastoe-landscape/Textures/475_natural_walnut_soft.jpg",
+                            "lacquer": "veneer"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            },
+                            {
+                                "type": "flap",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "e8e6da",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "shelves": 1,
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "alpine",
+        "image": "projects/pastoe-landscape/img/thumbnails/alpine.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "onPlinth"
+        },
+        "width": 171,
+        "color": {
+            "color": "bba286",
+            "path": "projects/pastoe-landscape/Textures/470_natural_oak_soft.jpg",
+            "lacquer": "veneer"
+        },
+        "layers": [
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 85.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic",
+                            "sidecolor": {
+                                "color": "00758f",
+                                "lacquer": "basic"
+                            }
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "shelves": 1,
+                                "innerdrawer": {
+                                    "color": "f7f6f4",
+                                    "lacquer": "basic"
+                                },
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "00758f",
+                            "lacquer": "basic",
+                            "sidecolor": {
+                                "color": "00758f",
+                                "lacquer": "basic"
+                            }
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "shelves": 2,
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "00758f",
+                            "lacquer": "basic",
+                            "sidecolor": {
+                                "color": "00758f",
+                                "lacquer": "basic"
+                            }
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 114,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "00758f",
+                            "lacquer": "basic",
+                            "sidecolor": {
+                                "color": "00758f",
+                                "lacquer": "basic"
+                            }
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "canyon",
+        "image": "projects/pastoe-landscape/img/thumbnails/canyon.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "onFrame",
+            "color": "020307",
+            "lacquer": "basic"
+        },
+        "width": 228,
+        "color": {
+            "color": "472c35",
+            "lacquer": "structure"
+        },
+        "layers": [
+            {
+                "height": 19,
+                "components": [
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "bba286",
+                            "path": "projects/pastoe-landscape/Textures/470_natural_oak_soft.jpg",
+                            "lacquer": "veneer"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "3e3e3e",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 114,
+                        "grid": "single",
+                        "color": {
+                            "color": "6d3133",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "b2312b",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "js_2018",
+        "image": "projects/pastoe-landscape/img/thumbnails/js_2018.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "onFrame",
+            "color": "020307",
+            "lacquer": "basic"
+        },
+        "width": 228,
+        "color": {
+            "color": "846553",
+            "path": "projects/pastoe-landscape/Textures/475_natural_walnut_soft.jpg",
+            "lacquer": "veneer"
+        },
+        "layers": [
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "e8e6da",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "cb960a",
+                            "lacquer": "structure"
+                        },
+                        "front": [
+                            {
+                                "type": "winerack",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "3e3e3e",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "double",
+                        "color": {
+                            "color": "3e3e3e",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            },
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "autumn",
+        "image": "projects/pastoe-landscape/img/thumbnails/autumn.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "onFrame",
+            "color": "020307",
+            "lacquer": "basic"
+        },
+        "width": 171,
+        "color": {
+            "color": "846553",
+            "path": "projects/pastoe-landscape/Textures/475_natural_walnut_soft.jpg",
+            "lacquer": "veneer"
+        },
+        "layers": [
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 85.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "e8e6da",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "3e3e3e",
+                            "lacquer": "structure"
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "472c35",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "6d3133",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "3e3e3e",
+                            "lacquer": "structure"
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 85.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "846553",
+                            "path": "projects/pastoe-landscape/Textures/475_natural_walnut_soft.jpg",
+                            "lacquer": "veneer"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "3e3e3e",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "shore",
+        "image": "projects/pastoe-landscape/img/thumbnails/shore.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "onPlinth"
+        },
+        "width": 114,
+        "color": {
+            "color": "846553",
+            "path": "projects/pastoe-landscape/Textures/475_natural_walnut_soft.jpg",
+            "lacquer": "veneer"
+        },
+        "layers": [
+            {
+                "height": 57,
+                "components": [
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 57
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 57
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "height": 19,
+                "components": [
+                    {
+                        "width": 85.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "565833",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "3e3e3e",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "f7f6f4",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "js_2012",
+        "image": "projects/pastoe-landscape/img/thumbnails/js_2012.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "onFrame",
+            "color": "020307",
+            "lacquer": "basic"
+        },
+        "width": 256.5,
+        "color": {
+            "color": "846553",
+            "path": "projects/pastoe-landscape/Textures/475_natural_walnut_soft.jpg",
+            "lacquer": "veneer"
+        },
+        "layers": [
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "e8e6da",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "open",
+                        "color": {
+                            "color": "973c27",
+                            "lacquer": "structure"
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 1,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 85.5,
+                        "grid": "double",
+                        "color": {
+                            "color": "3e3e3e",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            },
+                            {
+                                "type": "flap",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "973c27",
+                            "lacquer": "structure"
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "3e3e3e",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "M31",
+        "image": "projects/pastoe-landscape/img/thumbnails/M31.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "wallMounted"
+        },
+        "width": 228,
+        "color": {
+            "color": "020307",
+            "lacquer": "structure"
+        },
+        "layers": [
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "846553",
+                            "path": "projects/pastoe-landscape/Textures/475_natural_walnut_soft.jpg",
+                            "lacquer": "veneer"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "020307",
+                            "lacquer": "structure"
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 114,
+                        "grid": "double",
+                        "color": {
+                            "color": "e8e6da",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 19
+                            },
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "565833",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "pacific",
+        "image": "projects/pastoe-landscape/img/thumbnails/pacific.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "onFrame",
+            "color": "020307",
+            "lacquer": "basic"
+        },
+        "width": 285,
+        "color": {
+            "color": "020307",
+            "lacquer": "structure"
+        },
+        "layers": [
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "1a2730",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "left",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "973c27",
+                            "lacquer": "structure"
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 114,
+                        "grid": "double",
+                        "color": {
+                            "color": "1a2730",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 19
+                            },
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "open",
+                        "color": {
+                            "color": "973c27",
+                            "lacquer": "structure"
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 1,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "1a2730",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "dutchRailway",
+        "image": "projects/pastoe-landscape/img/thumbnails/dutchRailway.jpg",
+        "background": {
+            "original": "d4d4d4"
+        },
+        "mounting": {
+            "type": "onFrame",
+            "color": "020307",
+            "lacquer": "basic"
+        },
+        "width": 285,
+        "color": {
+            "color": "bba286",
+            "path": "projects/pastoe-landscape/Textures/470_natural_oak_soft.jpg",
+            "lacquer": "veneer"
+        },
+        "layers": [
+            {
+                "height": 57,
+                "components": [
+                    {
+                        "width": 57,
+                        "grid": "doubleXY",
+                        "color": {
+                            "color": "fdecd0",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            },
+                            {
+                                "type": "drawer",
+                                "height": 38,
+                                "innerdrawer": {
+                                    "color": "fdecd0",
+                                    "lacquer": "basic"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "doubleYX",
+                        "color": {
+                            "color": "fdecd0",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 38,
+                                "innerdrawer": {
+                                    "color": "fdecd0",
+                                    "lacquer": "basic"
+                                }
+                            },
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "fdecd0",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 57
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "doubleXY",
+                        "color": {
+                            "color": "fdecd0",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 19
+                            },
+                            {
+                                "type": "door",
+                                "rotation": "right",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "triple",
+                        "color": {
+                            "color": "fdecd0",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            },
+                            {
+                                "type": "flap",
+                                "height": 19
+                            },
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "height": 19,
+                "components": [
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "fdecd0",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "open",
+                        "color": {
+                            "color": "b2312b",
+                            "lacquer": "basic",
+                            "sidecolor": {
+                                "color": "96caa4",
+                                "lacquer": "basic"
+                            }
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "fdecd0",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 114,
+                        "grid": "single",
+                        "color": {
+                            "color": "fdecd0",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "fdecd0",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 57,
+                        "grid": "double",
+                        "color": {
+                            "color": "d4b773",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            },
+                            {
+                                "type": "flap",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "single",
+                        "color": {
+                            "color": "d4b773",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "open",
+                        "color": {
+                            "color": "b2312b",
+                            "lacquer": "basic",
+                            "sidecolor": {
+                                "color": "96caa4",
+                                "lacquer": "basic"
+                            }
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 57,
+                        "grid": "double",
+                        "color": {
+                            "color": "d4b773",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 19
+                            },
+                            {
+                                "type": "flap",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "open",
+                        "color": {
+                            "color": "b2312b",
+                            "lacquer": "basic",
+                            "sidecolor": {
+                                "color": "96caa4",
+                                "lacquer": "basic"
+                            }
+                        },
+                        "front": [
+                            {
+                                "type": "open",
+                                "shelves": 0,
+                                "height": 38
+                            }
+                        ]
+                    },
+                    {
+                        "width": 28.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "d4b773",
+                            "path": "",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "height": 38,
+                "components": [
+                    {
+                        "width": 114,
+                        "grid": "double",
+                        "color": {
+                            "color": "d4b773",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 19
+                            },
+                            {
+                                "type": "flap",
+                                "height": 19
+                            }
+                        ]
+                    },
+                    {
+                        "width": 85.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "d4b773",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "drawer",
+                                "height": 38,
+                                "innerdrawer": {
+                                    "color": "d4b773",
+                                    "lacquer": "basic"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "width": 85.5,
+                        "grid": "single",
+                        "color": {
+                            "color": "d4b773",
+                            "lacquer": "basic"
+                        },
+                        "front": [
+                            {
+                                "type": "flap",
+                                "height": 38
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
