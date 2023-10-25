@@ -74,7 +74,7 @@ function downloadPdf(model, mainImage, output) {
             drawing = '<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" width="134.31mm" height="37.61mm" viewBox="0 0 380.72 106.6"><g id="Laag_1"><rect x=".26" y="102.32" width="274.65" height="2.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x=".26" y="2.14" width="274.65" height="2.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="240.04" y="4.2" width="1.42" height="98.12" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="136.61" y="4.2" width="2.27" height="98.03" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="35.02" y="52.08" width="101.59" height="2.27" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="138.88" y="52.08" width="101.16" height="2.27" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="33.6" y="4.2" width="1.42" height="98.12" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m21.49,5.08c-.48,0-.87.29-.87.65v94.98c0,.35.39.63.87.63s.88-.29.88-.63V5.73c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m24.99,5.08c-.48,0-.88.29-.88.65v94.98c0,.35.39.63.88.63s.87-.29.87-.63V5.73c0-.36-.39-.65-.87-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m10.99,5.03c-.48,0-.87.29-.87.65v94.98c0,.35.39.63.87.63s.88-.28.88-.63V5.68c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m14.49,5.03c-.48,0-.88.29-.88.65v94.98c0,.35.39.63.88.63s.87-.28.87-.63V5.68c0-.36-.39-.65-.87-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m17.99,5.03c-.48,0-.88.29-.88.65v94.99c0,.35.4.63.88.63s.88-.28.88-.63V5.68c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m1.02,5.08c-.48,0-.88.29-.88.65v94.98c0,.35.39.63.88.63s.87-.28.87-.63V5.73c0-.36-.39-.65-.87-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m3.92,5.01c-.48,0-.88.29-.88.65v94.98c0,.35.39.63.88.63s.87-.28.87-.63V5.66c0-.36-.39-.65-.87-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m7.42,5.08c-.48,0-.87.29-.87.65v94.98c0,.35.39.63.87.63s.88-.28.88-.63V5.73c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m31.99,5.06c-.48,0-.88.29-.88.65v94.99c0,.35.39.63.88.63s.87-.28.87-.63V5.7c0-.36-.39-.65-.87-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m28.49,5.01c-.48,0-.87.3-.87.65v94.98c0,.35.39.63.87.63s.88-.28.88-.63V5.66c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m253.57,101.44c.48,0,.87-.29.87-.65V5.81c0-.35-.39-.63-.87-.63s-.88.29-.88.63v94.98c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m250.07,101.44c.48,0,.88-.29.88-.65V5.81c0-.35-.39-.63-.88-.63s-.87.29-.87.63v94.98c0,.36.39.65.87.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m264.07,101.49c.48,0,.87-.29.87-.65V5.86c0-.35-.39-.63-.87-.63s-.88.28-.88.63v94.98c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m260.57,101.49c.48,0,.88-.29.88-.65V5.86c0-.35-.39-.63-.88-.63s-.87.28-.87.63v94.98c0,.36.39.65.87.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m257.07,101.49c.48,0,.88-.29.88-.65V5.86c0-.35-.4-.63-.88-.63s-.88.28-.88.63v94.99c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m274.04,101.44c.48,0,.88-.29.88-.65V5.81c0-.35-.39-.63-.88-.63s-.87.28-.87.63v94.98c0,.36.39.65.87.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m271.14,101.52c.48,0,.88-.29.88-.66V5.88c0-.35-.39-.63-.88-.63s-.87.28-.87.63v94.98c0,.36.39.66.87.66Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m267.64,101.44c.48,0,.87-.29.87-.65V5.81c0-.35-.39-.63-.87-.63s-.88.28-.88.63v94.98c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m243.07,101.47c.48,0,.88-.29.88-.65V5.83c0-.35-.39-.63-.88-.63s-.87.28-.87.63v94.99c0,.36.39.65.87.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m246.57,101.52c.48,0,.87-.3.87-.65V5.88c0-.35-.39-.63-.87-.63s-.88.28-.88.63v94.98c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="274.04" y1="5.18" x2="274.04" y2="4.29" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="274.04" y1="101.44" x2="274.04" y2="102.32" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><polygon points="380.47 2.12 326.24 2.12 329.01 .14 377.63 .14 380.47 2.12" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="326.24" y="2.12" width="54.34" height="2.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="326.24" y="102.23" width="54.34" height="2.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><polygon points="326.24 104.38 380.47 104.38 377.71 106.37 329.08 106.37 326.24 104.38" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="379.71" y1="101.41" x2="379.71" y2="102.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="327.12" y1="101.36" x2="327.12" y2="102.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m358.63,5.26c-.48,0-.88.28-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.9c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m355.13,5.26c-.48,0-.87.28-.87.64v94.81c0,.36.39.65.87.65s.88-.29.88-.65V5.9c0-.35-.39-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m369.13,5.31c-.48,0-.88.29-.88.64v94.81c0,.36.39.65.88.65s.88-.29.88-.65V5.95c0-.35-.4-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m365.63,5.31c-.48,0-.88.29-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.95c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m362.13,5.31c-.48,0-.87.28-.87.64v94.81c0,.36.39.65.87.65s.88-.29.88-.65V5.95c0-.35-.39-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m379.71,5.31c-.48,0-.88.28-.88.63v94.82c0,.35.39.65.88.65s.87-.29.87-.65V5.94c0-.35-.39-.63-.87-.63Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m376.2,5.26c-.48,0-.87.28-.87.63v94.82c0,.35.39.65.87.65s.88-.29.88-.65V5.9c0-.35-.39-.63-.88-.63Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m372.7,5.26c-.48,0-.88.28-.88.63v94.81c0,.36.4.65.88.65s.88-.29.88-.65V5.9c0-.35-.39-.63-.88-.63Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m348.13,5.28c-.48,0-.88.28-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.92c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m351.63,5.33c-.48,0-.88.29-.88.64v94.82c0,.36.39.65.88.65s.88-.29.88-.65V5.97c0-.35-.4-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m341.13,5.25c-.48,0-.88.28-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.89c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m337.63,5.25c-.48,0-.87.28-.87.64v94.81c0,.36.39.65.87.65s.88-.29.88-.65V5.89c0-.35-.39-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m344.63,5.29c-.48,0-.87.28-.87.64v94.81c0,.36.39.65.87.65s.88-.29.88-.65V5.93c0-.35-.39-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m330.63,5.27c-.48,0-.88.28-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.91c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m334.13,5.32c-.48,0-.88.29-.88.64v94.82c0,.36.39.65.88.65s.88-.29.88-.65V5.96c0-.35-.4-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m327.12,5.25c-.48,0-.88.29-.88.64v94.81c0,.36.39.65.88.65s.88-.29.88-.65V5.88c0-.35-.4-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="327.12" y1="5.25" x2="327.12" y2="4.27" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="379.71" y1="5.31" x2="379.71" y2="4.27" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><polygon points="272.07 .16 218.41 .16 56.65 .16 2.99 .16 .14 2.14 53.79 2.14 221.26 2.14 274.92 2.14 272.07 .16" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><polygon points="221.39 104.47 53.79 104.47 .26 104.47 3.12 106.46 56.65 106.46 218.54 106.46 272.07 106.46 274.92 104.47 221.39 104.47" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="1.02" y1="5.08" x2="1.02" y2="4.29" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="1.02" y1="101.35" x2="1.02" y2="102.32" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/></g></svg>';
             svgWidth = 134.31 * 2;
         }
-        height = 75;
+        height = model.height;
         width = model.width;
         depth = 37;
     }
@@ -107,14 +107,14 @@ function downloadPdf(model, mainImage, output) {
                 svgWidth = 134.27 * 2;
             }
         }
-        height = 76.5;
+        height = model.height;
         width = model.width;
         depth = 37;
     }
     if (model.type == "sideboardOnFrameTV") {
         drawing = '<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" width="115.55mm" height="55.89mm" viewBox="0 0 327.54 158.43"><g id="Laag_1"><rect x="33.17" y="106.46" width="2.83" height="51.83" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="186.34" y="106.46" width="2.83" height="51.83" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="36" y="106.46" width="150.34" height="5.67" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="35.96" y="122.58" width="150.38" height="1.42" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="278.59" y="106.46" width="2.83" height="51.83" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="318.92" y="106.46" width="2.83" height="51.83" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="281.42" y="106.46" width="37.49" height="5.67" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="281.39" y="122.35" width="37.53" height="1.42" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><polygon points=".61 104.47 221.73 104.47 218.88 106.46 3.46 106.46 .61 104.47" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x=".61" y="102.32" width="221.12" height="2.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><polygon points="221.73 2.14 .61 2.14 3.46 .16 218.88 .16 221.73 2.14" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x=".61" y="2.14" width="221.12" height="2.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="33.6" y="4.2" width="1.42" height="98.12" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="186.85" y="4.2" width="1.42" height="98.12" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="1.02" y1="101.35" x2="1.02" y2="102.21" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m21.49,5.08c-.48,0-.87.29-.87.65v94.98c0,.35.39.63.87.63s.88-.29.88-.63V5.73c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m24.99,5.08c-.48,0-.88.29-.88.65v94.98c0,.35.39.63.88.63s.87-.29.87-.63V5.73c0-.36-.39-.65-.87-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m10.99,5.03c-.48,0-.87.29-.87.65v94.98c0,.35.39.63.87.63s.88-.28.88-.63V5.68c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m14.49,5.03c-.48,0-.88.29-.88.65v94.98c0,.35.39.63.88.63s.87-.28.87-.63V5.68c0-.36-.39-.65-.87-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m17.99,5.03c-.48,0-.88.29-.88.65v94.99c0,.35.4.63.88.63s.88-.28.88-.63V5.68c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m1.02,5.08c-.48,0-.88.29-.88.66v94.98c0,.35.39.63.88.63s.87-.29.87-.63V5.73c0-.36-.39-.66-.87-.66Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m3.92,5c-.48,0-.88.29-.88.65v94.98c0,.35.39.63.88.63s.87-.28.87-.63V5.66c0-.36-.39-.65-.87-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m7.42,5.08c-.48,0-.87.29-.87.65v94.98c0,.35.39.63.87.63s.88-.29.88-.63V5.73c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m31.99,5.06c-.48,0-.88.29-.88.65v94.99c0,.35.39.63.88.63s.87-.28.87-.63V5.7c0-.36-.39-.65-.87-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m28.49,5c-.48,0-.87.3-.87.65v94.98c0,.35.39.63.87.63s.88-.28.88-.63V5.66c0-.36-.39-.65-.88-.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="1" y1="4.2" x2="1" y2="5.07" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m200.38,101.44c.48,0,.87-.29.87-.65V5.81c0-.35-.39-.63-.87-.63s-.88.29-.88.63v94.98c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m196.88,101.44c.48,0,.88-.29.88-.65V5.81c0-.35-.39-.63-.88-.63s-.87.29-.87.63v94.98c0,.36.39.65.87.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m210.88,101.49c.48,0,.87-.29.87-.65V5.86c0-.35-.39-.63-.87-.63s-.88.28-.88.63v94.98c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m207.38,101.49c.48,0,.88-.29.88-.65V5.86c0-.35-.39-.63-.88-.63s-.87.28-.87.63v94.98c0,.36.39.65.87.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m203.88,101.49c.48,0,.88-.29.88-.65V5.86c0-.35-.4-.63-.88-.63s-.88.28-.88.63v94.99c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m220.86,101.44c.48,0,.88-.29.88-.65V5.81c0-.35-.39-.63-.88-.63s-.87.28-.87.63v94.98c0,.36.39.65.87.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m217.96,101.52c.48,0,.88-.29.88-.66V5.88c0-.35-.39-.63-.88-.63s-.87.29-.87.63v94.98c0,.36.39.66.87.66Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m214.46,101.44c.48,0,.87-.29.87-.65V5.81c0-.35-.39-.63-.87-.63s-.88.28-.88.63v94.98c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m189.88,101.47c.48,0,.88-.29.88-.65V5.83c0-.35-.39-.63-.88-.63s-.87.28-.87.63v94.99c0,.36.39.65.87.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m193.38,101.52c.48,0,.87-.3.87-.65V5.88c0-.35-.39-.63-.87-.63s-.88.28-.88.63v94.98c0,.36.39.65.88.65Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="220.86" y1="5.17" x2="220.86" y2="4.29" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="220.86" y1="101.44" x2="220.86" y2="102.32" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><polygon points="327.29 2.12 273.06 2.12 275.82 .14 324.45 .14 327.29 2.12" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="273.06" y="2.12" width="54.34" height="2.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="273.06" y="102.23" width="54.34" height="2.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><polygon points="273.06 104.38 327.29 104.38 324.52 106.36 275.89 106.36 273.06 104.38" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="326.52" y1="101.41" x2="326.52" y2="102.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="273.93" y1="101.36" x2="273.93" y2="102.15" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m305.44,5.26c-.48,0-.88.29-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.9c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m301.94,5.26c-.48,0-.87.29-.87.64v94.81c0,.36.39.65.87.65s.88-.29.88-.65V5.9c0-.35-.39-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m315.94,5.31c-.48,0-.88.29-.88.64v94.81c0,.36.39.65.88.65s.88-.29.88-.65V5.95c0-.35-.4-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m312.44,5.31c-.48,0-.88.29-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.95c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m308.94,5.31c-.48,0-.87.28-.87.64v94.81c0,.36.39.65.87.65s.88-.29.88-.65V5.95c0-.35-.39-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m326.52,5.31c-.48,0-.88.28-.88.63v94.82c0,.35.39.65.88.65s.87-.29.87-.65V5.94c0-.35-.39-.63-.87-.63Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m323.01,5.26c-.48,0-.87.28-.87.63v94.82c0,.35.39.65.87.65s.88-.29.88-.65V5.9c0-.35-.39-.63-.88-.63Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m319.52,5.26c-.48,0-.88.28-.88.63v94.81c0,.36.4.65.88.65s.88-.29.88-.65V5.9c0-.35-.39-.63-.88-.63Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m294.94,5.28c-.48,0-.88.29-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.92c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m298.44,5.33c-.48,0-.88.29-.88.64v94.81c0,.36.39.65.88.65s.88-.29.88-.65V5.97c0-.35-.4-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m287.94,5.25c-.48,0-.88.28-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.89c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m284.44,5.25c-.48,0-.87.28-.87.64v94.81c0,.36.39.65.87.65s.88-.29.88-.65V5.89c0-.35-.39-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m291.44,5.29c-.48,0-.87.29-.87.64v94.81c0,.36.39.65.87.65s.88-.29.88-.65V5.93c0-.35-.39-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m277.44,5.27c-.48,0-.88.28-.88.64v94.81c0,.36.39.65.88.65s.87-.29.87-.65V5.91c0-.35-.39-.64-.87-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m280.94,5.32c-.48,0-.88.29-.88.64v94.82c0,.36.39.65.88.65s.88-.29.88-.65V5.95c0-.35-.4-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><path d="m273.93,5.25c-.48,0-.88.29-.88.64v94.81c0,.36.39.65.88.65s.88-.29.88-.65V5.88c0-.35-.4-.64-.88-.64Z" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="273.93" y1="5.25" x2="273.93" y2="4.27" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><line x1="326.52" y1="5.31" x2="326.52" y2="4.27" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="35.02" y="88.15" width="151.83" height="14.17" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/><rect x="103.85" y="88.15" width="14.17" height="2.84" style="fill:none; stroke:#231f20; stroke-miterlimit:2.41; stroke-width:.28px;"/></g></svg>';
         svgWidth = 115.55 * 2;
-        height = 111.5;
+        height = model.height;
         width = 156;
         depth = 37;
     }
@@ -184,7 +184,7 @@ function downloadPdf(model, mainImage, output) {
                     body: [
                         [{ text: 'exterior', fontSize: 9 }, { text: `${model.outsideColor.code} ${model.outsideColor.name}`, fontSize: 9 }],
                         [{ text: 'interior', fontSize: 9 }, { text: `${model.insideColor.code} ${model.insideColor.name}`, fontSize: 9 }],
-                        [{ text: `${(model.type !== 'cabinet' || model.type !== 'sideboard') ? 'metal frame' : ''}`, fontSize: 9 }, { text: `${(model.type !== 'cabinet' || model.type !== 'sideboard') ? '301 black' : ''}`, fontSize: 9 }]  
+                        [{ text: `${(model.type !== 'cabinet' || model.type !== 'sideboard') ? 'metal frame' : ''}`, fontSize: 9 }, { text: `${(model.type !== 'cabinet' || model.type !== 'sideboard') ? '301 black' : ''}`, fontSize: 9 }]
                     ]
                 }
             },
@@ -260,9 +260,10 @@ async function uploadRenderTexture(blob, medium) {
     if (medium == 'httprequest') {
         downloadPdf(FEATUREDMODEL, result, 'base64');
     }
-    if (medium == 'quote') {
-        var quoteRenderTexture = document.getElementById('quoteRenderTexture');
-        quoteRenderTexture.src = result;
+    if (medium == 'search') {
+        var searchRenderTexture = document.getElementById('searchRenderTexture');
+        searchRenderTexture.src = result;
+        console.log(result);
     }
 }
 
@@ -275,21 +276,11 @@ function blobToBase64(blob) {
 }
 
 function generateRenderTexture(medium) {
-    let modelHeight;
-    if (FEATUREDMODEL.type == 'cabinet') {
-        modelHeight = FEATUREDMODEL.height;
-    }
-    if (FEATUREDMODEL.type == 'sideboard' || FEATUREDMODEL.type == 'sideboardOnFrame') {
-        modelHeight = 75;
-    }
-    if (FEATUREDMODEL.type == 'sideboardOnFrameTV') {
-        modelHeight = 111.5;
-    }
     const renderTexture = {
         medium: medium,
         angleName: "perspective",
         widthForImage: FEATUREDMODEL.width,
-        heightForImage: modelHeight,
+        heightForImage: FEATUREDMODEL.height,
         depthForImage: 37
     };
     UNITY_INSTANCE.SendMessage('Amsterdammer', 'SaveRenderTexture', JSON.stringify(renderTexture));
@@ -300,50 +291,12 @@ function shareConfiguration(model) {
 }
 
 function submitForm() {
-    //var quoteModal = new bootstrap.Modal(document.getElementById('getQuoteModal'), {});
-    //var quoteModalSucces = new bootstrap.Modal(document.getElementById('getQuoteModalSucces'), {});
-    
     window.parent.postMessage(
         JSON.stringify(FEATUREDMODEL.articleList),
         "https://www.pastoe.com",
-      );
+    );
 
-      console.log(JSON.stringify(FEATUREDMODEL.articleList));
-    /*
-    var xhr = new XMLHttpRequest();
-    var formEl = document.forms.requestQuote;
-    var formData = new FormData(formEl);
-    var pdf = generateRenderTexture('httprequest');
-
-    formData.append("email", `${formData.get("email")}`);
-    formData.append("address", `${formData.get("address")}`);
-    formData.append("postalCode", `${formData.get("postalCode")}`);
-    formData.append("city", `${formData.get("city")}`);
-    formData.append("country", `${formData.get("country")}`);
-    formData.append("phone", `${formData.get("phone")}`);
-    formData.append("remarks", `${formData.get("remarks")}`);
-
-    formData.append("price", document.getElementById('price').textContent);
-    formData.append("articleList", JSON.stringify(FEATUREDMODEL.articleList));
-    formData.append("pdf", pdf);
-
-    for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-    }
-
-    xhr.open('POST', 'https://pastoeportal.com/furnitise/quote')
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(formData);
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            formEl.reset(); //reset form after AJAX success.
-        }
-    }
-    */
-    //quoteModalSucces.show();
-    // does not work...
-    //quoteModal.hide();
+    console.log(JSON.stringify(FEATUREDMODEL.articleList));
 }
 
 // used by FromUnityToJavascript.jslib
@@ -470,7 +423,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
             }
             if (model.type == "sideboardOnFrame") {
                 model.width = 156;
-                model.height = undefined;
+                model.height = 75;
                 model.winerack = undefined;
                 model.shelves = undefined;
                 if (model.interior != "two" || model.interior != "three" || model.interior == undefined) {
@@ -483,11 +436,11 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                 } else {
                     model.outsideColor = { "color": model.outsideColor.color, "lacquer": model.outsideColor.lacquer };
                 }
-                updateCamera(model.width, 75);
+                updateCamera(model.width, model.height);
             }
             if (model.type == "sideboardOnFrameTV") {
                 model.width = 156;
-                model.height = undefined;
+                model.height = 112;
                 model.winerack = undefined;
                 model.shelves = undefined;
                 model.interior = undefined;
@@ -496,11 +449,11 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                 } else {
                     model.outsideColor = { "color": model.outsideColor.color, "lacquer": model.outsideColor.lacquer };
                 }
-                updateCamera(model.width, 112);
+                updateCamera(model.width, model.height);
             }
             if (model.type == "sideboard") {
                 model.width = 156;
-                model.height = undefined;
+                model.height = 75;
                 model.winerack = undefined;
                 model.shelves = undefined;
                 model.interior = undefined;
@@ -509,7 +462,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                 } else {
                     model.outsideColor = { "color": model.outsideColor.color, "lacquer": model.outsideColor.lacquer };
                 }
-                updateCamera(model.width, 75);
+                updateCamera(model.width, model.height);
             }
             updateControlPanel(model, undefined, 'type');
             updateFeaturedModel(model);
@@ -531,7 +484,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
 
                 model.width = width.target.id;
 
-                updateCamera(model.width, 75);
+                updateCamera(model.width, model.height);
                 updateControlPanel(model, undefined, 'sizeSideboard');
                 updateFeaturedModel(model);
                 showSelected(false);
@@ -724,7 +677,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
             document.getElementById('outsideColorsLacquer_veneer').checked = true;
         } else {
             if (model.outsideColor.lacquer != undefined && model.outsideColor.lacquer != "veneer") {
-                    model.outsideColor = { "color": ALLCOLORS.outsideColors[outsideColorIndex].colorHex, "lacquer": model.outsideColor.lacquer };
+                model.outsideColor = { "color": ALLCOLORS.outsideColors[outsideColorIndex].colorHex, "lacquer": model.outsideColor.lacquer };
             } else {
                 model.outsideColor = { "color": ALLCOLORS.outsideColors[outsideColorIndex].colorHex, "lacquer": "basic" };
             }
@@ -792,7 +745,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     }));
     model.insideColor.code = ALLCOLORS.insideColors[insideColorIndex].colorCode.structure;
     model.insideColor.name = ALLCOLORS.insideColors[insideColorIndex].colorName;
-    document.getElementById('insideColorsText').innerHTML = '<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: #' + model.insideColor.color + ';">&nbsp;&nbsp;&nbsp;&nbsp;' +  model.insideColor.name;
+    document.getElementById('insideColorsText').innerHTML = '<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: #' + model.insideColor.color + ';">&nbsp;&nbsp;&nbsp;&nbsp;' + model.insideColor.name;
     document.getElementById('insideColorsIndex_' + insideColorIndex).classList.remove('colorButton');
     document.getElementById('insideColorsIndex_' + insideColorIndex).classList.add('colorButtonActive');
 
@@ -808,8 +761,8 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
 
     //price & articleList
     const articleList = [];
-    Object.assign(model, { articleList: { } });
-   
+    Object.assign(model, { articleList: {} });
+
     if (model.type == "cabinet") {
         let cabinetBodyPrice;
         let cabinetBodyReducedPrice;
@@ -840,9 +793,9 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         //winerack
         if (model.winerack == true) {
             cabinetWinerackPrice = ALLCOMPONENTS.cabinet.winerack[cabinetWinerackIndex].price;
-            if(model.winerackColor == "outsidecolor") {
+            if (model.winerackColor == "outsidecolor") {
                 model.articleList.winerack = { "code": ALLCOMPONENTS.cabinet.winerack[cabinetWinerackIndex].code, "color": model.outsideColor.code };
-            } else{
+            } else {
                 model.articleList.winerack = { "code": ALLCOMPONENTS.cabinet.winerack[cabinetWinerackIndex].code, "color": model.insideColor.code };
             }
         } else {
@@ -940,10 +893,10 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         addDecor(model.type, model.width, model.height, 37, model.height, 0, ALLCOLORS.decorWall[DECORWALLINDEX].colorHex, ALLCOLORS.decorWall[DECORWALLINDEX].colorPath, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorHex, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorPath);
     }
     if (model.type == "sideboardOnFrameTV") {
-        addDecor(model.type, model.width, 0, 37, 25, 13, ALLCOLORS.decorWall[DECORWALLINDEX].colorHex, ALLCOLORS.decorWall[DECORWALLINDEX].colorPath, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorHex, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorPath);
+        addDecor(model.type, model.width, model.height, 37, 25, 13, ALLCOLORS.decorWall[DECORWALLINDEX].colorHex, ALLCOLORS.decorWall[DECORWALLINDEX].colorPath, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorHex, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorPath);
     }
     if (model.type == "sideboard" || model.type == "sideboardOnFrame") {
-        addDecor(model.type, model.width, 75, 37, 75, 0, ALLCOLORS.decorWall[DECORWALLINDEX].colorHex, ALLCOLORS.decorWall[DECORWALLINDEX].colorPath, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorHex, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorPath);
+        addDecor(model.type, model.width, model.height, 37, model.height, 0, ALLCOLORS.decorWall[DECORWALLINDEX].colorHex, ALLCOLORS.decorWall[DECORWALLINDEX].colorPath, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorHex, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorPath);
     }
 
     //pdf generator
@@ -952,22 +905,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
 }
 
 function showFeaturedModel(model) {
-    if (model.type == "sideboard" || model.type == "sideboardOnFrame") {
-        updateCamera(model.width, 75);
-    }
-    if (model.type == "sideboardOnFrameTV") {
-        updateCamera(model.width, 112);
-    } else {
-        updateCamera(model.width, model.height);
-    }
+    updateCamera(model.width, model.height);
     updateControlPanel(model);
     updateFeaturedModel(model);
 }
 
 function showFeaturedModelByIndex(index) {
-    //FEATUREDMODELINDEX = index;
-    //FEATUREDMODEL = JSON.parse(JSON.stringify(ALLMODELS[index]));
-    //showFeaturedModel(FEATUREDMODEL);
     showFeaturedModel(JSON.parse(JSON.stringify(ALLMODELS[index])));
 }
 

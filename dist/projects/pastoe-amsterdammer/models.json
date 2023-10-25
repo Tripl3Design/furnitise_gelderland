@@ -6,8 +6,10 @@
         "background": {
             "original": "d4d4d4"
         },
+        "searchType": "closet",
         "type": "sideboardOnFrame",
         "width": 156,
+        "height": 75,
         "interior": "two",
         "outsideColor": {
             "color": "d4b773",
@@ -25,6 +27,7 @@
         "background": {
             "original": "d4d4d4"
         },
+        "searchType": "closet",
         "type": "cabinet",
         "width": 37,
         "height": 205,
@@ -46,8 +49,10 @@
         "background": {
             "original": "d4d4d4"
         },
+        "searchType": "closet",
         "type": "sideboardOnFrameTV",
         "width": 156,
+        "height": 112,
         "outsideColor": {
             "color": "495a47",
             "lacquer": "basic"
@@ -64,6 +69,7 @@
         "background": {
             "original": "d4d4d4"
         },
+        "searchType": "closet",
         "type": "cabinet",
         "width": 37,
         "height": 205,
@@ -86,6 +92,7 @@
         "background": {
             "original": "d4d4d4"
         },
+        "searchType": "closet",
         "type": "cabinet",
         "width": 37,
         "height": 205,
@@ -108,8 +115,10 @@
         "background": {
             "original": "d4d4d4"
         },
+        "searchType": "closet",
         "type": "sideboard",
         "width": 194,
+        "height": 75,
         "outsideColor": {
             "color": "e8e6da",
             "lacquer": "basic"
@@ -126,8 +135,10 @@
         "background": {
             "original": "d4d4d4"
         },
+        "searchType": "closet",
         "type": "sideboardOnFrame",
         "width": 156,
+        "height": 75,
         "interior": "one",
         "outsideColor": {
             "color": "3e3e3e",
