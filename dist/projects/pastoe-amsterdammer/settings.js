@@ -125,7 +125,7 @@ function downloadPdf(model, mainImage, output) {
         defaultStyle: {
             font: 'RobotoDefault'
         },
-        watermark: { text: 'DEMOdemoDEMO', color: 'red', fontSize: 600, opacity: 0.75, bold: true, italics: false },
+
         content: [
             { image: `${mainImage}`, width: 210, absolutePosition: { x: 356, y: 30 } },
             { qr: `${link}`, fit: 100, absolutePosition: { x: 240, y: 30 } },
@@ -252,7 +252,7 @@ function downloadPdf(model, mainImage, output) {
 }
 
 // used by FromUnityToJavascript.jslib
-async function uploadRenderTexture(blob, medium) {
+async function uploadRenderTexture(blob, medium, fileName) {
     const result = await blobToBase64(blob);
     if (medium == 'pdf') {
         downloadPdf(FEATUREDMODEL, result, 'download');
@@ -261,6 +261,10 @@ async function uploadRenderTexture(blob, medium) {
         downloadPdf(FEATUREDMODEL, result, 'base64');
     }
     if (medium == 'search') {
+        var searchRenderTexture = document.getElementById('searchRenderTexture');
+        searchRenderTexture.src = result;
+        console.log(result);
+
         var searchRenderTexture = document.getElementById('searchRenderTexture');
         searchRenderTexture.src = result;
         console.log(result);

@@ -44,12 +44,8 @@
     <meta property="og:description" content="Bekijk mijn configuratie van de amsterdammer van pastoe" />
     -->
 
-  <script src='js/controlpanel.js'></script>
-  <script src='js/colorChanger.js'></script>
-  <script src='js/swiped-events.min.js'></script>
-
   <script src='projects/pastoe-amsterdammer/Build/pastoe-amsterdammer.loader.js'></script>
-  <script src='projects/pastoe-amsterdammer/settings.js'></script>
+  <script src='projects/pastoe-amsterdammer/search.js'></script>
 
   <script>
     "use strict"
@@ -70,178 +66,191 @@
 </head>
 
 <body onload="bodyOnload();">
-  <div class="container">
+  <div class="container d-flex gap-3">
 
-    <form id="requestSearch">
-      <div class="row m-0 p-0">
-        <div class="col-4 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
-          <h3 class="fw-light productname text-start text-uppercase" id="producttitle">
-            search
-          </h3>
+    <div class="col-4">
+
+      <form id="requestSearch">
+        <div class="row m-0 p-0">
+          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+            <h3 class="fw-light productname text-start text-uppercase" id="producttitle">
+              search
+            </h3>
+          </div>
         </div>
-      </div>
 
-      <div class="row m-0 p-0">
-        <div class="col-4 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
-          <div class="h6 fw-bold text-uppercase">type</div>
-          <select class="form-select rounded-0" id="type" name="type" aria-label="type">
-            <option value="closet" selected>closet</option>
-            <option value="sofa" disabled>sofa (disabled)</option>
-            <option value="chair" disabled>chair (disabled)</option>
-            <option value="table" disabled>table (disabled)</option>
-          </select>
+        <div class="row m-0 p-0">
+          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+            <div class="h6 fw-bold text-uppercase">type</div>
+            <select class="form-select rounded-0" id="type" name="type" aria-label="type">
+              <option value="closet" selected>closet</option>
+              <option value="sofa" disabled>sofa (disabled)</option>
+              <option value="chair" disabled>chair (disabled)</option>
+              <option value="table" disabled>table (disabled)</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div class="row m-0 p-0">
-        <div class="col-4 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
-          <div class="h6 fw-bold text-uppercase">width</div>
+        <div class="row m-0 p-0">
+          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+            <div class="h6 fw-bold text-uppercase">width</div>
 
-          <input type="range" class="form-range" value="37" min="20" max="500" id="width" name="width">
-
-        </div>
-      </div>
-
-      <div class="row m-0 p-0">
-        <div class="col-4 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
-          <div class="h6 fw-bold text-uppercase">height</div>
-          <input type="range" class="form-range" value="170" min="20" max="300" id="height" name="height">
-        </div>
-      </div>
-
-      <style>
-        .image-radio input[type="radio"] {
-          display: none;
-        }
-
-        .image-radio label {
-          cursor: pointer;
-        }
-
-        .image-radio label img {
-          /*border: 2px solid transparent;*/
-        }
-
-        .image-radio input[type="radio"]:checked+label img {
-          border-color: blue;
-          /* Voeg een stijl toe voor geselecteerde afbeeldingen */
-        }
-      </style>
-
-      <div class="row m-0 p-0">
-        <div class="col-4 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
-          <div class="h6 fw-bold text-uppercase">color</div>
-
-          <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-            <div class="row row-cols-5 m-0 p-0">
-
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="white" name="color" value="white">
-                <label for="white">
-                  <img style="background-color: #FAFAFA; width: 75px;" src="img/transparant.png"
-                    class="rounded-pill img-fluid mx-auto p-0 border    border-5 colorButton" alt="white">
-                </label>
-              </div>
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="sand" name="color" value="sand">
-                <label for="sand">
-                  <img id="sand" name="sand" style="background-color: #DCD2B6; width: 75px;" src="img/transparant.png"
-                    class="rounded-pill img-fluid mx-auto p-0 border    border-5 colorButton" alt="sand">
-                </label>
-              </div>
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="brown" name="color" value="brown">
-                <label for="brown">
-                  <img id="brown" name="brown" style="background-color: #8B725E; width: 75px;" src="img/transparant.png"
-                    class="rounded-pill img-fluid mx-auto p-0 border    border-5 colorButton" alt="brown">
-                </label>
-              </div>
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="gray" name="color" value="gray">
-                <label for="gray">
-                  <img id="gray" name="gray" style="background-color: #AAAAAA; width: 75px;" src="img/transparant.png"
-                    class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton" alt="gray">
-                </label>
-              </div>
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="black" name="color" value="black">
-                <label for="black">
-                  <img id="black" name="black" style="background-color: #1C2225; width: 75px;" src="img/transparant.png"
-                    class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton" alt="black">
-                </label>
-              </div>
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="purple" name="color" value="purple">
-                <label for="purple">
-                  <img id="purple" name="purple" style="background-color: #5924DB; width: 75px;"
-                    src="img/transparant.png" class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton"
-                    alt="purple">
-                </label>
-              </div>
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="red" name="color" value="red">
-                <label for="red">
-                  <img id="red" name="red" style="background-color: #EE3333; width: 75px;" src="img/transparant.png"
-                    class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton" alt="red">
-                </label>
-              </div>
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="orange" name="color" value="orange">
-                <label for="orange">
-                  <img id="orange" name="orange" style="background-color: #EE8D33; width: 75px;"
-                    src="img/transparant.png" class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton"
-                    alt="orange">
-                </label>
-              </div>
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="yellow" name="color" value="yellow">
-                <label for="yellow">
-                  <img id="yellow" name="yellow" style="background-color: #EEBF33; width: 75px;"
-                    src="img/transparant.png" class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton"
-                    alt="yellow">
-                </label>
-              </div>
-
-              <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
-                <input type="radio" id="green" name="color" value="green">
-                <label for="green">
-                  <img id="green" name="green" style="background-color: #4B9F55; width: 75px;" src="img/transparant.png"
-                    class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton" alt="green">
-                </label>
-              </div>
-
-            </div>
+            <input type="range" class="form-range" value="37" min="20" max="500" id="width" name="width">
 
           </div>
         </div>
-      </div>
 
-      <div class="row m-0 p-0">
-        <div class="col-4 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
-          <div class="h6 fw-bold text-uppercase">brand</div>
-          <select class="form-select rounded-0" id="brand" name="brand">
-            <option value="pastoe" selected>pastoe</option>
-            <option value="brand1" disabled>brand 2 (disabled)</option>
-            <option value="brand2" disabled>brand 3 (disabled)</option>
-            <option value="brand3" disabled>brand 4 (disabled)</option>
-          </select>
+        <div class="row m-0 p-0">
+          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+            <div class="h6 fw-bold text-uppercase">height</div>
+            <input type="range" class="form-range" value="170" min="20" max="300" id="height" name="height">
+          </div>
         </div>
+
+        <style>
+          .image-radio input[type="radio"] {
+            display: none;
+          }
+
+          .image-radio label {
+            cursor: pointer;
+          }
+
+          .image-radio label img {
+            /*border: 2px solid transparent;*/
+          }
+        </style>
+
+        <div class="row m-0 p-0">
+          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+            <div class="h6 fw-bold text-uppercase">color</div>
+
+            <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
+              <div class="row row-cols-5 m-0 p-0">
+
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="white" name="color" value="white" checked>
+                  <label for="white">
+                    <img style="background-color: #FAFAFA; width: 75px;" src="img/transparant.png"
+                      class="rounded-pill img-fluid mx-auto p-0 border    border-5 colorButton" alt="white">
+                  </label>
+                </div>
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="sand" name="color" value="sand">
+                  <label for="sand">
+                    <img id="sand" name="sand" style="background-color: #DCD2B6; width: 75px;" src="img/transparant.png"
+                      class="rounded-pill img-fluid mx-auto p-0 border    border-5 colorButton" alt="sand">
+                  </label>
+                </div>
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="brown" name="color" value="brown">
+                  <label for="brown">
+                    <img id="brown" name="brown" style="background-color: #8B725E; width: 75px;"
+                      src="img/transparant.png"
+                      class="rounded-pill img-fluid mx-auto p-0 border    border-5 colorButton" alt="brown">
+                  </label>
+                </div>
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="gray" name="color" value="gray">
+                  <label for="gray">
+                    <img id="gray" name="gray" style="background-color: #AAAAAA; width: 75px;" src="img/transparant.png"
+                      class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton" alt="gray">
+                  </label>
+                </div>
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="black" name="color" value="black">
+                  <label for="black">
+                    <img id="black" name="black" style="background-color: #1C2225; width: 75px;"
+                      src="img/transparant.png" class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton"
+                      alt="black">
+                  </label>
+                </div>
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="blue" name="color" value="blue">
+                  <label for="blue">
+                    <img id="blue" name="blue" style="background-color: #5924DB; width: 75px;" src="img/transparant.png"
+                      class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton" alt="blue">
+                  </label>
+                </div>
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="red" name="color" value="red">
+                  <label for="red">
+                    <img id="red" name="red" style="background-color: #EE3333; width: 75px;" src="img/transparant.png"
+                      class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton" alt="red">
+                  </label>
+                </div>
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="orange" name="color" value="orange">
+                  <label for="orange">
+                    <img id="orange" name="orange" style="background-color: #EE8D33; width: 75px;"
+                      src="img/transparant.png" class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton"
+                      alt="orange">
+                  </label>
+                </div>
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="yellow" name="color" value="yellow">
+                  <label for="yellow">
+                    <img id="yellow" name="yellow" style="background-color: #EEBF33; width: 75px;"
+                      src="img/transparant.png" class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton"
+                      alt="yellow">
+                  </label>
+                </div>
+
+                <div class="image-radio col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
+                  <input type="radio" id="green" name="color" value="green">
+                  <label for="green">
+                    <img id="green" name="green" style="background-color: #4B9F55; width: 75px;"
+                      src="img/transparant.png" class="rounded-pill img-fluid mx-auto p-0 border border-5 colorButton"
+                      alt="green">
+                  </label>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row m-0 p-0">
+          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+            <div class="h6 fw-bold text-uppercase">brand</div>
+            <select class="form-select rounded-0" id="brand" name="brand">
+              <option value="pastoe" selected>pastoe</option>
+              <option value="brand1" disabled>brand 2 (disabled)</option>
+              <option value="brand2" disabled>brand 3 (disabled)</option>
+              <option value="brand3" disabled>brand 4 (disabled)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-12 p-0 m-0 pt-3 ">
+          <button style="letter-spacing: 1px;" class="btn btn-dark float-end rounded-0 fw-light text-uppercase"
+            type="button" id="submit">submit</button>
+        </div>
+      </form>
+
+    </div>
+    <div class="col-7">
+      <div class="position-relative">
+        <div id="searchRenderTexture" width="200px"></div>
       </div>
 
-      <div class="col-4 p-0 m-0 pt-3 ">
-        <button style="letter-spacing: 1px;" class="btn btn-dark float-end rounded-0 fw-light text-uppercase"
-          type="button" id="submit">submit</button>
+      <canvas style="height: 1px;" class="invisible" id="modelviewer"></canvas>
+
+      <div class="position-absolute row w-100 m-0 p-0">
+        <div style="height: 1vw;" class="bg-dark p-0 m-0" id="progressBar"></div>
       </div>
-    </form>
+
+    </div>
 
   </div>
 
@@ -259,13 +268,20 @@
       btn.addEventListener('click', (e) => {
         e.preventDefault(); // Prevent the form from submitting
         const formData = new FormData(form);
-        const values = Array.from(formData.entries());
-        console.log(values);
-        //generateRenderTextureSearch(37, 170);
+        //const values = Array.from(formData.entries());
+        //console.log(values);
+
+        const formDataObject = {};
+        formData.forEach(function (value, key) {
+          formDataObject[key] = value;
+        });
+        const jsonString = JSON.stringify(formDataObject);
+        console.log(jsonString);
+
+        showSearchImages(JSON.parse(jsonString));
       });
     }
-
-    submitSearchForm()
+    submitSearchForm();
   </script>
 
 </body>
