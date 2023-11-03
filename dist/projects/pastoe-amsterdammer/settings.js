@@ -372,7 +372,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     //background
     if (model.background.lighter == undefined) {
         var bgColor = pSBC(0, '#' + model.background.original);
-        model.background = { "original": model.background.original, "lighter": bgColor.substring(1) };
+        model.background = { "original": model.background.original, "lighter": bgColor.substring(1)};
     }
 
     //decor wall

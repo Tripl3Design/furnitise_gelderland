@@ -45,6 +45,7 @@
     -->
 
   <script src='projects/pastoe-amsterdammer/Build/pastoe-amsterdammer.loader.js'></script>
+  <script src='projects/pastoe-amsterdammer/pricing.js'></script>
   <script src='projects/pastoe-amsterdammer/search.js'></script>
 
   <script>
@@ -66,13 +67,13 @@
 </head>
 
 <body onload="bodyOnload();">
-  <div class="container d-flex gap-3">
+  <div class="container d-flex gap-3 mt-3">
 
-    <div class="col-4">
+    <div class="col-3">
 
       <form id="requestSearch">
         <div class="row m-0 p-0">
-          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+          <div class="col-12 m-0 p-0">
             <h3 class="fw-light productname text-start text-uppercase" id="producttitle">
               search
             </h3>
@@ -80,7 +81,7 @@
         </div>
 
         <div class="row m-0 p-0">
-          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+          <div class="col-12 m-0 p-0">
             <div class="h6 fw-bold text-uppercase">type</div>
             <select class="form-select rounded-0" id="type" name="type" aria-label="type">
               <option value="closet" selected>closet</option>
@@ -92,7 +93,7 @@
         </div>
 
         <div class="row m-0 p-0">
-          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+          <div class="col-12 m-0 p-0">
             <div class="h6 fw-bold text-uppercase">width</div>
 
             <input type="range" class="form-range" value="37" min="20" max="500" id="width" name="width">
@@ -101,7 +102,7 @@
         </div>
 
         <div class="row m-0 p-0">
-          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+          <div class="col-12 m-0 p-0">
             <div class="h6 fw-bold text-uppercase">height</div>
             <input type="range" class="form-range" value="170" min="20" max="300" id="height" name="height">
           </div>
@@ -122,7 +123,7 @@
         </style>
 
         <div class="row m-0 p-0">
-          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+          <div class="col-12 m-0 p-0">
             <div class="h6 fw-bold text-uppercase">color</div>
 
             <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
@@ -221,10 +222,11 @@
         </div>
 
         <div class="row m-0 p-0">
-          <div class="col-12 m-0 p-0    pb-xxl-4 pb-xl-3 pb-lg-2 pb-md-2 pb-sm-2">
+          <div class="col-12 m-0 p-0">
             <div class="h6 fw-bold text-uppercase">brand</div>
             <select class="form-select rounded-0" id="brand" name="brand">
-              <option value="pastoe" selected>pastoe</option>
+              <option value="pastoe" selected>all</option>
+              <option value="pastoe">pastoe</option>
               <option value="brand1" disabled>brand 2 (disabled)</option>
               <option value="brand2" disabled>brand 3 (disabled)</option>
               <option value="brand3" disabled>brand 4 (disabled)</option>
@@ -239,18 +241,36 @@
       </form>
 
     </div>
-    <div class="col-7">
+
+    <div class="col-9">
       <div class="position-relative">
-        <div id="searchRenderTexture" width="200px"></div>
+
+        <div class="col-4">
+          <img class="img-fluid" id="searchRenderTexture">
+          <button id="goToConfigurator" style="letter-spacing: 1px;" class="btn btn-dark float-end rounded-0 fw-light text-uppercase"
+            type="button">configure</button>
+          <div class="p-0 m-0 mt-2">
+            <img id="productBrand" src="" style="height: 20px">
+            <div class="p-0 m-0">
+
+              <p id="productFamily" class="text-uppercase m-0 p-0"></p>
+              <p class="h5 fw-bold float-end" id="price"></p>
+              <p id="productFamilyType"></p>
+
+              <p id="name"></p>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <canvas style="height: 1px;" class="invisible" id="modelviewer"></canvas>
-
-      <div class="position-absolute row w-100 m-0 p-0">
-        <div style="height: 1vw;" class="bg-dark p-0 m-0" id="progressBar"></div>
-      </div>
-
     </div>
+
+    <canvas style="height: 1px;" class="invisible" id="modelviewer"></canvas>
+    <div class="position-absolute row m-0 p-0">
+      <div style="height: 1px;" class="bg-dark p-0 m-0" id="progressBar"></div>
+    </div>
+
+  </div>
 
   </div>
 
