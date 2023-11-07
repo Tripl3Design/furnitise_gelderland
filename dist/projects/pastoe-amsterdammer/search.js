@@ -9,26 +9,13 @@ function generateRenderTexture(medium, model) {
         angleName: "perspective",
         widthForImage: model.width,
         heightForImage: model.height,
-        depthForImage: 37,
-
-        searchType: model.type,
-        searchWidth: model.width,
-        searchHeight: model.height,
-        searchWinerack: model.winerack,
-        searchWinerackColor: model.winerackColor,
-        searchShelves: model.shelves,
-        searchInterior: model.interior,
-        searchOutsideColor: model.outsideColor.color,
-        searchInsideColor: model.insideColor.color,
-        searchRollshutter: model.rollshutter
+        depthForImage: 37
     };
-    UNITY_INSTANCE.SendMessage('Amsterdammer', 'SaveRenderTextureForSearch', JSON.stringify(renderTexture));
+    UNITY_INSTANCE.SendMessage('Amsterdammer', 'SaveRenderTexture', JSON.stringify(renderTexture));
 }
 
 // used by FromUnityToJavascript.jslib
 async function uploadRenderTexture(blob, medium, fileName) {
-    //const img = document.getElementById('searchRenderTextures');
-
     const result = await blobToBase64(blob);
     const img = document.getElementById('searchRenderTexture');
 
@@ -140,10 +127,9 @@ function showSearchImages(modelFromSearch) {
                 lacquer: "basic"
             };
         }
-        randomOutsideColor = { color: randomColorGroup, lacquer: "basic" };
     }
-
-    console.log(randomType.type);
+    
+    console.log(randomType);
     console.log(randomOutsideColor);
 
     // get random insideColor
@@ -178,7 +164,6 @@ function showSearchImages(modelFromSearch) {
         window.location.href = `https://furnitise.nl?noDecor&noFeaturedModels&noType&brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
     });
 
-    document.getElementById('productFamily').textContent = title;
     document.getElementById('productBrand').src = `img/logo_${brand}.svg`;
     document.getElementById('productFamily').textContent = title;
     document.getElementById('productFamilyType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();

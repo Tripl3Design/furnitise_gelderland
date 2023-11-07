@@ -1,0 +1,181 @@
+"use strict"
+var UNITY_INSTANCE;
+var ALLCOLORS;
+var ALLCOMPONENTS;
+
+function generateRenderTexture(medium, model) {
+    const renderTexture = {
+        medium: medium,
+        angleName: "perspective",
+        widthForImage: model.width,
+        heightForImage: model.height,
+        depthForImage: 54
+    };
+    UNITY_INSTANCE.SendMessage('Frame', 'SaveRenderTexture', JSON.stringify(renderTexture));
+}
+
+// used by FromUnityToJavascript.jslib
+async function uploadRenderTexture(blob, medium, fileName) {
+    //const img = document.getElementById('searchRenderTextures');
+
+    console.log(fileName);
+
+    const result = await blobToBase64(blob);
+    const img = document.getElementById('searchRenderTexture');
+
+    img.src = result;
+    img.title = fileName;
+}
+
+function blobToBase64(blob) {
+    return new Promise((resolve, _) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+    });
+}
+
+function addDecor(modelType, modelWidth, modelHeight, modelDepth, TvHeight, TvDistanceFromWall, wallColor, wallPath, floorColor, floorPath) {
+    const decor = {
+        typeForDecor: modelType,
+        widthForDecor: modelWidth,
+        heightForDecor: modelHeight,
+        depthForDecor: modelDepth,
+        heightForTV: TvHeight,
+        distanceFromWall: TvDistanceFromWall,
+        colorForWall: wallColor,
+        pathForWall: wallPath,
+        colorForFloor: floorColor,
+        pathForFloor: floorPath
+    };
+    UNITY_INSTANCE.SendMessage('Frame', 'AddDecor', JSON.stringify(decor));
+}
+
+function showSearchImages(modelFromSearch) {
+    const widths = [
+        { "width": 140, "type": "F07" },
+        { "width": 180, "type": "F03" },
+        { "width": 270, "type": "F02" }
+    ];
+    const filteredWidth = widths.filter(item => item.width <= modelFromSearch.width);
+
+    const heights = [
+        { "height": 60, "type": "F02" },
+        { "height": 60, "type": "F03" },
+        { "height": 100, "type": "F07" }
+    ];
+    const filteredHeight = heights.filter(item => item.height <= modelFromSearch.height);
+
+    let randomType, randomWidthType, randomHeightType, randomWidth, randomHeight;
+
+    while (true) {
+        if (filteredWidth.length === 0 || filteredHeight.length === 0) {
+            // Handle the case where no matching items were found
+            console.log('No matching items found.');
+            document.getElementById('searchTitle').textContent = 'No matching items found.';
+            break; // Exit the loop
+        }
+
+        const randomWidthIndex = Math.floor(Math.random() * filteredWidth.length);
+        const randomWidthItem = filteredWidth[randomWidthIndex];
+        randomWidthType = randomWidthItem.type;
+        randomWidth = randomWidthItem.width;
+
+        const randomHeightIndex = Math.floor(Math.random() * filteredHeight.length);
+        const randomHeightItem = filteredHeight[randomHeightIndex];
+        randomHeightType = randomHeightItem.type;
+        randomHeight = randomHeightItem.height;
+
+        if (randomWidthType === randomHeightType) {
+            // Types match, you can perform additional actions here
+            randomType = randomWidthType;
+            console.log('Types match:', randomType);
+            break; // Exit the loop
+        } else {
+            // Types don't match, repeat the loop
+            console.log('Types do not match. Retrying...');
+        }
+    }
+
+    // get random color in selected colorGroup
+    const colorGroup = ALLCOLORS.colors.filter(color => color.colorGroup === modelFromSearch.color);
+    if (colorGroup.length === 0) {
+        console.log("There are no colors in this colorGroup");
+    }
+    const randomColorGroupIndex = Math.floor(Math.random() * colorGroup.length);
+    const randomColorGroup = colorGroup[randomColorGroupIndex].colorHex;
+    let randomColor;
+    if (colorGroup[randomColorGroupIndex].colorPath) {
+        randomColor = {
+            color: randomColorGroup,
+            path: colorGroup[randomColorGroupIndex].colorPath,
+            lacquer: "veneer"
+        };
+    } else {
+        const nonVeneerColors = colorGroup.filter(color => !color.colorPath);
+        if (nonVeneerColors.length > 0) {
+            const randomColorIndex = Math.floor(Math.random() * nonVeneerColors.length);
+            const randomNonVeneerColor = nonVeneerColors[randomColorIndex];
+            randomColor = {
+                color: randomNonVeneerColor.colorHex,
+                lacquer: "basic"
+            };
+        }
+    }
+
+    // get random glasstopcolor
+    const glasstopColorsLength = Math.floor(Math.random() * ALLCOLORS.glasstopColors.length);
+    const randomGlasstopColorsHex = ALLCOLORS.glasstopColors[glasstopColorsLength].colorHex;
+
+    //console.log(randomType);
+    //console.log(randomGlasstopColorsHex);
+    //console.log(randomColor);
+
+    const model = {
+        background: { original: "d4d4d4" },
+        type: randomType,
+        width: randomWidth,
+        height: randomHeight,
+        glasstop: Math.random() < 0.5,
+        glasstopcolor: randomGlasstopColorsHex,
+        color: randomColor
+    }
+    UNITY_INSTANCE.SendMessage('Frame', 'SetFrame', JSON.stringify(model));
+
+    const btn = document.getElementById('goToConfigurator');
+
+    btn.addEventListener('click', (e) => {
+        //window.location.href = `${document.referrer}?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
+        window.location.href = `https://furnitise.nl?noDecor&noFeaturedModels&noType&brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
+    });
+
+    document.getElementById('productBrand').src = `img/logo_${brand}.svg`;
+    document.getElementById('productFamily').textContent = title;
+    document.getElementById('productFamilyType').textContent = model.type;
+    pricing(model);
+
+    generateRenderTexture('search', model);
+}
+
+async function initUnity() {
+    var canvas = document.getElementById("modelviewer");
+    var buildUrl = `projects/${brand}-${product}/Build`;
+    var config = {
+        dataUrl: `${buildUrl}/${brand}-${product}.data`,
+        frameworkUrl: `${buildUrl}/${brand}-${product}.framework.js`,
+        codeUrl: `${buildUrl}/${brand}-${product}.wasm`,
+        //streamingAssetsUrl: "StreamingAssets",
+        companyName: 'TripleDesign',
+        productName: product.charAt(0).toUpperCase() + product.slice(1),
+        productVersion: '0.1',
+    };
+
+    const unityPromise = createUnityInstance(canvas, config, (progress) => {
+        progressBar.style.width = 100 * progress + '%';
+    });
+    const colorsPromise = fetch(`../projects/${brand}-${product}/colors.json`).then(response => response.json());
+    const componentsPromise = fetch(`../projects/${brand}-${product}/components.json`).then(response => response.json());
+    UNITY_INSTANCE = await unityPromise;
+    ALLCOLORS = await colorsPromise;
+    ALLCOMPONENTS = await componentsPromise;
+}
