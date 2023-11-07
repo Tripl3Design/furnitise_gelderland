@@ -62,72 +62,129 @@ function addDecor(modelType, modelWidth, modelHeight, modelDepth, TvHeight, TvDi
 
 function showSearchImages(modelFromSearch) {
     // get width and corresponding type
-    const widths = [{ "width": 37, "type": "cabinet" }, { "width": 55, "type": "cabinet" }, { "width": 74, "type": "cabinet" }, { "width": 156, "type": "sideboard" }, { "width": 156, "type": "sideboardOnFrame" }, { "width": 156, "type": "sideboardOnFrameTV" }, { "width": 194, "type": "sideboard" }, { "width": 194, "type": "sideboardOnFrame" }];
+    const widths = [
+        { "width": 37, "type": "cabinet" },
+        { "width": 55, "type": "cabinet" },
+        { "width": 74, "type": "cabinet" },
+        { "width": 156, "type": "sideboard" },
+        { "width": 156, "type": "sideboardOnFrame" },
+        { "width": 156, "type": "sideboardOnFrameTV" },
+        { "width": 194, "type": "sideboard" },
+        { "width": 194, "type": "sideboardOnFrame" }
+    ];
     const filteredWidth = widths.filter(item => item.width <= modelFromSearch.width);
 
-    if (filteredWidth.length > 0) {
-        const randomIndex = Math.floor(Math.random() * filteredWidth.length);
-        const randomItem = filteredWidth[randomIndex];
-        const randomWidth = randomItem.width;
-        const randomType = randomItem.type;
+    const heights = [
+        { "height": 75, "type": "sideboard" },
+        { "height": 75, "type": "sideboardOnFrame" },
+        { "height": 112, "type": "sideboardOnFrameTV" },
+        { "height": 170, "type": "cabinet" },
+        { "height": 205, "type": "cabinet" },
+        { "height": 221, "type": "cabinet" }
+    ];
+    const filteredHeight = heights.filter(item => item.height <= modelFromSearch.height);
 
-        // get height
-        let height;
-        if (randomType == "cabinet") {
-            height = [170, 205, 221];
-        } else if (randomType == "sideboard" || randomType == "sideboardOnFrame") {
-            height = [75];
-        } else if (randomType == "sideboardOnFrameTV") {
-            height = [112];
-        }
-        const filteredHeight = height.filter(number => number <= modelFromSearch.height);
-        if (filteredHeight.length === 0) {
-            console.log('No valid numbers for width found');
-        }
-        const randomHeightLenght = Math.floor(Math.random() * filteredHeight.length);
-        const randomHeight = filteredHeight[randomHeightLenght];
+    let randomType, randomWidthType, randomHeightType, randomWidth, randomHeight;
 
-        // get random color in colorGroup
-        const colorGroup = ALLCOLORS.outsideColors.filter(color => color.colorGroup === modelFromSearch.color);
-        if (colorGroup.length === 0) {
-            console.log("No colors in this colorGroup found");
-        }
-        const colorGroupLenght = Math.floor(Math.random() * colorGroup.length);
-        const randomColorGroup = colorGroup[colorGroupLenght].colorHex;
-
-        // get random insideColor
-        const insideColorsLenght = Math.floor(Math.random() * ALLCOLORS.insideColors.length);
-        const randomInsideColorHex = ALLCOLORS.insideColors[insideColorsLenght].colorHex;
-
-        const model = {
-            background: { original: "d4d4d4" },
-            type: randomType,
-            width: randomWidth,
-            height: randomHeight,
-            winerack: Math.random() < 0.5,
-            winerackColor: "outsidecolor",
-            shelves: 0,
-            interior: "one",
-            outsideColor: { color: randomColorGroup, lacquer: "basic" },
-            insideColor: { color: randomInsideColorHex },
-            rollshutter: Math.floor(Math.random() * 100)
+    while (true) {
+        if (filteredWidth.length === 0 || filteredHeight.length === 0) {
+            // Handle the case where no matching items were found
+            console.log('No matching items found.');
+            document.getElementById('searchTitle').textContent = 'No matching items found.';
+            break; // Exit the loop
         }
 
-        UNITY_INSTANCE.SendMessage('Amsterdammer', 'SetAmsterdammer', JSON.stringify(model));
+        const randomWidthIndex = Math.floor(Math.random() * filteredWidth.length);
+        const randomWidthItem = filteredWidth[randomWidthIndex];
+        randomWidthType = randomWidthItem.type;
+        randomWidth = randomWidthItem.width;
 
-        const btn = document.getElementById('goToConfigurator');
+        const randomHeightIndex = Math.floor(Math.random() * filteredHeight.length);
+        const randomHeightItem = filteredHeight[randomHeightIndex];
+        randomHeightType = randomHeightItem.type;
+        randomHeight = randomHeightItem.height;
 
-        btn.addEventListener('click', (e) => {
-            //window.location.href = `${document.referrer}?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
-            window.location.href = `https://furnitise.nl?noDecor&noFeaturedModels&noType&brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
-        });
-        document.getElementById('productBrand').src = `img/logo_${brand}.svg`;
-        document.getElementById('productFamily').textContent = title;
-        document.getElementById('productFamilyType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
-        pricing(model);
-
-        generateRenderTexture('search', model);
+        if (randomWidthType === randomHeightType) {
+            // Types match, you can perform additional actions here
+            randomType = randomWidthType;
+            console.log('Types match:', randomType);
+            break; // Exit the loop
+        } else {
+            // Types don't match, repeat the loop
+            console.log('Types do not match. Retrying...');
+        }
     }
+
+    // get random color in selected colorGroup
+    const colorGroup = ALLCOLORS.outsideColors.filter(color => color.colorGroup === modelFromSearch.color);
+    if (colorGroup.length === 0) {
+        console.log("There are no colors in this colorGroup");
+    }
+    const randomColorGroupIndex = Math.floor(Math.random() * colorGroup.length);
+    const randomColorGroup = colorGroup[randomColorGroupIndex].colorHex;
+    let randomOutsideColor;
+    if (randomType === 'cabinet' && colorGroup[randomColorGroupIndex].colorPath) {
+        // If modelFromSearch.type is 'cabinet' and colorPath is defined
+        randomOutsideColor = {
+            color: randomColorGroup,
+            path: colorGroup[randomColorGroupIndex].colorPath,
+            lacquer: "veneer"
+        };
+    } else {
+        const nonVeneerColors = colorGroup.filter(color => !color.colorPath);
+        if (nonVeneerColors.length > 0) {
+            const randomColorIndex = Math.floor(Math.random() * nonVeneerColors.length);
+            const randomNonVeneerColor = nonVeneerColors[randomColorIndex];
+            randomOutsideColor = {
+                color: randomNonVeneerColor.colorHex,
+                lacquer: "basic"
+            };
+        }
+        randomOutsideColor = { color: randomColorGroup, lacquer: "basic" };
+    }
+
+    console.log(randomType.type);
+    console.log(randomOutsideColor);
+
+    // get random insideColor
+    const insideColorsLength = Math.floor(Math.random() * ALLCOLORS.insideColors.length);
+    const randomInsideColorHex = ALLCOLORS.insideColors[insideColorsLength].colorHex;
+
+    // get random interior
+    const interiors = ["one", "two", "three"];
+    const randomInteriorIndex = Math.floor(Math.random() * interiors.length);
+    const randomInterior = interiors[randomInteriorIndex];
+
+    const model = {
+        background: { original: "d4d4d4" },
+        type: randomType,
+        width: randomWidth,
+        height: randomHeight,
+        winerack: Math.random() < 0.5,
+        winerackColor: "outsidecolor",
+        shelves: 0,
+        interior: randomInterior,
+        outsideColor: randomOutsideColor,
+        insideColor: { color: randomInsideColorHex },
+        rollshutter: Math.floor(Math.random() * 100)
+    }
+
+    UNITY_INSTANCE.SendMessage('Amsterdammer', 'SetAmsterdammer', JSON.stringify(model));
+
+    const btn = document.getElementById('goToConfigurator');
+
+    btn.addEventListener('click', (e) => {
+        //window.location.href = `${document.referrer}?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
+        window.location.href = `https://furnitise.nl?noDecor&noFeaturedModels&noType&brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
+    });
+
+    document.getElementById('productFamily').textContent = title;
+    document.getElementById('productBrand').src = `img/logo_${brand}.svg`;
+    document.getElementById('productFamily').textContent = title;
+    document.getElementById('productFamilyType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+    pricing(model);
+
+    generateRenderTexture('search', model);
 }
 
 async function initUnity() {

@@ -9,6 +9,9 @@ function pricing(model) {
         let cabinetWinerackPrice;
         let cabinetShelfPrice;
 
+        console.log('WIDTH: ' + model.width);
+        console.log('HEIGHT: ' + model.height);
+
         let cabinetBodyIndex = ALLCOMPONENTS.cabinet.body.findIndex(item => item.width == model.width && item.height == model.height);
         let cabinetWinerackIndex = ALLCOMPONENTS.cabinet.winerack.findIndex(item => item.width == model.width);
         let cabinetShelfIndex = ALLCOMPONENTS.cabinet.shelf.findIndex(item => item.width == model.width);
