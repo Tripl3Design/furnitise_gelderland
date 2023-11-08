@@ -7,6 +7,10 @@
           {
             "key": "Content-Security-Policy",
             "value": "frame-ancestors https://www.furnitise.nl https://furnitise.nl https://www.pastoe.com https://pastoe.com"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
           }
         ]
       }
@@ -21,8 +25,6 @@
       "webpack.config.js",
       "**/node_modules/**",
       "**/TemplateData/**",
-
-
       "**/pastoe-dock/**",
       "**/pastoe-fm03/**",
       "**/pastoe-fm17/**",

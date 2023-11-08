@@ -164,7 +164,7 @@ function showSearchImages(modelFromSearch) {
         window.location.href = `https://furnitise.nl?noDecor&noFeaturedModels&noType&brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
     });
 
-    document.getElementById('productBrand').src = `img/logo_${brand}.svg`;
+    document.getElementById('productBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
     document.getElementById('productFamily').textContent = title;
     document.getElementById('productFamilyType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
     pricing(model);
@@ -173,12 +173,13 @@ function showSearchImages(modelFromSearch) {
 }
 
 async function initUnity() {
+    console.log('INIT UNITY')
     var canvas = document.getElementById("modelviewer");
-    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}/Build`;
+    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
     var config = {
-        dataUrl: `${buildUrl}/${brand}-${product}.data`,
-        frameworkUrl: `${buildUrl}/${brand}-${product}.framework.js`,
-        codeUrl: `${buildUrl}/${brand}-${product}.wasm`,
+        dataUrl: `${buildUrl}/Build/${brand}-${product}.data`,
+        frameworkUrl: `${buildUrl}/Build/${brand}-${product}.framework.js`,
+        codeUrl: `${buildUrl}/Build/${brand}-${product}.wasm`,
         //streamingAssetsUrl: "StreamingAssets",
         companyName: 'TripleDesign',
         productName: product.charAt(0).toUpperCase() + product.slice(1),
@@ -188,8 +189,8 @@ async function initUnity() {
     const unityPromise = createUnityInstance(canvas, config, (progress) => {
         progressBar.style.width = 100 * progress + '%';
     });
-    const colorsPromise = fetch(`https://${brand}-${product}.web.app/projects/${brand}-${product}/colors.json`).then(response => response.json());
-    const componentsPromise = fetch(`https://${brand}-${product}.web.app/projects/${brand}-${product}/components.json`).then(response => response.json());
+    const colorsPromise = fetch(`${buildUrl}/colors.json`).then(response => response.json());
+    const componentsPromise = fetch(`${buildUrl}/components.json`).then(response => response.json());
     UNITY_INSTANCE = await unityPromise;
     ALLCOLORS = await colorsPromise;
     ALLCOMPONENTS = await componentsPromise;
