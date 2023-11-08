@@ -145,8 +145,8 @@ function showSearchImages(modelFromSearch) {
     const btn = document.getElementById('goToConfigurator');
 
     btn.addEventListener('click', (e) => {
-        //window.location.href = `${document.referrer}?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
-        window.location.href = `https://furnitise.nl?noDecor&noFeaturedModels&noType&brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
+        window.location.href = `${document.referrer}?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
+        //window.location.href = `https://furnitise.nl?noDecor&noFeaturedModels&noType&brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
     });
 
     document.getElementById('productBrand').src = `img/logo_${brand}.svg`;

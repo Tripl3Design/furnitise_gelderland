@@ -174,7 +174,7 @@ function showSearchImages(modelFromSearch) {
 
 async function initUnity() {
     var canvas = document.getElementById("modelviewer");
-    var buildUrl = `projects/${brand}-${product}/Build`;
+    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}/Build`;
     var config = {
         dataUrl: `${buildUrl}/${brand}-${product}.data`,
         frameworkUrl: `${buildUrl}/${brand}-${product}.framework.js`,
@@ -188,8 +188,8 @@ async function initUnity() {
     const unityPromise = createUnityInstance(canvas, config, (progress) => {
         progressBar.style.width = 100 * progress + '%';
     });
-    const colorsPromise = fetch(`../projects/${brand}-${product}/colors.json`).then(response => response.json());
-    const componentsPromise = fetch(`../projects/${brand}-${product}/components.json`).then(response => response.json());
+    const colorsPromise = fetch(`https://${brand}-${product}.web.app/projects/${brand}-${product}/colors.json`).then(response => response.json());
+    const componentsPromise = fetch(`https://${brand}-${product}.web.app/projects/${brand}-${product}/components.json`).then(response => response.json());
     UNITY_INSTANCE = await unityPromise;
     ALLCOLORS = await colorsPromise;
     ALLCOMPONENTS = await componentsPromise;

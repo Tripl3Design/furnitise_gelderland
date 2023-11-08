@@ -22,11 +22,11 @@
       "**/node_modules/**",
       "**/TemplateData/**",
 
-      "**/pastoe-amsterdammer/**",
+
       "**/pastoe-dock/**",
       "**/pastoe-fm03/**",
       "**/pastoe-fm17/**",
-  
+      "**/pastoe-frame/**",
       "**/pastoe-l-maze/**",
       "**/pastoe-l-serie/**",
       "**/pastoe-landscape/**",
@@ -34,7 +34,7 @@
       "**/pastoe-plato/**",
       "**/pastoe-vision-cabinets/**",
       "**/pastoe-wire/**",
-      "**/projects/pastoe-frame/index.html"
+      "**/projects/pastoe-amsterdammer/index.html"
     ]
   }
 }
