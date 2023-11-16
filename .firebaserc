@@ -5,8 +5,8 @@
   "targets": {
     "furnitise-4bca3": {
       "hosting": {
-        "Pastoe": [
-          "pastoe-amsterdammer"
+        "furnitisemain": [
+          "furnitisemain"
         ]
       }
     }

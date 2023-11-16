@@ -1,0 +1,88 @@
+{
+    "suppliers": [
+        {
+            "name": "pastoe",
+            "configurators": [
+                {
+                    "brand": "pastoe",
+                    "products": [
+                        {
+                            "closets": [
+                                {
+                                    "product": "amsterdammer",
+                                    "title": "a/'dammer"
+                                },
+                                {
+                                    "product": "frame",
+                                    "title": "frame"
+                                },
+                                {
+                                    "product": "landscape",
+                                    "title": "landscape"
+                                },
+                                {
+                                    "product": "vision-cabinets",
+                                    "title": "vision cabinets"
+                                },
+                                {
+                                    "product": "l-serie",
+                                    "title": "l-serie"
+                                },
+                                {
+                                    "product": "l-maze",
+                                    "title": "l-maze"
+                                },
+                                {
+                                    "product": "noon",
+                                    "title": "noon"
+                                }
+                            ],
+                            "chairs": [
+                                {
+                                    "product": "wire",
+                                    "title": "wire collection"
+                                },
+                                {
+                                    "product": "fm03",
+                                    "title": "fm03"
+                                },
+                                {
+                                    "product": "fm17",
+                                    "title": "fm17"
+                                }
+                            ],
+                            "tables": [
+                                {
+                                    "product": "plato",
+                                    "title": "plato"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "furnitise",
+                    "configurators": [
+                        {
+                            "brand": "pastoe",
+                            "products": [
+                                {
+                                    "closets": [
+                                        {
+                                            "product": "amsterdammer",
+                                            "title": "a/'dammer"
+                                        },
+                                        {
+                                            "product": "frame",
+                                            "title": "frame"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
