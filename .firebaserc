@@ -1,11 +1,20 @@
 {
   "projects": {
-    "default": "furnitise-4bca3"
+    "default": "furnitise-4bca3",
+    "main": "furnitisemain",
+    "Pastoe": "furnitise-4bca3"
   },
   "targets": {
     "furnitise-4bca3": {
       "hosting": {
-        "furnitisemain": [
+        "Pastoe": [
+          "pastoe-frame"
+        ]
+      }
+    },
+    "furnitisemain": {
+      "hosting": {
+        "main": [
           "furnitisemain"
         ]
       }

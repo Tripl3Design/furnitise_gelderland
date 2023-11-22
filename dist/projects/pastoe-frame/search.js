@@ -1,7 +1,20 @@
-"use strict"
+"use strict";
+
+const brand = "pastoe";
+const product = "frame";
+const title = "frame";
+
 var UNITY_INSTANCE;
 var ALLCOLORS;
 var ALLCOMPONENTS;
+
+var loader = document.createElement('script');
+loader.src = `https://${brand}-${product}.web.app/projects/${brand}-${product}/Build/${brand}-${product}.loader.js`;
+document.head.appendChild(loader);
+
+var pricing = document.createElement('script');
+pricing.src = `https://${brand}-${product}.web.app/projects/${brand}-${product}/pricing.js`;
+document.head.appendChild(pricing);
 
 function generateRenderTexture(medium, model) {
     const renderTexture = {
@@ -16,10 +29,6 @@ function generateRenderTexture(medium, model) {
 
 // used by FromUnityToJavascript.jslib
 async function uploadRenderTexture(blob, medium, fileName) {
-    //const img = document.getElementById('searchRenderTextures');
-
-    console.log(fileName);
-
     const result = await blobToBase64(blob);
     const img = document.getElementById('searchRenderTexture');
 
@@ -57,23 +66,26 @@ function showSearchImages(modelFromSearch) {
         { "width": 180, "type": "F03" },
         { "width": 270, "type": "F02" }
     ];
-    const filteredWidth = widths.filter(item => item.width <= modelFromSearch.width);
+    const filteredWidth = widths.filter(item => item.width >= modelFromSearch.width.min && item.width <= modelFromSearch.width.max);
 
     const heights = [
         { "height": 60, "type": "F02" },
         { "height": 60, "type": "F03" },
         { "height": 100, "type": "F07" }
     ];
-    const filteredHeight = heights.filter(item => item.height <= modelFromSearch.height);
+    const filteredHeight = heights.filter(item => item.height >= modelFromSearch.height.min && item.height <= modelFromSearch.height.max);
 
     let randomType, randomWidthType, randomHeightType, randomWidth, randomHeight;
 
-    while (true) {
+    const maxAttempts = 20;
+    let attempts = 0;
+
+    while (attempts < maxAttempts) {
+        document.getElementById('searchTitle').textContent = '';
         if (filteredWidth.length === 0 || filteredHeight.length === 0) {
-            // Handle the case where no matching items were found
             console.log('No matching items found.');
             document.getElementById('searchTitle').textContent = 'No matching items found.';
-            break; // Exit the loop
+            break;
         }
 
         const randomWidthIndex = Math.floor(Math.random() * filteredWidth.length);
@@ -87,28 +99,32 @@ function showSearchImages(modelFromSearch) {
         randomHeight = randomHeightItem.height;
 
         if (randomWidthType === randomHeightType) {
-            // Types match, you can perform additional actions here
             randomType = randomWidthType;
             console.log('Types match:', randomType);
-            break; // Exit the loop
+            break;
+        }
+        else if (attempts === maxAttempts) {
+            console.log('No matching items found after ' + maxAttempts + ' attempts.');
+            document.getElementById('searchTitle').textContent = 'No matching items found.';
+            break;
         } else {
-            // Types don't match, repeat the loop
+            attempts++;
             console.log('Types do not match. Retrying...');
         }
     }
 
-    // get random color in selected colorGroup
-    const colorGroup = ALLCOLORS.colors.filter(color => color.colorGroup === modelFromSearch.color);
+    const randomColorGroupIndex = Math.floor(Math.random() * modelFromSearch.color.length);
+    const colorGroup = ALLCOLORS.colors.filter(color => color.colorGroup === modelFromSearch.color[randomColorGroupIndex]);
     if (colorGroup.length === 0) {
         console.log("There are no colors in this colorGroup");
     }
-    const randomColorGroupIndex = Math.floor(Math.random() * colorGroup.length);
-    const randomColorGroup = colorGroup[randomColorGroupIndex].colorHex;
+    const randomColorInGroupIndex = Math.floor(Math.random() * colorGroup.length);
+    const randomColorGroup = colorGroup[randomColorInGroupIndex].colorHex;
     let randomColor;
-    if (colorGroup[randomColorGroupIndex].colorPath) {
+    if (colorGroup[randomColorInGroupIndex].colorPath) {
         randomColor = {
             color: randomColorGroup,
-            path: colorGroup[randomColorGroupIndex].colorPath,
+            path: `https://${brand}-${product}.web.app/${colorGroup[randomColorInGroupIndex].colorPath}`,
             lacquer: "veneer"
         };
     } else {
@@ -127,10 +143,6 @@ function showSearchImages(modelFromSearch) {
     const glasstopColorsLength = Math.floor(Math.random() * ALLCOLORS.glasstopColors.length);
     const randomGlasstopColorsHex = ALLCOLORS.glasstopColors[glasstopColorsLength].colorHex;
 
-    //console.log(randomType);
-    //console.log(randomGlasstopColorsHex);
-    //console.log(randomColor);
-
     const model = {
         background: { original: "d4d4d4" },
         type: randomType,
@@ -145,11 +157,10 @@ function showSearchImages(modelFromSearch) {
     const btn = document.getElementById('goToConfigurator');
 
     btn.addEventListener('click', (e) => {
-        window.location.href = `${document.referrer}?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
-        //window.location.href = `https://furnitise.nl?noDecor&noFeaturedModels&noType&brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
+        furnitiseModal(`${brand}-${product}.web.app?noDecor&noFeaturedModels&data=${encodeURIComponent(JSON.stringify(model))}`);
     });
 
-    document.getElementById('productBrand').src = `img/logo_${brand}.svg`;
+    document.getElementById('productBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
     document.getElementById('productFamily').textContent = title;
     document.getElementById('productFamilyType').textContent = model.type;
     pricing(model);
@@ -157,13 +168,13 @@ function showSearchImages(modelFromSearch) {
     generateRenderTexture('search', model);
 }
 
-async function initUnity() {
+async function handleModelSelection() {
     var canvas = document.getElementById("modelviewer");
-    var buildUrl = `projects/${brand}-${product}/Build`;
+    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
     var config = {
-        dataUrl: `${buildUrl}/${brand}-${product}.data`,
-        frameworkUrl: `${buildUrl}/${brand}-${product}.framework.js`,
-        codeUrl: `${buildUrl}/${brand}-${product}.wasm`,
+        dataUrl: `${buildUrl}/Build/${brand}-${product}.data`,
+        frameworkUrl: `${buildUrl}/Build/${brand}-${product}.framework.js`,
+        codeUrl: `${buildUrl}/Build/${brand}-${product}.wasm`,
         //streamingAssetsUrl: "StreamingAssets",
         companyName: 'TripleDesign',
         productName: product.charAt(0).toUpperCase() + product.slice(1),
@@ -173,8 +184,8 @@ async function initUnity() {
     const unityPromise = createUnityInstance(canvas, config, (progress) => {
         progressBar.style.width = 100 * progress + '%';
     });
-    const colorsPromise = fetch(`../projects/${brand}-${product}/colors.json`).then(response => response.json());
-    const componentsPromise = fetch(`../projects/${brand}-${product}/components.json`).then(response => response.json());
+    const colorsPromise = fetch(`${buildUrl}/colors.json`).then(response => response.json());
+    const componentsPromise = fetch(`${buildUrl}/components.json`).then(response => response.json());
     UNITY_INSTANCE = await unityPromise;
     ALLCOLORS = await colorsPromise;
     ALLCOMPONENTS = await componentsPromise;

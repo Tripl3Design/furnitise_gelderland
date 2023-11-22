@@ -1,7 +1,20 @@
-"use strict"
+"use strict";
+
+const brand = "pastoe";
+const product = "amsterdammer";
+const title = "a'\dammer";
+
 var UNITY_INSTANCE;
 var ALLCOLORS;
 var ALLCOMPONENTS;
+
+var loader = document.createElement('script');
+loader.src = `https://${brand}-${product}.web.app/projects/${brand}-${product}/Build/${brand}-${product}.loader.js`;
+document.head.appendChild(loader);
+
+var pricing = document.createElement('script');
+pricing.src = `https://${brand}-${product}.web.app/projects/${brand}-${product}/pricing.js`;
+document.head.appendChild(pricing);
 
 function generateRenderTexture(medium, model) {
     const renderTexture = {
@@ -164,8 +177,7 @@ function showSearchImages(modelFromSearch) {
     const btn = document.getElementById('goToConfigurator');
 
     btn.addEventListener('click', (e) => {
-        window.location.href = `${document.referrer}?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
-        //window.location.href = `https://furnitise.nl?noDecor&noFeaturedModels&noType&brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
+        furnitiseModal(`${brand}-${product}.web.app?noDecor&noFeaturedModels&data=${encodeURIComponent(JSON.stringify(model))}`);
     });
 
     document.getElementById('productBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
@@ -174,4 +186,27 @@ function showSearchImages(modelFromSearch) {
     pricing(model);
 
     generateRenderTexture('search', model);
+}
+
+async function handleModelSelection() {
+    var canvas = document.getElementById("modelviewer");
+    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
+    var config = {
+        dataUrl: `${buildUrl}/Build/${brand}-${product}.data`,
+        frameworkUrl: `${buildUrl}/Build/${brand}-${product}.framework.js`,
+        codeUrl: `${buildUrl}/Build/${brand}-${product}.wasm`,
+        //streamingAssetsUrl: "StreamingAssets",
+        companyName: 'TripleDesign',
+        productName: product.charAt(0).toUpperCase() + product.slice(1),
+        productVersion: '0.1',
+    };
+
+    const unityPromise = createUnityInstance(canvas, config, (progress) => {
+        progressBar.style.width = 100 * progress + '%';
+    });
+    const colorsPromise = fetch(`${buildUrl}/colors.json`).then(response => response.json());
+    const componentsPromise = fetch(`${buildUrl}/components.json`).then(response => response.json());
+    UNITY_INSTANCE = await unityPromise;
+    ALLCOLORS = await colorsPromise;
+    ALLCOMPONENTS = await componentsPromise;
 }

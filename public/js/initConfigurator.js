@@ -1,23 +1,4 @@
-async function initUnity() {
-    const configurators = [{
-        "brand": 'pastoe',
-        "product": 'amsterdammer',
-        "title": 'a\'dammer'
-    },
-    {
-        "brand": 'pastoe',
-        "product": 'frame',
-        "title": 'frame'
-    }
-    ];
-
-    const randomConfigurator = configurators[Math.floor(Math.random() * configurators.length)];
-    console.log("RANDOM " + randomConfigurator.product);
-
-    const brand = randomConfigurator.brand;
-    const product = randomConfigurator.product;
-    const title = randomConfigurator.title;
-
+async function initConfigurator(brand, product, title) {
     var canvas = document.getElementById("modelviewer");
     var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
     var config = {

@@ -8,8 +8,8 @@
 
   <script>
     const brand = 'pastoe';
-    const product = 'amsterdammer';
-    const title = 'a\'dammer';
+    const product = 'frame';
+    const title = 'frame';
     console.log(brand);
     console.log(product);
   </script>
@@ -33,31 +33,25 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js'></script>
 
-  <!-- User Agent Parser -->
-  <script src="js/ua-parser.min.js"></script>
+  <script src="https://furnitisemain.web.app/js/ua-parser.min.js"></script>
+  <script src='https://furnitisemain.web.app/js/swiped-events.min.js'></script>
+  <script src='projects/pastoe-frame/Build/pastoe-frame.loader.js'></script>
 
-  <!--
-    <meta property="og:title" content="pastoe | amsterdammer" />
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://furnitise.nl/pastoe-amsterdammer/img/amsterdammer.jpg">
-    <meta property="og:url" content="https://furnitise.nl/?brand=pastoe&product=amsterdammer">
-    <meta property="og:description" content="Bekijk mijn configuratie van de amsterdammer van pastoe" />
-    -->
-
+  <!--<script src='https://furnitisemain.web.app/js/initConfigurator.js'></script>-->
   <script src='js/controlpanel.js'></script>
   <script src='js/colorChanger.js'></script>
-  <script src='js/swiped-events.min.js'></script>
+  <script src='projects/pastoe-frame/pdf.js'></script>
+  <script src='projects/pastoe-frame/pricing.js'></script>
 
-  <script src='projects/pastoe-amsterdammer/Build/pastoe-amsterdammer.loader.js'></script>
-  <script src='projects/pastoe-amsterdammer/settings.js'></script>
+  <script src='projects/pastoe-frame/settings.js'></script>
 
   <script>
     "use strict"
-/*
-    if (window.top == window.self) {
-      window.location.href = 'http://furnitise.nl';
-    }
-*/
+    /*
+        if (window.top == window.self) {
+          window.location.href = 'http://furnitise.nl';
+        }
+    */
     console.log('%cThis configurator is made by TripleDesign. Visit furnitise.nl for more info!', 'background:red;color:#fff;font-weight: bold;')
     document.write( /*html*/ `<title>${title.charAt(0).toUpperCase()}${title.slice(1)} | ${brand.charAt(0).toUpperCase()}${brand.slice(1)}</title>`);
 
@@ -116,7 +110,7 @@
     }
 
     function bodyOnload() {
-      initUnity();
+      handleModelSelection();
     }
   </script>
 </head>
