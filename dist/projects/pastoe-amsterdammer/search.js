@@ -30,7 +30,7 @@ function generateRenderTexture(medium, model) {
 // used by FromUnityToJavascript.jslib
 async function uploadRenderTexture(blob, medium, fileName) {
     const result = await blobToBase64(blob);
-    const img = document.getElementById('searchRenderTexture');
+    const img = document.getElementsByClassName('searchRenderTexture');
 
     img.src = result;
     img.title = fileName;
@@ -121,12 +121,14 @@ function showSearchImages(modelFromSearch) {
         }
     }
 
-    const colorGroup = ALLCOLORS.outsideColors.filter(color => color.colorGroup === modelFromSearch.color);
+    const randomColorGroupIndex = Math.floor(Math.random() * modelFromSearch.color.length);
+    const colorGroup = ALLCOLORS.outsideColors.filter(color => color.colorGroup === modelFromSearch.color[randomColorGroupIndex]);
     if (colorGroup.length === 0) {
         console.log("There are no colors in this colorGroup");
     }
-    const randomColorGroupIndex = Math.floor(Math.random() * colorGroup.length);
-    const randomColorGroup = colorGroup[randomColorGroupIndex].colorHex;
+    const randomColorInGroupIndex = Math.floor(Math.random() * colorGroup.length);
+    const randomColorGroup = colorGroup[randomColorInGroupIndex].colorHex;
+
     let randomOutsideColor;
     if (randomType === 'cabinet' && colorGroup[randomColorGroupIndex].colorPath) {
         randomOutsideColor = {
@@ -180,9 +182,9 @@ function showSearchImages(modelFromSearch) {
         furnitiseModal(`${brand}-${product}.web.app?noDecor&noFeaturedModels&data=${encodeURIComponent(JSON.stringify(model))}`);
     });
 
-    document.getElementById('productBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
-    document.getElementById('productFamily').textContent = title;
-    document.getElementById('productFamilyType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+    document.querySelector('.productBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
+    document.querySelector('.productFamily').textContent = title;
+    document.querySelector('.productFamilyType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
     pricing(model);
 
     generateRenderTexture('search', model);

@@ -1,25 +1,43 @@
 {
   "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "firebaseForConfigurator.json",
-      "**/node_modules/**",
-      "package-lock.json",
-      "package.json",
-      "webpack.config.js"
-    ],
     "headers": [
       {
-        "source": "**/*",
+        "source": "**",
         "headers": [
+          {
+            "key": "Content-Security-Policy",
+            "value": "frame-ancestors https://www.furnitise.nl https://furnitise.nl https://www.pastoe.com https://pastoe.com"
+          },
           {
             "key": "Access-Control-Allow-Origin",
             "value": "*"
           }
         ]
       }
+    ],
+    "target": "Pastoe",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "package-lock.json",
+      "package.json",
+      "webpack.config.js",
+      "**/node_modules/**",
+      "**/TemplateData/**",
+
+      "**/pastoe-dock/**",
+      "**/pastoe-fm03/**",
+      "**/pastoe-fm17/**",
+      "**/pastoe-frame/**",
+      "**/pastoe-l-maze/**",
+      "**/pastoe-l-serie/**",
+      "**/pastoe-landscape/**",
+      "**/pastoe-noon/**",
+      "**/pastoe-plato/**",
+      "**/pastoe-vision-cabinets/**",
+      "**/pastoe-wire/**",
+      "**/projects/amsterdammer-frame/index.html"
     ]
   }
 }
