@@ -30,7 +30,7 @@ function generateRenderTexture(medium, model) {
 // used by FromUnityToJavascript.jslib
 async function uploadRenderTexture(blob, medium, fileName) {
     const result = await blobToBase64(blob);
-    const img = document.getElementsByClassName('searchRenderTexture');
+    const img = document.getElementById('searchRenderTexture');
 
     img.src = result;
     img.title = fileName;
@@ -182,9 +182,9 @@ function showSearchImages(modelFromSearch) {
         furnitiseModal(`${brand}-${product}.web.app?noDecor&noFeaturedModels&data=${encodeURIComponent(JSON.stringify(model))}`);
     });
 
-    document.querySelector('.productBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
-    document.querySelector('.productFamily').textContent = title;
-    document.querySelector('.productFamilyType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+    document.getElementById('productBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
+    document.getElementById('productFamily').textContent = title;
+    document.getElementById('productFamilyType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
     pricing(model);
 
     generateRenderTexture('search', model);
