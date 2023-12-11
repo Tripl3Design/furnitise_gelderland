@@ -22,7 +22,7 @@
             "colorHex": "b2b2b2",
             "colorBg": "d4d4d4",
             "iconColor": "dark",
-            "colorGroup": "gray"
+            "colorGroup": "black"
         },
         {
             "colorCode": {
@@ -34,7 +34,7 @@
             "colorHex": "838182",
             "colorBg": "d4d4d4",
             "iconColor": "dark",
-            "colorGroup": "gray"
+            "colorGroup": "black"
         },
         {
             "colorCode": {
@@ -46,7 +46,7 @@
             "colorHex": "3e3e3e",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "gray"
+            "colorGroup": "black"
         },
         {
             "colorCode": {

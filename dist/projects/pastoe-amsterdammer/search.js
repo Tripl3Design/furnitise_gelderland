@@ -30,7 +30,7 @@ function generateRenderTexture(medium, model) {
 // used by FromUnityToJavascript.jslib
 async function uploadRenderTexture(blob, medium, fileName) {
     const result = await blobToBase64(blob);
-    const img = document.getElementById('searchRenderTexture');
+    const img = document.querySelector('.productRender');
 
     img.src = result;
     img.title = fileName;
@@ -121,35 +121,56 @@ function showSearchImages(modelFromSearch) {
         }
     }
 
-    const randomColorGroupIndex = Math.floor(Math.random() * modelFromSearch.color.length);
-    const colorGroup = ALLCOLORS.outsideColors.filter(color => color.colorGroup === modelFromSearch.color[randomColorGroupIndex]);
-    if (colorGroup.length === 0) {
-        console.log("There are no colors in this colorGroup");
-    }
-    const randomColorInGroupIndex = Math.floor(Math.random() * colorGroup.length);
-    const randomColorGroup = colorGroup[randomColorInGroupIndex].colorHex;
-
+    let randomColorGroupIndex = Math.floor(Math.random() * modelFromSearch.color.length);
+    let AttemptsForColor = 0;
+    const maxAttemptsForColor = modelFromSearch.color.length;
+    const chosenColors = [];
     let randomOutsideColor;
-    if (randomType === 'cabinet' && colorGroup[randomColorGroupIndex].colorPath) {
-        randomOutsideColor = {
-            color: randomColorGroup,
-            path: colorGroup[randomColorGroupIndex].colorPath,
-            lacquer: "veneer"
-        };
-    } else {
-        const nonVeneerColors = colorGroup.filter(color => !color.colorPath);
-        if (nonVeneerColors.length > 0) {
-            const randomColorIndex = Math.floor(Math.random() * nonVeneerColors.length);
-            const randomNonVeneerColor = nonVeneerColors[randomColorIndex];
-            randomOutsideColor = {
-                color: randomNonVeneerColor.colorHex,
-                lacquer: "basic"
-            };
+
+    while (AttemptsForColor < maxAttemptsForColor) {
+        if (!chosenColors.includes(randomColorGroupIndex)) {
+            let colorGroup = ALLCOLORS.outsideColors.filter(color => color.colorGroup === modelFromSearch.color[randomColorGroupIndex]);
+
+            if (colorGroup.length > 0) {
+                chosenColors.push(randomColorGroupIndex);
+
+                const randomColorInGroupIndex = Math.floor(Math.random() * colorGroup.length);
+                const randomColorGroup = colorGroup[randomColorInGroupIndex].colorHex;
+                console.log(randomColorInGroupIndex);
+
+                if (randomType === 'cabinet' && colorGroup[randomColorInGroupIndex].colorPath) {
+                    randomOutsideColor = {
+                        color: randomColorGroup,
+                        path: `https://${brand}-${product}.web.app/${colorGroup[randomColorInGroupIndex].colorPath}`,
+                        lacquer: "veneer"
+                    };
+                } else {
+                    const nonVeneerColors = colorGroup.filter(color => !color.colorPath);
+                    if (nonVeneerColors.length > 0) {
+                        const randomColorIndex = Math.floor(Math.random() * nonVeneerColors.length);
+                        const randomNonVeneerColor = nonVeneerColors[randomColorIndex];
+                        randomOutsideColor = {
+                            color: randomNonVeneerColor.colorHex,
+                            lacquer: "basic"
+                        };
+                    }
+                }
+
+                console.log("Chosen Color:", randomOutsideColor);
+
+                break;
+            }
+        }
+
+        randomColorGroupIndex = (randomColorGroupIndex + 1) % modelFromSearch.color.length;
+        AttemptsForColor++;
+
+        if (AttemptsForColor === modelFromSearch.color.length) {
+            console.log("No colors available in any color group.");
+            document.getElementById('searchTitle').textContent = 'No products available in the choosen color(s)';
+            break;
         }
     }
-
-    console.log(randomType);
-    console.log(randomOutsideColor);
 
     // get random insideColor
     const insideColorsLength = Math.floor(Math.random() * ALLCOLORS.insideColors.length);
@@ -171,20 +192,20 @@ function showSearchImages(modelFromSearch) {
         interior: randomInterior,
         outsideColor: randomOutsideColor,
         insideColor: { color: randomInsideColorHex },
-        rollshutter: Math.floor(Math.random() * 100)
+        rollshutter: Math.floor(Math.random() * (26)) + 75
     }
 
     UNITY_INSTANCE.SendMessage('Amsterdammer', 'SetAmsterdammer', JSON.stringify(model));
 
-    const btn = document.getElementById('goToConfigurator');
+    const btn = document.querySelector('.goToConfigurator');
 
     btn.addEventListener('click', (e) => {
         furnitiseModal(`${brand}-${product}.web.app?noDecor&noFeaturedModels&data=${encodeURIComponent(JSON.stringify(model))}`);
     });
 
-    document.getElementById('productBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
-    document.getElementById('productFamily').textContent = title;
-    document.getElementById('productFamilyType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+    document.querySelector('.productInfoBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
+    document.querySelector('.productInfoFamily').textContent = title;
+    document.querySelector('.productInfoType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
     pricing(model);
 
     generateRenderTexture('search', model);
