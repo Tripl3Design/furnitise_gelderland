@@ -1,8 +1,8 @@
 "use strict";
 
 const brand = "pastoe";
-const product = "frame";
-const title = "frame";
+const product = "l-serie";
+const title = "l-serie";
 
 var UNITY_INSTANCE;
 var ALLCOLORS;
@@ -24,7 +24,7 @@ function generateRenderTexture(medium, model) {
         heightForImage: model.height,
         depthForImage: 54
     };
-    UNITY_INSTANCE.SendMessage('Frame', 'SaveRenderTexture', JSON.stringify(renderTexture));
+    UNITY_INSTANCE.SendMessage('LSerieMaze', 'SaveRenderTexture', JSON.stringify(renderTexture));
 }
 
 // used by FromUnityToJavascript.jslib
@@ -57,25 +57,39 @@ function addDecor(modelType, modelWidth, modelHeight, modelDepth, TvHeight, TvDi
         colorForFloor: floorColor,
         pathForFloor: floorPath
     };
-    UNITY_INSTANCE.SendMessage('Frame', 'AddDecor', JSON.stringify(decor));
+    UNITY_INSTANCE.SendMessage('LSerieMaze', 'AddDecor', JSON.stringify(decor));
 }
 
 function showSearchImages(modelFromSearch) {
     const widths = [
-        { "width": 140, "type": "F07" },
-        { "width": 180, "type": "F03" },
-        { "width": 270, "type": "F02" }
+        { "width": 101, "variant": "combinationL106" },
+        { "width": 101, "variant": "combinationL110" },
+        { "width": 133, "variant": "combinationL71" },
+        { "width": 133, "variant": "combinationL74" },
+        { "width": 133, "variant": "combinationL80" },
+        { "width": 197, "variant": "combinationL148" },
+        { "width": 197, "variant": "combinationL149" },
+        { "width": 197, "variant": "combinationL127" },
+        { "width": 261, "variant": "combinationL94" },
+        { "width": 261, "variant": "combinationLJ08" }
     ];
     const filteredWidth = widths.filter(item => item.width >= modelFromSearch.width.min && item.width <= modelFromSearch.width.max);
 
     const heights = [
-        { "height": 60, "type": "F02" },
-        { "height": 60, "type": "F03" },
-        { "height": 100, "type": "F07" }
+        { "height": 80, "variant": "combinationL94" },
+        { "height": 80, "variant": "combinationL148" },
+        { "height": 80, "variant": "combinationL149" },
+        { "height": 80, "variant": "combinationLJ08" },
+        { "height": 112, "variant": "combinationL106" },
+        { "height": 112, "variant": "combinationL80" },
+        { "height": 112, "variant": "combinationL71" },
+        { "height": 144, "variant": "combinationL74" },
+        { "height": 176, "variant": "combinationL74" },
+        { "height": 208, "variant": "combinationL127" },
     ];
     const filteredHeight = heights.filter(item => item.height >= modelFromSearch.height.min && item.height <= modelFromSearch.height.max);
 
-    let randomType, randomWidthType, randomHeightType, randomWidth, randomHeight;
+    let randomVariant, randomWidthVariant, randomHeightVariant, randomWidth, randomHeight;
 
     const maxAttempts = 20;
     let attempts = 0;
@@ -90,17 +104,17 @@ function showSearchImages(modelFromSearch) {
 
         const randomWidthIndex = Math.floor(Math.random() * filteredWidth.length);
         const randomWidthItem = filteredWidth[randomWidthIndex];
-        randomWidthType = randomWidthItem.type;
+        randomWidthVariant = randomWidthItem.variant;
         randomWidth = randomWidthItem.width;
 
         const randomHeightIndex = Math.floor(Math.random() * filteredHeight.length);
         const randomHeightItem = filteredHeight[randomHeightIndex];
-        randomHeightType = randomHeightItem.type;
+        randomHeightVariant = randomHeightItem.variant;
         randomHeight = randomHeightItem.height;
 
-        if (randomWidthType === randomHeightType) {
-            randomType = randomWidthType;
-            console.log('Types match:', randomType);
+        if (randomWidthVariant === randomHeightVariant) {
+            randomVariant = randomWidthVariant;
+            console.log('Variants match:', randomVariant);
             break;
         }
         else if (attempts === maxAttempts) {
@@ -109,9 +123,10 @@ function showSearchImages(modelFromSearch) {
             break;
         } else {
             attempts++;
-            console.log('Types do not match. Retrying...');
+            console.log('Variants do not match. Retrying...');
         }
     }
+
 
     let randomColorGroupIndex = Math.floor(Math.random() * modelFromSearch.color.length);
     let attemptsForColor = 0;
@@ -163,20 +178,26 @@ function showSearchImages(modelFromSearch) {
         }
     }
 
-    // get random glasstopcolor
-    const glasstopColorsLength = Math.floor(Math.random() * ALLCOLORS.glasstopColors.length);
-    const randomGlasstopColorsHex = ALLCOLORS.glasstopColors[glasstopColorsLength].colorHex;
+    // get random interiorColor
+    const interiorColorsLength = Math.floor(Math.random() * ALLCOLORS.colors.length);
+    const randomInteriorColorHex = ALLCOLORS.colors[interiorColorsLength].colorHex;
+
+    // get random handleColor
+    const handleColors = ["020307", "b2b2b2"];
+    const randomHandleColorIndex = Math.floor(Math.random() * handleColors.length);
+    const randomHandleColor = handleColors[randomHandleColorIndex];
 
     const model = {
         background: { original: "d4d4d4" },
-        type: randomType,
         width: randomWidth,
         height: randomHeight,
-        glasstop: Math.random() < 0.5,
-        glasstopcolor: randomGlasstopColorsHex,
-        color: randomColor
+        depth: 45,
+        variant: randomVariant,
+        color: randomColor,
+        interiorColor: { color: randomInteriorColorHex, lacquer: "structure" },
+        handleColor: { color: randomHandleColor }
     }
-    UNITY_INSTANCE.SendMessage('Frame', 'SetFrame', JSON.stringify(model));
+    UNITY_INSTANCE.SendMessage('LSerieMaze', 'SetLSerieMaze', JSON.stringify(model));
 
     const btn = document.querySelector('.goToConfigurator');
 
@@ -188,7 +209,7 @@ function showSearchImages(modelFromSearch) {
 
     document.querySelector('.productInfoBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
     document.querySelector('.productInfoFamily').textContent = title;
-    document.querySelector('.productInfoType').textContent = model.type.replace(/([A-Z])([0-9])/g, '$1 $2').replace(/([a-z])([A-Z])/g, '$1 $2');
+    document.querySelector('.productInfoType').textContent = model.variant.replace(/([a-z])([A-Z])/g, '$1 $2');
     pricing(model);
 }
 

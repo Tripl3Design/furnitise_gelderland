@@ -60,7 +60,7 @@ function addDecor(modelType, modelWidth, modelHeight, modelDepth, TvHeight, TvDi
     UNITY_INSTANCE.SendMessage('Amsterdammer', 'AddDecor', JSON.stringify(decor));
 }
 
-function showSearchImages(modelFromSearch) {
+async function showSearchImages(modelFromSearch) {
     const widths = [
         { "width": 37, "type": "cabinet" },
         { "width": 55, "type": "cabinet" },
@@ -122,12 +122,12 @@ function showSearchImages(modelFromSearch) {
     }
 
     let randomColorGroupIndex = Math.floor(Math.random() * modelFromSearch.color.length);
-    let AttemptsForColor = 0;
+    let attemptsForColor = 0;
     const maxAttemptsForColor = modelFromSearch.color.length;
     const chosenColors = [];
     let randomOutsideColor;
 
-    while (AttemptsForColor < maxAttemptsForColor) {
+    while (attemptsForColor < maxAttemptsForColor) {
         if (!chosenColors.includes(randomColorGroupIndex)) {
             let colorGroup = ALLCOLORS.outsideColors.filter(color => color.colorGroup === modelFromSearch.color[randomColorGroupIndex]);
 
@@ -163,9 +163,9 @@ function showSearchImages(modelFromSearch) {
         }
 
         randomColorGroupIndex = (randomColorGroupIndex + 1) % modelFromSearch.color.length;
-        AttemptsForColor++;
+        attemptsForColor++;
 
-        if (AttemptsForColor === modelFromSearch.color.length) {
+        if (attemptsForColor === modelFromSearch.color.length) {
             console.log("No colors available in any color group.");
             document.getElementById('searchTitle').textContent = 'No products available in the choosen color(s)';
             break;
@@ -203,12 +203,12 @@ function showSearchImages(modelFromSearch) {
         furnitiseModal(`${brand}-${product}.web.app?noDecor&noFeaturedModels&data=${encodeURIComponent(JSON.stringify(model))}`);
     });
 
+    generateRenderTexture('search', model);
+
     document.querySelector('.productInfoBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
     document.querySelector('.productInfoFamily').textContent = title;
     document.querySelector('.productInfoType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
     pricing(model);
-
-    generateRenderTexture('search', model);
 }
 
 async function handleModelSelection() {

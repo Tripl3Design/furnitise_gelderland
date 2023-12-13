@@ -1,8 +1,8 @@
 "use strict";
 
 const brand = "pastoe";
-const product = "frame";
-const title = "frame";
+const product = "l-maze";
+const title = "l-maze";
 
 var UNITY_INSTANCE;
 var ALLCOLORS;
@@ -24,7 +24,7 @@ function generateRenderTexture(medium, model) {
         heightForImage: model.height,
         depthForImage: 54
     };
-    UNITY_INSTANCE.SendMessage('Frame', 'SaveRenderTexture', JSON.stringify(renderTexture));
+    UNITY_INSTANCE.SendMessage('LSerieMaze', 'SaveRenderTexture', JSON.stringify(renderTexture));
 }
 
 // used by FromUnityToJavascript.jslib
@@ -57,61 +57,11 @@ function addDecor(modelType, modelWidth, modelHeight, modelDepth, TvHeight, TvDi
         colorForFloor: floorColor,
         pathForFloor: floorPath
     };
-    UNITY_INSTANCE.SendMessage('Frame', 'AddDecor', JSON.stringify(decor));
+    UNITY_INSTANCE.SendMessage('LSerieMaze', 'AddDecor', JSON.stringify(decor));
 }
 
 function showSearchImages(modelFromSearch) {
-    const widths = [
-        { "width": 140, "type": "F07" },
-        { "width": 180, "type": "F03" },
-        { "width": 270, "type": "F02" }
-    ];
-    const filteredWidth = widths.filter(item => item.width >= modelFromSearch.width.min && item.width <= modelFromSearch.width.max);
-
-    const heights = [
-        { "height": 60, "type": "F02" },
-        { "height": 60, "type": "F03" },
-        { "height": 100, "type": "F07" }
-    ];
-    const filteredHeight = heights.filter(item => item.height >= modelFromSearch.height.min && item.height <= modelFromSearch.height.max);
-
-    let randomType, randomWidthType, randomHeightType, randomWidth, randomHeight;
-
-    const maxAttempts = 20;
-    let attempts = 0;
-
-    while (attempts < maxAttempts) {
-        document.getElementById('searchTitle').textContent = '';
-        if (filteredWidth.length === 0 || filteredHeight.length === 0) {
-            console.log('No matching items found.');
-            document.getElementById('searchTitle').textContent = 'No matching items found.';
-            break;
-        }
-
-        const randomWidthIndex = Math.floor(Math.random() * filteredWidth.length);
-        const randomWidthItem = filteredWidth[randomWidthIndex];
-        randomWidthType = randomWidthItem.type;
-        randomWidth = randomWidthItem.width;
-
-        const randomHeightIndex = Math.floor(Math.random() * filteredHeight.length);
-        const randomHeightItem = filteredHeight[randomHeightIndex];
-        randomHeightType = randomHeightItem.type;
-        randomHeight = randomHeightItem.height;
-
-        if (randomWidthType === randomHeightType) {
-            randomType = randomWidthType;
-            console.log('Types match:', randomType);
-            break;
-        }
-        else if (attempts === maxAttempts) {
-            console.log('No matching items found after ' + maxAttempts + ' attempts.');
-            document.getElementById('searchTitle').textContent = 'No matching items found.';
-            break;
-        } else {
-            attempts++;
-            console.log('Types do not match. Retrying...');
-        }
-    }
+    document.getElementById('searchTitle').textContent = '';
 
     let randomColorGroupIndex = Math.floor(Math.random() * modelFromSearch.color.length);
     let attemptsForColor = 0;
@@ -163,20 +113,36 @@ function showSearchImages(modelFromSearch) {
         }
     }
 
-    // get random glasstopcolor
-    const glasstopColorsLength = Math.floor(Math.random() * ALLCOLORS.glasstopColors.length);
-    const randomGlasstopColorsHex = ALLCOLORS.glasstopColors[glasstopColorsLength].colorHex;
+    // get random height
+    const heights = [144, 208];
+    const randomHeightIndex = Math.floor(Math.random() * heights.length);
+    const randomHeight = heights[randomHeightIndex];
+
+    // get random supplement
+    const supplements = ["noSupplement", "doorset", "drawerset", "doorDrawerDoor"];
+    const randomSupplementIndex = Math.floor(Math.random() * supplements.length);
+    const randomSupplement = supplements[randomSupplementIndex];
+
+    // get random interiorColor
+    const interiorColorsLength = Math.floor(Math.random() * ALLCOLORS.colors.length);
+    const randomInteriorColorHex = ALLCOLORS.colors[interiorColorsLength].colorHex;
+
+    // get random handleColor
+    const handleColors = ["020307", "b2b2b2"];
+    const randomHandleColorIndex = Math.floor(Math.random() * handleColors.length);
+    const randomHandleColor = handleColors[randomHandleColorIndex];
 
     const model = {
         background: { original: "d4d4d4" },
-        type: randomType,
-        width: randomWidth,
+        width: 133,
         height: randomHeight,
-        glasstop: Math.random() < 0.5,
-        glasstopcolor: randomGlasstopColorsHex,
-        color: randomColor
+        depth: 36,
+        supplement: randomSupplement,
+        color: randomColor,
+        interiorColor: { color: randomInteriorColorHex, lacquer: "structure" },
+        handleColor: { color: randomHandleColor }
     }
-    UNITY_INSTANCE.SendMessage('Frame', 'SetFrame', JSON.stringify(model));
+    UNITY_INSTANCE.SendMessage('LSerieMaze', 'SetLSerieMaze', JSON.stringify(model));
 
     const btn = document.querySelector('.goToConfigurator');
 
@@ -188,7 +154,7 @@ function showSearchImages(modelFromSearch) {
 
     document.querySelector('.productInfoBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
     document.querySelector('.productInfoFamily').textContent = title;
-    document.querySelector('.productInfoType').textContent = model.type.replace(/([A-Z])([0-9])/g, '$1 $2').replace(/([a-z])([A-Z])/g, '$1 $2');
+    document.querySelector('.productInfoType').textContent = model.supplement.replace(/([A-Z])([0-9])/g, '$1 $2').replace(/([a-z])([A-Z])/g, '$1 $2');
     pricing(model);
 }
 

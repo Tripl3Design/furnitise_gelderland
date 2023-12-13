@@ -5,46 +5,46 @@ function pricing(model) {
 
         if (model.type == "F02") {
             if (model.glasstop == true) {
-                if (model.color.path != undefined) {
-                    document.getElementById('price').textContent = "€ 3950,-";
+                if (model.color.lacquer == 'veneer') {
+                    document.querySelector('.productInfoPrice').textContent = "€ 3950,-";
                 } else {
-                    document.getElementById('price').textContent = "€ 3125,-";
+                    document.querySelector('.productInfoPrice').textContent = "€ 3125,-";
                 }
             } else {
-                if (model.color.path != undefined) {
-                    document.getElementById('price').textContent = "€ 3575,-";
+                if (model.color.lacquer == 'veneer') {
+                    document.querySelector('.productInfoPrice').textContent = "€ 3575,-";
                 } else {
-                    document.getElementById('price').textContent = "€ 2750,-";
+                    document.querySelector('.productInfoPrice').textContent = "€ 2750,-";
                 }
             }
         }
         if (model.type == "F03") {
             if (model.glasstop == true) {
-                if (model.color.path != undefined) {
-                    document.getElementById('price').textContent = "€ 2870,-";
+                if (model.color.lacquer == 'veneer') {
+                    document.querySelector('.productInfoPrice').textContent = "€ 2870,-";
                 } else {
-                    document.getElementById('price').textContent = "€ 2275,-";
+                    document.querySelector('.productInfoPrice').textContent = "€ 2275,-";
                 }
             } else {
-                if (model.color.path != undefined) {
-                    document.getElementById('price').textContent = "€ 2570,-";
+                if (model.color.lacquer == 'veneer') {
+                    document.querySelector('.productInfoPrice').textContent = "€ 2570,-";
                 } else {
-                    document.getElementById('price').textContent = "€ 1975,-";
+                    document.querySelector('.productInfoPrice').textContent = "€ 1975,-";
                 }
             }
         }
         if (model.type == "F07") {
             if (model.glasstop == true) {
-                if (model.color.path != undefined) {
-                    document.getElementById('price').textContent = "€ 3135,-";
+                if (model.color.lacquer == 'veneer') {
+                    document.querySelector('.productInfoPrice').textContent = "€ 3135,-";
                 } else {
-                    document.getElementById('price').textContent = "€ 2475,-";
+                    document.querySelector('.productInfoPrice').textContent = "€ 2475,-";
                 }
             } else {
-                if (model.color.path != undefined) {
-                    document.getElementById('price').textContent = "€ 2860,-";
+                if (model.color.lacquer == 'veneer') {
+                    document.querySelector('.productInfoPrice').textContent = "€ 2860,-";
                 } else {
-                    document.getElementById('price').textContent = "€ 2200,-";
+                    document.querySelector('.productInfoPrice').textContent = "€ 2200,-";
                 }
             }
         }

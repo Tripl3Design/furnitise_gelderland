@@ -123,53 +123,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     document.getElementById('decorFloorColorsIndex_' + DECORFLOORINDEX).classList.remove('colorButton');
     document.getElementById('decorFloorColorsIndex_' + DECORFLOORINDEX).classList.add('colorButtonActive');
 
-    //price
-    if (model.type == "F02") {
-        if (model.glasstop == true) {
-            if (model.color.path != undefined) {
-                document.getElementById('price').textContent = "€ 3950,-";
-            } else {
-                document.getElementById('price').textContent = "€ 3125,-";
-            }
-        } else {
-            if (model.color.path != undefined) {
-                document.getElementById('price').textContent = "€ 3575,-";
-            } else {
-                document.getElementById('price').textContent = "€ 2750,-";
-            }
-        }
-    }
-    if (model.type == "F03") {
-        if (model.glasstop == true) {
-            if (model.color.path != undefined) {
-                document.getElementById('price').textContent = "€ 2870,-";
-            } else {
-                document.getElementById('price').textContent = "€ 2275,-";
-            }
-        } else {
-            if (model.color.path != undefined) {
-                document.getElementById('price').textContent = "€ 2570,-";
-            } else {
-                document.getElementById('price').textContent = "€ 1975,-";
-            }
-        }
-    }
-    if (model.type == "F07") {
-        if (model.glasstop == true) {
-            if (model.color.path != undefined) {
-                document.getElementById('price').textContent = "€ 3135,-";
-            } else {
-                document.getElementById('price').textContent = "€ 2475,-";
-            }
-        } else {
-            if (model.color.path != undefined) {
-                document.getElementById('price').textContent = "€ 2860,-";
-            } else {
-                document.getElementById('price').textContent = "€ 2200,-";
-            }
-        }
-    }
-
     //type
     document.getElementById(model.type).checked = true;
 
@@ -347,7 +300,9 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     document.getElementById('colorsIndex_' + colorIndex).classList.remove('colorButton');
     document.getElementById('colorsIndex_' + colorIndex).classList.add('colorButtonActive');
 
-    // Decor
+    pricing(model);
+
+    //adddecor
     if (model.type == 'F02') {
         addDecor("F02", 270, 60, 54, 60, 0, ALLCOLORS.decorWall[DECORWALLINDEX].colorHex, ALLCOLORS.decorWall[DECORWALLINDEX].colorPath, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorHex, ALLCOLORS.decorFloor[DECORFLOORINDEX].colorPath);
     }

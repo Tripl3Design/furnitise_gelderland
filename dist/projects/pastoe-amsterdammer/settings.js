@@ -99,9 +99,6 @@ function updateCamera(modelWidth, modelHeight) {
 }
 
 function updateControlPanel(model, selectedLayer, expandedLayer) {
-
-console.log(model);
-
     const settings = initSettings(model);
     const elem = document.getElementById('controlpanelContainer');
     if (selectedLayer !== undefined) {

@@ -9,7 +9,8 @@
             "colorName": "snow white",
             "colorHex": "f7f6f4",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "white"
         },
         {
             "colorCode": {
@@ -20,7 +21,8 @@
             "colorName": "arctic",
             "colorHex": "b2b2b2",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "gray"
         },
         {
             "colorCode": {
@@ -31,7 +33,8 @@
             "colorName": "slate",
             "colorHex": "838182",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "gray"
         },
         {
             "colorCode": {
@@ -42,7 +45,8 @@
             "colorName": "basalt",
             "colorHex": "3e3e3e",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "gray"
         },
         {
             "colorCode": {
@@ -53,7 +57,8 @@
             "colorName": "black",
             "colorHex": "020307",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "black"
         },
         {
             "colorCode": {
@@ -64,7 +69,8 @@
             "colorName": "salt",
             "colorHex": "fbf8f1",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "white"
         },
         {
             "colorCode": {
@@ -75,7 +81,8 @@
             "colorName": "ash",
             "colorHex": "e8e6da",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "white"
         },
         {
             "colorCode": {
@@ -86,7 +93,8 @@
             "colorName": "shade",
             "colorHex": "9e8e7e",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "sand"
         },
         {
             "colorCode": {
@@ -97,7 +105,8 @@
             "colorName": "pebble",
             "colorHex": "6c645f",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "sand"
         },
         {
             "colorCode": {
@@ -108,7 +117,8 @@
             "colorName": "black taupe",
             "colorHex": "3c3c3c",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "black"
         },
         {
             "colorCode": {
@@ -119,7 +129,8 @@
             "colorName": "blossom",
             "colorHex": "e6c2b6",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "orange"
         },
         {
             "colorCode": {
@@ -130,7 +141,8 @@
             "colorName": "copper",
             "colorHex": "976856",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "brown"
         },
         {
             "colorCode": {
@@ -141,7 +153,8 @@
             "colorName": "tomato red",
             "colorHex": "b2312b",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "red"
         },
         {
             "colorCode": {
@@ -152,7 +165,8 @@
             "colorName": "ruby",
             "colorHex": "6d3133",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "red"
         },
         {
             "colorCode": {
@@ -163,7 +177,8 @@
             "colorName": "plum",
             "colorHex": "472c35",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "red"
         },
         {
             "colorCode": {
@@ -174,7 +189,8 @@
             "colorName": "vanilla",
             "colorHex": "fdecd0",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "yellow"
         },
         {
             "colorCode": {
@@ -185,7 +201,8 @@
             "colorName": "desert",
             "colorHex": "d4b773",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "yellow"
         },
         {
             "colorCode": {
@@ -196,7 +213,8 @@
             "colorName": "ginger",
             "colorHex": "cb960a",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "yellow"
         },
         {
             "colorCode": {
@@ -207,7 +225,8 @@
             "colorName": "honey",
             "colorHex": "9f7044",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "sand"
         },
         {
             "colorCode": {
@@ -218,7 +237,8 @@
             "colorName": "sienna",
             "colorHex": "973c27",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "red"
         },
         {
             "colorCode": {
@@ -229,7 +249,8 @@
             "colorName": "mint",
             "colorHex": "d1dec0",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "green"
         },
         {
             "colorCode": {
@@ -240,7 +261,8 @@
             "colorName": "pale green",
             "colorHex": "96caa4",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "green"
         },
         {
             "colorCode": {
@@ -251,7 +273,8 @@
             "colorName": "olive",
             "colorHex": "565833",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "green"
         },
         {
             "colorCode": {
@@ -262,7 +285,8 @@
             "colorName": "moss",
             "colorHex": "495a47",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "green"
         },
         {
             "colorCode": {
@@ -273,7 +297,8 @@
             "colorName": "forest",
             "colorHex": "354140",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "green"
         },
         {
             "colorCode": {
@@ -284,7 +309,8 @@
             "colorName": "air",
             "colorHex": "daecf0",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "blue"
         },
         {
             "colorCode": {
@@ -295,7 +321,8 @@
             "colorName": "mist",
             "colorHex": "739191",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "blue"
         },
         {
             "colorCode": {
@@ -306,7 +333,8 @@
             "colorName": "azure",
             "colorHex": "00758f",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "blue"
         },
         {
             "colorCode": {
@@ -317,7 +345,8 @@
             "colorName": "lake",
             "colorHex": "4c606b",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "blue"
         },
         {
             "colorCode": {
@@ -328,61 +357,68 @@
             "colorName": "storm",
             "colorHex": "1a2730",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "black"
         },
         {
             "colorCode": 470,
             "colorName": "natural oak soft",
             "colorHex": "bba286",
-            "colorPath": "projects/pastoe-l-serie/Textures/470_natural_oak_soft.jpg",
-            "colorPathThumb": "projects/pastoe-l-serie/Textures/470_natural_oak_soft_thumb.jpg",
+            "colorPath": "projects/pastoe-frame/Textures/470_natural_oak_soft.jpg",
+            "colorPathThumb": "projects/pastoe-frame/Textures/470_natural_oak_soft_thumb.jpg",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "sand"
         },
         {
             "colorCode": 471,
             "colorName": "bleached oak soft",
             "colorHex": "d3b9a3",
-            "colorPath": "projects/pastoe-l-serie/Textures/471_bleached_oak_soft.jpg",
-            "colorPathThumb": "projects/pastoe-l-serie/Textures/471_bleached_oak_soft_thumb.jpg",
+            "colorPath": "projects/pastoe-frame/Textures/471_bleached_oak_soft.jpg",
+            "colorPathThumb": "projects/pastoe-frame/Textures/471_bleached_oak_soft_thumb.jpg",
             "colorBg": "d4d4d4",
-            "iconColor": "dark"
+            "iconColor": "dark",
+            "colorGroup": "sand"
         },
         {
             "colorCode": 472,
             "colorName": "brown oak soft",
             "colorHex": "483b36",
-            "colorPath": "projects/pastoe-l-serie/Textures/472_brown_oak_soft.jpg",
-            "colorPathThumb": "projects/pastoe-l-serie/Textures/472_brown_oak_soft_thumb.jpg",
+            "colorPath": "projects/pastoe-frame/Textures/472_brown_oak_soft.jpg",
+            "colorPathThumb": "projects/pastoe-frame/Textures/472_brown_oak_soft_thumb.jpg",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "brown"
         },
         {
             "colorCode": 473,
             "colorName": "black oak soft",
             "colorHex": "312e2f",
-            "colorPath": "projects/pastoe-l-serie/Textures/473_black_oak_soft.jpg",
-            "colorPathThumb": "projects/pastoe-l-serie/Textures/473_black_oak_soft_thumb.jpg",
+            "colorPath": "projects/pastoe-frame/Textures/473_black_oak_soft.jpg",
+            "colorPathThumb": "projects/pastoe-frame/Textures/473_black_oak_soft_thumb.jpg",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "black"
         },
         {
             "colorCode": 475,
             "colorName": "natural walnut soft",
             "colorHex": "846553",
-            "colorPath": "projects/pastoe-l-serie/Textures/475_natural_walnut_soft.jpg",
-            "colorPathThumb": "projects/pastoe-l-serie/Textures/475_natural_walnut_soft_thumb.jpg",
+            "colorPath": "projects/pastoe-frame/Textures/475_natural_walnut_soft.jpg",
+            "colorPathThumb": "projects/pastoe-frame/Textures/475_natural_walnut_soft_thumb.jpg",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "brown"
         },
         {
             "colorCode": 474,
             "colorName": "natural cherry soft",
             "colorHex": "976c53",
-            "colorPath": "projects/pastoe-l-serie/Textures/474_natural_cherry_soft.jpg",
-            "colorPathThumb": "projects/pastoe-l-serie/Textures/474_natural_cherry_soft_thumb.jpg",
+            "colorPath": "projects/pastoe-frame/Textures/474_natural_cherry_soft.jpg",
+            "colorPathThumb": "projects/pastoe-frame/Textures/474_natural_cherry_soft_thumb.jpg",
             "colorBg": "d4d4d4",
-            "iconColor": "light"
+            "iconColor": "light",
+            "colorGroup": "brown"
         }
     ],
     "handleColors": [
