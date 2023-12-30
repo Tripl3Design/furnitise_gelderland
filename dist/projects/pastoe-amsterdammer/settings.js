@@ -527,6 +527,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     //pdf generator
     // is global FEATUREDMODEL for pdf really necessary?
     FEATUREDMODEL = model;
+    console.log(model);
 }
 
 function showFeaturedModel(model) {

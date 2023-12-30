@@ -28,6 +28,6 @@
     "@popperjs/core": "^2.11.7",
     "bootstrap": "^5.3.0-alpha3",
     "express": "^4.18.2",
-    "firebase": "^9.21.0"
+    "firebase": "^9.23.0"
   }
 }

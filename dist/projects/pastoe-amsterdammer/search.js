@@ -16,7 +16,7 @@ var pricing = document.createElement('script');
 pricing.src = `https://${brand}-${product}.web.app/projects/${brand}-${product}/pricing.js`;
 document.head.appendChild(pricing);
 
-function generateRenderTexture(medium, model) {
+async function generateRenderTexture(medium, model) {
     const renderTexture = {
         medium: medium,
         angleName: "perspective",
@@ -24,7 +24,7 @@ function generateRenderTexture(medium, model) {
         heightForImage: model.height,
         depthForImage: 37
     };
-    UNITY_INSTANCE.SendMessage('Amsterdammer', 'SaveRenderTexture', JSON.stringify(renderTexture));
+    await UNITY_INSTANCE.SendMessage('Amsterdammer', 'SaveRenderTexture', JSON.stringify(renderTexture));
 }
 
 // used by FromUnityToJavascript.jslib
@@ -196,14 +196,13 @@ async function showSearchImages(modelFromSearch) {
     }
 
     UNITY_INSTANCE.SendMessage('Amsterdammer', 'SetAmsterdammer', JSON.stringify(model));
+    await generateRenderTexture('search', model);
 
     const btn = document.querySelector('.goToConfigurator');
 
     btn.addEventListener('click', (e) => {
         furnitiseModal(`${brand}-${product}.web.app?noDecor&noFeaturedModels&data=${encodeURIComponent(JSON.stringify(model))}`);
     });
-
-    generateRenderTexture('search', model);
 
     document.querySelector('.productInfoBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
     document.querySelector('.productInfoFamily').textContent = title;
