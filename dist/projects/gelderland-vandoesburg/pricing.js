@@ -56,12 +56,12 @@ function pricing(model) {
         let cabinetPrice = cabinetBodyPrice + cabinetWinerackPrice + cabinetShelfPrice;
         let cabinetReducedPrice = cabinetBodyReducedPrice + cabinetWinerackPrice + cabinetShelfPrice;
         if (cabinetBodyReducedPrice != undefined) {
-            document.getElementById('price').textContent = '€ ' + cabinetReducedPrice + ',-';
-            document.getElementById('name').textContent = ALLCOMPONENTS.cabinet.combination[combinationCabinetIndex].name;
+            document.querySelector('.productInfoPrice').textContent = '€ ' + cabinetReducedPrice + ',-';
+            document.querySelector('.productInfoName').textContent = ALLCOMPONENTS.cabinet.combination[combinationCabinetIndex].name;
         }
         else {
-            document.getElementById('price').textContent = '€ ' + cabinetPrice + ',-';
-            document.getElementById('name').textContent = null;
+            document.querySelector('.productInfoPrice').textContent = '€ ' + cabinetPrice + ',-';
+            document.querySelector('.productInfoName').textContent = null;
         }
     }
 
@@ -83,11 +83,11 @@ function pricing(model) {
         }
         model.articleList.body = { "code": ALLCOMPONENTS.sideboard.body[sideboardBodyIndex].code, "outsideColor": model.outsideColor.code, "insideColor": model.insideColor.code };
         if (sideboardBodyReducedPrice != undefined) {
-            document.getElementById('price').textContent = '€ ' + sideboardBodyReducedPrice + ',-';
-            document.getElementById('name').textContent = ALLCOMPONENTS.sideboard.combination[combinationSideboardIndex].name;
+            document.querySelector('.productInfoPrice').textContent = '€ ' + sideboardBodyReducedPrice + ',-';
+            document.querySelector('.productInfoName').textContent = ALLCOMPONENTS.sideboard.combination[combinationSideboardIndex].name;
         } else {
-            document.getElementById('price').textContent = '€ ' + sideboardBodyPrice + ',-';
-            document.getElementById('name').textContent = null;
+            document.querySelector('.productInfoPrice').textContent = '€ ' + sideboardBodyPrice + ',-';
+            document.querySelector('.productInfoName').textContent = null;
         }
     }
     if (model.type == "sideboardOnFrame") {
@@ -108,11 +108,11 @@ function pricing(model) {
         }
         model.articleList.body = { "code": ALLCOMPONENTS.sideboardOnFrame.body[sideboardOnFrameBodyIndex].code, "outsideColor": model.outsideColor.code, "insideColor": model.insideColor.code };
         if (sideboardOnFrameBodyReducedPrice != undefined) {
-            document.getElementById('price').textContent = '€ ' + sideboardOnFrameBodyReducedPrice + ',-';
-            document.getElementById('name').textContent = ALLCOMPONENTS.sideboardOnFrame.combination[combinationSideboardOnFrameIndex].name;
+            document.querySelector('.productInfoPrice').textContent = '€ ' + sideboardOnFrameBodyReducedPrice + ',-';
+            document.querySelector('.productInfoName').textContent = ALLCOMPONENTS.sideboardOnFrame.combination[combinationSideboardOnFrameIndex].name;
         } else {
-            document.getElementById('price').textContent = '€ ' + sideboardOnFrameBodyPrice + ',-';
-            document.getElementById('name').textContent = null;
+            document.querySelector('.productInfoPrice').textContent = '€ ' + sideboardOnFrameBodyPrice + ',-';
+            document.querySelector('.productInfoName').textContent = null;
         }
     }
     if (model.type == "sideboardOnFrameTV") {
@@ -127,7 +127,7 @@ function pricing(model) {
             sideboardOnFrameTVBodyPrice = ALLCOMPONENTS.sideboardOnFrameTV.body[sideboardOnFrameTVBodyIndex].price.duotone;
         }
         model.articleList.body = { "code": ALLCOMPONENTS.sideboardOnFrameTV.body[sideboardOnFrameTVBodyIndex].code, "outsideColor": model.outsideColor.code, "insideColor": model.insideColor.code };
-        document.getElementById('price').textContent = '€ ' + sideboardOnFrameTVBodyPrice + ',-';
-        document.getElementById('name').textContent = null;
+        document.querySelector('.productInfoPrice').textContent = '€ ' + sideboardOnFrameTVBodyPrice + ',-';
+        document.querySelector('.productInfoName').textContent = null;
     }
 }

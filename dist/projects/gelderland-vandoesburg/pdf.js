@@ -1,6 +1,6 @@
 function downloadPdf(model, mainImage, output) {
     let link = `${document.referrer}?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
-    //let link = `https://furnitise.nl/demos?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
+    //let link = `https://furnitise.nl?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`;
     let drawing;
     let svgWidth;
     let height;
@@ -124,9 +124,9 @@ function downloadPdf(model, mainImage, output) {
                     headerRows: 0,
                     widths: [100, 'auto'],
                     body: [
-                        [{ text: 'COMBINATION', bold: true, fontSize: 12 }, `${(document.getElementById('name').textContent) + ' ' + document.getElementById(model.type).value}`],
+                        [{ text: 'COMBINATION', bold: true, fontSize: 12 }, `${(document.querySelector('.productInfoName').textContent) + ' ' + document.getElementById(model.type).value}`],
                         [{ text: 'CONFIGURATOR', bold: true, fontSize: 12 }, { text: `my a'dammer`, link: `${link}` }],
-                        [{ text: 'PRICE (INCL VAT)', bold: true, fontSize: 12 }, document.getElementById('price').textContent]
+                        [{ text: 'PRICE (INCL VAT)', bold: true, fontSize: 12 }, document.querySelector('.productInfoPrice').textContent]
                     ]
                 }, margin: [0, 90, 0, 0]
             },

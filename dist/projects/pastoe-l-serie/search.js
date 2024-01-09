@@ -1,8 +1,8 @@
 "use strict";
 
 const brand = "pastoe";
-const product = "amsterdammer";
-const title = "a'\dammer";
+const product = "l-serie";
+const title = "l-serie";
 
 var UNITY_INSTANCE;
 var ALLCOLORS;
@@ -16,15 +16,15 @@ var pricing = document.createElement('script');
 pricing.src = `https://${brand}-${product}.web.app/projects/${brand}-${product}/pricing.js`;
 document.head.appendChild(pricing);
 
-async function generateRenderTexture(medium, model) {
+function generateRenderTexture(medium, model) {
     const renderTexture = {
         medium: medium,
         angleName: "perspective",
         widthForImage: model.width,
         heightForImage: model.height,
-        depthForImage: 37
+        depthForImage: 54
     };
-    await UNITY_INSTANCE.SendMessage('Amsterdammer', 'SaveRenderTexture', JSON.stringify(renderTexture));
+    UNITY_INSTANCE.SendMessage('LSerieMaze', 'SaveRenderTexture', JSON.stringify(renderTexture));
 }
 
 // used by FromUnityToJavascript.jslib
@@ -57,33 +57,39 @@ function addDecor(modelType, modelWidth, modelHeight, modelDepth, TvHeight, TvDi
         colorForFloor: floorColor,
         pathForFloor: floorPath
     };
-    UNITY_INSTANCE.SendMessage('Amsterdammer', 'AddDecor', JSON.stringify(decor));
+    UNITY_INSTANCE.SendMessage('LSerieMaze', 'AddDecor', JSON.stringify(decor));
 }
 
-async function showSearchImages(modelFromSearch) {
+function showSearchImages(modelFromSearch) {
     const widths = [
-        { "width": 37, "type": "cabinet" },
-        { "width": 55, "type": "cabinet" },
-        { "width": 74, "type": "cabinet" },
-        { "width": 156, "type": "sideboard" },
-        { "width": 156, "type": "sideboardOnFrame" },
-        { "width": 156, "type": "sideboardOnFrameTV" },
-        { "width": 194, "type": "sideboard" },
-        { "width": 194, "type": "sideboardOnFrame" }
+        { "width": 101, "variant": "combinationL106" },
+        { "width": 101, "variant": "combinationL110" },
+        { "width": 133, "variant": "combinationL71" },
+        { "width": 133, "variant": "combinationL74" },
+        { "width": 133, "variant": "combinationL80" },
+        { "width": 197, "variant": "combinationL148" },
+        { "width": 197, "variant": "combinationL149" },
+        { "width": 197, "variant": "combinationL127" },
+        { "width": 261, "variant": "combinationL94" },
+        { "width": 261, "variant": "combinationLJ08" }
     ];
     const filteredWidth = widths.filter(item => item.width >= modelFromSearch.width.min && item.width <= modelFromSearch.width.max);
 
     const heights = [
-        { "height": 75, "type": "sideboard" },
-        { "height": 75, "type": "sideboardOnFrame" },
-        { "height": 112, "type": "sideboardOnFrameTV" },
-        { "height": 170, "type": "cabinet" },
-        { "height": 205, "type": "cabinet" },
-        { "height": 221, "type": "cabinet" }
+        { "height": 80, "variant": "combinationL94" },
+        { "height": 80, "variant": "combinationL148" },
+        { "height": 80, "variant": "combinationL149" },
+        { "height": 80, "variant": "combinationLJ08" },
+        { "height": 112, "variant": "combinationL106" },
+        { "height": 112, "variant": "combinationL80" },
+        { "height": 112, "variant": "combinationL71" },
+        { "height": 144, "variant": "combinationL74" },
+        { "height": 176, "variant": "combinationL74" },
+        { "height": 208, "variant": "combinationL127" },
     ];
     const filteredHeight = heights.filter(item => item.height >= modelFromSearch.height.min && item.height <= modelFromSearch.height.max);
 
-    let randomType, randomWidthType, randomHeightType, randomWidth, randomHeight;
+    let randomVariant, randomWidthVariant, randomHeightVariant, randomWidth, randomHeight;
 
     const maxAttempts = 20;
     let attempts = 0;
@@ -98,17 +104,17 @@ async function showSearchImages(modelFromSearch) {
 
         const randomWidthIndex = Math.floor(Math.random() * filteredWidth.length);
         const randomWidthItem = filteredWidth[randomWidthIndex];
-        randomWidthType = randomWidthItem.type;
+        randomWidthVariant = randomWidthItem.variant;
         randomWidth = randomWidthItem.width;
 
         const randomHeightIndex = Math.floor(Math.random() * filteredHeight.length);
         const randomHeightItem = filteredHeight[randomHeightIndex];
-        randomHeightType = randomHeightItem.type;
+        randomHeightVariant = randomHeightItem.variant;
         randomHeight = randomHeightItem.height;
 
-        if (randomWidthType === randomHeightType) {
-            randomType = randomWidthType;
-            console.log('Types match:', randomType);
+        if (randomWidthVariant === randomHeightVariant) {
+            randomVariant = randomWidthVariant;
+            console.log('Variants match:', randomVariant);
             break;
         }
         else if (attempts === maxAttempts) {
@@ -117,29 +123,29 @@ async function showSearchImages(modelFromSearch) {
             break;
         } else {
             attempts++;
-            console.log('Types do not match. Retrying...');
+            console.log('Variants do not match. Retrying...');
         }
     }
+
 
     let randomColorGroupIndex = Math.floor(Math.random() * modelFromSearch.color.length);
     let attemptsForColor = 0;
     const maxAttemptsForColor = modelFromSearch.color.length;
     const chosenColors = [];
-    let randomOutsideColor;
+    let randomColor;
 
     while (attemptsForColor < maxAttemptsForColor) {
         if (!chosenColors.includes(randomColorGroupIndex)) {
-            let colorGroup = ALLCOLORS.outsideColors.filter(color => color.colorGroup === modelFromSearch.color[randomColorGroupIndex]);
+            let colorGroup = ALLCOLORS.colors.filter(color => color.colorGroup === modelFromSearch.color[randomColorGroupIndex]);
 
             if (colorGroup.length > 0) {
                 chosenColors.push(randomColorGroupIndex);
 
                 const randomColorInGroupIndex = Math.floor(Math.random() * colorGroup.length);
                 const randomColorGroup = colorGroup[randomColorInGroupIndex].colorHex;
-                console.log(randomColorInGroupIndex);
-
-                if (randomType === 'cabinet' && colorGroup[randomColorInGroupIndex].colorPath) {
-                    randomOutsideColor = {
+                randomColor;
+                if (colorGroup[randomColorInGroupIndex].colorPath) {
+                    randomColor = {
                         color: randomColorGroup,
                         path: `https://${brand}-${product}.web.app/${colorGroup[randomColorInGroupIndex].colorPath}`,
                         lacquer: "veneer"
@@ -149,14 +155,14 @@ async function showSearchImages(modelFromSearch) {
                     if (nonVeneerColors.length > 0) {
                         const randomColorIndex = Math.floor(Math.random() * nonVeneerColors.length);
                         const randomNonVeneerColor = nonVeneerColors[randomColorIndex];
-                        randomOutsideColor = {
+                        randomColor = {
                             color: randomNonVeneerColor.colorHex,
                             lacquer: "basic"
                         };
                     }
                 }
 
-                console.log("Chosen Color:", randomOutsideColor);
+                console.log("Chosen Color:", randomColor);
 
                 break;
             }
@@ -172,31 +178,26 @@ async function showSearchImages(modelFromSearch) {
         }
     }
 
-    // get random insideColor
-    const insideColorsLength = Math.floor(Math.random() * ALLCOLORS.insideColors.length);
-    const randomInsideColorHex = ALLCOLORS.insideColors[insideColorsLength].colorHex;
+    // get random interiorColor
+    const interiorColorsLength = Math.floor(Math.random() * ALLCOLORS.colors.length);
+    const randomInteriorColorHex = ALLCOLORS.colors[interiorColorsLength].colorHex;
 
-    // get random interior
-    const interiors = ["one", "two", "three"];
-    const randomInteriorIndex = Math.floor(Math.random() * interiors.length);
-    const randomInterior = interiors[randomInteriorIndex];
+    // get random handleColor
+    const handleColors = ["020307", "b2b2b2"];
+    const randomHandleColorIndex = Math.floor(Math.random() * handleColors.length);
+    const randomHandleColor = handleColors[randomHandleColorIndex];
 
     const model = {
         background: { original: "d4d4d4" },
-        type: randomType,
         width: randomWidth,
         height: randomHeight,
-        winerack: Math.random() < 0.5,
-        winerackColor: "outsidecolor",
-        shelves: 0,
-        interior: randomInterior,
-        outsideColor: randomOutsideColor,
-        insideColor: { color: randomInsideColorHex },
-        rollshutter: Math.floor(Math.random() * (26)) + 75
+        depth: 45,
+        variant: randomVariant,
+        color: randomColor,
+        interiorColor: { color: randomInteriorColorHex, lacquer: "structure" },
+        handleColor: { color: randomHandleColor }
     }
-
-    UNITY_INSTANCE.SendMessage('Amsterdammer', 'SetAmsterdammer', JSON.stringify(model));
-    await generateRenderTexture('search', model);
+    UNITY_INSTANCE.SendMessage('LSerieMaze', 'SetLSerieMaze', JSON.stringify(model));
 
     const btn = document.querySelector('.goToConfigurator');
 
@@ -204,9 +205,11 @@ async function showSearchImages(modelFromSearch) {
         furnitiseModal(`${brand}-${product}.web.app?noDecor&noFeaturedModels&data=${encodeURIComponent(JSON.stringify(model))}`);
     });
 
+    generateRenderTexture('search', model);
+
     document.querySelector('.productInfoBrand').src = `https://${brand}-${product}.web.app/img/logo_${brand}.svg`;
     document.querySelector('.productInfoFamily').textContent = title;
-    document.querySelector('.productInfoType').textContent = model.type.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+    document.querySelector('.productInfoType').textContent = model.variant.replace(/([a-z])([A-Z])/g, '$1 $2');
     pricing(model);
 }
 

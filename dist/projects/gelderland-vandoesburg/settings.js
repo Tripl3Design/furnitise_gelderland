@@ -99,9 +99,6 @@ function updateCamera(modelWidth, modelHeight) {
 }
 
 function updateControlPanel(model, selectedLayer, expandedLayer) {
-
-console.log(model);
-
     const settings = initSettings(model);
     const elem = document.getElementById('controlpanelContainer');
     if (selectedLayer !== undefined) {
@@ -530,6 +527,7 @@ console.log(model);
     //pdf generator
     // is global FEATUREDMODEL for pdf really necessary?
     FEATUREDMODEL = model;
+    console.log(model);
 }
 
 function showFeaturedModel(model) {
