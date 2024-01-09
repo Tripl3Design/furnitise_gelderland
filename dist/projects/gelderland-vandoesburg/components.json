@@ -1,0 +1,178 @@
+{
+    "cabinet": {
+        "body": [{
+                "code": "K10411",
+                "width": 37,
+                "height": 170,
+                "price": { "monotone": 1280, "duotone": 1380, "veneer": 1790 }
+            },
+            {
+                "code": "K10421",
+                "width": 55,
+                "height": 170,
+                "price": { "monotone": 1520, "duotone": 1620, "veneer": 2105 }
+            },
+            {
+                "code": "K10431",
+                "width": 74,
+                "height": 170,
+                "price": { "monotone": 1760, "duotone": 1860, "veneer": 2415 }
+            },
+            {
+                "code": "K10711",
+                "width": 37,
+                "height": 205,
+                "price": { "monotone": 1390, "duotone": 1490, "veneer": 1935 }
+            },
+            {
+                "code": "K10721",
+                "width": 55,
+                "height": 205,
+                "price": { "monotone": 1650, "duotone": 1750, "veneer": 2275 }
+            },
+            {
+                "code": "K10731",
+                "width": 74,
+                "height": 205,
+                "price": { "monotone": 1890, "duotone": 1990, "veneer": 2585 }
+            },
+            {
+                "code": "K10511",
+                "width": 37,
+                "height": 221,
+                "price": { "monotone": 1590, "duotone": 1690, "veneer": 2195 }
+            },
+            {
+                "code": "K10521",
+                "width": 55,
+                "height": 221,
+                "price": { "monotone": 1820, "duotone": 1920, "veneer": 2495 }
+            },
+            {
+                "code": "K10531",
+                "width": 74,
+                "height": 221,
+                "price": { "monotone": 2050, "duotone": 2150, "veneer": 2795 }
+            }
+        ],
+        "combination": [{
+            "name": "Joost Selection",
+            "code": ["K10711"],
+            "height": 205,
+            "width": 37,
+            "outsideColor": { "color": "976856", "lacquer": "basic" },
+            "insideColor": "3e3e3e",
+            "price": { "original": 1490, "reduced": 1175 }
+        }],
+        "winerack": [{
+                "code": "K15111",
+                "width": 37,
+                "price": 150
+            },
+            {
+                "code": "K15121",
+                "width": 55,
+                "price": 200
+            },
+            {
+                "code": "K15131",
+                "width": 74,
+                "price": 250
+            }
+        ],
+        "shelf": [{
+                "code": "K13011",
+                "width": 37,
+                "price": 80
+            },
+            {
+                "code": "K13021",
+                "width": 55,
+                "accessory": { "supportTube": 65 },
+                "price": 80
+            },
+            {
+                "code": "K13031",
+                "width": 74,
+                "accessory": { "supportTube": 65 },
+                "price": 80
+            }
+        ]
+    },
+    "sideboard": {
+        "body": [{
+                "code": "K20331",
+                "width": 156,
+                "price": { "monotone": 1750, "duotone": 1850 }
+            },
+            {
+                "code": "K20341",
+                "width": 194,
+                "price": { "monotone": 1950, "duotone": 2050 }
+            }
+        ],
+        "combination": [{
+            "name": "",
+            "code": [""],
+            "width": 156,
+            "outsideColor": { "color": "", "lacquer": "" },
+            "insideColor": "",
+            "price": { "original": 0, "reduced": 0 }
+        }]
+    },
+    "sideboardOnFrame": {
+        "body": [{
+                "code": "K20431",
+                "width": 156,
+                "interior": "one",
+                "price": { "monotone": 1690, "duotone": 1790 }
+            },
+            {
+                "code": "K20131",
+                "width": 156,
+                "interior": "two",
+                "price": { "monotone": 1690, "duotone": 1790 }
+            },
+            {
+                "code": "K20631",
+                "width": 156,
+                "interior": "three",
+                "price": { "monotone": 1690, "duotone": 1790 }
+            },
+            {
+                "code": "K20441",
+                "width": 194,
+                "interior": "one",
+                "price": { "monotone": 2050, "duotone": 2150 }
+            },
+            {
+                "code": "K20141",
+                "width": 194,
+                "interior": "two",
+                "price": { "monotone": 2050, "duotone": 2150 }
+            },
+            {
+                "code": "K20541",
+                "width": 194,
+                "interior": "three",
+                "price": { "monotone": 2050, "duotone": 2150 }
+            }
+        ],
+        "combination": [{
+            "name": "Joost Selection",
+            "code": ["K20131"],
+            "width": 156,
+            "interior": "two",
+            "outsideColor": { "color": "d4b773", "lacquer": "basic" },
+            "insideColor": "3e3e3e",
+            "price": { "original": 1790, "reduced": 1475 }
+        }]
+    },
+    "sideboardOnFrameTV": {
+        "body": [{
+            "code": "K20731",
+            "width": 156,
+            "price": { "monotone": 1875, "duotone": 1975 }
+        }]
+    }
+}

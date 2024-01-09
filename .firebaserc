@@ -1,8 +1,9 @@
 {
   "projects": {
-    "default": "furnitise-4bca3",
+    "default": "gelderland-furnitise",
     "main": "furnitisemain",
-    "Pastoe": "furnitise-4bca3"
+    "Pastoe": "furnitise-4bca3",
+    "Gelderland": "gelderland-furnitise"
   },
   "targets": {
     "furnitise-4bca3": {
@@ -16,6 +17,13 @@
       "hosting": {
         "main": [
           "furnitisemain"
+        ]
+      }
+    },
+    "gelderland-furnitise": {
+      "hosting": {
+        "Gelderland": [
+          "gelderland-vandoesburg"
         ]
       }
     }
