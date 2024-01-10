@@ -151,6 +151,19 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     document.getElementById('decorFloorColorsIndex_' + DECORFLOORINDEX).classList.remove('colorButton');
     document.getElementById('decorFloorColorsIndex_' + DECORFLOORINDEX).classList.add('colorButtonActive');
 
+    //number of seats
+    console.log(model.elements.length);
+
+    document.getElementById(model.elements.length).checked = true;
+
+    const numberOfSeatsValues = document.querySelectorAll('input[type=radio][name="numberOfSeats"]');
+    for (const numberOfSeatsValue of numberOfSeatsValues) {
+        numberOfSeatsValue.onclick = (numberOfSeats) => {
+
+            model.elements.length = numberOfSeats.target.id;
+        }
+    }
+
     //type
     document.getElementById(model.type).checked = true;
 
@@ -160,62 +173,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
 
             model.type = type.target.id;
 
-            if (model.type == "cabinet") {
-                model.width = 37;
-                model.height = 205;
-                model.winerack = false;
-                model.shelves = 0;
-                model.interior = undefined;
-                if (model.outsideColor.path != undefined) {
-                    model.outsideColor = { "color": "f7f6f4", "lacquer": "basic" };
-                } else {
-                    model.outsideColor = { "color": model.outsideColor.color, "lacquer": model.outsideColor.lacquer };
-                }
-                updateCamera(model.width, model.height);
-            }
-            if (model.type == "sideboardOnFrame") {
-                model.width = 156;
-                model.height = 75;
-                model.winerack = undefined;
-                model.shelves = undefined;
-                if (model.interior != "two" || model.interior != "three" || model.interior == undefined) {
-                    model.interior = "one";
-                } else {
-                    model.interior = model.interior;
-                }
-                if (model.outsideColor.path != undefined) {
-                    model.outsideColor = { "color": "f7f6f4", "lacquer": "basic" };
-                } else {
-                    model.outsideColor = { "color": model.outsideColor.color, "lacquer": model.outsideColor.lacquer };
-                }
-                updateCamera(model.width, model.height);
-            }
-            if (model.type == "sideboardOnFrameTV") {
-                model.width = 156;
-                model.height = 112;
-                model.winerack = undefined;
-                model.shelves = undefined;
-                model.interior = undefined;
-                if (model.outsideColor.path != undefined) {
-                    model.outsideColor = { "color": "f7f6f4", "lacquer": "basic" };
-                } else {
-                    model.outsideColor = { "color": model.outsideColor.color, "lacquer": model.outsideColor.lacquer };
-                }
-                updateCamera(model.width, model.height);
-            }
-            if (model.type == "sideboard") {
-                model.width = 156;
-                model.height = 75;
-                model.winerack = undefined;
-                model.shelves = undefined;
-                model.interior = undefined;
-                if (model.outsideColor.path != undefined) {
-                    model.outsideColor = { "color": "f7f6f4", "lacquer": "basic" };
-                } else {
-                    model.outsideColor = { "color": model.outsideColor.color, "lacquer": model.outsideColor.lacquer };
-                }
-                updateCamera(model.width, model.height);
-            }
             updateControlPanel(model, undefined, 'type');
             updateFeaturedModel(model);
             showSelected(false);
@@ -563,7 +520,7 @@ async function handleModelSelection() {
     ALLCOMPONENTS = await componentsPromise;
 
 
-   //initConfigurator(brand, product, title);
+    //initConfigurator(brand, product, title);
 
 
     console.log(`BRAND: ${brand}, PRODUCT  ${product}, TITLE ${title}`);
@@ -593,17 +550,23 @@ async function handleModelSelection() {
 
 function initSettings(model) {
     const accordions = {};
+    let noNumberOfSeats;
+    if (urlParams.has('noNumberOfSeats')) {
+        noNumberOfSeats = "d-none";
+    } else {
+        noNumberOfSeats = "d-block";
+    }
     let noType;
     if (urlParams.has('noType')) {
         noType = "d-none";
     } else {
         noType = "d-block";
     }
-    let noSize;
-    if (urlParams.has('noSize')) {
-        noSize = "d-none";
+    let noArrangements;
+    if (urlParams.has('noArrangements')) {
+        noArrangements = "d-none";
     } else {
-        noSize = "d-block";
+        noArrangements = "d-block";
     }
     let noDecor;
     if (parser.getDevice().type == 'mobile' || urlParams.has('noDecor')) {
@@ -611,272 +574,224 @@ function initSettings(model) {
     } else {
         noDecor = "d-block";
     }
+    accordions.numberOfSeats = {
+        "title": "number of seats",
+        "options": ['numberOfSeats'],
+        "display": noNumberOfSeats,
+        "code": /*html*/ `
+        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+        <div class="d-flex justify-content-start m-0 p-0">
+            <div class="card border-0 grid gap row-gap-3 me-5">
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="numberOfSeats" value="1" id="1">
+                        <label class="form-check-label" for="1">1</label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="numberOfSeats" value="2" id="2">
+                        <label class="form-check-label" for="2">2</label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="numberOfSeats" value="3" id="3">
+                        <label class="form-check-label" for="3">3</label>
+                    </div>
+                </div>
+                <div class="card border-0 grid gap row-gap-3">
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="numberOfSeats" value="4" id="4">
+                        <label class="form-check-label" for="4">4</label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="numberOfSeats" value="5" id="5">
+                        <label class="form-check-label" for="5">5</label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="numberOfSeats" value="6" id="6">
+                        <label class="form-check-label" for="6">6</label>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    }
+    accordions.arrangements = {
+        "title": "arrangements",
+        "options": ['arrangements'],
+        "display": noArrangements,
+        "code": /*html*/ `
+        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+        <div class="d-flex justify-content-start m-0 p-0">
+            <div class="card border-0 ">
+           
+            <div class="fw-bold">1 seat</div>
+            <div class="border border-1">
+                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                </svg>
+            </div>
+
+            <div class="fw-bold">2 seater</div>
+            <div class="border border-1">
+                <svg width="80" height="50" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="40" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                </svg>
+            </div>
+
+            <div class="fw-bold">3 seater</div>
+            <div class="border border-1">
+                <svg width="110" height="50" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="40" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="70" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                </svg>
+            </div>
+            <div class="border border-1">
+            <svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                <rect x="40" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+            </svg>
+        </div>
+
+            <div class="fw-bold">4 seater</div>
+            <div class="border border-1">
+                    <!-- tetromino I -->
+                    <svg width="140" height="50" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="40" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="70" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="100" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="border border-1">
+                    <!-- tetromino J -->
+                    <svg width="110" height="80" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="10" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="40" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="70" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="border border-1">
+                    <!-- tetromino L -->
+                    <svg width="110" height="80" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="40" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="70" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="70" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+    
+                    </svg>
+                </div>
+                <div class="border border-1">
+                <!-- tetromino T -->
+                <svg width="110" height="80" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="40" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="70" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="40" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                </svg>
+                </div>
+                <div class="border border-1">
+                    <!-- tetromino O -->
+                    <svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="10" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="40" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="40" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="border border-1">
+                    <!-- tetromino S -->
+                    <svg width="110" height="80" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="40" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="10" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="40" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="70" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="border border-1">
+                    <!-- tetromino Z -->
+                    <svg width="110" height="80" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="40" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="40" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="70" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    </svg>
+                </div>
+
+                <div class="fw-bold">5 seater</div>
+                <div class="border border-1">
+                    <svg width="170" height="50" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="40" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="70" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="100" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                        <rect x="130" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    </svg>
+                </div>
+                <div class="border border-1">
+                <svg width="140" height="80" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="10" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="40" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="70" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                    <rect x="100" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                </svg>
+            </div>
+            <div class="border border-1">
+            <svg width="140" height="80" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                <rect x="40" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                <rect x="70" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                <rect x="100" y="40" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+                <rect x="100" y="10" width="30" height="30" fill="none" stroke="#000" stroke-width="2" />
+            </svg>
+        </div>
+    
+            </div>
+        </div>
+    </div>`
+    }
     accordions.type = {
         "title": "type",
         "options": ['type'],
         "display": noType,
         "code": /*html*/ `
         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="d-flex justify-content-start m-0 p-0 ">
+            <div class="d-flex justify-content-start m-0 p-0">
+                <div class="card border-0 grid gap row-gap-3 me-5">
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="noArmrestsLeft_96">
+                <label class="form-check-label" for="noArmrestsLeft_96">noArmrestsLeft_96</label>
+            </div>
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="noArmrestsRight_96">
+                <label class="form-check-label" for="noArmrestsRight_96">noArmrestsRight_96</label>
+            </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="type" id="armrestLeft_96">
+                        <label class="form-check-label" for="armrestLeft_96">armrestLeft_96</label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="type" id="armrestRight_96">
+                        <label class="form-check-label" for="armrestRight_96">armrestRight_96</label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="type" id="noArmrests_84">
+                        <label class="form-check-label" for="noArmrests_84">noArmrests_84</label>
+                    </div>
+                </div>
                 <div class="card border-0 grid gap row-gap-3">
                     <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type" value="cabinet" id="cabinet">
-                        <label class="form-check-label" for="cabinet">cabinet</label>
+                        <input type="radio" class="form-check-input" name="type" id="poof_84">
+                        <label class="form-check-label" for="poof_84">poof_84</label>
                     </div>
                     <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type" value="sideboard" id="sideboard">
-                        <label class="form-check-label" for="sideboard">sideboard</label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type" value="sideboard on frame &quot;twist&quot;" id="sideboardOnFrame">
-                        <label class="form-check-label" for="sideboardOnFrame">sideboard on frame "twist"</label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type" value="sideboard on frame &quot;twist&quot; TV" id="sideboardOnFrameTV">
-                        <label class="form-check-label" for="sideboardOnFrameTV">sideboard on frame "twist" TV</label>
+                        <input type="radio" class="form-check-input" name="type" id="poof_96">
+                        <label class="form-check-label" for="poof_96">poof_96</label>
                     </div>
                 </div>
             </div>
         </div>`
-    }
-    if (model.type == "cabinet") {
-        accordions.sizeCabinet = {
-            "title": "size",
-            "options": ['width', 'height'],
-            "display": noSize,
-            "code": /*html*/ `
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0">
-                    <div class="card border-0 grid gap row-gap-3 me-5">
-                        <div class="h6">width</div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="cabinet_width" id="37">
-                            <label class="form-check-label" for="37">37 cm</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="cabinet_width" id="55">
-                            <label class="form-check-label" for="55">55 cm</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="cabinet_width" id="74">
-                            <label class="form-check-label" for="74">74 cm</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 grid gap row-gap-3">
-                        <div class="h6">height</div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="cabinet_height" id="170">
-                            <label class="form-check-label" for="170">170 cm</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="cabinet_height" id="205">
-                            <label class="form-check-label" for="205">205 cm</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="cabinet_height" id="221">
-                            <label class="form-check-label" for="221">221 cm</label>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-        }
-    }
-    if (model.type == "sideboard" || model.type == "sideboardOnFrame") {
-        accordions.sizeSideboard = {
-            "title": "size",
-            "options": [],
-            "display": noSize,
-            "code": /*html*/ `
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0">
-                    <div class="card border-0 grid gap row-gap-3 me-5">
-                        <div class="h6">width</div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="sideboard_width" id="156">
-                            <label class="form-check-label" for="156">156 cm</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="sideboard_width" id="194">
-                            <label class="form-check-label" for="194">194 cm</label>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-        }
-    }
-    if (model.type == "cabinet") {
-        accordions.optionsCabinet = {
-            "title": "options",
-            "options": ['winerack', 'shelves'],
-            "display": "d-block",
-            "code": /*html*/ `
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0">
-                    <div class="card border-0 grid gap row-gap-3 me-5">
-                    <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="winerack">
-                            <label class="form-check-label" for="winerack">winerack</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="winerackcolor" id="winerackoutsidecolor" value="outsidecolor">
-                            <label class="form-check-label" for="winerackoutsidecolor">in color outside</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="winerackcolor" id="winerackinsidecolor" value="insidecolor">
-                            <label class="form-check-label" for="winerackinsidecolor">in color inside</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 grid gap row-gap-3">
-                        <div class="h6">extra shelves</div>
-                        <select class="form-select" id="shelves" aria-label="shelves">
-                            <option id="0_shelves" value="0">0</option>
-                            <option id="1_shelves" value="1">1</option>
-                            <option id="2_shelves" value="2">2</option>
-                            <option id="3_shelves" value="3">3</option>
-                            <option id="4_shelves" value="4">4</option>
-                            <option id="5_shelves" value="5">5</option>
-                            <option id="6_shelves" value="6">6</option>
-                            <option id="7_shelves" value="7">7</option>
-                            <option id="8_shelves" value="8">8</option>
-                        </select>
-                    </div>
-                </div>
-            </div>`
-        }
-    }
-    if (model.type == "sideboardOnFrame" && model.width == 156) {
-        accordions.optionsSideboardOnFrame156 = {
-            "title": "options",
-            "options": [],
-            "display": "d-block",
-            "code": /*html*/ `
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0">
-                    <div class="card border-0 grid gap row-gap-3">
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="interior" id="156_one" value="one">
-                            <label class="form-check-label" for="156_one" id="156_oneLabel">interior with winerack</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="interior" id="156_two" value="two">
-                            <label class="form-check-label" for="156_two" id="156_twoLabel">interior shelves horizontal</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="interior" id="156_three" value="three">
-                            <label class="form-check-label" for="156_three" id="156_threeLabel">interior shelves vertical</label>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-        }
-    }
-    if (model.type == "sideboardOnFrame" && model.width == 194) {
-        accordions.optionsSideboardOnFrame194 = {
-            "title": "options",
-            "options": ['optionsSideboardOnFrame'],
-            "display": "d-block",
-            "code": /*html*/ `
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0">
-                    <div class="card border-0 grid gap row-gap-3">
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="interior" id="194_one" value="one">
-                            <label class="form-check-label" for="194_one" id="194_oneLabel">interior with winerack</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="interior" id="194_two" value="two">
-                            <label class="form-check-label" for="194_two" id="194_twoLabel">interior with extended winerack</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="interior" id="194_three" value="three">
-                            <label class="form-check-label" for="194_three" id="194_threeLabel">interior with shelves</label>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-        }
-    }
-    if (model.type == "cabinet") {
-        accordions.outsideColors = {
-            "title": "outside colors",
-            "options": ['outsideColors'],
-            "display": "d-block",
-            "code": /*html*/ `
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
-                    <div class="row m-0 p-0 pb-2">
-                        <div class="d-flex justify-content-start m-0 p-0">
-                            <div class="h6 fw-normal form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="outsideColorsLacquer" id="outsideColorsLacquer_basic" value="basic">
-                                <label class="form-check-label" for="outsideColorsLacquer">basic</label>
-                            </div>
-                            <div class="h6 fw-normal form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="outsideColorsLacquer" id="outsideColorsLacquer_structure" value="structure">
-                                <label class="form-check-label" for="outsideColorsLacquer">structure</label>
-                            </div>
-                            <div class="h6 fw-normal form-check form-check-inline invisible"><!-- invisible because gloss is not applicable -->
-                                <input class="form-check-input" type="radio" name="outsideColorsLacquer" id="outsideColorsLacquer_gloss" value="gloss">
-                                <label class="form-check-label" for="outsideColorsLacquer">gloss</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div id="outsideColorsPicker" class="m-0 p-0"></div>
-                </div>
-                <div class="col-xxl-1 col-xl-1 col-12 m-0 p-0">
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-7 m-0 p-0">
-                    <div class="row m-0 p-0 pb-2">
-                        <div class="d-flex justify-content-start m-0 p-0">
-                            <div class="h6 fw-normal form-check form-check-inline invisible">
-                                <input class="form-check-input" type="radio" name="outsideColorsLacquer" id="outsideColorsLacquer_veneer" value="veneer">
-                                <label class="form-check-label" for="outsideColorsLacquer">veneer</label>
-                            </div>
-                        </div>
-                        <div id="outsideTexturesPicker" class="m-0 p-0"></div>
-                    </div>
-                </div>
-            </div>`,
-            "onload": function () {
-                let containerElemOutsideColorsColors = document.getElementById("outsideColorsPicker");
-                addColors('outsideColors', ALLCOLORS.outsideColors, containerElemOutsideColorsColors);
-                let containerElemOutsideColorsTextures = document.getElementById("outsideTexturesPicker");
-                addTextures('outsideColors', ALLCOLORS.outsideColors, containerElemOutsideColorsTextures);
-            }
-        }
-    }
-    if (model.type == "sideboard" || model.type == "sideboardOnFrame" || model.type == "sideboardOnFrameTV") {
-        accordions.outsideColors = {
-            "title": "outside colors",
-            "options": ['outsideColors'],
-            "display": "d-block",
-            "code": /*html*/ `
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
-                    <div class="row m-0 p-0 pb-2">
-                        <div class="d-flex justify-content-start m-0 p-0">
-                            <div class="h6 fw-normal form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="outsideColorsLacquer" id="outsideColorsLacquer_basic" value="basic">
-                                <label class="form-check-label" for="outsideColorsLacquer">basic</label>
-                            </div>
-                            <div class="h6 fw-normal form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="outsideColorsLacquer" id="outsideColorsLacquer_structure" value="structure">
-                                <label class="form-check-label" for="outsideColorsLacquer">structure</label>
-                            </div>
-                            <div class="h6 fw-normal form-check form-check-inline invisible"><!-- invisible because gloss is not applicable -->
-                                <input class="form-check-input" type="radio" name="outsideColorsLacquer" id="outsideColorsLacquer_gloss" value="gloss">
-                                <label class="form-check-label" for="outsideColorsLacquer">gloss</label>
-                            </div>
-                        </div>
-                        <div  id="outsideColorsPicker" class="m-0 p-0"></div>
-                    </div>
-                </div>
-            </div>`,
-            "onload": function () {
-                let containerElemOutsideColorsColors = document.getElementById("outsideColorsPicker");
-                addColors('outsideColors', ALLCOLORS.outsideColors, containerElemOutsideColorsColors);
-            }
-        }
     }
     accordions.insideColors = {
         "title": "inside colors",

@@ -6,7 +6,7 @@
         "headers": [
           {
             "key": "Content-Security-Policy",
-            "value": "frame-ancestors https://www.furnitise.nl https://furnitise.nl https://www.pastoe.com https://pastoe.com"
+            "value": "frame-ancestors https://www.furnitise.nl https://furnitise.nl https://gelderlanddesign.com"
           },
           {
             "key": "Access-Control-Allow-Origin",
@@ -15,7 +15,7 @@
         ]
       }
     ],
-    "target": "Pastoe",
+    "target": "Gelderland",
     "public": "dist",
     "ignore": [
       "firebase.json",
@@ -26,18 +26,7 @@
       "**/node_modules/**",
       "**/TemplateData/**",
 
-      "**/pastoe-dock/**",
-      "**/pastoe-fm03/**",
-      "**/pastoe-fm17/**",
-      "**/pastoe-frame/**",
-      "**/pastoe-l-maze/**",
-      "**/pastoe-l-serie/**",
-      "**/pastoe-landscape/**",
-      "**/pastoe-noon/**",
-      "**/pastoe-plato/**",
-      "**/pastoe-vision-cabinets/**",
-      "**/pastoe-wire/**",
-      "**/projects/pastoe-amsterdammer/index.html"
+      "**/projects/gelderland-vandoesburg/index.html"
     ]
   }
 }
