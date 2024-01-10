@@ -2,17 +2,11 @@
   "projects": {
     "default": "gelderland-furnitise",
     "main": "furnitisemain",
-    "Pastoe": "furnitise-4bca3",
     "Gelderland": "gelderland-furnitise"
-  },
-  "targets": {
-    "furnitise-4bca3": {
-      "hosting": {
-        "Pastoe": [
-          "pastoe-amsterdammer"
-        ]
-      }
     },
+    "targets": {
+  
+
     "furnitisemain": {
       "hosting": {
         "main": [

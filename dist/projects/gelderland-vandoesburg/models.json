@@ -6,6 +6,7 @@
         "background": {
             "original": "d4d4d4"
         },
+        "arrangement": "pentomino-L",
         "elements": [
             {
                 "type": "armrestLeft_96",
@@ -96,6 +97,7 @@
         "background": {
             "original": "d4d4d4"
         },
+        "arrangement": "hexomino-L",
         "elements": [
             {
                 "type": "noArmrestsLeft_96",
