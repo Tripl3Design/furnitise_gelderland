@@ -141,7 +141,7 @@ function showSelected(displayTitle) {
     }
 
     // comment out if DECOR is not applicable
-    ///*
+    /*
     let accordionButtonDecor = document.getElementById('collapse-check-decor');
     toggleDecor(accordionButtonDecor.getAttribute('aria-expanded'));
     //*/   
@@ -259,7 +259,7 @@ function controlPanel(settings, allModels, containerElem, expandedLayer) {
         if (imageNumber % 4 == 0) {
             html.push( /*html*/ `
                                         <div class="col-3">
-                                            <img id="${allModels[i].id}" src="${allModels[i].image}" class="btn rounded-0 img-fluid m-0 p-0" alt="${allModels[i].name}" onclick="showFeaturedModelByIndex(${i}); setCarouselActive('slide-${slideNumber}'); showSelected(false); toggleDecor('false');">
+                                            <img id="${allModels[i].id}" src="${allModels[i].image}" class="btn rounded-0 img-fluid m-0 p-0" alt="${allModels[i].name}" onclick="showFeaturedModelByIndex(${i}); setCarouselActive('slide-${slideNumber}'); showSelected(false);">
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +275,7 @@ function controlPanel(settings, allModels, containerElem, expandedLayer) {
         } else {
             html.push( /*html*/ `
                                         <div class="col-3">
-                                            <img id="${allModels[i].id}" src="${allModels[i].image}" class="btn rounded-0 img-fluid m-0 p-0" alt="${allModels[i].name}" onclick="showFeaturedModelByIndex(${i}); setCarouselActive('slide-${slideNumber}'); showSelected(false); toggleDecor('false');">
+                                            <img id="${allModels[i].id}" src="${allModels[i].image}" class="btn rounded-0 img-fluid m-0 p-0" alt="${allModels[i].name}" onclick="showFeaturedModelByIndex(${i}); setCarouselActive('slide-${slideNumber}'); showSelected(false);">
                                         </div>
                                     `);
         }
