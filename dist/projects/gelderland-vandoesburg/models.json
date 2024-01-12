@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "green-five",
-    "image": "projects/gelderland-vandoesburg/img/thumbnails/green-five.webp",
+    "image": "projects/gelderland-vandoesburg/img/thumbnails/green-five.jpg",
     "background": {
       "original": "d4d4d4"
     },
@@ -117,7 +117,162 @@
     "background": {
       "original": "d4d4d4"
     },
-    "arrangement": "hexomino-L",
+    "arrangement": "hexomino-P",
+    "elements": [
+      {
+        "type": "armrestRight_96",
+        "cushion": true,
+        "xl": false,
+        "upholstery": {
+          "upholstery": "efe8de"
+        },
+        "cushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "location": {
+          "posX": -6,
+          "posY": -2,
+          "rot": 180
+        }
+      },
+      {
+        "type": "armrestLeft_96",
+        "cushion": true,
+        "xl": false,
+        "upholstery": {
+          "upholstery": "efe8de"
+        },
+        "cushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "location": {
+          "posX": -2,
+          "posY": -2,
+          "rot": 180
+        }
+      },
+      {
+        "type": "noArmrestsLeft_96",
+        "cushion": true,
+        "xl": true,
+        "upholstery": {
+          "upholstery": "efe8de"
+        },
+        "cushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "location": {
+          "posX": 2,
+          "posY": -2.5,
+          "rot": 0
+        }
+      },
+      {
+        "type": "noArmrests_84",
+        "cushion": true,
+        "xl": true,
+        "upholstery": {
+          "upholstery": "efe8de"
+        },
+        "cushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "location": {
+          "posX": 5.75,
+          "posY": -2.5,
+          "rot": 0
+        }
+      },
+      {
+        "type": "poof_96",
+        "cushion": true,
+        "xl": false,
+        "upholstery": {
+          "upholstery": "efe8de"
+        },
+        "cushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "location": {
+          "posX": 2.25,
+          "posY": 1.25,
+          "rot": 90
+        }
+      },
+      {
+        "type": "noArmrestsLeft_96",
+        "cushion": true,
+        "xl": true,
+        "upholstery": {
+          "upholstery": "efe8de"
+        },
+        "cushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "location": {
+          "posX": 5.75,
+          "posY": 1.25,
+          "rot": 270
+        }
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "one-white",
+    "image": "projects/gelderland-vandoesburg/img/thumbnails/one-white.jpg",
+    "background": {
+      "original": "d4d4d4"
+    },
+    "arrangement": "unomino",
+    "elements": [
+      {
+        "type": "noArmrests_84",
+        "cushion": true,
+        "xl": false,
+        "upholstery": {
+          "upholstery": "efe8de"
+        },
+        "cushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "efe8de"
+        },
+        "location": {
+          "posX": 0,
+          "posY": 0,
+          "rot": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "five-greenGrey",
+    "image": "projects/gelderland-vandoesburg/img/thumbnails/five-greenGrey.jpg",
+    "background": {
+      "original": "d4d4d4"
+    },
+    "arrangement": "pentomino-N",
     "elements": [
       {
         "type": "noArmrestsLeft_96",
@@ -133,86 +288,6 @@
           "posX": -2,
           "posY": 2,
           "rot": 180
-        }
-      },
-      {
-        "type": "noArmrestsRight_96",
-        "cushion": false,
-        "xl": false,
-        "fabric": {
-          "fabric": "f7f6f4"
-        },
-        "cushionFabric": {
-          "fabric": "f7f6f4"
-        },
-        "location": {
-          "posX": -6,
-          "posY": 2,
-          "rot": 180
-        }
-      },
-      {
-        "type": "poof_96",
-        "cushion": false,
-        "xl": false,
-        "fabric": {
-          "fabric": "f7f6f4"
-        },
-        "cushionFabric": {
-          "fabric": "f7f6f4"
-        },
-        "location": {
-          "posX": -2,
-          "posY": -2,
-          "rot": 90
-        }
-      },
-      {
-        "type": "noArmrestsLeft_96",
-        "cushion": false,
-        "xl": true,
-        "fabric": {
-          "fabric": "f7f6f4"
-        },
-        "cushionFabric": {
-          "fabric": "f7f6f4"
-        },
-        "location": {
-          "posX": -6,
-          "posY": -2,
-          "rot": 90
-        }
-      },
-      {
-        "type": "armrestLeft_96",
-        "cushion": false,
-        "xl": false,
-        "fabric": {
-          "fabric": "f7f6f4"
-        },
-        "cushionFabric": {
-          "fabric": "f7f6f4"
-        },
-        "location": {
-          "posX": 2,
-          "posY": 1,
-          "rot": 0
-        }
-      },
-      {
-        "type": "armrestRight_96",
-        "cushion": false,
-        "xl": false,
-        "fabric": {
-          "fabric": "f7f6f4"
-        },
-        "cushionFabric": {
-          "fabric": "f7f6f4"
-        },
-        "location": {
-          "posX": 6,
-          "posY": 1,
-          "rot": 0
         }
       }
     ]
