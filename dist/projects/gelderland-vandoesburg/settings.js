@@ -194,8 +194,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         numberOfSeatsValue.onclick = (numberOfSeats) => {
 
             if (numberOfSeats == 1) {
-
-
                 model.arrangement = 'unomino';
                 model.elements = [];
                 model.elements =
@@ -220,8 +218,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                     }];
             }
             if (numberOfSeats == 2) {
-
-
                 model.arrangement = 'domino';
                 model.elements = [];
                 model.elements =
@@ -625,7 +621,7 @@ function initSettings(model) {
         </div>`,
         "onload": function () {
             let containerElem = document.getElementById("insideColorPicker");
-            addColors('insideColors', ALLCOLORS.insideColors, containerElem);
+            addColors('upholstery', ALLCOLORS.upholstery, containerElem);
         }
     }
     return { accordions };

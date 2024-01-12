@@ -85,8 +85,6 @@ function addTextures(name, colorName, containerElem) {
     containerElem.innerHTML = html.join('\n');
 }
 
-
-
 function showSelected(displayTitle) {
     let accordionButton = document.getElementsByClassName('accordion-button');
     let accordionText = document.getElementsByClassName('accordion-text');
