@@ -120,7 +120,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     }
 
     //arrangement
-
     if (model.elements.length == 1) {
         document.getElementById('w1').checked = true;
         document.getElementById('nos1').checked = true;
@@ -192,8 +191,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     for (const numberOfSeatsValue of numberOfSeatsValues) {
         numberOfSeatsValue.onclick = (numberOfSeats) => {
 
-            console.log('numberOfSeats: ' + numberOfSeats.target.value);
-
             if (numberOfSeats.target.value == 1) {
                 model.arrangement = 'unomino';
                 model.elements =
@@ -211,7 +208,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         }
                     }];
             }
-            if (numberOfSeats.target.value  == 2) {
+            if (numberOfSeats.target.value == 2) {
                 model.arrangement = 'domino';
                 model.elements =
                     [{
@@ -243,54 +240,102 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         }
                     }];
             }
-            if (numberOfSeats.target.value  == 3) {
-                model.arrangement = 'tromino I';
-                model.elements =
-                    [{
-                        "type": "armrestLeft_96",
-                        "cushion": true,
-                        "frontcushion": false,
-                        "xl": false,
-                        "upholstery": (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
-                        "cushionUpholstery": (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                        "frontcushionUpholstery": (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                        "location": {
-                            "posX": -3.75,
-                            "posY": 0,
-                            "rot": 0
-                        }
-                    },
-                    {
-                        "type": "noArmrests_84",
-                        "cushion": true,
-                        "frontcushion": false,
-                        "xl": false,
-                        "upholstery": (model.elements[1] && model.elements[1].upholstery) || (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
-                        "cushionUpholstery": (model.elements[1] && model.elements[1].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                        "frontcushionUpholstery": (model.elements[1] && model.elements[1].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                        "location": {
-                            "posX": 0,
-                            "posY": 0,
-                            "rot": 0
-                        }
-                    },
-                    {
-                        "type": "armrestRight_96",
-                        "cushion": true,
-                        "frontcushion": false,
-                        "xl": false,
-                        "upholstery": (model.elements[2] && model.elements[2].upholstery) || (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
-                        "cushionUpholstery": (model.elements[2] && model.elements[2].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                        "frontcushionUpholstery": (model.elements[2] && model.elements[2].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                        "location": {
-                            "posX": 3.75,
-                            "posY": 0,
-                            "rot": 0
-                        }
-                    }];
+            if (numberOfSeats.target.value == 3) {
+                if (document.getElementById('w2').checked = true) {
+                    model.arrangement = 'tromino-L';
+                    model.elements =
+                        [{
+                            "type": "armrestLeft_96",
+                            "cushion": true,
+                            "frontcushion": false,
+                            "xl": false,
+                            "upholstery": (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
+                            "cushionUpholstery": (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
+                            "frontcushionUpholstery": (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
+                            "location": {
+                                "posX": -2,
+                                "posY": 1,
+                                "rot": 0
+                            }
+                        },
+                        {
+                            "type": "noArmrests_84",
+                            "cushion": true,
+                            "frontcushion": false,
+                            "xl": false,
+                            "upholstery": (model.elements[1] && model.elements[1].upholstery) || (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
+                            "cushionUpholstery": (model.elements[1] && model.elements[1].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
+                            "frontcushionUpholstery": (model.elements[1] && model.elements[1].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
+                            "location": {
+                                "posX": 2,
+                                "posY": 1,
+                                "rot": 0
+                            }
+                        },
+                        {
+                            "type": "poof_96",
+                            "cushion": true,
+                            "frontcushion": false,
+                            "xl": false,
+                            "upholstery": (model.elements[2] && model.elements[2].upholstery) || (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
+                            "cushionUpholstery": (model.elements[2] && model.elements[2].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
+                            "frontcushionUpholstery": (model.elements[2] && model.elements[2].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
+                            "location": {
+                                "posX": 2,
+                                "posY": 0,
+                                "rot": 0
+                            }
+                        }];
+                }
+                if (document.getElementById('w3').checked = true) {
+                    model.arrangement = 'tromino-I';
+                    model.elements =
+                        [{
+                            "type": "armrestLeft_96",
+                            "cushion": true,
+                            "frontcushion": false,
+                            "xl": false,
+                            "upholstery": (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
+                            "cushionUpholstery": (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
+                            "frontcushionUpholstery": (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
+                            "location": {
+                                "posX": -3.75,
+                                "posY": 0,
+                                "rot": 0
+                            }
+                        },
+                        {
+                            "type": "noArmrests_84",
+                            "cushion": true,
+                            "frontcushion": false,
+                            "xl": false,
+                            "upholstery": (model.elements[1] && model.elements[1].upholstery) || (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
+                            "cushionUpholstery": (model.elements[1] && model.elements[1].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
+                            "frontcushionUpholstery": (model.elements[1] && model.elements[1].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
+                            "location": {
+                                "posX": 0,
+                                "posY": 0,
+                                "rot": 0
+                            }
+                        },
+                        {
+                            "type": "armrestRight_96",
+                            "cushion": true,
+                            "frontcushion": false,
+                            "xl": false,
+                            "upholstery": (model.elements[2] && model.elements[2].upholstery) || (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
+                            "cushionUpholstery": (model.elements[2] && model.elements[2].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
+                            "frontcushionUpholstery": (model.elements[2] && model.elements[2].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
+                            "location": {
+                                "posX": 3.75,
+                                "posY": 0,
+                                "rot": 0
+                            }
+                        }];
+                }
             }
-            if (numberOfSeats.target.value  == 4) {
-                model.arrangement = 'tetromino J';
+            if (numberOfSeats.target.value == 4) {
+                model.arrangement = 'tetromino-I';
                 model.elements =
                     [{
                         "type": "armrestLeft_96",
@@ -349,8 +394,8 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         }
                     }];
             }
-            if (numberOfSeats.target.value  == 5) {
-                model.arrangement = 'pentomino Q';
+            if (numberOfSeats.target.value == 5) {
+                model.arrangement = 'pentomino-L';
                 model.elements =
                     [{
                         "type": "armrestLeft_96",
@@ -361,12 +406,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": -6,
-                          "posY": 0,
-                          "rot": 0
+                            "posX": -6,
+                            "posY": 0,
+                            "rot": 0
                         }
-                      },
-                      {
+                    },
+                    {
                         "type": "armrestRight_96",
                         "cushion": true,
                         "frontcushion": false,
@@ -375,12 +420,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[1] && model.elements[1].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[1] && model.elements[1].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": -2,
-                          "posY": 0,
-                          "rot": 0
+                            "posX": -2,
+                            "posY": 0,
+                            "rot": 0
                         }
-                      },
-                      {
+                    },
+                    {
                         "type": "noArmrestsLeft_96",
                         "cushion": true,
                         "frontcushion": true,
@@ -389,12 +434,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[2] && model.elements[2].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[2] && model.elements[2].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": 2,
-                          "posY": -1,
-                          "rot": 0
+                            "posX": 2,
+                            "posY": -1,
+                            "rot": 0
                         }
-                      },
-                      {
+                    },
+                    {
                         "type": "noArmrests_84",
                         "cushion": false,
                         "frontcushion": false,
@@ -403,12 +448,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[3] && model.elements[3].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[3] && model.elements[3].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": 5.75,
-                          "posY": -1,
-                          "rot": 0
+                            "posX": 5.75,
+                            "posY": -1,
+                            "rot": 0
                         }
-                      },
-                      {
+                    },
+                    {
                         "type": "noArmrestsLeft_96",
                         "cushion": true,
                         "frontcushion": false,
@@ -417,17 +462,17 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[4] && model.elements[4].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[4] && model.elements[4].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": 5.75,
-                          "posY": 2.75,
-                          "rot": 270
+                            "posX": 5.75,
+                            "posY": 2.75,
+                            "rot": 270
                         }
-                      }
+                    }
                     ];
             }
-            if (numberOfSeats.target.value  == 6) {
-                model.arrangement = 'hexomino R';
+            if (numberOfSeats.target.value == 6) {
+                model.arrangement = 'hexomino-R';
                 model.elements =
-                    [ {
+                    [{
                         "type": "armrestRight_96",
                         "cushion": true,
                         "xl": false,
@@ -435,12 +480,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": -6,
-                          "posY": -2,
-                          "rot": 180
+                            "posX": -6,
+                            "posY": -2,
+                            "rot": 180
                         }
-                      },
-                      {
+                    },
+                    {
                         "type": "armrestLeft_96",
                         "cushion": true,
                         "xl": false,
@@ -448,12 +493,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[1] && model.elements[1].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[1] && model.elements[1].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": -2,
-                          "posY": -2,
-                          "rot": 180
+                            "posX": -2,
+                            "posY": -2,
+                            "rot": 180
                         }
-                      },
-                      {
+                    },
+                    {
                         "type": "noArmrestsLeft_96",
                         "cushion": true,
                         "xl": true,
@@ -461,12 +506,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[2] && model.elements[2].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[2] && model.elements[2].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": 2,
-                          "posY": -2.5,
-                          "rot": 0
+                            "posX": 2,
+                            "posY": -2.5,
+                            "rot": 0
                         }
-                      },
-                      {
+                    },
+                    {
                         "type": "noArmrests_84",
                         "cushion": true,
                         "xl": true,
@@ -474,12 +519,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[3] && model.elements[3].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[3] && model.elements[3].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": 5.75,
-                          "posY": -2.5,
-                          "rot": 0
+                            "posX": 5.75,
+                            "posY": -2.5,
+                            "rot": 0
                         }
-                      },
-                      {
+                    },
+                    {
                         "type": "poof_96",
                         "cushion": true,
                         "xl": false,
@@ -487,12 +532,12 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[4] && model.elements[4].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[4] && model.elements[4].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": 2.25,
-                          "posY": 1.25,
-                          "rot": 90
+                            "posX": 2.25,
+                            "posY": 1.25,
+                            "rot": 90
                         }
-                      },
-                      {
+                    },
+                    {
                         "type": "noArmrestsLeft_96",
                         "cushion": true,
                         "xl": true,
@@ -500,21 +545,28 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                         "cushionUpholstery": (model.elements[5] && model.elements[5].cushionUpholstery) || (model.elements[0] && model.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
                         "frontcushionUpholstery": (model.elements[5] && model.elements[5].frontcushionUpholstery) || (model.elements[0] && model.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
                         "location": {
-                          "posX": 5.75,
-                          "posY": 1.25,
-                          "rot": 270
+                            "posX": 5.75,
+                            "posY": 1.25,
+                            "rot": 270
                         }
-                      }
+                    }
                     ];
             }
 
             console.log(model);
-            model.elements.length = numberOfSeats.target.value;
 
+            model.elements.length = numberOfSeats.target.value;
             updateControlPanel(model, 'arrangement');
             updateFeaturedModel(model);
             showSelected(false);
+            let arrangementIndex = ALLARRANGEMENTS.arrangements.findIndex((item) => item.name === model.arrangement);
+            let widthInElements = ALLARRANGEMENTS.arrangements[arrangementIndex].widthInElements;
+
+            console.log(model.elements.length);
+            console.log(widthInElements);
+            showMinos(model.elements.length, widthInElements);
         }
+
     }
 
 
@@ -564,12 +616,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     console.log('Difference multiplied by 24: ' + arrWidth);
     document.getElementById('widthText').textContent = arrWidth + ' cm';
 
-
-
-
-
-
-
     //updateCamera(arrWidth, arrWidth);
     //updateControlPanel(model, undefined, 'arrangement');
     //updateFeaturedModel(model);
@@ -594,34 +640,24 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     FEATUREDMODEL = model;
 }
 
-function showMinos(numberOfSeats, widthInElements, minoName, containerElem) {
-    // Parameter validation
-    if (!Array.isArray(minoName) || !minoName.every(mino => typeof mino === 'object')) {
-        console.error('Invalid minoName parameter. Expecting an array of mino objects.');
-        return;
-    }
+function showMinos(numberOfSeats, widthInElements, containerElem) {
 
-    if (!(containerElem instanceof Element)) {
-        console.error('Invalid containerElem parameter. Expecting a valid HTML element.');
-        return;
-    }
+    console.log(numberOfSeats);
+    console.log(widthInElements);
 
-    // Filter minos with either numberOfSeats equal to 4 or widthInElements equal to 3
-    const filteredMinos = minoName.filter(mino => mino.numberOfSeats === numberOfSeats && mino.widthInElements === widthInElements);
+    const filteredMinos = ALLARRANGEMENTS.arrangements.filter(item => item.numberOfSeats === numberOfSeats && item.widthInElements === widthInElements);
 
-    // Generate HTML using template literals
-    const html = /*html*/ `
-        <div class="row row-cols-4 m-0 p-0">
-            ${filteredMinos.map(mino => /*html*/ `
-                <!--<div id="${mino.name}" class="col d-flex align-items-center m-0 p-1 border border-1 img-fluid">-->
-                 ${mino.svg}
-                <!--</div>-->
-            `).join('\n')}
-        </div>
-    `;
+    console.log(filteredMinos);
 
-    // Update container element content
-    containerElem.innerHTML = html;
+    const html = `<div class="row row-cols-6 m-0 p-0">
+      ${filteredMinos.map(mino => `
+      <div id="${mino.name}" class="col d-flex align-items-center m-0 p-1 border border-1">
+        ${mino.svg}
+      </div>
+      `).join('\n')}
+    </div>`;
+
+    document.getElementById('minoContainer').innerHTML = html;
 }
 
 function showFeaturedModel(model) {
@@ -741,23 +777,23 @@ function initSettings(model) {
             <div class="card border-0 grid gap row-gap-3">
                 <div class="h6">breedte</div>
                 <div class="h6 fw-normal form-check">
-                    <input type="radio" class="form-check-input" name="widthElements" value="w1" id="w1">
+                    <input type="radio" class="form-check-input" name="widthElements" value="1" id="w1">
                     <label class="form-check-label" for="w1">84 - 120 cm</label>
                 </div>
                 <div class="h6 fw-normal form-check">
-                    <input type="radio" class="form-check-input" name="widthElements" value="w2" id="w2">
+                    <input type="radio" class="form-check-input" name="widthElements" value="2" id="w2">
                     <label class="form-check-label" for="w2">168 - 216 cm</label>
                 </div>
                 <div class="h6 fw-normal form-check">
-                    <input type="radio" class="form-check-input" name="widthElements" value="w3" id="w3">
+                    <input type="radio" class="form-check-input" name="widthElements" value="3" id="w3">
                     <label class="form-check-label" for="w3">252 - 312 cm</label>
                 </div>
                 <div class="h6 fw-normal form-check">
-                    <input type="radio" class="form-check-input" name="widthElements" value="w4" id="w4">
+                    <input type="radio" class="form-check-input" name="widthElements" value="4" id="w4">
                     <label class="form-check-label" for="w4">336 - 408 cm</label>
                 </div>
                 <div class="h6 fw-normal form-check">
-                    <input type="radio" class="form-check-input" name="widthElements" value="w5" id="w5">
+                    <input type="radio" class="form-check-input" name="widthElements" value="5" id="w5">
                     <label class="form-check-label" for="w5">420 - 504 cm</label>
                 </div>
                 <!-- we don't support 6 seaters width
@@ -773,31 +809,13 @@ function initSettings(model) {
             <div class="col-12 m-0 p-0">
                 <div class="row m-0 p-0 pb-2">
                     <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                        <div id="showMinos" class="m-0 p-0"></div>
-           
+                        <div id="minoContainer" class="m-0 p-0">hi</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>`,
-        "onload": function () {
-            let containerElem = document.getElementById('showMinos');
-            //let widthInElements = ALLARRANGEMENTS.arrangements.findIndex((item) => item.widthInElements == 3);
 
-
-            var arrangementIndex = ALLARRANGEMENTS.arrangements.findIndex((item) => item.name === model.arrangement);
-
-
-
-
-
-            //let arrangementKey = ALLARRANGEMENTS.arrangements.filter((mino) => mino.name === model.arrangement);
-console.log(arrangementIndex);
-           //const widthInElements = ALLARRANGEMENTS.arrangements.filter(mino => mino.name === model.arrangement);
-            console.log(ALLARRANGEMENTS.arrangements[arrangementIndex].widthInElements);
-            showMinos(model.elements.length, 3, ALLARRANGEMENTS.arrangements, containerElem);
-
-        }
+    </div>`
     }
     accordions.type = {
         "title": "type",
