@@ -4,496 +4,496 @@
             "name": "unomino",
             "numberOfSeats": 1,
             "widthInElements": 1,
-            "svg": "<svg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "domino",
             "numberOfSeats": 2,
             "widthInElements": 2,
-            "svg": "<svg viewBox='0 0 80 50' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tromino-I",
             "numberOfSeats": 3,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 50' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tromino-L",
             "numberOfSeats": 3,
             "widthInElements": 2,
-            "svg": "<svg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tetromino-I",
             "numberOfSeats": 4,
             "widthInElements": 4,
-            "svg": "<svg viewBox='0 0 140 50' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tetromino-J",
             "numberOfSeats": 4,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tetromino-L",
             "numberOfSeats": 4,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tetromino-T",
             "numberOfSeats": 4,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tetromino-O",
             "numberOfSeats": 4,
             "widthInElements": 2,
-            "svg": "<svg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tetromino-S",
             "numberOfSeats": 4,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 80' xmlns='http://www.w3.org/2000/svg'><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tetromino-Z",
             "numberOfSeats": 4,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-I",
             "numberOfSeats": 5,
             "widthInElements": 5,
-            "svg": "<svg viewBox='0 0 170 50' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='130' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='130' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-J",
             "numberOfSeats": 5,
             "widthInElements": 4,
-            "svg": "<svg viewBox='0 0 140 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-Y'",
             "numberOfSeats": 5,
             "widthInElements": 4,
-            "svg": "<svg viewBox='0 0 140 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-Y",
             "numberOfSeats": 5,
             "widthInElements": 4,
-            "svg": "<svg viewBox='0 0 140 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-L",
             "numberOfSeats": 5,
             "widthInElements": 4,
-            "svg": "<svg viewBox='0 0 140 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-F",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-S",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-F'",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-Z",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-P",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-Q",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='60' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='60' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-T",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-U",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-V",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-W",
             "numberOfSeats": 5,
             "widthInElements": 3,
-            "svg": "<svg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-N",
             "numberOfSeats": 5,
             "widthInElements": 4,
-            "svg": "<svg viewBox='0 0 140 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "pentomino-N'",
             "numberOfSeats": 5,
-            "svg": "<svg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "hexomino-L",
             "numberOfSeats": 6,
             "widthInElements": 5,
-            "svg": "<svg viewBox='0 0 170 80' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-L'",
             "numberOfSeats": 6,
             "widthInElements": 5,
-            "svg": "<svg viewBox='0 0 170 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-1",
             "numberOfSeats": 6,
             "widthInElements": 5,
-            "svg": "<svg viewBox='0 0 170 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-1'",
             "numberOfSeats": 6,
             "widthInElements": 5,
-            "svg": "<svg viewBox='0 0 170 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-D",
             "numberOfSeats": 6,
             "widthInElements": 5,
-            "svg": "<svg viewBox='0 0 170 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-N",
             "numberOfSeats": 6,
             "widthInElements": 5,
-            "svg": "<svg viewBox='0 0 170 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-N'",
             "numberOfSeats": 6,
             "widthInElements": 5,
-            "svg": "<svg viewBox='0 0 170 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-P",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": "<svg viewBox='0 0 140 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-P'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-U",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-U'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-C",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-B",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-V",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-V'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-7",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-7'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-T",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-F",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-F'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-6",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-6'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-Z",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-8",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-X",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-Y",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-Y'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-G",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-G'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-5",
             "numberOfSeats": 6,
             "widthInElements": 5,
-            "svg": " <svg viewBox='0 0 17 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='130' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-S",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-O",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 80' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-4",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-4'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-R",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-R'",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-9",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-9'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-2",
             "numberOfSeats": 6,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-2'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-W",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-W'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-J",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-J'",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-H",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg vviewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-H'",
             "numberOfSeats": 6,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-E",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-M",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-M'",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-A",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-K",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-K'",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-Q",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-Q'",
             "numberOfSeats": 6,
             "widthInElements": 3,
-            "svg": " <svg viewBox='0 0 110 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='10' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         },
         {
             "name": "hexomino-3",
             "numberOfSeats": 6,
             "widthInElements": 4,
-            "svg": " <svg viewBox='0 0 140 110' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
+            "svg": " <svg viewBox='0 0 170 170' xmlns='http: //www.w3.org/2000/svg'> <rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='40' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='40' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> <rect x='100' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /> </svg>"
         }
     ]
 }

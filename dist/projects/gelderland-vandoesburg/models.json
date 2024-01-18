@@ -117,7 +117,7 @@
     "background": {
       "original": "d4d4d4"
     },
-    "arrangement": "hexomino-P",
+    "arrangement": "hexomino-P'",
     "elements": [
       {
         "type": "armrestRight_96",
@@ -261,33 +261,6 @@
           "posX": 0,
           "posY": 0,
           "rot": 0
-        }
-      }
-    ]
-  },
-  {
-    "id": "4",
-    "name": "five-greenGrey",
-    "image": "projects/gelderland-vandoesburg/img/thumbnails/five-greenGrey.jpg",
-    "background": {
-      "original": "d4d4d4"
-    },
-    "arrangement": "pentomino-N",
-    "elements": [
-      {
-        "type": "noArmrestsLeft_96",
-        "cushion": false,
-        "xl": false,
-        "fabric": {
-          "fabric": "f7f6f4"
-        },
-        "cushionFabric": {
-          "fabric": "f7f6f4"
-        },
-        "location": {
-          "posX": -2,
-          "posY": 2,
-          "rot": 180
         }
       }
     ]
