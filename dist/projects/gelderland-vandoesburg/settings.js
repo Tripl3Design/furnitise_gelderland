@@ -153,13 +153,13 @@ function displayArrangements(arrangements) {
     const arrangementContainer = document.getElementById('arrangementContainer');
     arrangementContainer.innerHTML = '';
 
-    const rowDiv = document.createElement('div', 'm-0', 'p-0');
-    rowDiv.classList.add('row', 'row-cols-xxl-5', 'row-cols-xl-4', 'row-cols-lg-3', 'row-cols-md-3', 'row-cols-sm-2', 'row-cols-xs-2', 'align-items-center', 'grid', 'gap-3', 'row-gap-3', 'm-0', 'p-0');
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('row', 'row-cols-xxl-5', 'row-cols-xl-4', 'row-cols-lg-3', 'row-cols-md-3', 'row-cols-sm-2', 'row-cols-xs-2', 'align-items-center',   'm-0', 'p-0');
     arrangementContainer.appendChild(rowDiv);
 
     arrangements.forEach(arrangement => {
         const outerDiv = document.createElement('div');
-        outerDiv.classList.add('col', 'm-0', 'p-0');
+        outerDiv.classList.add('col', 'm-0', 'p-3', 'ps-0', 'pb-0');
 
         const input = document.createElement('input');
         input.classList.add('btn-check',);
@@ -226,7 +226,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         var bgColor = pSBC(0, '#' + model.background.original);
         model.background = { "original": model.background.original, "lighter": bgColor.substring(1) };
     }
-    
+
     //arrangement
     /*
         const numberOfSeatsValues = document.querySelectorAll('input[type=radio][name="numberOfSeats"]');
@@ -829,7 +829,7 @@ function initSettings(model) {
             <div class="col-12 m-0 p-0">
                 <div class="row m-0 p-0 pb-2">
                     <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                        <div id="arrangementContainer" class="m-0 p-0">
+                        <div id="arrangementContainer" class="m-0 p-0 mt-3">
                         </div>
                     </div>
                 </div>
