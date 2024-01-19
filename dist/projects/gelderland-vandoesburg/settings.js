@@ -160,15 +160,18 @@ function displayArrangements(arrangements) {
     arrangements.forEach(arrangement => {
         const outerDiv = document.createElement('div');
         outerDiv.classList.add('col', 'm-0', 'p-0');
+        
 
         const input = document.createElement('input');
-        input.classList.add('btn-check');
+        input.classList.add('btn-check',);
         input.setAttribute('type', 'radio');
         input.setAttribute('name', 'arrangements');
         input.setAttribute('id', arrangement.name);
-        const label = document.createElement('label');
+
+        const label = document.createElement('label', 'm-0', 'p-0');
         label.classList.add('btn', 'btn-outline-dark', 'rounded-0');
         label.setAttribute('for', arrangement.name);
+        label.style.aspectRatio = '1/1';
 
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         svg.innerHTML = arrangement.svg;
