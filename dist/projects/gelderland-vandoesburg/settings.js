@@ -160,7 +160,6 @@ function displayArrangements(arrangements) {
     arrangements.forEach(arrangement => {
         const outerDiv = document.createElement('div');
         outerDiv.classList.add('col', 'm-0', 'p-0');
-        
 
         const input = document.createElement('input');
         input.classList.add('btn-check',);
@@ -203,12 +202,6 @@ document.getElementById('widthDropdown').addEventListener('change', function () 
 // Initial display of all arrangements
 filterArrangements();
 
-
-
-
-
-
-
 function updateControlPanel(model, selectedLayer, expandedLayer) {
     const settings = initSettings(model);
     const elem = document.getElementById('controlpanelContainer');
@@ -233,13 +226,8 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         var bgColor = pSBC(0, '#' + model.background.original);
         model.background = { "original": model.background.original, "lighter": bgColor.substring(1) };
     }
-
-
-
+    
     //arrangement
-
-
-
     /*
         const numberOfSeatsValues = document.querySelectorAll('input[type=radio][name="numberOfSeats"]');
         for (const numberOfSeatsValue of numberOfSeatsValues) {
