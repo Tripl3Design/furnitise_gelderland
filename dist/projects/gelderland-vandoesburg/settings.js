@@ -154,7 +154,7 @@ function displayArrangements(arrangements) {
     arrangementContainer.innerHTML = '';
 
     const rowDiv = document.createElement('div');
-    rowDiv.classList.add('row', 'row-cols-xxl-5', 'row-cols-xl-4', 'row-cols-lg-3', 'row-cols-md-3', 'row-cols-sm-2', 'row-cols-xs-2', 'align-items-center',   'm-0', 'p-0');
+    rowDiv.classList.add('row', 'row-cols-xxl-5', 'row-cols-xl-4', 'row-cols-lg-3', 'row-cols-md-3', 'row-cols-sm-2', 'row-cols-xs-2', 'align-items-center', 'm-0', 'p-0');
     arrangementContainer.appendChild(rowDiv);
 
     arrangements.forEach(arrangement => {
@@ -181,7 +181,7 @@ function displayArrangements(arrangements) {
         outerDiv.appendChild(input);
         outerDiv.appendChild(label);
         label.appendChild(svg);
-    
+
         rowDiv.appendChild(outerDiv);
     });
 }
@@ -617,11 +617,11 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     document.getElementById('seatsDropdown').value = model.elements.length;
     document.getElementById('widthDropdown').value = widthInElements;
     //document.getElementById('polyminoName').classList.toggle("active");
-    
+
     filterArrangements();
     //document.getElementById('polyminoName').classList.toggle("active");
     document.getElementById(polyminoName).checked = true;
-                               
+
 
     // overall width
     let maxPosX = Number.NEGATIVE_INFINITY;
@@ -837,67 +837,98 @@ function initSettings(model) {
         </div>
     </div> `
     }
-    accordions.type = {
-        "title": "type",
-        "options": ['type'],
-        "display": noType,
-        "code": /*html*/ `
-        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="d-flex justify-content-start m-0 p-0">
-                <div class="card border-0 grid gap row-gap-3 me-5">
-                <div class="h6 fw-normal form-check">
-                <input type="radio" class="form-check-input" name="type" id="chair_96">
-                <label class="form-check-label" for="chair_96">chair_96</label>
-            </div>
-            <div class="h6 fw-normal form-check">
-                <input type="radio" class="form-check-input" name="type" id="noArmrestsLeft_96">
-                <label class="form-check-label" for="noArmrestsLeft_96">noArmrestsLeft_96</label>
-            </div>
-            <div class="h6 fw-normal form-check">
-                <input type="radio" class="form-check-input" name="type" id="noArmrestsRight_96">
-                <label class="form-check-label" for="noArmrestsRight_96">noArmrestsRight_96</label>
-            </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type" id="armrestLeft_96">
-                        <label class="form-check-label" for="armrestLeft_96">armrestLeft_96</label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type" id="armrestRight_96">
-                        <label class="form-check-label" for="armrestRight_96">armrestRight_96</label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type" id="noArmrests_84">
-                        <label class="form-check-label" for="noArmrests_84">noArmrests_84</label>
-                    </div>
-                </div>
-                <div class="card border-0 grid gap row-gap-3">
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type" id="poof_84">
-                        <label class="form-check-label" for="poof_84">poof_84</label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type" id="poof_96">
-                        <label class="form-check-label" for="poof_96">poof_96</label>
-                    </div>
-                </div>
-            </div>
-        </div>`
-    }
-    accordions.upholstery = {
-        "title": "bekleding",
-        "options": ['upholstery'],
+    accordions.elementOne = {
+        "title": "element 1",
+        "options": ['element', 'color'],
         "display": "d-block",
         "code": /*html*/ `
-        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
-                <div class="row m-0 p-0 pb-2">
-                    <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                        <div class="h6 fw-normal card border-0 pb-2">structure&nbsp;</div>
-                        <div id="insideColorPicker" class="m-0 p-0"></div>
-                    </div>
+        <div class="accordion accordion-flush" id="subAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#subType"
+              aria-expanded="false" aria-controls="flush-collapseOne">
+              type
+            </button>
+          </h2>
+          <div id="subType" class="accordion-collapse collapse" data-bs-parent="#subAccordion">
+            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+              <div class="d-flex justify-content-start m-0 p-0">
+                <div class="card border-0 grid gap row-gap-3 me-5">
+                  <div class="h6 fw-normal form-check">
+                    <input type="radio" class="form-check-input" name="type" id="chair_96">
+                    <label class="form-check-label" for="chair_96">chair_96</label>
+                  </div>
+                  <div class="h6 fw-normal form-check">
+                    <input type="radio" class="form-check-input" name="type" id="noArmrestsLeft_96">
+                    <label class="form-check-label" for="noArmrestsLeft_96">noArmrestsLeft_96</label>
+                  </div>
+                  <div class="h6 fw-normal form-check">
+                    <input type="radio" class="form-check-input" name="type" id="noArmrestsRight_96">
+                    <label class="form-check-label" for="noArmrestsRight_96">noArmrestsRight_96</label>
+                  </div>
+                  <div class="h6 fw-normal form-check">
+                    <input type="radio" class="form-check-input" name="type" id="armrestLeft_96">
+                    <label class="form-check-label" for="armrestLeft_96">armrestLeft_96</label>
+                  </div>
+                  <div class="h6 fw-normal form-check">
+                    <input type="radio" class="form-check-input" name="type" id="armrestRight_96">
+                    <label class="form-check-label" for="armrestRight_96">armrestRight_96</label>
+                  </div>
+                  <div class="h6 fw-normal form-check">
+                    <input type="radio" class="form-check-input" name="type" id="noArmrests_84">
+                    <label class="form-check-label" for="noArmrests_84">noArmrests_84</label>
+                  </div>
                 </div>
+                <div class="card border-0 grid gap row-gap-3">
+                  <div class="h6 fw-normal form-check">
+                    <input type="radio" class="form-check-input" name="type" id="poof_84">
+                    <label class="form-check-label" for="poof_84">poof_84</label>
+                  </div>
+                  <div class="h6 fw-normal form-check">
+                    <input type="radio" class="form-check-input" name="type" id="poof_96">
+                    <label class="form-check-label" for="poof_96">poof_96</label>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>`,
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#subOptions"
+              aria-expanded="false" aria-controls="flush-collapseTwo">
+              opties
+            </button>
+          </h2>
+          <div id="subOptions" class="accordion-collapse collapse" data-bs-parent="#subAccordion">
+            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
+              <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled
+              with some actual content.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#subUpholstery"
+              aria-expanded="false" aria-controls="flush-collapseThree">
+              bekleding
+            </button>
+          </h2>
+          <div id="subUpholstery" class="accordion-collapse collapse" data-bs-parent="#subAccordion">
+            <div class="accordion-body">
+              <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+                <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
+                  <div class="row m-0 p-0 pb-2">
+                    <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
+                      <div id="insideColorPicker" class="m-0 p-0"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`,
         "onload": function () {
             let containerElem = document.getElementById("insideColorPicker");
             addColors('upholstery', ALLCOLORS.upholstery, containerElem);

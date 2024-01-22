@@ -4,13 +4,13 @@
             "name": "unomino",
             "numberOfSeats": 1,
             "widthInElements": 1,
-            "svg": "<svg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='70' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "domino",
             "numberOfSeats": 2,
             "widthInElements": 2,
-            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='40' y='10' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
+            "svg": "<svg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'><rect x='55' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /><rect x='85' y='70' width='30' height='30' fill='#d4d4d4' stroke='#000' stroke-width='2' /></svg>"
         },
         {
             "name": "tromino-I",
