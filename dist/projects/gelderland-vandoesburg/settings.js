@@ -2,7 +2,7 @@
 var UNITY_INSTANCE;
 var ALLMODELS;
 var ALLCOLORS;
-var ALLCOMPsixNTS;
+var ALLCOMPONENTS;
 var ALLARRANGEMENTS;
 var FEATUREDMODEL;
 
@@ -38,7 +38,7 @@ function generateRenderTexture(medium) {
 }
 
 function shareConfiguration(model) {
-    window.location.href = `whatsapp://send?text=See%20my%20configuration!%20https://furnitise.nl/demos?brand=${brand}&product=${product}&data=${encodeURICompsixnt(JSON.stringify(model))}`
+    window.location.href = `whatsapp://send?text=See%20my%20configuration!%20https://furnitise.nl/demos?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`
 }
 
 function submitForm() {
@@ -120,7 +120,7 @@ function enableWidthOptions(seatsFilter) {
 
     // Enable all options first
     widthOptions.forEach(option => {
-        option.style.display = 'nsix';
+        option.style.display = 'none';
         option.disabled = true;
     });
 
@@ -215,9 +215,9 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     let featuredModels = document.getElementById('featuredModels');
     if (urlParams.has('noFeaturedModels')) {
         featuredModels.classList.remove('d-block');
-        featuredModels.classList.add('d-nsix');
+        featuredModels.classList.add('d-none');
     } else {
-        featuredModels.classList.remove('d-nsix');
+        featuredModels.classList.remove('d-none');
         featuredModels.classList.add('d-block');
     }
 
@@ -314,7 +314,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                             }
                         },
                         {
-                            "type": "poof_96",
+                            "type": "hocker_96",
                             "cushion": true,
                             "frontcushion": false,
                             "xl": false,
@@ -420,7 +420,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                             }
                         },
                         {
-                            "type": "poof_96",
+                            "type": "hocker_96",
                             "cushion": true,
                             "frontcushion": false,
                             "xl": false,
@@ -565,7 +565,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                             }
                         },
                         {
-                            "type": "poof_96",
+                            "type": "hocker_96",
                             "cushion": true,
                             "xl": false,
                             "upholstery": (model.elements[4] && model.elements[4].upholstery) || (model.elements[0] && model.elements[0].upholstery) || { "upholstery": "ff0000" },
@@ -645,14 +645,63 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
             rotAtMinPosX = model.elements[i].location.rot;
         }
 
-        document.getElementById('type_' + (i + 1) + 'Text').textContent = model.elements[i].type;
+        //elements
+
+        //type
+
+        if (i == 0) {
+            document.getElementById('one-' + model.elements[0].type).checked = true;
+        }
+        if (i == 1) {
+            document.getElementById('two-' + model.elements[1].type).checked = true;
+        }
+        if (i == 2) {
+            document.getElementById('three-' + model.elements[2].type).checked = true;
+        }
+        if (i == 3) {
+            document.getElementById('four-' + model.elements[3].type).checked = true;
+        }
+        if (i == 4) {
+            document.getElementById('five-' + model.elements[4].type).checked = true;
+        }
+        if (i == 5) {
+            document.getElementById('six-' + model.elements[5].type).checked = true;
+        }
+
+
+        if (model.elements[i].type == 'chair_96') {
+            document.getElementById('type_' + (i + 1) + 'Text').innerHTML = ALLARRANGEMENTS.elements.chair_96.svg;
+        }
+        if (model.elements[i].type == 'noArmrestsRight_96') {
+            document.getElementById('type_' + (i + 1) + 'Text').innerHTML = ALLARRANGEMENTS.elements.noArmrestsRight_96.svg;
+        }
+        if (model.elements[i].type == 'noArmrestsLeft_96') {
+            document.getElementById('type_' + (i + 1) + 'Text').innerHTML = ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg;
+        }
+        if (model.elements[i].type == 'noArmrests_84') {
+            document.getElementById('type_' + (i + 1) + 'Text').innerHTML = ALLARRANGEMENTS.elements.noArmrests_84.svg;
+        }
+        if (model.elements[i].type == 'armrestRight_96') {
+            document.getElementById('type_' + (i + 1) + 'Text').innerHTML = ALLARRANGEMENTS.elements.armrestRight_96.svg;
+        }
+        if (model.elements[i].type == 'armrestLeft_96') {
+            document.getElementById('type_' + (i + 1) + 'Text').innerHTML = ALLARRANGEMENTS.elements.armrestLeft_96.svg;
+        }
+        if (model.elements[i].type == 'hocker_84') {
+            document.getElementById('type_' + (i + 1) + 'Text').innerHTML = ALLARRANGEMENTS.elements.hocker_84.svg;
+        }
+        if (model.elements[i].type == 'hocker_96') {
+            document.getElementById('type_' + (i + 1) + 'Text').innerHTML = ALLARRANGEMENTS.elements.hocker_96.svg;
+        }
+
+        document.getElementById('color_' + (i + 1) + 'Text').innerHTML = '<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: #' + model.elements[i].upholstery.upholstery + '">';
     }
     const difference = maxPosX - minPosX;
     arrWidth = difference * 24;
 
     if ((typeAtMinPosX === 'chair_96' && (rotAtMinPosX === 0 || rotAtMinPosX === 180)) || (typeAtMinPosX === 'armrestLeft_96' && rotAtMinPosX === 0)) {
         arrWidth += 60;
-    } else if (typeAtMinPosX === 'noArmrests_84' || (typeAtMinPosX === 'poof_84' && (rotAtMinPosX === 0 || rotAtMinPosX === 180))) {
+    } else if (typeAtMinPosX === 'noArmrests_84' || (typeAtMinPosX === 'hocker_84' && (rotAtMinPosX === 0 || rotAtMinPosX === 180))) {
         arrWidth += 42;
     } else {
         arrWidth += 48;
@@ -660,7 +709,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
 
     if ((typeAtMaxPosX === 'chair_96' && (rotAtMaxPosX === 0 || rotAtMaxPosX === 180)) || (typeAtMaxPosX === 'armrestRight_96' && rotAtMaxPosX === 0)) {
         arrWidth += 60;
-    } else if (typeAtMaxPosX === 'noArmrests_84' || (typeAtMaxPosX === 'poof_84' && (rotAtMaxPosX === 0 || rotAtMaxPosX === 180))) {
+    } else if (typeAtMaxPosX === 'noArmrests_84' || (typeAtMaxPosX === 'hocker_84' && (rotAtMaxPosX === 0 || rotAtMaxPosX === 180))) {
         arrWidth += 42;
     } else {
         arrWidth += 48;
@@ -685,8 +734,8 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     'armrestLeft_96'
     'armrestRight_96'
     'noArmrests_84'
-    'poof_84'
-    'poof_96'
+    'hocker_84'
+    'hocker_96'
     */
 
 
@@ -743,10 +792,10 @@ async function handleModelSelection() {
         progressBar.style.width = 100 * progress + '%';
     });
     const colorsPromise = fetch(`${buildUrl}/colors.json`).then(response => response.json());
-    const compsixntsPromise = fetch(`${buildUrl}/components.json`).then(response => response.json());
+    const componentsPromise = fetch(`${buildUrl}/components.json`).then(response => response.json());
     UNITY_INSTANCE = await unityPromise;
     ALLCOLORS = await colorsPromise;
-    ALLCOMPsixNTS = await compsixntsPromise;
+    ALLCOMPONENTS = await componentsPromise;
 
     console.log(`BRAND: ${brand}, PRODUCT  ${product}, TITLE ${title}`);
 
@@ -767,7 +816,7 @@ async function handleModelSelection() {
     }
     else if (urlParams.has('data')) {
         modelData = urlParams.get('data');
-        let model = JSON.parse(decodeURICompsixnt(modelData));
+        let model = JSON.parse(decodeURIComponent(modelData));
         showFeaturedModel(model);
     } else {
         modelIndex = Math.floor(Math.random() * ALLMODELS.length);
@@ -779,19 +828,19 @@ function initSettings(model) {
     const accordions = {};
     let noType;
     if (urlParams.has('noType')) {
-        noType = "d-nsix";
+        noType = "d-none";
     } else {
         noType = "d-block";
     }
     let noArrangement;
     if (urlParams.has('noArrangement')) {
-        noArrangement = "d-nsix";
+        noArrangement = "d-none";
     } else {
         noArrangement = "d-block";
     }
     let noDecor;
     if (parser.getDevice().type == 'mobile' || urlParams.has('noDecor')) {
-        noDecor = "d-nsix";
+        noDecor = "d-none";
     } else {
         noDecor = "d-block";
     }
@@ -841,127 +890,96 @@ function initSettings(model) {
     </div>`
     }
     if (model.elements.length >= 1) {
-        accordions.elementsix = {
+        accordions.elementOne = {
             "title": "element 1",
-            "options": ['type_1', 'color'],
+            "options": ['type_1', 'color_1'],
             "display": "d-block",
             "code": /*html*/ ` 
-        <ul class="nav nav-tabs" id="elementOneTab">
+            <ul class="nav nav-tabs" id="elementOneTab">
             <li class="nav-item">
-                <button class="nav-link active" id="type-one" data-bs-toggle="tab" data-bs-target="#type-one-pane" type="button" aria-controls="type-one-pane" aria-selected="true">Type</button>
+                <button class="nav-link active" id="type-one" data-bs-toggle="tab" data-bs-target="#type-one-pane" type="button"
+                    aria-controls="type-one-pane" aria-selected="true">model</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="options-one" data-bs-toggle="tab" data-bs-target="#options-one-pane" type="button" aria-controls="options-one-pane" aria-selected="false">Opties</button>
+                <button class="nav-link" id="options-one" data-bs-toggle="tab" data-bs-target="#options-one-pane" type="button"
+                    aria-controls="options-one-pane" aria-selected="false">opties</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="upholstery-one" data-bs-toggle="tab" data-bs-target="#upholstery-one-pane" type="button" aria-controls="upholstery-one-pane" aria-selected="false">Bekleding</button>
+                <button class="nav-link" id="upholstery-one" data-bs-toggle="tab" data-bs-target="#upholstery-one-pane"
+                    type="button" aria-controls="upholstery-one-pane" aria-selected="false">bekleding</button>
             </li>
         </ul>
         
-        <div class="tab-content" id="elementOneTabContent">
-            
+        <div class="tab-content border border-top-0 border-1 border-gray-300 m-0 p-0 mb-3 ps-3" id="elementOneTabContent">
+        
             <div class="tab-pane fade show active" id="type-one-pane" aria-labelledby="type-one" tabindex="0">
+
                 <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                    <div class="d-flex justify-content-start m-0 p-0">
+                    <div class="d-flex justify-content-start m-0 p-0 pt-4">
                         <div class="card border-0 grid gap row-gap-3 me-5">
-
-                        <!--
-                        'chair_96'
-                        'noArmrestsLeft_96'
-                        'noArmrestsRight_96'
-                        'armrestLeft_96'
-                        'armrestRight_96'
-                        'noArmrests_84'
-                        'poof_84'
-                        'poof_96'
-                        -->
-
-
+        
+                            <!--
+                                        'chair_96'
+                                        'noArmrestsLeft_96'
+                                        'noArmrestsRight_96'
+                                        'armrestLeft_96'
+                                        'armrestRight_96'
+                                        'noArmrests_84'
+                                        'hocker_84'
+                                        'hocker_96'
+                                        -->
+        
                             <div class="h6 fw-normal form-check">
                                 <input type="radio" class="form-check-input" name="type" id="one-chair_96">
                                 <label class="form-check-label" for="one-chair_96">
-             
-
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" viewBox="0 0 130 130">
-
-    <rect x='2' y='2' width='24' height='96' fill='none' stroke='#000' stroke-width='2' />
-    <rect x='98' y='2' width='24' height='96' fill='none' stroke='#000' stroke-width='2' />
-    <rect x='26' y='2' width='72' height='24' fill='none' stroke='#000' stroke-width='2' />
-    <line x1="14" y1="14" x2="110" y2="14" stroke='#000' stroke-width='1' stroke-dasharray="4" />
-    <line x1="14" y1="14" x2="14" y2="98" stroke='#000' stroke-width='1' stroke-dasharray="4" />
-    <line x1="110" y1="14" x2="110" y2="98" stroke='#000' stroke-width='1' stroke-dasharray="4" />
-    <line x1="26" y1="98" x2="98" y2="98" stroke='#000' stroke-width='2' />
-</svg>
+                                    ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
                                 </label>
                             </div>
-
                             <div class="h6 fw-normal form-check">
                                 <input type="radio" class="form-check-input" name="type" id="one-noArmrestsRight_96">
                                 <label class="form-check-label" for="one-noArmrestsRight_96">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 120 120">
-                                        <rect x='0' y='0' width='84' height='24' fill='none' stroke='#000' stroke-width='2' />
-                                        <line x1="0" y1="12" x2="0" y2="96" stroke='#000' stroke-width='2' />
-                                        <line x1="0" y1="96" x2="96" y2="96" stroke='#000' stroke-width='2' />
-                                        <line x1="96" y1="96" x2="96" y2="12" stroke='#000' stroke-width='2' />
-                                        <line x1="96" y1="12" x2="84" y2="12"stroke='#000' stroke-width='2' />
-                                        <line x1="0" y1="12" x2="84" y2="12" stroke='#000' stroke-width='1' stroke-dasharray="4" />
-                                    </svg>
+                                    ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
+                                    rechts
                                 </label>
                             </div>
-
                             <div class="h6 fw-normal form-check">
-                            <input type="radio" class="form-check-input" name="type" id="one-noArmrestsLeft_96">
+                                <input type="radio" class="form-check-input" name="type" id="one-noArmrestsLeft_96">
                                 <label class="form-check-label" for="one-noArmrestsLeft_96">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="54" height="51" viewBox="0 0 102 110">
-                                        <rect x='12' y='0' width='84' height='24' fill='none' stroke='#000' stroke-width='2' />
-                                        <line x1="0" y1="12" x2="0" y2="96" stroke='#000' stroke-width='2' />
-                                        <line x1="0" y1="96" x2="96" y2="96" stroke='#000' stroke-width='2' />
-                                        <line x1="96" y1="96" x2="96" y2="12" stroke='#000' stroke-width='2' />
-                                        <line x1="0" y1="12" x2="12" y2="12"stroke='#000' stroke-width='2' />
-                                        <line x1="12" y1="12" x2="96" y2="12" stroke='#000' stroke-width='1' stroke-dasharray="4" />
-                                    </svg>
-                                </label>
-                        </div>
-
-
-          
-                    
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="one-armrestLeft_96">
-                                <label class="form-check-label" for="one-armrestLeft_96">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="54" height="51" viewBox="0 0 102 110">
-                                    <rect x='24' y='0' width='84' height='24' fill='none' stroke='#000' stroke-width='2' />
-                                    <rect x='0' y='0' width='24' height='96' fill='none' stroke='#000' stroke-width='2' />
-                                    
-                                    <line x1="0" y1="96" x2="96" y2="96" stroke='#000' stroke-width='2' />
-                                    <line x1="96" y1="96" x2="96" y2="12" stroke='#000' stroke-width='2' />
-                                    <line x1="12" y1="12" x2="12" y2="96" stroke='#000' stroke-width='1' stroke-dasharray="4" />
-                                    <line x1="12" y1="12" x2="96" y2="12" stroke='#000' stroke-width='1' stroke-dasharray="4" />
-                                </svg>
+                                    ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
                                 </label>
                             </div>
-
-
-
-
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestRight_96">
-                                <label class="form-check-label" for="armrestRight_96">armleuning rechts</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrests_84">
-                                <label class="form-check-label" for="noArmrests_84">geen armleuningen</label>
+                                <input type="radio" class="form-check-input" name="type" id="one-noArmrests_84">
+                                <label class="form-check-label" for="one-noArmrests_84">
+                                    ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
+                                </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_84">
-                                <label class="form-check-label" for="poof_84">poof 84cm</label>
+                                <input type="radio" class="form-check-input" name="type" id="one-armrestLeft_96">
+                                <label class="form-check-label" for="one-armrestLeft_96">
+                                    ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_96">
-                                <label class="form-check-label" for="poof_96">poof 96cm</label>
+                                <input type="radio" class="form-check-input" name="type" id="one-armrestRight_96">
+                                <label class="form-check-label" for="one-armrestRight_96">
+                                    ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
+                                </label>
+                            </div>
+        
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="one-hocker_84">
+                                <label class="form-check-label" for="one-hocker_84">
+                                    ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
+                                </label>
+                            </div>
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="one-hocker_96">
+                                <label class="form-check-label" for="one-hocker_96">
+                                    ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -969,89 +987,142 @@ function initSettings(model) {
             </div>
         
             <div class="tab-pane fade" id="options-one-pane" aria-labelledbSy="options-one" tabindex="0">
-            2
-            </div>
-
-            <div class="tab-pane fade" id="upholstery-tab-one" aria-labelledby="upholstery-one" tabindex="0">
-                <div id="subUpholstery" class="accordion-collapse collapse" data-bs-parent="#subAccordion">
-                    <div class="accordion-body">
-                        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                            <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
-                                <div class="row m-0 p-0 pb-2">
-                                    <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                                        <div id="insideColorPicker" class="m-0 p-0"></div>
-                                    </div>
-                                </div>
-                            </div>
+                
+                <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+                <div class="d-flex justify-content-start m-0 p-0 pt-4">
+                    <div class="card border-0 grid gap row-gap-3 me-5">
+    
+                        <div class="h6 fw-normal form-check">
+                            <input type="checkbox" class="form-check-input" name="options" id="one-xl">
+                            <label class="form-check-label" for="one-xl">xl (zitting wordt verlengt)</label>
                         </div>
+                        <div class="h6 fw-normal form-check">
+                            <input type="checkbox" class="form-check-input" name="options" id="one-xl">
+                            <label class="form-check-label" for="cushion">rugkussen</label>
+                        </div>
+                        <div class="h6 fw-normal form-check">
+                            <input type="checkbox" class="form-check-input" name="options" id="one-xl">
+                            <label class="form-check-label" for="frontcushion">extra rugkussen</label>
+                        </div>
+                       
                     </div>
                 </div>
             </div>
 
+            </div>
+        
+            <div class="tab-pane fade" id="upholstery-one-pane" aria-labelledby="upholstery-one" tabindex="0">
+              
+                 
+                        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+                            <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
+                                <div class="row m-0 p-0 pb-2">
+                                    <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
+                                        <div id="upholsteryColorPickerOne" class="m-0 p-0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+             
+            </div>
+        
         </div>`,
             "onload": function () {
-                let containerElem = document.getElementsByClassName("insideColorPicker");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElem);
+                let containerElemOne = document.getElementById("upholsteryColorPickerOne");
+                addColors('upholstery', ALLCOLORS.upholstery, containerElemOne);
             }
         }
     }
     if (model.elements.length >= 2) {
         accordions.elementTwo = {
             "title": "element 2",
-            "options": ['type_2', 'color'],
+            "options": ['type_2', 'color_2'],
             "display": "d-block",
             "code": /*html*/ ` 
             <ul class="nav nav-tabs" id="elementTwoTab">
             <li class="nav-item">
-                <button class="nav-link active" id="type-two" data-bs-toggle="tab" data-bs-target="#type-two-pane" type="button" aria-controls="type-two-pane" aria-selected="true">Type</button>
+                <button class="nav-link active" id="type-two" data-bs-toggle="tab" data-bs-target="#type-two-pane" type="button"
+                    aria-controls="type-two-pane" aria-selected="true">model</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="options-two" data-bs-toggle="tab" data-bs-target="#options-two-pane" type="button" aria-controls="options-two-pane" aria-selected="false">Opties</button>
+                <button class="nav-link" id="options-two" data-bs-toggle="tab" data-bs-target="#options-two-pane" type="button"
+                    aria-controls="options-two-pane" aria-selected="false">opties</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="upholstery-two" data-bs-toggle="tab" data-bs-target="#upholstery-two-pane" type="button" aria-controls="upholstery-two-pane" aria-selected="false">Bekleding</button>
+                <button class="nav-link" id="upholstery-two" data-bs-toggle="tab" data-bs-target="#upholstery-two-pane"
+                    type="button" aria-controls="upholstery-two-pane" aria-selected="false">bekleding</button>
             </li>
         </ul>
         
-        <div class="tab-content" id="elementTwoTabContent">
-            
+        <div class="tab-content border border-top-0 border-1 border-gray-300 m-0 p-0 mb-3 ps-3" id="elementTwoTabContent">
+        
             <div class="tab-pane fade show active" id="type-two-pane" aria-labelledby="type-two" tabindex="0">
                 <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                    <div class="d-flex justify-content-start m-0 p-0">
+                    <div class="d-flex justify-content-start m-0 p-0 pt-4">
                         <div class="card border-0 grid gap row-gap-3 me-5">
+        
+                            <!--
+                                        'chair_96'
+                                        'noArmrestsLeft_96'
+                                        'noArmrestsRight_96'
+                                        'armrestLeft_96'
+                                        'armrestRight_96'
+                                        'noArmrests_84'
+                                        'hocker_84'
+                                        'hocker_96'
+                                        -->
+        
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="chair_96">
-                                <label class="form-check-label" for="chair_96">chair_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="two-chair_96">
+                                <label class="form-check-label" for="two-chair_96">
+                                    ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsLeft_96">
-                                <label class="form-check-label" for="noArmrestsLeft_96">noArmrestsLeft_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="two-noArmrestsRight_96">
+                                <label class="form-check-label" for="two-noArmrestsRight_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
+                                    rechts
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsRight_96">
-                                <label class="form-check-label" for="noArmrestsRight_96">noArmrestsRight_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="two-noArmrestsLeft_96">
+                                <label class="form-check-label" for="two-noArmrestsLeft_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestLeft_96">
-                                <label class="form-check-label" for="armrestLeft_96">armrestLeft_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestRight_96">
-                                <label class="form-check-label" for="armrestRight_96">armrestRight_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrests_84">
-                                <label class="form-check-label" for="noArmrests_84">noArmrests_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="two-noArmrests_84">
+                                <label class="form-check-label" for="two-noArmrests_84">
+                                    ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
+                                </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_84">
-                                <label class="form-check-label" for="poof_84">poof_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="two-armrestLeft_96">
+                                <label class="form-check-label" for="two-armrestLeft_96">
+                                    ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_96">
-                                <label class="form-check-label" for="poof_96">poof_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="two-armrestRight_96">
+                                <label class="form-check-label" for="two-armrestRight_96">
+                                    ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
+                                </label>
+                            </div>
+        
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="two-hocker_84">
+                                <label class="form-check-label" for="two-hocker_84">
+                                    ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
+                                </label>
+                            </div>
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="two-hocker_96">
+                                <label class="form-check-label" for="two-hocker_96">
+                                    ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -1059,89 +1130,120 @@ function initSettings(model) {
             </div>
         
             <div class="tab-pane fade" id="options-two-pane" aria-labelledbSy="options-two" tabindex="0">
-            2
+                2
             </div>
+       
+            <div class="tab-pane fade" id="upholstery-two-pane" aria-labelledby="upholstery-two" tabindex="0">
 
-            <div class="tab-pane fade" id="upholstery-tab-two" aria-labelledby="upholstery-two" tabindex="0">
-                <div id="subUpholstery" class="accordion-collapse collapse" data-bs-parent="#subAccordion">
-                    <div class="accordion-body">
                         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
                             <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
                                 <div class="row m-0 p-0 pb-2">
                                     <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                                        <div id="insideColorPicker" class="m-0 p-0"></div>
+                                        <div id="upholsteryColorPickerTwo" class="m-0 p-0"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+          
             </div>
-
+        
         </div>`,
             "onload": function () {
-                let containerElem = document.getElementsByClassName("insideColorPicker");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElem);
+                let containerElemTwo = document.getElementById("upholsteryColorPickerTwo");
+                addColors('upholstery', ALLCOLORS.upholstery, containerElemTwo);
             }
         }
     }
     if (model.elements.length >= 3) {
         accordions.elementThree = {
             "title": "element 3",
-            "options": ['type_3', 'color'],
+            "options": ['type_3', 'color_3'],
             "display": "d-block",
             "code": /*html*/ ` 
             <ul class="nav nav-tabs" id="elementThreeTab">
             <li class="nav-item">
-                <button class="nav-link active" id="type-three" data-bs-toggle="tab" data-bs-target="#type-three-pane" type="button" aria-controls="type-three-pane" aria-selected="true">Type</button>
+                <button class="nav-link active" id="type-three" data-bs-toggle="tab" data-bs-target="#type-three-pane" type="button"
+                    aria-controls="type-three-pane" aria-selected="true">model</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="options-three" data-bs-toggle="tab" data-bs-target="#options-three-pane" type="button" aria-controls="options-three-pane" aria-selected="false">Opties</button>
+                <button class="nav-link" id="options-three" data-bs-toggle="tab" data-bs-target="#options-three-pane" type="button"
+                    aria-controls="options-three-pane" aria-selected="false">opties</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="upholstery-three" data-bs-toggle="tab" data-bs-target="#upholstery-three-pane" type="button" aria-controls="upholstery-three-pane" aria-selected="false">Bekleding</button>
+                <button class="nav-link" id="upholstery-three" data-bs-toggle="tab" data-bs-target="#upholstery-three-pane"
+                    type="button" aria-controls="upholstery-three-pane" aria-selected="false">bekleding</button>
             </li>
         </ul>
         
-        <div class="tab-content" id="elementThreeTabContent">
-            
+        <div class="tab-content border border-top-0 border-1 border-gray-300 m-0 p-0 mb-3 ps-3" id="elementThreeTabContent">
+        
             <div class="tab-pane fade show active" id="type-three-pane" aria-labelledby="type-three" tabindex="0">
                 <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                    <div class="d-flex justify-content-start m-0 p-0">
+                    <div class="d-flex justify-content-start m-0 p-0 pt-4">
                         <div class="card border-0 grid gap row-gap-3 me-5">
+        
+                            <!--
+                                        'chair_96'
+                                        'noArmrestsLeft_96'
+                                        'noArmrestsRight_96'
+                                        'armrestLeft_96'
+                                        'armrestRight_96'
+                                        'noArmrests_84'
+                                        'hocker_84'
+                                        'hocker_96'
+                                        -->
+        
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="chair_96">
-                                <label class="form-check-label" for="chair_96">chair_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="three-chair_96">
+                                <label class="form-check-label" for="three-chair_96">
+                                    ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsLeft_96">
-                                <label class="form-check-label" for="noArmrestsLeft_96">noArmrestsLeft_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="three-noArmrestsRight_96">
+                                <label class="form-check-label" for="three-noArmrestsRight_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
+                                    rechts
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsRight_96">
-                                <label class="form-check-label" for="noArmrestsRight_96">noArmrestsRight_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="three-noArmrestsLeft_96">
+                                <label class="form-check-label" for="three-noArmrestsLeft_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestLeft_96">
-                                <label class="form-check-label" for="armrestLeft_96">armrestLeft_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestRight_96">
-                                <label class="form-check-label" for="armrestRight_96">armrestRight_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrests_84">
-                                <label class="form-check-label" for="noArmrests_84">noArmrests_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="three-noArmrests_84">
+                                <label class="form-check-label" for="three-noArmrests_84">
+                                    ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
+                                </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_84">
-                                <label class="form-check-label" for="poof_84">poof_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="three-armrestLeft_96">
+                                <label class="form-check-label" for="three-armrestLeft_96">
+                                    ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_96">
-                                <label class="form-check-label" for="poof_96">poof_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="three-armrestRight_96">
+                                <label class="form-check-label" for="three-armrestRight_96">
+                                    ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
+                                </label>
+                            </div>
+        
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="three-hocker_84">
+                                <label class="form-check-label" for="three-hocker_84">
+                                    ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
+                                </label>
+                            </div>
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="three-hocker_96">
+                                <label class="form-check-label" for="three-hocker_96">
+                                    ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -1149,89 +1251,120 @@ function initSettings(model) {
             </div>
         
             <div class="tab-pane fade" id="options-three-pane" aria-labelledbSy="options-three" tabindex="0">
-            2
+                2
             </div>
+        
+            <div class="tab-pane fade" id="upholstery-three-pane" aria-labelledby="upholstery-three" tabindex="0">
 
-            <div class="tab-pane fade" id="upholstery-tab-three" aria-labelledby="upholstery-three" tabindex="0">
-                <div id="subUpholstery" class="accordion-collapse collapse" data-bs-parent="#subAccordion">
-                    <div class="accordion-body">
                         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
                             <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
                                 <div class="row m-0 p-0 pb-2">
                                     <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                                        <div id="insideColorPicker" class="m-0 p-0"></div>
+                                        <div id="upholsteryColorPickerThree" class="m-0 p-0"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+          
             </div>
-
+        
         </div>`,
             "onload": function () {
-                let containerElem = document.getElementsByClassName("insideColorPicker");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElem);
+                let containerElemThree = document.getElementById("upholsteryColorPickerThree");
+                addColors('upholstery', ALLCOLORS.upholstery, containerElemThree);
             }
         }
     }
     if (model.elements.length >= 4) {
-        accordions.elementVier = {
+        accordions.elementFour = {
             "title": "element 4",
-            "options": ['type_4', 'color'],
+            "options": ['type_4', 'color_4'],
             "display": "d-block",
             "code": /*html*/ ` 
             <ul class="nav nav-tabs" id="elementFourTab">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="type-four" data-bs-toggle="tab" data-bs-target="#type-four-pane" type="button" role="tab" aria-controls="type-four-pane" aria-selected="true">Type</button>
+            <li class="nav-item">
+                <button class="nav-link active" id="type-four" data-bs-toggle="tab" data-bs-target="#type-four-pane" type="button"
+                    aria-controls="type-four-pane" aria-selected="true">model</button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="options-four" data-bs-toggle="tab" data-bs-target="#options-four-pane" type="button" role="tab" aria-controls="options-four-pane" aria-selected="false">Opties</button>
+            <li class="nav-item">
+                <button class="nav-link" id="options-four" data-bs-toggle="tab" data-bs-target="#options-four-pane" type="button"
+                    aria-controls="options-four-pane" aria-selected="false">opties</button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="upholstery-four" data-bs-toggle="tab" data-bs-target="#upholstery-four-pane" type="button" role="tab" aria-controls="upholstery-four-pane" aria-selected="false">Bekleding</button>
+            <li class="nav-item">
+                <button class="nav-link" id="upholstery-four" data-bs-toggle="tab" data-bs-target="#upholstery-four-pane"
+                    type="button" aria-controls="upholstery-four-pane" aria-selected="false">bekleding</button>
             </li>
         </ul>
         
-        <div class="tab-content" id="elementFourTabContent">
-            
+        <div class="tab-content border border-top-0 border-1 border-gray-300 m-0 p-0 mb-3 ps-3" id="elementFourTabContent">
+        
             <div class="tab-pane fade show active" id="type-four-pane" aria-labelledby="type-four" tabindex="0">
                 <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                    <div class="d-flex justify-content-start m-0 p-0">
+                    <div class="d-flex justify-content-start m-0 p-0 pt-4">
                         <div class="card border-0 grid gap row-gap-3 me-5">
+        
+                            <!--
+                                        'chair_96'
+                                        'noArmrestsLeft_96'
+                                        'noArmrestsRight_96'
+                                        'armrestLeft_96'
+                                        'armrestRight_96'
+                                        'noArmrests_84'
+                                        'hocker_84'
+                                        'hocker_96'
+                                        -->
+        
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="chair_96">
-                                <label class="form-check-label" for="chair_96">chair_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="four-chair_96">
+                                <label class="form-check-label" for="four-chair_96">
+                                    ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsLeft_96">
-                                <label class="form-check-label" for="noArmrestsLeft_96">noArmrestsLeft_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="four-noArmrestsRight_96">
+                                <label class="form-check-label" for="four-noArmrestsRight_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
+                                    rechts
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsRight_96">
-                                <label class="form-check-label" for="noArmrestsRight_96">noArmrestsRight_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="four-noArmrestsLeft_96">
+                                <label class="form-check-label" for="four-noArmrestsLeft_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestLeft_96">
-                                <label class="form-check-label" for="armrestLeft_96">armrestLeft_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestRight_96">
-                                <label class="form-check-label" for="armrestRight_96">armrestRight_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrests_84">
-                                <label class="form-check-label" for="noArmrests_84">noArmrests_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="four-noArmrests_84">
+                                <label class="form-check-label" for="four-noArmrests_84">
+                                    ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
+                                </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_84">
-                                <label class="form-check-label" for="poof_84">poof_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="four-armrestLeft_96">
+                                <label class="form-check-label" for="four-armrestLeft_96">
+                                    ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_96">
-                                <label class="form-check-label" for="poof_96">poof_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="four-armrestRight_96">
+                                <label class="form-check-label" for="four-armrestRight_96">
+                                    ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
+                                </label>
+                            </div>
+        
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="four-hocker_84">
+                                <label class="form-check-label" for="four-hocker_84">
+                                    ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
+                                </label>
+                            </div>
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="four-hocker_96">
+                                <label class="form-check-label" for="four-hocker_96">
+                                    ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -1239,89 +1372,120 @@ function initSettings(model) {
             </div>
         
             <div class="tab-pane fade" id="options-four-pane" aria-labelledbSy="options-four" tabindex="0">
-            2
+                2
             </div>
+        
+            <div class="tab-pane fade" id="upholstery-four-pane" aria-labelledby="upholstery-four" tabindex="0">
 
-            <div class="tab-pane fade" id="upholstery-tab-four" aria-labelledby="upholstery-four" tabindex="0">
-                <div id="subUpholstery" class="accordion-collapse collapse" data-bs-parent="#subAccordion">
-                    <div class="accordion-body">
                         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
                             <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
                                 <div class="row m-0 p-0 pb-2">
                                     <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                                        <div id="insideColorPicker" class="m-0 p-0"></div>
+                                        <div id="upholsteryColorPickerFour" class="m-0 p-0"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+          
             </div>
-
+        
         </div>`,
             "onload": function () {
-                let containerElem = document.getElementsByClassName("insideColorPicker");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElem);
+                let containerElemFour = document.getElementById("upholsteryColorPickerFour");
+                addColors('upholstery', ALLCOLORS.upholstery, containerElemFour);
             }
         }
     }
     if (model.elements.length >= 5) {
         accordions.elementFive = {
             "title": "element 5",
-            "options": ['type_5', 'color'],
+            "options": ['type_5', 'color_5'],
             "display": "d-block",
             "code": /*html*/ ` 
             <ul class="nav nav-tabs" id="elementFiveTab">
             <li class="nav-item">
-                <button class="nav-link active" id="type-five" data-bs-toggle="tab" data-bs-target="#type-five-pane" type="button" aria-controls="type-five-pane" aria-selected="true">Type</button>
+                <button class="nav-link active" id="type-five" data-bs-toggle="tab" data-bs-target="#type-five-pane" type="button"
+                    aria-controls="type-five-pane" aria-selected="true">model</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="options-five" data-bs-toggle="tab" data-bs-target="#options-five-pane" type="button" aria-controls="options-five-pane" aria-selected="false">Opties</button>
+                <button class="nav-link" id="options-five" data-bs-toggle="tab" data-bs-target="#options-five-pane" type="button"
+                    aria-controls="options-five-pane" aria-selected="false">opties</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="upholstery-five" data-bs-toggle="tab" data-bs-target="#upholstery-five-pane" type="button" aria-controls="upholstery-five-pane" aria-selected="false">Bekleding</button>
+                <button class="nav-link" id="upholstery-five" data-bs-toggle="tab" data-bs-target="#upholstery-five-pane"
+                    type="button" aria-controls="upholstery-five-pane" aria-selected="false">bekleding</button>
             </li>
         </ul>
         
-        <div class="tab-content" id="elementFiveTabContent">
-            
+        <div class="tab-content border border-top-0 border-1 border-gray-300 m-0 p-0 mb-3 ps-3" id="elementFiveTabContent">
+        
             <div class="tab-pane fade show active" id="type-five-pane" aria-labelledby="type-five" tabindex="0">
                 <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                    <div class="d-flex justify-content-start m-0 p-0">
+                    <div class="d-flex justify-content-start m-0 p-0 pt-4">
                         <div class="card border-0 grid gap row-gap-3 me-5">
+        
+                            <!--
+                                        'chair_96'
+                                        'noArmrestsLeft_96'
+                                        'noArmrestsRight_96'
+                                        'armrestLeft_96'
+                                        'armrestRight_96'
+                                        'noArmrests_84'
+                                        'hocker_84'
+                                        'hocker_96'
+                                        -->
+        
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="chair_96">
-                                <label class="form-check-label" for="chair_96">chair_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="five-chair_96">
+                                <label class="form-check-label" for="five-chair_96">
+                                    ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsLeft_96">
-                                <label class="form-check-label" for="noArmrestsLeft_96">noArmrestsLeft_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="five-noArmrestsRight_96">
+                                <label class="form-check-label" for="five-noArmrestsRight_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
+                                    rechts
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsRight_96">
-                                <label class="form-check-label" for="noArmrestsRight_96">noArmrestsRight_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="five-noArmrestsLeft_96">
+                                <label class="form-check-label" for="five-noArmrestsLeft_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestLeft_96">
-                                <label class="form-check-label" for="armrestLeft_96">armrestLeft_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestRight_96">
-                                <label class="form-check-label" for="armrestRight_96">armrestRight_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrests_84">
-                                <label class="form-check-label" for="noArmrests_84">noArmrests_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="five-noArmrests_84">
+                                <label class="form-check-label" for="five-noArmrests_84">
+                                    ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
+                                </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_84">
-                                <label class="form-check-label" for="poof_84">poof_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="five-armrestLeft_96">
+                                <label class="form-check-label" for="five-armrestLeft_96">
+                                    ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_96">
-                                <label class="form-check-label" for="poof_96">poof_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="five-armrestRight_96">
+                                <label class="form-check-label" for="five-armrestRight_96">
+                                    ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
+                                </label>
+                            </div>
+        
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="five-hocker_84">
+                                <label class="form-check-label" for="five-hocker_84">
+                                    ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
+                                </label>
+                            </div>
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="five-hocker_96">
+                                <label class="form-check-label" for="five-hocker_96">
+                                    ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -1329,89 +1493,120 @@ function initSettings(model) {
             </div>
         
             <div class="tab-pane fade" id="options-five-pane" aria-labelledbSy="options-five" tabindex="0">
-            2
+                2
             </div>
+        
+            <div class="tab-pane fade" id="upholstery-five-pane" aria-labelledby="upholstery-five" tabindex="0">
 
-            <div class="tab-pane fade" id="upholstery-tab-five" aria-labelledby="upholstery-five" tabindex="0">
-                <div id="subUpholstery" class="accordion-collapse collapse" data-bs-parent="#subAccordion">
-                    <div class="accordion-body">
                         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
                             <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
                                 <div class="row m-0 p-0 pb-2">
                                     <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                                        <div id="insideColorPicker" class="m-0 p-0"></div>
+                                        <div id="upholsteryColorPickerFive" class="m-0 p-0"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+          
             </div>
-
+        
         </div>`,
             "onload": function () {
-                let containerElem = document.getElementsByClassName("insideColorPicker");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElem);
+                let containerElemFive = document.getElementById("upholsteryColorPickerFive");
+                addColors('upholstery', ALLCOLORS.upholstery, containerElemFive);
             }
         }
     }
     if (model.elements.length >= 6) {
         accordions.elementSix = {
             "title": "element 6",
-            "options": ['type_6', 'color'],
+            "options": ['type_6', 'color_6'],
             "display": "d-block",
             "code": /*html*/ ` 
             <ul class="nav nav-tabs" id="elementSixTab">
             <li class="nav-item">
-                <button class="nav-link active" id="type-six" data-bs-toggle="tab" data-bs-target="#type-six-pane" type="button" aria-controls="type-six-pane" aria-selected="true">Type</button>
+                <button class="nav-link active" id="type-six" data-bs-toggle="tab" data-bs-target="#type-six-pane" type="button"
+                    aria-controls="type-six-pane" aria-selected="true">model</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="options-six" data-bs-toggle="tab" data-bs-target="#options-six-pane" type="button" aria-controls="options-six-pane" aria-selected="false">Opties</button>
+                <button class="nav-link" id="options-six" data-bs-toggle="tab" data-bs-target="#options-six-pane" type="button"
+                    aria-controls="options-six-pane" aria-selected="false">opties</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" id="upholstery-six" data-bs-toggle="tab" data-bs-target="#upholstery-six-pane" type="button" aria-controls="upholstery-six-pane" aria-selected="false">Bekleding</button>
+                <button class="nav-link" id="upholstery-six" data-bs-toggle="tab" data-bs-target="#upholstery-six-pane"
+                    type="button" aria-controls="upholstery-six-pane" aria-selected="false">bekleding</button>
             </li>
         </ul>
         
-        <div class="tab-content" id="elementSixTabContent">
-            
+        <div class="tab-content border border-top-0 border-1 border-gray-300 m-0 p-0 mb-3 ps-3" id="elementSixTabContent">
+        
             <div class="tab-pane fade show active" id="type-six-pane" aria-labelledby="type-six" tabindex="0">
                 <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                    <div class="d-flex justify-content-start m-0 p-0">
+                    <div class="d-flex justify-content-start m-0 p-0 pt-4">
                         <div class="card border-0 grid gap row-gap-3 me-5">
+        
+                            <!--
+                                        'chair_96'
+                                        'noArmrestsLeft_96'
+                                        'noArmrestsRight_96'
+                                        'armrestLeft_96'
+                                        'armrestRight_96'
+                                        'noArmrests_84'
+                                        'hocker_84'
+                                        'hocker_96'
+                                        -->
+        
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="chair_96">
-                                <label class="form-check-label" for="chair_96">chair_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="six-chair_96">
+                                <label class="form-check-label" for="six-chair_96">
+                                    ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsLeft_96">
-                                <label class="form-check-label" for="noArmrestsLeft_96">noArmrestsLeft_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="six-noArmrestsRight_96">
+                                <label class="form-check-label" for="six-noArmrestsRight_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
+                                    rechts
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrestsRight_96">
-                                <label class="form-check-label" for="noArmrestsRight_96">noArmrestsRight_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="six-noArmrestsLeft_96">
+                                <label class="form-check-label" for="six-noArmrestsLeft_96">
+                                    ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestLeft_96">
-                                <label class="form-check-label" for="armrestLeft_96">armrestLeft_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="armrestRight_96">
-                                <label class="form-check-label" for="armrestRight_96">armrestRight_96</label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="noArmrests_84">
-                                <label class="form-check-label" for="noArmrests_84">noArmrests_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="six-noArmrests_84">
+                                <label class="form-check-label" for="six-noArmrests_84">
+                                    ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
+                                </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_84">
-                                <label class="form-check-label" for="poof_84">poof_84</label>
+                                <input type="radio" class="form-check-input" name="type" id="six-armrestLeft_96">
+                                <label class="form-check-label" for="six-armrestLeft_96">
+                                    ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
+                                </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="poof_96">
-                                <label class="form-check-label" for="poof_96">poof_96</label>
+                                <input type="radio" class="form-check-input" name="type" id="six-armrestRight_96">
+                                <label class="form-check-label" for="six-armrestRight_96">
+                                    ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
+                                </label>
+                            </div>
+        
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="six-hocker_84">
+                                <label class="form-check-label" for="six-hocker_84">
+                                    ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
+                                </label>
+                            </div>
+                            <div class="h6 fw-normal form-check">
+                                <input type="radio" class="form-check-input" name="type" id="six-hocker_96">
+                                <label class="form-check-label" for="six-hocker_96">
+                                    ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -1419,29 +1614,27 @@ function initSettings(model) {
             </div>
         
             <div class="tab-pane fade" id="options-six-pane" aria-labelledbSy="options-six" tabindex="0">
-            2
+                2
             </div>
+        
+            <div class="tab-pane fade" id="upholstery-six-pane" aria-labelledby="upholstery-six" tabindex="0">
 
-            <div class="tab-pane fade" id="upholstery-tab-six" aria-labelledby="upholstery-six" tabindex="0">
-                <div id="subUpholstery" class="accordion-collapse collapse" data-bs-parent="#subAccordion">
-                    <div class="accordion-body">
                         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
                             <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
                                 <div class="row m-0 p-0 pb-2">
                                     <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                                        <div id="insideColorPicker" class="m-0 p-0"></div>
+                                        <div id="upholsteryColorPickerSix" class="m-0 p-0"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+          
             </div>
-
+        
         </div>`,
             "onload": function () {
-                let containerElem = document.getElementsByClassName("insideColorPicker");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElem);
+                let containerElemSix = document.getElementById("upholsteryColorPickerSix");
+                addColors('upholstery', ALLCOLORS.upholstery, containerElemSix);
             }
         }
     }

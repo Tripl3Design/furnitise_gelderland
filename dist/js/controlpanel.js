@@ -85,35 +85,6 @@ function addTextures(name, colorName, containerElem) {
     containerElem.innerHTML = html.join('\n');
 }
 
-function addTexturess(name, colorName, containerElem) {
-    const html = [];
-    html.push( /*html*/ `
-        <div class="row row-cols-6 m-0 p-0">
-            `);
-    for (let i = 0; i < colorName.length; i++) {
-        var colorPath = colorName[i].colorPath;
-        if (colorPath != undefined) {
-            colorPath = "img/transparant.png";
-            html.push( /*html*/ `
-                <div class="col d-flex align-items-center m-0 p-1" style="aspect-ratio: 1">
-                    <img id="${name}Index_${i}" style="background-color: #${colorName[i].colorHex}; width: 75px;" src="${colorName[i].colorPathThumb}" class="rounded-pill img-fluid mx-auto p-0 border    border-xxl-5 border-xl-4 border-lg-3 border-md-2 border-1    colorButton ${name}_colorButton" alt="${colorName[i].colorName}" data-bs-toggle="tooltip" data-bs-title="${colorName[i].colorName}">
-                </div>
-            `);
-            if (i % 3 == 0) {
-                html.push( /*html*/ `
-                <div class="col m-0 p-0"></div>
-                <div class="col m-0 p-0"></div>
-                <div class="col m-0 p-0"></div>
-            `);
-            }
-        }
-    }
-    html.push( /*html*/ `
-        </div>
-`);
-    containerElem.innerHTML = html.join('\n');
-}
-
 function showSelected(displayTitle) {
     let accordionButton = document.getElementsByClassName('accordion-button');
     let accordionText = document.getElementsByClassName('accordion-text');
