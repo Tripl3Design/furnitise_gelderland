@@ -3,7 +3,7 @@ function addColors(name, colorName, containerElem) {
     const html = [];
 
     html.push( /*html*/ `
-        <div class="row row-cols-5 m-0 p-0">
+        <div class="row row-cols-6 m-0 p-0">
             `);
 
     const colorItems = [];
@@ -18,11 +18,11 @@ function addColors(name, colorName, containerElem) {
     }
 
     for (let c = 0; c < colorItems.length; c++) {
-        if (c !== 0 && c % 5 == 0) {
-            html.push( /*html*/ `
-                <!--<div class="col m-0 p-0"></div>-->
-            `);
-        }
+        //if (c !== 0 && c % 5 == 0) {
+        //    html.push( /*html*/ `
+        //        <!--<div class="col m-0 p-0"></div>-->
+        //    `);
+        //}
         html.push( /*html*/ `
                 <div class="col d-flex align-items-center m-0 p-1 colorTitle" style="aspect-ratio: 1">
                     <img id="${name}Index_${c}" style="background-color: #${colorItems[c].colorHex}; width: 75px;" src="img/transparant.png" class="rounded-pill img-fluid mx-auto p-0 border    border-5    colorButton ${name}_colorButton" alt="${colorItems[c].colorName}">

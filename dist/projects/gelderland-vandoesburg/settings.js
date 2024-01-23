@@ -648,24 +648,101 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         //elements
 
         //type
+        /*
+                if (i == 0) {
+                    document.getElementById('one-' + model.elements[0].type).checked = true;
+                }
+                if (i == 1) {
+                    document.getElementById('two-' + model.elements[1].type).checked = true;
+                }
+                if (i == 2) {
+                    document.getElementById('three-' + model.elements[2].type).checked = true;
+                }
+                if (i == 3) {
+                    document.getElementById('four-' + model.elements[3].type).checked = true;
+                }
+                if (i == 4) {
+                    document.getElementById('five-' + model.elements[4].type).checked = true;
+                }
+                if (i == 5) {
+                    document.getElementById('six-' + model.elements[5].type).checked = true;
+                }
+        */
+             
+        const radioButtonId = `${i + 1}-${model.elements[i].type}`;
+        console.log(`Setting checked for ${radioButtonId}`);
+        document.getElementById(radioButtonId).checked = true;
 
-        if (i == 0) {
-            document.getElementById('one-' + model.elements[0].type).checked = true;
+        const typeValues1 = document.querySelectorAll(`input[type=radio][name='1-type']`);
+        for (const typeValue1 of typeValues1) {
+            typeValue1.onclick = (type1) => {
+
+                model.elements[0].type = type1.target.value;
+
+                updateControlPanel(model, 'elementOne');
+                updateFeaturedModel(model);
+                showSelected(false);
+            }
         }
-        if (i == 1) {
-            document.getElementById('two-' + model.elements[1].type).checked = true;
+
+        const typeValues2 = document.querySelectorAll(`input[type=radio][name='2-type']`);
+        for (const typeValue2 of typeValues2) {
+            typeValue2.onclick = (type2) => {
+
+                model.elements[1].type = type2.target.value;
+
+                updateControlPanel(model, 'elementTwo');
+                updateFeaturedModel(model);
+                showSelected(false);
+            }
         }
-        if (i == 2) {
-            document.getElementById('three-' + model.elements[2].type).checked = true;
+
+        const typeValues3 = document.querySelectorAll(`input[type=radio][name='3-type']`);
+        for (const typeValue3 of typeValues3) {
+            typeValue3.onclick = (type3) => {
+
+                model.elements[2].type = type3.target.value;
+
+                updateControlPanel(model, 'elementThree');
+                updateFeaturedModel(model);
+                showSelected(false);
+            }
         }
-        if (i == 3) {
-            document.getElementById('four-' + model.elements[3].type).checked = true;
+
+        const typeValues4 = document.querySelectorAll(`input[type=radio][name='4-type']`);
+        for (const typeValue4 of typeValues4) {
+            typeValue4.onclick = (type4) => {
+
+                model.elements[3].type = type4.target.value;
+
+                updateControlPanel(model, 'elementThree');
+                updateFeaturedModel(model);
+                showSelected(false);
+            }
         }
-        if (i == 4) {
-            document.getElementById('five-' + model.elements[4].type).checked = true;
+
+        const typeValues5 = document.querySelectorAll(`input[type=radio][name='5-type']`);
+        for (const typeValue5 of typeValues5) {
+            typeValue5.onclick = (type5) => {
+
+                model.elements[4].type = type5.target.value;
+
+                updateControlPanel(model, 'elementThree');
+                updateFeaturedModel(model);
+                showSelected(false);
+            }
         }
-        if (i == 5) {
-            document.getElementById('six-' + model.elements[5].type).checked = true;
+
+        const typeValues6 = document.querySelectorAll(`input[type=radio][name='6-type']`);
+        for (const typeValue6 of typeValues6) {
+            typeValue6.onclick = (type6) => {
+
+                model.elements[5].type = type6.target.value;
+
+                updateControlPanel(model, 'elementThree');
+                updateFeaturedModel(model);
+                showSelected(false);
+            }
         }
 
 
@@ -743,26 +820,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
 
     // is global FEATUREDMODEL for pdf really necessary?
     FEATUREDMODEL = model;
-}
-
-function showMinos(numberOfSeats, widthInElements, containerElem) {
-
-    console.log(numberOfSeats);
-    console.log(widthInElements);
-
-    const filteredMinos = ALLARRANGEMENTS.arrangements.filter(item => item.numberOfSeats === numberOfSeats && item.widthInElements === widthInElements);
-
-    console.log(filteredMinos);
-
-    const html = `<div class="row row-cols-6 m-0 p-0">
-      ${filteredMinos.map(mino => `
-      <div id="${mino.name}" class="col d-flex align-items-center m-0 p-1 border border-1">
-        ${mino.svg}
-      </div>
-      `).join('\n')}
-    </div>`;
-
-    document.getElementById('minoContainer').innerHTML = html;
 }
 
 function showFeaturedModel(model) {
@@ -930,54 +987,54 @@ function initSettings(model) {
                                         -->
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="one-chair_96">
-                                <label class="form-check-label" for="one-chair_96">
+                                <input type="radio" class="form-check-input" name="1-type" id="1-chair_96" value="chair_96">
+                                <label class="form-check-label" for="1-chair_96">
                                     ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="one-noArmrestsRight_96">
-                                <label class="form-check-label" for="one-noArmrestsRight_96">
+                                <input type="radio" class="form-check-input" name="1-type" id="1-noArmrestsRight_96" value="noArmrestsRight_96">
+                                <label class="form-check-label" for="1-noArmrestsRight_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
                                     rechts
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="one-noArmrestsLeft_96">
-                                <label class="form-check-label" for="one-noArmrestsLeft_96">
+                                <input type="radio" class="form-check-input" name="1-type" id="1-noArmrestsLeft_96" value="noArmrestsLeft_96">
+                                <label class="form-check-label" for="1-noArmrestsLeft_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="one-noArmrests_84">
-                                <label class="form-check-label" for="one-noArmrests_84">
+                                <input type="radio" class="form-check-input" name="1-type" id="1-noArmrests_84" value="noArmrests_84">
+                                <label class="form-check-label" for="1-noArmrests_84">
                                     ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
                                 </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="one-armrestLeft_96">
-                                <label class="form-check-label" for="one-armrestLeft_96">
+                                <input type="radio" class="form-check-input" name="1-type" id="1-armrestLeft_96" value="armrestLeft_96">
+                                <label class="form-check-label" for="1-armrestLeft_96">
                                     ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="one-armrestRight_96">
-                                <label class="form-check-label" for="one-armrestRight_96">
+                                <input type="radio" class="form-check-input" name="1-type" id="1-armrestRight_96" value="armrestRight_96">
+                                <label class="form-check-label" for="1-armrestRight_96">
                                     ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
                                 </label>
                             </div>
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="one-hocker_84">
-                                <label class="form-check-label" for="one-hocker_84">
+                                <input type="radio" class="form-check-input" name="1-type" id="1-hocker_84" value="hocker_84">
+                                <label class="form-check-label" for="1-hocker_84">
                                     ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="one-hocker_96">
-                                <label class="form-check-label" for="one-hocker_96">
+                                <input type="radio" class="form-check-input" name="1-type" id="1-hocker_96" value="hocker_96">
+                                <label class="form-check-label" for="1-hocker_96">
                                     ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
                                 </label>
                             </div>
@@ -1015,7 +1072,7 @@ function initSettings(model) {
               
                  
                         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                            <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
+                            <div class="col-12 m-0 p-0">
                                 <div class="row m-0 p-0 pb-2">
                                     <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
                                         <div id="upholsteryColorPickerOne" class="m-0 p-0"></div>
@@ -1073,54 +1130,54 @@ function initSettings(model) {
                                         -->
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="two-chair_96">
-                                <label class="form-check-label" for="two-chair_96">
+                                <input type="radio" class="form-check-input" name="2-type" id="2-chair_96" value="chair_96">
+                                <label class="form-check-label" for="2-chair_96">
                                     ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="two-noArmrestsRight_96">
-                                <label class="form-check-label" for="two-noArmrestsRight_96">
+                                <input type="radio" class="form-check-input" name="2-type" id="2-noArmrestsRight_96" value="noArmrestsRight_96">
+                                <label class="form-check-label" for="2-noArmrestsRight_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
                                     rechts
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="two-noArmrestsLeft_96">
-                                <label class="form-check-label" for="two-noArmrestsLeft_96">
+                                <input type="radio" class="form-check-input" name="2-type" id="2-noArmrestsLeft_96" value="noArmrestsLeft_96">
+                                <label class="form-check-label" for="2-noArmrestsLeft_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="two-noArmrests_84">
-                                <label class="form-check-label" for="two-noArmrests_84">
+                                <input type="radio" class="form-check-input" name="2-type" id="2-noArmrests_84" value="noArmrests_84">
+                                <label class="form-check-label" for="2-noArmrests_84">
                                     ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
                                 </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="two-armrestLeft_96">
-                                <label class="form-check-label" for="two-armrestLeft_96">
+                                <input type="radio" class="form-check-input" name="2-type" id="2-armrestLeft_96" value="armrestLeft_96">
+                                <label class="form-check-label" for="2-armrestLeft_96">
                                     ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="two-armrestRight_96">
-                                <label class="form-check-label" for="two-armrestRight_96">
+                                <input type="radio" class="form-check-input" name="2-type" id="2-armrestRight_96" value="armrestRight_96">
+                                <label class="form-check-label" for="2-armrestRight_96">
                                     ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
                                 </label>
                             </div>
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="two-hocker_84">
-                                <label class="form-check-label" for="two-hocker_84">
+                                <input type="radio" class="form-check-input" name="2-type" id="2-hocker_84" value="hocker_84">
+                                <label class="form-check-label" for="2-hocker_84">
                                     ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="two-hocker_96">
-                                <label class="form-check-label" for="two-hocker_96">
+                                <input type="radio" class="form-check-input" name="2-type" id="2-hocker_96" value="hocker_96">
+                                <label class="form-check-label" for="2-hocker_96">
                                     ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
                                 </label>
                             </div>
@@ -1194,54 +1251,54 @@ function initSettings(model) {
                                         -->
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="three-chair_96">
-                                <label class="form-check-label" for="three-chair_96">
+                                <input type="radio" class="form-check-input" name="3-type" id="3-chair_96" value="chair_96">
+                                <label class="form-check-label" for="3-chair_96" value="chair_96">
                                     ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="three-noArmrestsRight_96">
-                                <label class="form-check-label" for="three-noArmrestsRight_96">
+                                <input type="radio" class="form-check-input" name="3-type" id="3-noArmrestsRight_96" value="noArmrestsRight_96">
+                                <label class="form-check-label" for="3-noArmrestsRight_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
                                     rechts
-                                </label>
+                                </label>SS
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="three-noArmrestsLeft_96">
-                                <label class="form-check-label" for="three-noArmrestsLeft_96">
+                                <input type="radio" class="form-check-input" name="3-type" id="3-noArmrestsLeft_96" value="noArmrestsLeft_96">
+                                <label class="form-check-label" for="3-noArmrestsLeft_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="three-noArmrests_84">
-                                <label class="form-check-label" for="three-noArmrests_84">
+                                <input type="radio" class="form-check-input" name="3-type" id="3-noArmrests_84" value="noArmrests_84">
+                                <label class="form-check-label" for="3-noArmrests_84">
                                     ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
                                 </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="three-armrestLeft_96">
-                                <label class="form-check-label" for="three-armrestLeft_96">
+                                <input type="radio" class="form-check-input" name="3-type" id="3-armrestLeft_96" value="armrestLeft_96">
+                                <label class="form-check-label" for="3-armrestLeft_96">
                                     ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="three-armrestRight_96">
-                                <label class="form-check-label" for="three-armrestRight_96">
+                                <input type="radio" class="form-check-input" name="3-type" id="3-armrestRight_96" value="armrestRight_96">
+                                <label class="form-check-label" for="3-armrestRight_96">
                                     ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
                                 </label>
                             </div>
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="three-hocker_84">
-                                <label class="form-check-label" for="three-hocker_84">
+                                <input type="radio" class="form-check-input" name="3-type" id="3-hocker_84" value="hocker_84">
+                                <label class="form-check-label" for="3-hocker_84">
                                     ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="three-hocker_96">
-                                <label class="form-check-label" for="three-hocker_96">
+                                <input type="radio" class="form-check-input" name="3-type" id="3-hocker_96" value="hocker_96">
+                                <label class="form-check-label" for="3-hocker_96">
                                     ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
                                 </label>
                             </div>
@@ -1315,54 +1372,54 @@ function initSettings(model) {
                                         -->
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="four-chair_96">
-                                <label class="form-check-label" for="four-chair_96">
+                                <input type="radio" class="form-check-input" name="4-type" id="4-chair_96" value="chair_96">
+                                <label class="form-check-label" for="4-chair_96">
                                     ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="four-noArmrestsRight_96">
-                                <label class="form-check-label" for="four-noArmrestsRight_96">
+                                <input type="radio" class="form-check-input" name="4-type" id="4-noArmrestsRight_96" value="noArmrestsRight_96">
+                                <label class="form-check-label" for="4-noArmrestsRight_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
                                     rechts
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="four-noArmrestsLeft_96">
-                                <label class="form-check-label" for="four-noArmrestsLeft_96">
+                                <input type="radio" class="form-check-input" name="4-type" id="4-noArmrestsLeft_96" value="noArmrestsLeft_96">
+                                <label class="form-check-label" for="4-noArmrestsLeft_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="four-noArmrests_84">
-                                <label class="form-check-label" for="four-noArmrests_84">
+                                <input type="radio" class="form-check-input" name="4-type" id="4-noArmrests_84" value="noArmrests_84">
+                                <label class="form-check-label" for="4-noArmrests_84">
                                     ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
                                 </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="four-armrestLeft_96">
-                                <label class="form-check-label" for="four-armrestLeft_96">
+                                <input type="radio" class="form-check-input" name="4-type" id="4-armrestLeft_96" value="armrestLeft_96">
+                                <label class="form-check-label" for="4-armrestLeft_96">
                                     ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="four-armrestRight_96">
-                                <label class="form-check-label" for="four-armrestRight_96">
+                                <input type="radio" class="form-check-input" name="4-type" id="4-armrestRight_96" value="armrestRight_96">
+                                <label class="form-check-label" for="4-armrestRight_96">
                                     ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
                                 </label>
                             </div>
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="four-hocker_84">
-                                <label class="form-check-label" for="four-hocker_84">
+                                <input type="radio" class="form-check-input" name="4-type" id="4-hocker_84" value="hocker_84">
+                                <label class="form-check-label" for="4-hocker_84">
                                     ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="four-hocker_96">
-                                <label class="form-check-label" for="four-hocker_96">
+                                <input type="radio" class="form-check-input" name="4-type" id="4-hocker_96" value="hocker_96">
+                                <label class="form-check-label" for="4-hocker_96">
                                     ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
                                 </label>
                             </div>
@@ -1436,54 +1493,54 @@ function initSettings(model) {
                                         -->
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="five-chair_96">
-                                <label class="form-check-label" for="five-chair_96">
+                                <input type="radio" class="form-check-input" name="5-type" id="5-chair_96" value="chair_96">
+                                <label class="form-check-label" for="5-chair_96">
                                     ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="five-noArmrestsRight_96">
-                                <label class="form-check-label" for="five-noArmrestsRight_96">
+                                <input type="radio" class="form-check-input" name="5-type" id="5-noArmrestsRight_96" value="noArmrestsRight_96">
+                                <label class="form-check-label" for="5-noArmrestsRight_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
                                     rechts
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="five-noArmrestsLeft_96">
-                                <label class="form-check-label" for="five-noArmrestsLeft_96">
+                                <input type="radio" class="form-check-input" name="5-type" id="5-noArmrestsLeft_96" value="noArmrestsLeft_96">
+                                <label class="form-check-label" for="5-noArmrestsLeft_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="five-noArmrests_84">
-                                <label class="form-check-label" for="five-noArmrests_84">
+                                <input type="radio" class="form-check-input" name="5-type" id="5-noArmrests_84" value="noArmrests_84">
+                                <label class="form-check-label" for="5-noArmrests_84">
                                     ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
                                 </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="five-armrestLeft_96">
-                                <label class="form-check-label" for="five-armrestLeft_96">
+                                <input type="radio" class="form-check-input" name="5-type" id="5-armrestLeft_96" value="armrestLeft_96">
+                                <label class="form-check-label" for="5-armrestLeft_96">
                                     ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="five-armrestRight_96">
-                                <label class="form-check-label" for="five-armrestRight_96">
+                                <input type="radio" class="form-check-input" name="5-type" id="5-armrestRight_96" value="armrestRight_96">
+                                <label class="form-check-label" for="5-armrestRight_96">
                                     ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
                                 </label>
                             </div>
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="five-hocker_84">
-                                <label class="form-check-label" for="five-hocker_84">
+                                <input type="radio" class="form-check-input" name="5-type" id="5-hocker_84" value="hocker_84">
+                                <label class="form-check-label" for="5-hocker_84">
                                     ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="five-hocker_96">
-                                <label class="form-check-label" for="five-hocker_96">
+                                <input type="radio" class="form-check-input" name="5-type" id="5-hocker_96" value="hocker_96">
+                                <label class="form-check-label" for="5-hocker_96">
                                     ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
                                 </label>
                             </div>
@@ -1557,54 +1614,54 @@ function initSettings(model) {
                                         -->
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="six-chair_96">
-                                <label class="form-check-label" for="six-chair_96">
+                                <input type="radio" class="form-check-input" name="6-type" id="6-chair_96" value="chair_96">
+                                <label class="form-check-label" for="6-chair_96">
                                     ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="six-noArmrestsRight_96">
-                                <label class="form-check-label" for="six-noArmrestsRight_96">
+                                <input type="radio" class="form-check-input" name="6-type" id="6-noArmrestsRight_96" value="noArmrestsRight_96">
+                                <label class="form-check-label" for="6-noArmrestsRight_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
                                     rechts
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="six-noArmrestsLeft_96">
-                                <label class="form-check-label" for="six-noArmrestsLeft_96">
+                                <input type="radio" class="form-check-input" name="6-type" id="6-noArmrestsLeft_96" value="noArmrestsLeft_96">
+                                <label class="form-check-label" for="6-noArmrestsLeft_96">
                                     ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="six-noArmrests_84">
-                                <label class="form-check-label" for="six-noArmrests_84">
+                                <input type="radio" class="form-check-input" name="6-type" id="6-noArmrests_84" value="noArmrests_84">
+                                <label class="form-check-label" for="6-noArmrests_84">
                                     ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
                                 </label>
                             </div>
                         </div>
                         <div class="card border-0 grid gap row-gap-3">
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="six-armrestLeft_96">
-                                <label class="form-check-label" for="six-armrestLeft_96">
+                                <input type="radio" class="form-check-input" name="6-type" id="6-armrestLeft_96" value="armrestLeft_96">
+                                <label class="form-check-label" for="6-armrestLeft_96">
                                     ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="six-armrestRight_96">
-                                <label class="form-check-label" for="six-armrestRight_96">
+                                <input type="radio" class="form-check-input" name="6-type" id="6-armrestRight_96" value="armrestRight_96">
+                                <label class="form-check-label" for="6-armrestRight_96">
                                     ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
                                 </label>
                             </div>
         
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="six-hocker_84">
-                                <label class="form-check-label" for="six-hocker_84">
+                                <input type="radio" class="form-check-input" name="6-type" id="6-hocker_84" value="hocker_84">
+                                <label class="form-check-label" for="6-hocker_84">
                                     ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
                                 </label>
                             </div>
                             <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="type" id="six-hocker_96">
-                                <label class="form-check-label" for="six-hocker_96">
+                                <input type="radio" class="form-check-input" name="6-type" id="6-hocker_96" value="hocker_96">
+                                <label class="form-check-label" for="6-hocker_96">
                                     ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
                                 </label>
                             </div>
