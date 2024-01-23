@@ -865,7 +865,7 @@ function initSettings(model) {
                     <div class="d-flex justify-content-start m-0 p-0">
                         <div class="card border-0 grid gap row-gap-3 me-5">
 
-                        <!-->
+                        <!--
                         'chair_96'
                         'noArmrestsLeft_96'
                         'noArmrestsRight_96'
