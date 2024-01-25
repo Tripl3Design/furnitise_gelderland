@@ -12,15 +12,15 @@
         "type": "armrestLeft_96",
         "cushion": true,
         "frontcushion": false,
-        "xl": false,
+        "xl": true,
         "upholstery": {
-          "upholstery": "3b554f"
+          "upholstery": "3d4a44"
         },
         "cushionUpholstery": {
-          "upholstery": "3b554f"
+          "upholstery": "3d4a44"
         },
         "frontcushionUpholstery": {
-          "upholstery": "f7f6f4"
+          "upholstery": "3d4a44"
         },
         "location": {
           "posX": -6,
@@ -34,13 +34,13 @@
         "frontcushion": false,
         "xl": false,
         "upholstery": {
-          "upholstery": "3b554f"
+          "upholstery": "3d4a44"
         },
         "cushionUpholstery": {
-          "upholstery": "0e3638"
+          "upholstery": "2e383a"
         },
         "frontcushionUpholstery": {
-          "upholstery": "f7f6f4"
+          "upholstery": "3d4a44"
         },
         "location": {
           "posX": -2,
@@ -54,13 +54,13 @@
         "frontcushion": true,
         "xl": true,
         "upholstery": {
-          "upholstery": "3b554f"
+          "upholstery": "3d4a44"
         },
         "cushionUpholstery": {
-          "upholstery": "3b554f"
+          "upholstery": "3d4a44"
         },
         "frontcushionUpholstery": {
-          "upholstery": "0e3638"
+          "upholstery": "2e383a"
         },
         "location": {
           "posX": 2,
@@ -74,13 +74,13 @@
         "frontcushion": false,
         "xl": false,
         "upholstery": {
-          "upholstery": "3b554f"
+          "upholstery": "3d4a44"
         },
         "cushionUpholstery": {
-          "upholstery": "3b554f"
+          "upholstery": "3d4a44"
         },
         "frontcushionUpholstery": {
-          "upholstery": "f7f6f4"
+          "upholstery": "3d4a44"
         },
         "location": {
           "posX": 5.75,
@@ -94,13 +94,13 @@
         "frontcushion": false,
         "xl": false,
         "upholstery": {
-          "upholstery": "3b554f"
+          "upholstery": "3d4a44"
         },
         "cushionUpholstery": {
-          "upholstery": "3b554f"
+          "upholstery": "3d4a44"
         },
         "frontcushionUpholstery": {
-          "upholstery": "f7f6f4"
+          "upholstery": "3d4a44"
         },
         "location": {
           "posX": 5.75,
@@ -124,13 +124,13 @@
         "cushion": true,
         "xl": false,
         "upholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "cushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "frontcushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "location": {
           "posX": -6,
@@ -143,13 +143,13 @@
         "cushion": true,
         "xl": false,
         "upholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "cushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "frontcushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "location": {
           "posX": -2,
@@ -162,13 +162,13 @@
         "cushion": true,
         "xl": true,
         "upholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "cushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "frontcushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "location": {
           "posX": 2,
@@ -181,13 +181,13 @@
         "cushion": true,
         "xl": true,
         "upholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "cushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "frontcushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "location": {
           "posX": 5.75,
@@ -200,13 +200,13 @@
         "cushion": true,
         "xl": false,
         "upholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "cushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "frontcushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "location": {
           "posX": 2.25,
@@ -219,13 +219,13 @@
         "cushion": true,
         "xl": true,
         "upholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "cushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "frontcushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "bbbcb6"
         },
         "location": {
           "posX": 5.75,
@@ -249,13 +249,13 @@
         "cushion": true,
         "xl": false,
         "upholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "cd9818"
         },
         "cushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "a37426"
         },
         "frontcushionUpholstery": {
-          "upholstery": "efe8de"
+          "upholstery": "cd9818"
         },
         "location": {
           "posX": 0,

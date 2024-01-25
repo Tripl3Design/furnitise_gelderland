@@ -38,7 +38,7 @@ function addColors(name, colorName, containerElem) {
 function addTextures(name, colorName, containerElem) {
     const html = [];
     html.push( /*html*/ `
-        <div class="row row-cols-3 m-0 p-0">
+        <div class="row row-cols-6 m-0 p-0">
             `);
 
     const textureItems = [];
@@ -53,13 +53,13 @@ function addTextures(name, colorName, containerElem) {
     }
 
     for (let c = 0; c < textureItems.length; c++) {
-        if (c % 3 == 0) {
-            html.push( /*html*/ `
-                <!--<div class="col m-0 p-0"></div>
-                <div class="col m-0 p-0"></div>
-                <div class="col m-0 p-0"></div>-->
-            `);
-        }
+        //if (c % 3 == 0) {
+        //    html.push( /*html*/ `
+         //       <!--<div class="col m-0 p-0"></div>
+          //      <div class="col m-0 p-0"></div>
+         //       <div class="col m-0 p-0"></div>-->
+        //    `);
+       // }
         // set the name of the accordion where the color is changed NEED TO BE DEVELOPED!!
         if (name == 'outsideColors' || name == 'colors' || name == 'bodyColor' || name == 'selectedComponentColor') {
             //if (name == 'colors' || name == 'interiorColors' || name == 'handleColors') {

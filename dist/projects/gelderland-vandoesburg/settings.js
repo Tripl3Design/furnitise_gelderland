@@ -647,31 +647,17 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
 
         //elements
 
-        //type
-        /*
-                if (i == 0) {
-                    document.getElementById('one-' + model.elements[0].type).checked = true;
-                }
-                if (i == 1) {
-                    document.getElementById('two-' + model.elements[1].type).checked = true;
-                }
-                if (i == 2) {
-                    document.getElementById('three-' + model.elements[2].type).checked = true;
-                }
-                if (i == 3) {
-                    document.getElementById('four-' + model.elements[3].type).checked = true;
-                }
-                if (i == 4) {
-                    document.getElementById('five-' + model.elements[4].type).checked = true;
-                }
-                if (i == 5) {
-                    document.getElementById('six-' + model.elements[5].type).checked = true;
-                }
-        */
-             
-        const radioButtonId = `${i + 1}-${model.elements[i].type}`;
-        console.log(`Setting checked for ${radioButtonId}`);
-        document.getElementById(radioButtonId).checked = true;
+        //type           
+        const radioTypeId = `${i + 1}-${model.elements[i].type}`;
+        document.getElementById(radioTypeId).checked = true;
+
+        const checkboxXlId = `${i + 1}-xl`;
+        if (model.elements[i].xl === true){
+        document.getElementById(checkboxXlId).checked = true;
+        }
+        if (model.elements[i].xl === false){
+            document.getElementById(checkboxXlId).checked = false;
+        }
 
         const typeValues1 = document.querySelectorAll(`input[type=radio][name='1-type']`);
         for (const typeValue1 of typeValues1) {
@@ -684,6 +670,25 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                 showSelected(false);
             }
         }
+
+        const optionValues1 = document.querySelectorAll(`input[type=checkbox][name='1-option']`);
+        for (const optionValue1 of optionValues1) {
+            optionValue1.onclick = (option1) => {
+
+                console.log(option1.target.value);
+
+                if (document.getElementById('1-' + option1.target.value).checked) {
+                model.elements[0].xl = true;
+                }else{
+                    model.elements[0].xl = false;
+                }
+
+                updateControlPanel(model, 'elementOne');
+                updateFeaturedModel(model);
+                showSelected(false);
+            }
+        }
+        
 
         const typeValues2 = document.querySelectorAll(`input[type=radio][name='2-type']`);
         for (const typeValue2 of typeValues2) {
@@ -804,16 +809,9 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
 
     document.getElementById('numberOfSeatsText').textContent = model.elements.length + '-zits';
 
-    /* 
-    'chair_96'
-    'noArmrestsLeft_96'
-    'noArmrestsRight_96'
-    'armrestLeft_96'
-    'armrestRight_96'
-    'noArmrests_84'
-    'hocker_84'
-    'hocker_96'
-    */
+    //upholstery
+     
+    
 
 
     pricing(model);
@@ -844,18 +842,17 @@ async function handleModelSelection() {
         productName: product.charAt(0).toUpperCase() + product.slice(1),
         productVersion: '0.1',
     };
-
     const unityPromise = createUnityInstance(canvas, config, (progress) => {
         progressBar.style.width = 100 * progress + '%';
     });
-    const colorsPromise = fetch(`${buildUrl}/colors.json`).then(response => response.json());
-    const componentsPromise = fetch(`${buildUrl}/components.json`).then(response => response.json());
-    UNITY_INSTANCE = await unityPromise;
-    ALLCOLORS = await colorsPromise;
-    ALLCOMPONENTS = await componentsPromise;
 
+    UNITY_INSTANCE = await unityPromise;
     console.log(`BRAND: ${brand}, PRODUCT  ${product}, TITLE ${title}`);
 
+    const componentsPromise = fetch(`projects/${brand}-${product}/components.json`).then(response => response.json());
+    ALLCOMPONENTS = await componentsPromise;
+    const colorsPromise = fetch(`projects/${brand}-${product}/colors.json`).then(response => response.json());
+    ALLCOLORS = await colorsPromise;
     const modelsPromise = fetch(`projects/${brand}-${product}/models.json`).then(response => response.json());
     ALLMODELS = await modelsPromise;
     const arrangementsPromise = fetch(`projects/${brand}-${product}/arrangements.json`).then(response => response.json());
@@ -952,141 +949,104 @@ function initSettings(model) {
             "options": ['type_1', 'color_1'],
             "display": "d-block",
             "code": /*html*/ ` 
-            <ul class="nav nav-tabs" id="elementOneTab">
-            <li class="nav-item">
-                <button class="nav-link active" id="type-one" data-bs-toggle="tab" data-bs-target="#type-one-pane" type="button"
-                    aria-controls="type-one-pane" aria-selected="true">model</button>
-            </li>
-            <li class="nav-item">
-                <button class="nav-link" id="options-one" data-bs-toggle="tab" data-bs-target="#options-one-pane" type="button"
-                    aria-controls="options-one-pane" aria-selected="false">opties</button>
-            </li>
-            <li class="nav-item">
-                <button class="nav-link" id="upholstery-one" data-bs-toggle="tab" data-bs-target="#upholstery-one-pane"
-                    type="button" aria-controls="upholstery-one-pane" aria-selected="false">bekleding</button>
-            </li>
-        </ul>
+            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+            <div class="d-flex justify-content-start m-0 p-0 pt-2">
+                <div class="card border-0 grid gap row-gap-3 me-5">
         
-        <div class="tab-content border border-top-0 border-1 border-gray-300 m-0 p-0 mb-3 ps-3" id="elementOneTabContent">
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="1-type" id="1-chair_96" value="chair_96">
+                        <label class="form-check-label" for="1-chair_96">
+                            ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
+                        </label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="1-type" id="1-noArmrestsRight_96"
+                            value="noArmrestsRight_96">
+                        <label class="form-check-label" for="1-noArmrestsRight_96">
+                            ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
+                            rechts
+                        </label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="1-type" id="1-noArmrestsLeft_96"
+                            value="noArmrestsLeft_96">
+                        <label class="form-check-label" for="1-noArmrestsLeft_96">
+                            ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
+                        </label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="1-type" id="1-noArmrests_84" value="noArmrests_84">
+                        <label class="form-check-label" for="1-noArmrests_84">
+                            ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
+                        </label>
+                    </div>
+                </div>
+                <div class="card border-0 grid gap row-gap-3">
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="1-type" id="1-armrestLeft_96" value="armrestLeft_96">
+                        <label class="form-check-label" for="1-armrestLeft_96">
+                            ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
+                        </label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="1-type" id="1-armrestRight_96"
+                            value="armrestRight_96">
+                        <label class="form-check-label" for="1-armrestRight_96">
+                            ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
+                        </label>
+                    </div>
         
-            <div class="tab-pane fade show active" id="type-one-pane" aria-labelledby="type-one" tabindex="0">
-
-                <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                    <div class="d-flex justify-content-start m-0 p-0 pt-4">
-                        <div class="card border-0 grid gap row-gap-3 me-5">
-        
-                            <!--
-                                        'chair_96'
-                                        'noArmrestsLeft_96'
-                                        'noArmrestsRight_96'
-                                        'armrestLeft_96'
-                                        'armrestRight_96'
-                                        'noArmrests_84'
-                                        'hocker_84'
-                                        'hocker_96'
-                                        -->
-        
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="1-type" id="1-chair_96" value="chair_96">
-                                <label class="form-check-label" for="1-chair_96">
-                                    ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
-                                </label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="1-type" id="1-noArmrestsRight_96" value="noArmrestsRight_96">
-                                <label class="form-check-label" for="1-noArmrestsRight_96">
-                                    ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen -
-                                    rechts
-                                </label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="1-type" id="1-noArmrestsLeft_96" value="noArmrestsLeft_96">
-                                <label class="form-check-label" for="1-noArmrestsLeft_96">
-                                    ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen - links
-                                </label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="1-type" id="1-noArmrests_84" value="noArmrests_84">
-                                <label class="form-check-label" for="1-noArmrests_84">
-                                    ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
-                                </label>
-                            </div>
-                        </div>
-                        <div class="card border-0 grid gap row-gap-3">
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="1-type" id="1-armrestLeft_96" value="armrestLeft_96">
-                                <label class="form-check-label" for="1-armrestLeft_96">
-                                    ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
-                                </label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="1-type" id="1-armrestRight_96" value="armrestRight_96">
-                                <label class="form-check-label" for="1-armrestRight_96">
-                                    ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
-                                </label>
-                            </div>
-        
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="1-type" id="1-hocker_84" value="hocker_84">
-                                <label class="form-check-label" for="1-hocker_84">
-                                    ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
-                                </label>
-                            </div>
-                            <div class="h6 fw-normal form-check">
-                                <input type="radio" class="form-check-input" name="1-type" id="1-hocker_96" value="hocker_96">
-                                <label class="form-check-label" for="1-hocker_96">
-                                    ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
-                                </label>
-                            </div>
-                        </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="1-type" id="1-hocker_84" value="hocker_84">
+                        <label class="form-check-label" for="1-hocker_84">
+                            ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
+                        </label>
+                    </div>
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="1-type" id="1-hocker_96" value="hocker_96">
+                        <label class="form-check-label" for="1-hocker_96">
+                            ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
+                        </label>
                     </div>
                 </div>
             </div>
         
-            <div class="tab-pane fade" id="options-one-pane" aria-labelledbSy="options-one" tabindex="0">
-                
-                <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
                 <div class="d-flex justify-content-start m-0 p-0 pt-4">
                     <div class="card border-0 grid gap row-gap-3 me-5">
-    
+        
                         <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" name="options" id="one-xl">
+                            <input type="checkbox" class="form-check-input" name="1-option" id="1-xl" value="xl">
                             <label class="form-check-label" for="one-xl">xl (zitting wordt verlengt)</label>
                         </div>
                         <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" name="options" id="one-xl">
+                            <input type="checkbox" class="form-check-input" name="1-option" id="1-cushion" value="cushion">
                             <label class="form-check-label" for="cushion">rugkussen</label>
                         </div>
                         <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" name="options" id="one-xl">
+                            <input type="checkbox" class="form-check-input" name="1-option" id="1-frontcushion"
+                                value="frontcushion">
                             <label class="form-check-label" for="frontcushion">extra rugkussen</label>
                         </div>
-                       
+        
                     </div>
                 </div>
             </div>
-
-            </div>
         
-            <div class="tab-pane fade" id="upholstery-one-pane" aria-labelledby="upholstery-one" tabindex="0">
-              
-                 
-                        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                            <div class="col-12 m-0 p-0">
-                                <div class="row m-0 p-0 pb-2">
-                                    <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                                        <div id="upholsteryColorPickerOne" class="m-0 p-0"></div>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+                <div class="col-12 m-0 p-0">
+                    <div class="row m-0 p-0 pb-2">
+                        <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
+                            <div id="upholsteryColorPickerOne" class="m-0 p-0"></div>
                         </div>
-             
+                    </div>
+                </div>
             </div>
         
         </div>`,
             "onload": function () {
                 let containerElemOne = document.getElementById("upholsteryColorPickerOne");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElemOne);
+                addTextures('upholsteries', ALLCOLORS.upholsteries, containerElemOne);
             }
         }
     }
@@ -1207,7 +1167,7 @@ function initSettings(model) {
         </div>`,
             "onload": function () {
                 let containerElemTwo = document.getElementById("upholsteryColorPickerTwo");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElemTwo);
+                addTextures('upholsteries', ALLCOLORS.upholsteries, containerElemTwo);
             }
         }
     }
@@ -1328,7 +1288,7 @@ function initSettings(model) {
         </div>`,
             "onload": function () {
                 let containerElemThree = document.getElementById("upholsteryColorPickerThree");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElemThree);
+                addTextures('upholsteries', ALLCOLORS.upholsteries, containerElemThree);
             }
         }
     }
@@ -1449,7 +1409,7 @@ function initSettings(model) {
         </div>`,
             "onload": function () {
                 let containerElemFour = document.getElementById("upholsteryColorPickerFour");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElemFour);
+                addTextures('upholsteries', ALLCOLORS.upholsteries, containerElemFour);
             }
         }
     }
@@ -1570,7 +1530,7 @@ function initSettings(model) {
         </div>`,
             "onload": function () {
                 let containerElemFive = document.getElementById("upholsteryColorPickerFive");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElemFive);
+                addTextures('upholsteries', ALLCOLORS.upholsteries, containerElemFive);
             }
         }
     }
@@ -1685,13 +1645,11 @@ function initSettings(model) {
                                 </div>
                             </div>
                         </div>
-          
             </div>
-        
         </div>`,
             "onload": function () {
                 let containerElemSix = document.getElementById("upholsteryColorPickerSix");
-                addColors('upholstery', ALLCOLORS.upholstery, containerElemSix);
+                addTextures('upholsteries', ALLCOLORS.upholsteries, containerElemSix);
             }
         }
     }

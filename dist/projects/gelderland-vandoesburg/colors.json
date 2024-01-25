@@ -1,384 +1,598 @@
 {
-    "upholstery": [
+    "upholsteries": [
         {
-            "colorCode": {
-                "basic": 300,
-                "structure": 400,
-                "gloss": 500
-            },
-            "colorName": "snow white",
-            "colorHex": "f7f6f4",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "white"
-        },
-        {
-            "colorCode": {
-                "basic": 306,
-                "structure": 406,
-                "gloss": 506
-            },
-            "colorName": "arctic",
-            "colorHex": "b2b2b2",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "black"
-        },
-        {
-            "colorCode": {
-                "basic": 314,
-                "structure": 414,
-                "gloss": 514
-            },
-            "colorName": "slate",
-            "colorHex": "838182",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "black"
-        },
-        {
-            "colorCode": {
-                "basic": 313,
-                "structure": 413,
-                "gloss": 513
-            },
-            "colorName": "basalt",
-            "colorHex": "3e3e3e",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0105",
+            "colorHex": "b1afb0",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0105.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0105_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "black"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 301,
-                "structure": 401,
-                "gloss": 501
-            },
-            "colorName": "black",
-            "colorHex": "020307",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0113",
+            "colorHex": "8c908f",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0113.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0113_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "black"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 315,
-                "structure": 415,
-                "gloss": 515
-            },
-            "colorName": "salt",
-            "colorHex": "fbf8f1",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "white"
-        },
-        {
-            "colorCode": {
-                "basic": 341,
-                "structure": 441,
-                "gloss": 541
-            },
-            "colorName": "ash",
-            "colorHex": "e8e6da",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "white"
-        },
-        {
-            "colorCode": {
-                "basic": 344,
-                "structure": 444,
-                "gloss": 544
-            },
-            "colorName": "shade",
-            "colorHex": "9e8e7e",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "sand"
-        },
-        {
-            "colorCode": {
-                "basic": 345,
-                "structure": 445,
-                "gloss": 545
-            },
-            "colorName": "pebble",
-            "colorHex": "6c645f",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0124",
+            "colorHex": "73726c",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0124.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0124_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "sand"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 340,
-                "structure": 440,
-                "gloss": 540
-            },
-            "colorName": "black taupe",
-            "colorHex": "3c3c3c",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0133",
+            "colorHex": "7a7b78",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0133.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0133_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "black"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 614,
-                "structure": 714,
-                "gloss": 814
-            },
-            "colorName": "blossom",
-            "colorHex": "e6c2b6",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "orange"
-        },
-        {
-            "colorCode": {
-                "basic": 623,
-                "structure": 723,
-                "gloss": 823
-            },
-            "colorName": "copper",
-            "colorHex": "976856",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "brown"
-        },
-        {
-            "colorCode": {
-                "basic": 607,
-                "structure": 707,
-                "gloss": 807
-            },
-            "colorName": "tomato red",
-            "colorHex": "b2312b",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "red"
-        },
-        {
-            "colorCode": {
-                "basic": 615,
-                "structure": 715,
-                "gloss": 815
-            },
-            "colorName": "ruby",
-            "colorHex": "6d3133",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0153",
+            "colorHex": "545857",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0153.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0153_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "red"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 620,
-                "structure": 720,
-                "gloss": 820
-            },
-            "colorName": "plum",
-            "colorHex": "472c35",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0176",
+            "colorHex": "494844",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0176.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0176_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "red"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 621,
-                "structure": 721,
-                "gloss": 821
-            },
-            "colorName": "vanilla",
-            "colorHex": "fdecd0",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "yellow"
-        },
-        {
-            "colorCode": {
-                "basic": 624,
-                "structure": 724,
-                "gloss": 824
-            },
-            "colorName": "desert",
-            "colorHex": "d4b773",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "yellow"
-        },
-        {
-            "colorCode": {
-                "basic": 611,
-                "structure": 711,
-                "gloss": 811
-            },
-            "colorName": "ginger",
-            "colorHex": "cb960a",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "yellow"
-        },
-        {
-            "colorCode": {
-                "basic": 632,
-                "structure": 732,
-                "gloss": 832
-            },
-            "colorName": "honey",
-            "colorHex": "9f7044",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0195",
+            "colorHex": "22252a",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0195.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0195_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "sand"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 612,
-                "structure": 712,
-                "gloss": 812
-            },
-            "colorName": "sienna",
-            "colorHex": "973c27",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0205",
+            "colorHex": "ada8a2",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0205.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0205_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "red"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 643,
-                "structure": 743,
-                "gloss": 843
-            },
-            "colorName": "mint",
-            "colorHex": "d1dec0",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "green"
-        },
-        {
-            "colorCode": {
-                "basic": 647,
-                "structure": 747,
-                "gloss": 847
-            },
-            "colorName": "pale green",
-            "colorHex": "96caa4",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "green"
-        },
-        {
-            "colorCode": {
-                "basic": 641,
-                "structure": 741,
-                "gloss": 841
-            },
-            "colorName": "olive",
-            "colorHex": "565833",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0213",
+            "colorHex": "a49b8e",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0213.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0213_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "green"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 648,
-                "structure": 748,
-                "gloss": 848
-            },
-            "colorName": "moss",
-            "colorHex": "495a47",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0226",
+            "colorHex": "b9a89e",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0226.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0226_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "green"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 649,
-                "structure": 749,
-                "gloss": 849
-            },
-            "colorName": "forest",
-            "colorHex": "354140",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0236",
+            "colorHex": "a59478",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0236.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0236_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "green"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 671,
-                "structure": 771,
-                "gloss": 871
-            },
-            "colorName": "air",
-            "colorHex": "daecf0",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "blue"
-        },
-        {
-            "colorCode": {
-                "basic": 672,
-                "structure": 772,
-                "gloss": 872
-            },
-            "colorName": "mist",
-            "colorHex": "739191",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "blue"
-        },
-        {
-            "colorCode": {
-                "basic": 676,
-                "structure": 776,
-                "gloss": 876
-            },
-            "colorName": "azure",
-            "colorHex": "00758f",
-            "colorBg": "d4d4d4",
-            "iconColor": "dark",
-            "colorGroup": "blue"
-        },
-        {
-            "colorCode": {
-                "basic": 677,
-                "structure": 777,
-                "gloss": 877
-            },
-            "colorName": "lake",
-            "colorHex": "4c606b",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0246",
+            "colorHex": "756f6b",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0246.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0246_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "blue"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": {
-                "basic": 674,
-                "structure": 774,
-                "gloss": 874
-            },
-            "colorName": "storm",
-            "colorHex": "1a2730",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0253",
+            "colorHex": "66635c",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0253.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0253_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "black"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": 470,
-            "colorName": "natural oak soft",
-            "colorHex": "bba286",
-            "colorPath": "projects/pastoe-amsterdammer/Textures/470_natural_oak_soft.jpg",
-            "colorPathThumb": "projects/pastoe-amsterdammer/Textures/470_natural_oak_soft_thumb.jpg",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0266",
+            "colorHex": "5a574f",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0266.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0266_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "sand"
+            "colorGroup": "grey"
         },
         {
-            "colorCode": 475,
-            "colorName": "natural walnut soft",
-            "colorHex": "846553",
-            "colorPath": "projects/pastoe-amsterdammer/Textures/475_natural_walnut_soft.jpg",
-            "colorPathThumb": "projects/pastoe-amsterdammer/Textures/475_natural_walnut_soft_thumb.jpg",
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0276",
+            "colorHex": "57514d",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0276.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0276_thumb.jpg",
             "colorBg": "d4d4d4",
             "iconColor": "light",
-            "colorGroup": "brown"
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0283",
+            "colorHex": "463d40",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0283.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0283_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0336",
+            "colorHex": "6c6a6c",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0336.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0336_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0376",
+            "colorHex": "514841",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0376.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0376_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0383",
+            "colorHex": "30312f",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0383.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0383_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0416",
+            "colorHex": "7c6e6f",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0416.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0416_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0426",
+            "colorHex": "8b7568",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0426.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0426_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0436",
+            "colorHex": "9a6a46",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0436.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0436_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0446",
+            "colorHex": "cd9818",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0446.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0446_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0453",
+            "colorHex": "a37426",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0453.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0453_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0466",
+            "colorHex": "8f672c",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0466.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0466_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0476",
+            "colorHex": "655645",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0476.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0476_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0506",
+            "colorHex": "655645",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0506.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0506_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0515",
+            "colorHex": "c58c7c",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0515.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0515_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0526",
+            "colorHex": "c66258",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0526.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0526_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0533",
+            "colorHex": "a6323b",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0533.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0533_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0553",
+            "colorHex": "a5313a",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0553.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0553_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0576",
+            "colorHex": "8a4a26",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0576.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0576_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0616",
+            "colorHex": "898079",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0616.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0616_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0636",
+            "colorHex": "9a5957",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0636.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0636_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0645",
+            "colorHex": "72534f",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0645.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0645_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0666",
+            "colorHex": "a61d27",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0666.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0666_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0686",
+            "colorHex": "6b292d",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0686.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0686_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0713",
+            "colorHex": "76828c",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0713.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0713_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0716",
+            "colorHex": "707886",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0716.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0716_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0746",
+            "colorHex": "25406f",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0746.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0746_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0756",
+            "colorHex": "2c363f",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0756.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0756_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0776",
+            "colorHex": "36333a",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0776.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0776_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0796",
+            "colorHex": "2a323d",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0796.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0796_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0806",
+            "colorHex": "8a8188",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0806.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0806_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0865",
+            "colorHex": "165580",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0865.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0865_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0883",
+            "colorHex": "3a4450",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0883.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0883_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0906",
+            "colorHex": "bbbcb6",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0906.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0906_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0916",
+            "colorHex": "6c736e",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0916.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0916_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0946",
+            "colorHex": "565b45",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0946.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0946_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0953",
+            "colorHex": "566b33",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0953.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0953_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0966",
+            "colorHex": "3d4a44",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0966.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0966_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0976",
+            "colorHex": "1f4140",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0976.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0976_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0983",
+            "colorHex": "3b6772",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0983.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0983_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
+        },
+        {
+            "colorBrand": "kvadrat",
+            "colorName": "steelcutTrio3",
+            "colorCode": "0996",
+            "colorHex": "2e383a",
+            "colorPath": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0996.jpg",
+            "colorPathThumb": "projects/gelderland-vandoesburg/Textures/kvadrat/steelcutTrio3/0996_thumb.jpg",
+            "colorBg": "d4d4d4",
+            "iconColor": "light",
+            "colorGroup": "grey"
         }
     ]
 }
