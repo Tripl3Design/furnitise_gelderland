@@ -217,6 +217,7 @@
       {
         "type": "noArmrestsLeft_96",
         "cushion": true,
+        "frontcushion": false,
         "xl": true,
         "upholstery": {
           "upholstery": "bbbcb6"
@@ -247,6 +248,7 @@
       {
         "type": "noArmrests_84",
         "cushion": true,
+        "frontcushion": true,
         "xl": false,
         "upholstery": {
           "upholstery": "cd9818"

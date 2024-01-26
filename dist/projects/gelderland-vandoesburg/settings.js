@@ -652,11 +652,19 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         document.getElementById(radioTypeId).checked = true;
 
         const checkboxXlId = `${i + 1}-xl`;
-        if (model.elements[i].xl === true){
-        document.getElementById(checkboxXlId).checked = true;
+        if (model.elements[i].xl === true) {
+            document.getElementById(checkboxXlId).checked = true;
         }
-        if (model.elements[i].xl === false){
+        if (model.elements[i].xl === false) {
             document.getElementById(checkboxXlId).checked = false;
+        }
+
+        const checkboxCushionId = `${i + 1}-cushion`;
+        if (model.elements[i].cushion === true) {
+            document.getElementById(checkboxCushionId).checked = true;
+        }
+        if (model.elements[i].cushion === false) {
+            document.getElementById(checkboxCushionId).checked = false;
         }
 
         const typeValues1 = document.querySelectorAll(`input[type=radio][name='1-type']`);
@@ -678,8 +686,8 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                 console.log(option1.target.value);
 
                 if (document.getElementById('1-' + option1.target.value).checked) {
-                model.elements[0].xl = true;
-                }else{
+                    model.elements[0].xl = true;
+                } else {
                     model.elements[0].xl = false;
                 }
 
@@ -688,7 +696,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                 showSelected(false);
             }
         }
-        
+
 
         const typeValues2 = document.querySelectorAll(`input[type=radio][name='2-type']`);
         for (const typeValue2 of typeValues2) {
@@ -810,8 +818,8 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     document.getElementById('numberOfSeatsText').textContent = model.elements.length + '-zits';
 
     //upholstery
-     
-    
+
+
 
 
     pricing(model);
@@ -1016,17 +1024,16 @@ function initSettings(model) {
                     <div class="card border-0 grid gap row-gap-3 me-5">
         
                         <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" name="1-option" id="1-xl" value="xl">
-                            <label class="form-check-label" for="one-xl">xl (zitting wordt verlengt)</label>
+                            <input type="checkbox" class="form-check-input" id="1-xl" value="xl">
+                            <label class="form-check-label" for="1-xl">xl (zitting wordt verlengt)</label>
                         </div>
                         <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" name="1-option" id="1-cushion" value="cushion">
-                            <label class="form-check-label" for="cushion">rugkussen</label>
+                            <input type="checkbox" class="form-check-input" id="1-cushion" value="cushion">
+                            <label class="form-check-label" for="1-cushion">rugkussen</label>
                         </div>
                         <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" name="1-option" id="1-frontcushion"
-                                value="frontcushion">
-                            <label class="form-check-label" for="frontcushion">extra rugkussen</label>
+                            <input type="checkbox" class="form-check-input" id="1-frontcushion" value="frontcushion">
+                            <label class="form-check-label" for="1-frontcushion">extra rugkussen</label>
                         </div>
         
                     </div>
