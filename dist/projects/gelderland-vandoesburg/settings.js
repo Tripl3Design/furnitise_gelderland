@@ -1204,17 +1204,17 @@ async function handleModelSelection() {
 
 function initSettings(model) {
     const accordions = {};
-    let noType;
-    if (urlParams.has('noType')) {
-        noType = "d-none";
-    } else {
-        noType = "d-block";
-    }
     let noArrangement;
     if (urlParams.has('noArrangement')) {
         noArrangement = "d-none";
     } else {
         noArrangement = "d-block";
+    }
+    let noArrangementNew;
+    if (urlParams.has('noArrangement')) {
+        noArrangementNew = "d-none";
+    } else {
+        noArrangementNew = "d-block";
     }
     let noDecor;
     if (parser.getDevice().type == 'mobile' || urlParams.has('noDecor')) {
@@ -1266,6 +1266,92 @@ function initSettings(model) {
             </div>
         </div>
     </div>`
+    }
+    accordions.arrangementNew = {
+        "title": "opstelling",
+        "options": ['numberOfSeats', 'width'],
+        "display": noArrangementNew,
+        "code": /*html*/ `
+        <div class="row m-0 p-0">
+        <div class="d-flex justify-content-start m-0 p-0">
+    
+            <div class="card border-0 me-5">
+                <label class="mb-3" for="seatsDropdown">aantal zitplaatsen</label>
+                <select class="form-select rounded-0" id="seatsDropdown" onchange="filterArrangements()">
+                    <!--<option id="nosAll" value="all">tot 6</option>-->
+                    <option id="nos1" value="1">1</option>
+                    <option id="nos2" value="2">2</option>
+                    <option id="nos3" value="3">3</option>
+                    <option id="nos4" value="4">4</option>
+                    <option id="nos5" value="5">5</option>
+                    <option id="nos6" value="6">6</option>
+                </select> 
+            </div>
+            <div class="card border-0">
+                <label class="mb-3" for="widthDropdown">breedte</label>
+                <select class="form-select rounded-0" id="widthDropdown" onchange="filterArrangements()">
+                    <!--<option id="wAll" value="all">84 - 504 cm</option>-->
+                    <option id="w1" value="1">84 - 120 cm</option>
+                    <option id="w2" value="2">168 - 216 cm</option>
+                    <option id="w3" value="3">252 - 312 cm</option>
+                    <option id="w4" value="4">336 - 408 cm</option>
+                    <option id="w5" value="5">429 - 504 cm</option>
+                </select>
+            </div>
+    
+        </div>
+        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+            <div class="col-12 m-0 p-0">
+                <div class="row m-0 p-0 pb-2">
+                    <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
+                        <div id="arrangementContainer" class="m-0 p-0 mt-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="container">
+        <svg id="sofaContainer" width="800" height="400">
+            <!-- SVG elements will be dynamically inserted here -->
+        </svg>
+    </div>`,
+        "onload": function () {
+            // function createSofaElements() {
+            var container = document.getElementById('sofaContainer');
+            var elements = ALLARRANGEMENTS.elements;
+
+            for (var i = 0; i < elements.length; i++) {
+                var element = elements[i];
+                var svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                //svgElement.setAttribute('width', '124');
+                //svgElement.setAttribute('height', '100');
+                svgElement.innerHTML = element.svg;
+
+                var group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+                var posX = element.location.posX * 24;
+                var rot = element.location.rot;
+                var posY;
+                if (rot === 90 || rot === 270) {
+                    posY = element.location.posY * 24;
+                } else if (rot === 0 || rot === 180) {
+                    posY = -element.location.posY * 24;
+                }
+
+                group.setAttribute('transform', 'translate(' + posX + ',' + posY + ') rotate(' + rot + ')');
+
+                group.appendChild(svgElement);
+                container.appendChild(group);
+            }
+
+            // Bounding box berekenen en viewBox instellen om de inhoud te centreren
+            var bbox = container.getBBox();
+            var viewBoxValue = [bbox.x, bbox.y, bbox.width, bbox.height].join(' ');
+            container.setAttribute('viewBox', viewBoxValue);
+            //}
+        }
     }
     if (model.elements.length >= 1) {
         accordions.element_1 = {
@@ -1331,6 +1417,14 @@ function initSettings(model) {
                             ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
                         </label>
                     </div>
+                                    </div>
+                <div class="card border-0 grid gap row-gap-3">
+                    <div class="h6 fw-normal form-check">
+                        <input type="radio" class="form-check-input" name="type-1" id="1-quarterround" value="quarterround">
+                        <label class="form-check-label" for="1-quarterround">
+                            ${ALLARRANGEMENTS.elements.quarterround.svg}&nbsp;&nbsp;&nbsp; kwartrond
+                        </label>
+                    </div>
                 </div>
             </div>
         
@@ -1345,7 +1439,7 @@ function initSettings(model) {
                         </div>
                         <div class="h6 fw-normal form-check">
                             <input type="checkbox" class="form-check-input" id="xl-1" value="xl">
-                            <label class="form-check-label" for="xl-1">xl (zitting wordt verlengt)</label>
+                            <label class="form-check-label" for="xl-1">xl</label>
                         </div>
                     </div>
                     <div class="card border-0 grid gap row-gap-3">           
@@ -1451,7 +1545,7 @@ function initSettings(model) {
                         </div>
                         <div class="h6 fw-normal form-check">
                             <input type="checkbox" class="form-check-input" id="xl-2" value="xl">
-                            <label class="form-check-label" for="xl-2">xl (zitting wordt verlengt)</label>
+                            <label class="form-check-label" for="xl-2">xl</label>
                         </div>
                     </div>
                     <div class="card border-0 grid gap row-gap-3">           
@@ -1557,7 +1651,7 @@ function initSettings(model) {
                         </div>
                         <div class="h6 fw-normal form-check">
                             <input type="checkbox" class="form-check-input" id="xl-3" value="xl">
-                            <label class="form-check-label" for="xl-3">xl (zitting wordt verlengt)</label>
+                            <label class="form-check-label" for="xl-3">xl</label>
                         </div>
                     </div>
                     <div class="card border-0 grid gap row-gap-3">           
@@ -1663,7 +1757,7 @@ function initSettings(model) {
                         </div>
                         <div class="h6 fw-normal form-check">
                             <input type="checkbox" class="form-check-input" id="xl-4" value="xl">
-                            <label class="form-check-label" for="xl-4">xl (zitting wordt verlengt)</label>
+                            <label class="form-check-label" for="xl-4">xl</label>
                         </div>
                     </div>
                     <div class="card border-0 grid gap row-gap-3">           
@@ -1769,7 +1863,7 @@ function initSettings(model) {
                         </div>
                         <div class="h6 fw-normal form-check">
                             <input type="checkbox" class="form-check-input" id="xl-5" value="xl">
-                            <label class="form-check-label" for="xl-5">xl (zitting wordt verlengt)</label>
+                            <label class="form-check-label" for="xl-5">xl</label>
                         </div>
                     </div>
                     <div class="card border-0 grid gap row-gap-3">           
@@ -1875,7 +1969,7 @@ function initSettings(model) {
                         </div>
                         <div class="h6 fw-normal form-check">
                             <input type="checkbox" class="form-check-input" id="xl-6" value="xl">
-                            <label class="form-check-label" for="xl-6">xl (zitting wordt verlengt)</label>
+                            <label class="form-check-label" for="xl-6">xl</label>
                         </div>
                     </div>
                     <div class="card border-0 grid gap row-gap-3">           

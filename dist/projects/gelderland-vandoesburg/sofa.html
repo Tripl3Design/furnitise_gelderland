@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Sofa Representation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #container {
+            width: 800px;
+            /* Adjust width as needed */
+            height: 400px;
+            /* Adjust height as needed */
+            border: 1px solid #ccc;
+        }
+
+        #sofaContainer {
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <svg id="sofaContainer" width="800" height="400">
+            <!-- SVG elements will be dynamically inserted here -->
+        </svg>
+    </div>
+
+    <script>
+        // JSON data for sofa arrangement
+        var sofaData = {
+            "id": "1",
+            "name": "green-five",
+            "image": "projects/gelderland-vandoesburg/img/thumbnails/green-five.jpg",
+            "background": {
+                "original": "d4d4d4"
+            },
+            "arrangement": "pentomino-L",
+            "elements": [
+                {
+                    "type": "armrestLeft_96",
+                    "svg": "<svg xmlns='http://www.w3.org/2000/svg' width='124' height='100'><rect x='2' y='2' width='24' height='96' fill='none' stroke='#000' stroke-width='2' /><rect x='26' y='2' width='84' height='24' fill='none' stroke='#000' stroke-width='2' /><line x1='14' y1='14' x2='110' y2='14' stroke='#000' stroke-width='1' stroke-dasharray='4' /><line x1='14' y1='14' x2='14' y2='98' stroke='#000' stroke-width='1' stroke-dasharray='4' /><line x1='110' y1='14' x2='110' y2='98' stroke='#000' stroke-width='2' /><line x1='26' y1='98' x2='110' y2='98' stroke='#000' stroke-width='2' /></svg>",
+                    "location": {
+                        "posX": -6,
+                        "posY": 0,
+                        "rot": 0
+                    }
+                },
+                {
+                    "type": "armrestRight_96",
+                    "svg": "<svg xmlns='http://www.w3.org/2000/svg' width='124' height='100'><rect x='98' y='2' width='24' height='96' fill='none' stroke='#000' stroke-width='2' /><rect x='14' y='2' width='84' height='24' fill='none' stroke='#000' stroke-width='2' /><line x1='14' y1='14' x2='110' y2='14' stroke='#000' stroke-width='1' stroke-dasharray='4' /><line x1='14' y1='14' x2='14' y2='98' stroke='#000' stroke-width='2' /><line x1='110' y1='14' x2='110' y2='98' stroke='#000' stroke-width='1' stroke-dasharray='4' /><line x1='14' y1='98' x2='98' y2='98' stroke='#000' stroke-width='2' /></svg>",
+                    "location": {
+                        "posX": -2,
+                        "posY": 0,
+                        "rot": 0
+                    }
+                },
+                {
+                    "type": "noArmrestsLeft_96",
+                    "svg": "<svg xmlns='http://www.w3.org/2000/svg' width='124' height='100'><rect x='26' y='2' width='84' height='24' fill='none' stroke='#000' stroke-width='2' /><line x1='14' y1='14' x2='14' y2='98' stroke='#000' stroke-width='2' /><line x1='14' y1='98' x2='110' y2='98' stroke='#000' stroke-width='2' /><line x1='110' y1='98' x2='110' y2='14' stroke='#000' stroke-width='2' /><line x1='14' y1='14' x2='26' y2='14' stroke='#000' stroke-width='2' /><line x1='14' y1='14' x2='110' y2='14' stroke='#000' stroke-width='1' stroke-dasharray='4' /></svg>",
+                    "location": {
+                        "posX": 2,
+                        "posY": -1,
+                        "rot": 0
+                    }
+                },
+                {
+                    "type": "noArmrests_84",
+                    "svg": "<svg xmlns='http://www.w3.org/2000/svg' width='124' height='100'><rect x='20' y='26' width='84' height='72' fill='none' stroke='#000' stroke-width='2' /><rect x='20' y='2' width='84' height='24' fill='none' stroke='#000' stroke-width='2' /><line x1='20' y1='14' x2='96' y2='14' stroke='#000' stroke-width='1' stroke-dasharray='4' /></svg>",
+                    "location": {
+                        "posX": 5.75,
+                        "posY": -1,
+                        "rot": 0
+                    }
+                },
+                {
+                    "type": "noArmrestsLeft_96",
+                    "svg": "<svg xmlns='http://www.w3.org/2000/svg' width='124' height='100'><rect x='26' y='2' width='84' height='24' fill='none' stroke='#000' stroke-width='2' /><line x1='14' y1='14' x2='14' y2='98' stroke='#000' stroke-width='2' /><line x1='14' y1='98' x2='110' y2='98' stroke='#000' stroke-width='2' /><line x1='110' y1='98' x2='110' y2='14' stroke='#000' stroke-width='2' /><line x1='14' y1='14' x2='26' y2='14' stroke='#000' stroke-width='2' /><line x1='14' y1='14' x2='110' y2='14' stroke='#000' stroke-width='1' stroke-dasharray='4' /></svg>",
+                    "location": {
+                        "posX": 5.75,
+                        "posY": 2.75,
+                        "rot": 270
+                    }
+                }
+                // Add more SVG definitions as needed
+            ]
+        };
+
+        // Functie om dynamisch SVG-elementen te maken op basis van data
+        function createSofaElements() {
+            var container = document.getElementById('sofaContainer');
+            var elements = sofaData.elements;
+
+            for (var i = 0; i < elements.length; i++) {
+                var element = elements[i];
+                var svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                //svgElement.setAttribute('width', '124');
+                //svgElement.setAttribute('height', '100');
+                svgElement.innerHTML = element.svg;
+
+                var group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+                var posX = element.location.posX * 24;
+                var rot = element.location.rot;
+                var posY;
+                if (rot === 90 || rot === 270) {
+                    posY = element.location.posY * 24;
+                } else if (rot === 0 || rot === 180) {
+                    posY = -element.location.posY * 24;
+                }
+
+                group.setAttribute('transform', 'translate(' + posX + ',' + posY + ') rotate(' + rot + ')');
+
+                group.appendChild(svgElement);
+                container.appendChild(group);
+            }
+
+            // Bounding box berekenen en viewBox instellen om de inhoud te centreren
+            var bbox = container.getBBox();
+            var viewBoxValue = [bbox.x, bbox.y, bbox.width, bbox.height].join(' ');
+            container.setAttribute('viewBox', viewBoxValue);
+        }
+
+        // Functie aanroepen om sofa elementen te maken bij het laden van de pagina
+        window.onload = function () {
+            createSofaElements();
+        };
+    </script>
+</body>
+
+</html>

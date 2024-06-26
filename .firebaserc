@@ -3,10 +3,8 @@
     "default": "gelderland-furnitise",
     "main": "furnitisemain",
     "Gelderland": "gelderland-furnitise"
-    },
-    "targets": {
-  
-
+  },
+  "targets": {
     "furnitisemain": {
       "hosting": {
         "main": [
@@ -22,5 +20,6 @@
       }
     }
   },
-  "etags": {}
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
