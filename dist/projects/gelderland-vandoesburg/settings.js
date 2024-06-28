@@ -962,12 +962,30 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         model.background = { "original": model.background.original, "lighter": bgColor.substring(1) };
     }
 
+    //opstelling
+    /*
+    group.addEventListener('click', function() {
+        group.setAttribute('transform', `rotate(90, 62, 56)`);
+        console.log('SVG element clicked!');
+
+        const elementSvg = elem.upholstery.upholstery;
+        var upholsteryColorIndex = ALLCOLORS.upholsteryColors.findIndex((item) => item.colorHex == upholsteryColor);
+
+        elementSvg.forEach(item => item.addEventListener('click', () => {
+
+            upholsteryColorValue.forEach(item => { item.classList.remove('colorButtonActive') });
+            const upholsteryColorId = item.id.split('_');
+            upholsteryColorIndex = upholsteryColorId[1];
+
+            model.elements[i].upholstery.upholstery = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorHex;
+            document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.add('colorButtonActive');
+
+            updateControlPanel(model, `element_${i + 1}`);
+            updateFeaturedModel(model);
+            showSelected(false);
+        }));
+*/
     //arrangement
-
-
-
-
-
     let arrangementIndex = ALLARRANGEMENTS.arrangements.findIndex((item) => item.name === model.arrangement);
     let widthInElements = ALLARRANGEMENTS.arrangements[arrangementIndex].widthInElements;
     let polyminoName = ALLARRANGEMENTS.arrangements[arrangementIndex].name;
@@ -1268,89 +1286,34 @@ function initSettings(model) {
     </div>`
     }
     accordions.arrangementNew = {
-        "title": "opstelling",
-        "options": ['numberOfSeats', 'width'],
-        "display": noArrangementNew,
-        "code": /*html*/ `
-        <div class="row m-0 p-0">
-        <div class="d-flex justify-content-start m-0 p-0">
-    
-            <div class="card border-0 me-5">
-                <label class="mb-3" for="seatsDropdown">aantal zitplaatsen</label>
-                <select class="form-select rounded-0" id="seatsDropdown" onchange="filterArrangements()">
-                    <!--<option id="nosAll" value="all">tot 6</option>-->
-                    <option id="nos1" value="1">1</option>
-                    <option id="nos2" value="2">2</option>
-                    <option id="nos3" value="3">3</option>
-                    <option id="nos4" value="4">4</option>
-                    <option id="nos5" value="5">5</option>
-                    <option id="nos6" value="6">6</option>
-                </select> 
-            </div>
-            <div class="card border-0">
-                <label class="mb-3" for="widthDropdown">breedte</label>
-                <select class="form-select rounded-0" id="widthDropdown" onchange="filterArrangements()">
-                    <!--<option id="wAll" value="all">84 - 504 cm</option>-->
-                    <option id="w1" value="1">84 - 120 cm</option>
-                    <option id="w2" value="2">168 - 216 cm</option>
-                    <option id="w3" value="3">252 - 312 cm</option>
-                    <option id="w4" value="4">336 - 408 cm</option>
-                    <option id="w5" value="5">429 - 504 cm</option>
-                </select>
-            </div>
-    
-        </div>
+        title: "opstelling",
+        options: ['numberOfSeats', 'width'],
+        display: noArrangementNew,
+        code: /*html*/ `
         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
             <div class="col-12 m-0 p-0">
                 <div class="row m-0 p-0 pb-2">
-                    <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                        <div id="arrangementContainer" class="m-0 p-0 mt-3">
-                        </div>
+                    <div class="row m-0 p-0">
+                        <svg id="sofaContainer" viewBox="-350 -150 800 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- SVG elements will be dynamically inserted here -->
+                        </svg>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-        <div id="container">
-        <svg id="sofaContainer" width="800" height="400">
-            <!-- SVG elements will be dynamically inserted here -->
-        </svg>
-    </div>`,
-        "onload": function () {
-            // function createSofaElements() {
-            var container = document.getElementById('sofaContainer');
-            var elements = ALLARRANGEMENTS.elements;
+        </div>`,
+        onload: function () {
+            const container = document.getElementById('sofaContainer');
+            const elements = model.elements;
+            const scaleFactor = 24;
 
-            for (var i = 0; i < elements.length; i++) {
-                var element = elements[i];
-                var svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-                svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-                //svgElement.setAttribute('width', '124');
-                //svgElement.setAttribute('height', '100');
-                svgElement.innerHTML = element.svg;
-
-                var group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-
-                var posX = element.location.posX * 24;
-                var rot = element.location.rot;
-                var posY;
-                if (rot === 90 || rot === 270) {
-                    posY = element.location.posY * 24;
-                } else if (rot === 0 || rot === 180) {
-                    posY = -element.location.posY * 24;
-                }
-
-                group.setAttribute('transform', 'translate(' + posX + ',' + posY + ') rotate(' + rot + ')');
-
-                group.appendChild(svgElement);
+            elements.forEach(({ type, location: { posX, posY, rot } }) => {
+                const svgContent = ALLARRANGEMENTS.elements[type].svg;
+                const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                group.setAttribute('id', `element-${index}`);
+                group.setAttribute('transform', `translate(${posX * scaleFactor}, ${-posY * scaleFactor}), rotate(${rot}, 62, 56)`);
+                group.innerHTML = svgContent;
                 container.appendChild(group);
-            }
-
-            // Bounding box berekenen en viewBox instellen om de inhoud te centreren
-            var bbox = container.getBBox();
-            var viewBoxValue = [bbox.x, bbox.y, bbox.width, bbox.height].join(' ');
-            container.setAttribute('viewBox', viewBoxValue);
-            //}
+            });
         }
     }
     if (model.elements.length >= 1) {
