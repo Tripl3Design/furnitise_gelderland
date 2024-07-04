@@ -1,6 +1,105 @@
 [
   {
     "id": "1",
+    "name": "five-brown",
+    "image": "projects/gelderland-vandoesburg/img/thumbnails/five-brown.jpg",
+    "background": {
+      "original": "d4d4d4"
+    },
+    "arrangement": "pentomino-L",
+    "elements": [
+      {
+        "type": "quarterround",
+        "cushion": false,
+        "frontcushion": false,
+        "xl": false,
+        "upholstery": {
+          "upholstery": "8a4a26"
+        },
+        "cushionUpholstery": {
+          "upholstery": "8a4a26"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "8a4a26"
+        },
+        "location": {
+          "posX": -6,
+          "posY": 2,
+          "rot": 180
+        }
+      },
+      {
+        "type": "quarterround",
+        "cushion": false,
+        "frontcushion": false,
+        "xl": false,
+        "upholstery": {
+          "upholstery": "8a4a26"
+        },
+        "cushionUpholstery": {
+          "upholstery": "8a4a26"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "8a4a26"
+        },
+        "location": {
+          "posX": -6,
+          "posY": -2,
+          "rot": 90
+        }
+      },
+      {
+        "type": "hocker_84",
+        "cushion": false,
+        "frontcushion": false,
+        "xl": true,
+        "upholstery": {
+          "upholstery": "3d4a44"
+        },
+        "cushionUpholstery": {
+          "upholstery": "3d4a44"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "2e383a"
+        },
+        "location": {
+          "posX": -2.75,
+          "posY": -1.5,
+          "rot": 0
+        }
+      },
+      {
+        "type": "armrestLeft_172",
+        "cushion": true,
+        "frontcushion": false,
+        "xl": true,
+        "upholstery": {
+          "upholstery": "3d4a44"
+        },
+        "cushionUpholstery": {
+          "upholstery": "3d4a44"
+        },
+        "frontcushionUpholstery": {
+          "upholstery": "3d4a44"
+        },
+        "location": {
+          "posX": 0.66,
+          "posY": 2,
+          "rot": 180
+        }
+      },
+      {
+        "type": "sideTable",
+        "location": {
+          "posX": -0.15,
+          "posY": -2.35,
+          "rot": 90
+        }
+      }
+    ]
+  },
+  {
+    "id": "2",
     "name": "green-five",
     "image": "projects/gelderland-vandoesburg/img/thumbnails/green-five.jpg",
     "background": {
@@ -111,7 +210,7 @@
     ]
   },
   {
-    "id": "2",
+    "id": "3",
     "name": "white-six",
     "image": "projects/gelderland-vandoesburg/img/thumbnails/white-six.jpg",
     "background": {
@@ -242,7 +341,7 @@
     ]
   },
   {
-    "id": "3",
+    "id": "4",
     "name": "one-white",
     "image": "projects/gelderland-vandoesburg/img/thumbnails/one-white.jpg",
     "background": {

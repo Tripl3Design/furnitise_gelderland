@@ -185,6 +185,9 @@ function controlPanel_updateLayer(name, settings) {
 
 function controlPanel_addLayer(name, settings, collapsed) {
     const accordion = settings.accordions[name];
+    if (accordion.collapsible == false){
+        collapsed = false;
+    }
     var collapse = collapsed ? '' : 'show';
     var accordionElem = document.getElementById('accordion');
     accordionElem.innerHTML +=

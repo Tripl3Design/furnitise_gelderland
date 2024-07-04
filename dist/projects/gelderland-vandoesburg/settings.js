@@ -41,15 +41,6 @@ function shareConfiguration(model) {
     window.location.href = `whatsapp://send?text=See%20my%20configuration!%20https://furnitise.nl/demos?brand=${brand}&product=${product}&data=${encodeURIComponent(JSON.stringify(model))}`
 }
 
-function submitForm() {
-    window.parent.postMessage(
-        JSON.stringify(FEATUREDMODEL.articleList),
-        "https://gelderland.com",
-    );
-
-    console.log(JSON.stringify(FEATUREDMODEL.articleList));
-}
-
 // used by FromUnityToJavascript.jslib
 async function downloadModel(blob, fileName) {
     const result = await blobToBase64(blob);
@@ -94,849 +85,7 @@ function updateCamera(modelWidth, modelHeight) {
     UNITY_INSTANCE.SendMessage('VanDoesburg', 'SetFLCamera', JSON.stringify(size));
 }
 
-function filterArrangements() {
-    const seatsDropdown = document.getElementById('seatsDropdown');
-    const widthDropdown = document.getElementById('widthDropdown');
-
-    const seatsFilter = seatsDropdown.value;
-    const widthFilter = widthDropdown.value;
-
-    enableWidthOptions(seatsFilter);
-
-    const filteredArrangements = ALLARRANGEMENTS.arrangements.filter(arrangement => {
-        const seatsMatch = seatsFilter == arrangement.numberOfSeats;
-        const widthMatch = widthFilter == arrangement.widthInElements;
-
-        // Display arrangements if both seats and width match
-        return seatsMatch && widthMatch;
-    });
-
-    displayArrangements(filteredArrangements);
-}
-
-function enableWidthOptions(seatsFilter) {
-    const widthDropdown = document.getElementById('widthDropdown');
-    const widthOptions = widthDropdown.querySelectorAll('option');
-
-    // Enable all options first
-    widthOptions.forEach(option => {
-        option.style.display = 'none';
-        option.disabled = true;
-    });
-
-    // Define the indices of options to be displayed based on seatsFilter
-    let displayIndices = [];
-
-    if (seatsFilter == 1) {
-        displayIndices = [0];
-    } else if (seatsFilter == 2) {
-        displayIndices = [1];
-    } else if (seatsFilter == 3) {
-        displayIndices = [1, 2];
-    } else if (seatsFilter == 4) {
-        displayIndices = [1, 2, 3];
-    } else if (seatsFilter == 5) {
-        displayIndices = [2, 3, 4];
-    } else if (seatsFilter == 6) {
-        displayIndices = [3, 4];
-    }
-
-    displayIndices.forEach(index => {
-        if (index >= 0 && index < widthOptions.length) {
-            widthOptions[index].style.display = 'block';
-            widthOptions[index].disabled = false;
-        }
-    });
-}
-
-function displayArrangements(arrangements) {
-    const arrangementContainer = document.getElementById('arrangementContainer');
-    arrangementContainer.innerHTML = '';
-
-    const rowDiv = document.createElement('div');
-    rowDiv.classList.add('row', 'row-cols-xxl-5', 'row-cols-xl-4', 'row-cols-lg-3', 'row-cols-md-3', 'row-cols-sm-2', 'row-cols-xs-2', 'align-items-center', 'm-0', 'p-0');
-    arrangementContainer.appendChild(rowDiv);
-
-    arrangements.forEach(arrangement => {
-        const outerDiv = document.createElement('div');
-        outerDiv.classList.add('col', 'm-0', 'p-3', 'ps-0', 'pb-0');
-
-        const input = document.createElement('input');
-        input.classList.add('btn-check',);
-        input.setAttribute('type', 'radio');
-        input.setAttribute('name', 'arrangements');
-        input.setAttribute('id', arrangement.name);
-        input.setAttribute('value', arrangement.name);
-
-        // Add a click event listener to the radio button
-        input.addEventListener('click', function () {
-            console.log('Selected arrangement:', arrangement.name);
-            setArrangement(arrangement.name);
-        });
-
-        const label = document.createElement('label');
-        label.classList.add('btn', 'btn-outline-dark', 'rounded-0', 'm-0', 'p-0');
-        label.setAttribute('for', arrangement.name);
-        label.style.aspectRatio = '1/1';
-
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.innerHTML = arrangement.svg;
-
-        svg.style.width = '100%';
-        svg.style.aspectRatio = '1/1';
-
-        outerDiv.appendChild(input);
-        outerDiv.appendChild(label);
-        label.appendChild(svg);
-
-        rowDiv.appendChild(outerDiv);
-    });
-}
-
-// Update the event listener for seatsDropdown to directly call filterArrangements
-document.getElementById('seatsDropdown').addEventListener('change', function () {
-    filterArrangements();
-});
-
-// Initial setup for widthDropdown
-document.getElementById('widthDropdown').addEventListener('change', function () {
-    const seatsDropdown = document.getElementById('seatsDropdown');
-    const seatsFilter = seatsDropdown.value;
-    enableWidthOptions(seatsFilter);
-    filterArrangements();
-});
-
-// Initial display of all arrangements
-filterArrangements();
-
-function setArrangement(name) {
-    console.log(FEATUREDMODEL);
-
-    if (name == 'unomino') {
-        FEATUREDMODEL.arrangement = 'unomino';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "chair_96",
-                "cushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 0,
-                    "posY": 0,
-                    "rot": 0
-                }
-            }];
-    }
-    if (name == 'domino') {
-        FEATUREDMODEL.arrangement = 'domino';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -2,
-                    "posY": 0,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 2,
-                    "posY": 0,
-                    "rot": 0
-                }
-            }];
-    }
-    if (name == 'tromino-L') {
-        FEATUREDMODEL.arrangement = 'tromino-L';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -2,
-                    "posY": 1,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 2,
-                    "posY": 1,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "hocker_84",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 2.25,
-                    "posY": -2.5,
-                    "rot": 0
-                }
-            }];
-    }
-    if (name == 'tromino-I') {
-        FEATUREDMODEL.arrangement = 'tromino-I';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -3.75,
-                    "posY": 0,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "noArmrests_84",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 0,
-                    "posY": 0,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 3.75,
-                    "posY": 0,
-                    "rot": 0
-                }
-            }];
-    }
-    if (name == 'tetromino-I') {
-        FEATUREDMODEL.arrangement = 'tetromino-I';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -6,
-                    "posY": 0,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "noArmrestsRight_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -2,
-                    "posY": 0,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": true,
-                "xl": true,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 1.75,
-                    "posY": -0.25,
-                    "rot": 270
-                }
-            },
-            {
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 6,
-                    "posY": -0.25,
-                    "rot": 270
-                }
-            }];
-    }
-    if (name == 'tetromino-O') {
-        FEATUREDMODEL.arrangement = 'tetromino-O';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -2,
-                    "posY": -1.75,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 2,
-                    "posY": -1.75,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 2,
-                    "posY": 1.75,
-                    "rot": 180
-                }
-            },
-            {
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -2,
-                    "posY": 1.75,
-                    "rot": 180
-                }
-            }];
-    }
-    if (name == 'tetromino-L') {
-        FEATUREDMODEL.arrangement = 'tetromino-L';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -6,
-                    "posY": 1.75,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "noArmrestsRight_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -2,
-                    "posY": 1.75,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 1.75,
-                    "posY": 1.5,
-                    "rot": 270
-                }
-            },
-            {
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -6,
-                    "posY": -1.75,
-                    "rot": 180
-                }
-            }];
-    }
-    if (name == 'tetromino-J') {
-        FEATUREDMODEL.arrangement = 'tetromino-J';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -6,
-                    "posY": 1.75,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "noArmrestsRight_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -2,
-                    "posY": 1.75,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 1.75,
-                    "posY": 1.5,
-                    "rot": 270
-                }
-            },
-            {
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 1.75,
-                    "posY": -2.25,
-                    "rot": 90
-                }
-            }];
-    }
-    if (name == 'tetromino-T') {
-        FEATUREDMODEL.arrangement = 'tetromino-T';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 0,
-                    "posY": -1.5,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -4,
-                    "posY": 2,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 4,
-                    "posY": 2,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 0,
-                    "posY": 2,
-                    "rot": 0
-                }
-            }];
-    }
-    if (name == 'tetromino-S') {
-        FEATUREDMODEL.arrangement = 'tetromino-S';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 0,
-                    "posY": -1.5,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -4,
-                    "posY": -1.5,
-                    "rot": 180
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 4,
-                    "posY": 2,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 0,
-                    "posY": 2,
-                    "rot": 0
-                }
-            }];
-    }
-    if (name == 'tetromino-Z') {
-        FEATUREDMODEL.arrangement = 'tetromino-Z';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 0,
-                    "posY": -1.5,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -4,
-                    "posY": 2,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 4,
-                    "posY": -1.5,
-                    "rot": 180
-                }
-            },
-            {
-                "type": "hocker_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 0,
-                    "posY": 2,
-                    "rot": 0
-                }
-            }];
-    }
-    if (name == 'pentomino-L') {
-        FEATUREDMODEL.arrangement = 'pentomino-L';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -6,
-                    "posY": 0,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "armrestRight_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -2,
-                    "posY": 0,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "noArmrestsLeft_96",
-                "cushion": true,
-                "frontcushion": true,
-                "xl": true,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 2,
-                    "posY": -1,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "noArmrests_84",
-                "cushion": false,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 5.75,
-                    "posY": -1,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "noArmrestsLeft_96",
-                "cushion": true,
-                "frontcushion": false,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[4] && FEATUREDMODEL.elements[4].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[4] && FEATUREDMODEL.elements[4].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[4] && FEATUREDMODEL.elements[4].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 5.75,
-                    "posY": 2.75,
-                    "rot": 270
-                }
-            }
-            ];
-    }
-    if (name == 'hexomino-R') {
-        FEATUREDMODEL.arrangement = 'hexomino-R';
-        FEATUREDMODEL.elements =
-            [{
-                "type": "armrestRight_96",
-                "cushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -6,
-                    "posY": -2,
-                    "rot": 180
-                }
-            },
-            {
-                "type": "armrestLeft_96",
-                "cushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[1] && FEATUREDMODEL.elements[1].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": -2,
-                    "posY": -2,
-                    "rot": 180
-                }
-            },
-            {
-                "type": "noArmrestsLeft_96",
-                "cushion": true,
-                "xl": true,
-                "upholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[2] && FEATUREDMODEL.elements[2].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 2,
-                    "posY": -2.5,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "noArmrests_84",
-                "cushion": true,
-                "xl": true,
-                "upholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[3] && FEATUREDMODEL.elements[3].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 5.75,
-                    "posY": -2.5,
-                    "rot": 0
-                }
-            },
-            {
-                "type": "hocker_96",
-                "cushion": true,
-                "xl": false,
-                "upholstery": (FEATUREDMODEL.elements[4] && FEATUREDMODEL.elements[4].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[4] && FEATUREDMODEL.elements[4].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[4] && FEATUREDMODEL.elements[4].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 2.25,
-                    "posY": 1.25,
-                    "rot": 90
-                }
-            },
-            {
-                "type": "noArmrestsLeft_96",
-                "cushion": true,
-                "xl": true,
-                "upholstery": (FEATUREDMODEL.elements[5] && FEATUREDMODEL.elements[5].upholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].upholstery) || { "upholstery": "ff0000" },
-                "cushionUpholstery": (FEATUREDMODEL.elements[5] && FEATUREDMODEL.elements[5].cushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].cushionUpholstery) || { "upholstery": "ff0000" },
-                "frontcushionUpholstery": (FEATUREDMODEL.elements[5] && FEATUREDMODEL.elements[5].frontcushionUpholstery) || (FEATUREDMODEL.elements[0] && FEATUREDMODEL.elements[0].frontcushionUpholstery) || { "upholstery": "ff0000" },
-                "location": {
-                    "posX": 5.75,
-                    "posY": 1.25,
-                    "rot": 270
-                }
-            }
-            ];
-    }
-
-    updateControlPanel(FEATUREDMODEL, undefined, 'arrangement');
-    updateFeaturedModel(FEATUREDMODEL);
-    showSelected(false);
-}
-
+/*
 function updateControlPanel(model, selectedLayer, expandedLayer) {
     const settings = initSettings(model);
     const elem = document.getElementById('controlpanelContainer');
@@ -962,41 +111,234 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         model.background = { "original": model.background.original, "lighter": bgColor.substring(1) };
     }
 
-    //opstelling
-    /*
-    group.addEventListener('click', function() {
-        group.setAttribute('transform', `rotate(90, 62, 56)`);
-        console.log('SVG element clicked!');
+    // overall width
+    let maxPosX = Number.NEGATIVE_INFINITY;
+    let minPosX = Number.POSITIVE_INFINITY;
+    let typeAtMaxPosX;
+    let typeAtMinPosX;
+    let rotAtMaxPosX;
+    let rotAtMinPosX;
 
-        const elementSvg = elem.upholstery.upholstery;
-        var upholsteryColorIndex = ALLCOLORS.upholsteryColors.findIndex((item) => item.colorHex == upholsteryColor);
+    const container = document.getElementById('sofaContainer');
+    const scaleFactor = 24;
 
-        elementSvg.forEach(item => item.addEventListener('click', () => {
+    const orderMap = {
+        'quarterround': 1,
+        'hocker_96': 1,
+        'hocker_84': 1,
+        'noArmrestsLeft_96': 2,
+        'noArmrestsRight_96': 2,
+        'noArmrests_84': 2,
+        'armrestRight_172': 3,
+        'armrestLeft_172': 3,
+        'armrestLeft_96': 3,
+        'armrestRight_96': 3,
+        'chair_96': 4
+    };
 
-            upholsteryColorValue.forEach(item => { item.classList.remove('colorButtonActive') });
-            const upholsteryColorId = item.id.split('_');
-            upholsteryColorIndex = upholsteryColorId[1];
+    // Sort elements based on orderMap
+    model.elements.sort((a, b) => orderMap[a.type] - orderMap[b.type]);
 
-            model.elements[i].upholstery.upholstery = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorHex;
-            document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.add('colorButtonActive');
+    model.elements.forEach(({ type, location: { posX, posY, rot } }, index) => {
+        const svgContent = ALLARRANGEMENTS.elements[type].svg;
+        const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        group.setAttribute('id', `${index + 1}-${type}`);
+        group.setAttribute('class', 'svgArrangement');
+        group.setAttribute('transform', `translate(${posX * scaleFactor}, ${-posY * scaleFactor}) rotate(${rot}, 62, 56)`);
 
-            updateControlPanel(model, `element_${i + 1}`);
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = svgContent;
+
+        const svgElement = tempDiv.querySelector('svg');
+        if (svgElement) {
+            svgElement.setAttribute('id', `svg-${index + 1}-${type}`);
+        }
+
+        group.innerHTML = tempDiv.innerHTML;
+
+        container.appendChild(group);
+    });
+
+    let previousClickedElement = null; // To store the previously clicked element
+
+    const svgArrangements = document.querySelectorAll('.svgArrangement');
+    var selectedElementIndex;
+    svgArrangements.forEach(item => {
+        item.addEventListener('click', () => {
+            let selectedElement = item.id;
+            console.log('selected element = ' + selectedElement);
+            let selectedElementNumber = selectedElement.split('-');
+            selectedElementIndex = parseInt(selectedElementNumber[1], 10);
+
+
+            // If there is a previously clicked element, reset its fill color to white
+            if (previousClickedElement) {
+                const previousSvgElement = document.getElementById(`svg-${previousClickedElement.id}`);
+                if (previousSvgElement) {
+                    const previousSvgElements = previousSvgElement.querySelectorAll('*');
+                    previousSvgElements.forEach(element => {
+                        element.setAttribute('fill', 'white');
+                    });
+                }
+            }
+
+            // Set the fill color of the currently clicked element to light grey
+            const svgElement = document.getElementById(`svg-${item.id}`);
+            if (svgElement) {
+                const svgElements = svgElement.querySelectorAll('*');
+                svgElements.forEach(element => {
+                    element.setAttribute('fill', 'lightgrey');
+                });
+            } else {
+                console.warn(`SVG element with id 'svg-${item.id}' not found`);
+            }
+
+            // Update the previously clicked element
+            previousClickedElement = item;
+
+            updateControlPanel(model, 'arrangement');
             updateFeaturedModel(model);
             showSelected(false);
-        }));
+        });
+    });
+
+    console.log(selectedElementIndex);
+    const thisElement = model.elements[selectedElementIndex];
+    console.log(thisElement);
+
+    // Measure width
+    if (thisElement.location.posX > maxPosX) {
+        maxPosX = thisElement.location.posX;
+        [typeAtMaxPosX, rotAtMaxPosX] = [thisElement.type, thisElement.location.rot];
+    }
+
+    if (thisElement.location.posX < minPosX) {
+        minPosX = thisElement.location.posX;
+        [typeAtMinPosX, rotAtMinPosX] = [thisElement.type, thisElement.location.rot];
+    }
+
+    // Set radio buttons and checkboxes
+    const radioTypeId = `${selectedElementIndex + 1}-${thisElement.type}`;
+    document.getElementById(radioTypeId).checked = true;
+
+    const checkboxes = {
+        xl: `xl-${selectedElementIndex + 1}`,
+        cushion: `cushion-${selectedElementIndex + 1}`,
+        frontcushion: `frontcushion-${selectedElementIndex + 1}`
+    };
+
+    thisElement.cushion = ['hocker_84', 'hocker_96'].includes(thisElement.type) ? false : thisElement.cushion;
+
+    document.getElementById(checkboxes.cushion).disabled = ['hocker_84', 'hocker_96'].includes(thisElement.type);
+    document.getElementById(checkboxes.frontcushion).disabled = ['hocker_84', 'hocker_96'].includes(thisElement.type);
+
+    for (const checkbox of Object.values(checkboxes)) {
+        document.getElementById(checkbox).checked = thisElement[checkbox.split('-')[0]];
+    }
+
+    document.getElementById(checkboxes.frontcushion).disabled = !thisElement.cushion;
+
+    // Event listeners for radio buttons
+    document.querySelectorAll(`input[type=radio][name='type-${selectedElementIndex + 1}']`).forEach((typeValue) => {
+        typeValue.onclick = (item) => {
+            thisElement.type = item.target.value;
+
+            updateControlPanel(model, `element_${selectedElementIndex + 1}`);
+            updateFeaturedModel(model);
+            showSelected(false);
+        };
+    });
+
+    // Event listeners for checkboxes
+    const handleCheckboxClick = (checkboxId, property) => {
+        const checkbox = document.getElementById(checkboxId);
+        thisElement[property] = checkbox.checked;
+
+        updateControlPanel(model, `element_${selectedElementIndex + 1}`);
+        updateFeaturedModel(model);
+        showSelected(false);
+    };
+
+    document.getElementById(`xl-${selectedElementIndex + 1}`).onclick = () => handleCheckboxClick(`xl-${selectedElementIndex + 1}`, 'xl');
+    document.getElementById(`cushion-${selectedElementIndex + 1}`).onclick = () => handleCheckboxClick(`cushion-${selectedElementIndex + 1}`, 'cushion');
+    document.getElementById(`frontcushion-${selectedElementIndex + 1}`).onclick = () => handleCheckboxClick(`frontcushion-${selectedElementIndex + 1}`, 'frontcushion');
+
+    // Display SVGs
+    const typeSvgMap = {
+        'chair_96': ALLARRANGEMENTS.elements.chair_96.svg,
+        'noArmrestsRight_96': ALLARRANGEMENTS.elements.noArmrestsRight_96.svg,
+        'noArmrestsLeft_96': ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg,
+        'noArmrests_84': ALLARRANGEMENTS.elements.noArmrests_84.svg,
+        'armrestRight_96': ALLARRANGEMENTS.elements.armrestRight_96.svg,
+        'armrestLeft_96': ALLARRANGEMENTS.elements.armrestLeft_96.svg,
+        'hocker_84': ALLARRANGEMENTS.elements.hocker_84.svg,
+        'hocker_96': ALLARRANGEMENTS.elements.hocker_96.svg,
+    };
+
+    document.getElementById(`type_${selectedElementIndex + 1}Text`).innerHTML = typeSvgMap[thisElement.type] || '';
+
+    //upholstery
+    const upholsteryColor = thisElement.upholstery.upholstery;
+    var upholsteryColorIndex = ALLCOLORS.upholsteryColors.findIndex((item) => item.colorHex == upholsteryColor);
+
+    var upholsteryColorValue = document.querySelectorAll(`.upholsteryColors${selectedElementIndex + 1}_colorButton`);
+
+   
+            if (parser.getDevice().type != 'mobile' && parser.getDevice().type != 'tablet') {
+                upholsteryColorValue.forEach(item => item.addEventListener('mouseover', () => {
+                    //document.getElementById('upholsteryColorsText').style.visibility = 'visible';
+                    //document.getElementById('upholsteryColorsText').innerHTML = '<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: ' + document.getElementById(item.id).style.backgroundColor + ';">&nbsp;&nbsp;&nbsp;&nbsp;' + document.getElementById(item.id).alt + '';
+                    //document.getElementById('upholsteryColorsText').classList.add('fst-italic');
+                    updateFeaturedModel(model, false);
+                    showSelected(false);
+                }));
+    
+                upholsteryColorValue.forEach(item => item.addEventListener('mouseout', () => {
+                    //document.getElementById('upholsteryColorsText').style.visibility = 'hidden';
+                    //document.getElementById('upholsteryColorsText').classList.remove('fst-italic');
+                    updateFeaturedModel(model, false);
+                    showSelected(false);
+                }));
+            }
+    
+    upholsteryColorValue.forEach(item => item.addEventListener('click', () => {
+
+        upholsteryColorValue.forEach(item => { item.classList.remove('colorButtonActive') });
+        const upholsteryColorId = item.id.split('_');
+        upholsteryColorIndex = upholsteryColorId[1];
+
+        model.elements[i].upholstery.upholstery = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorHex;
+        document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.add('colorButtonActive');
+
+        updateControlPanel(model, `element_${i + 1}`);
+        updateFeaturedModel(model);
+        showSelected(false);
+    }));
+    //model.upholstery.code = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorCode;
+    //model.upholstery.name = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorName;
+    //document.getElementById('upholsteryColorsText').innerHTML = '<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: #' + elem.upholstery.upholstery + ';">&nbsp;&nbsp;&nbsp;&nbsp;' + elem.upholstery.name;
+    document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.remove('colorButton');
+    document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.add('colorButtonActive');
+
+
+    document.getElementById(`color_${i + 1}Text`).innerHTML = `<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: #${elem.upholstery.upholstery}">`;
+}
 */
-    //arrangement
-    let arrangementIndex = ALLARRANGEMENTS.arrangements.findIndex((item) => item.name === model.arrangement);
-    let widthInElements = ALLARRANGEMENTS.arrangements[arrangementIndex].widthInElements;
-    let polyminoName = ALLARRANGEMENTS.arrangements[arrangementIndex].name;
+function updateControlPanel(model, selectedLayer, expandedLayer) {
+    const settings = initSettings(model);
+    const elem = document.getElementById('controlpanelContainer');
+    if (selectedLayer !== undefined) {
+        controlPanel_updateLayer(selectedLayer, settings);
+    } else {
+        controlPanel(settings, ALLMODELS, elem, expandedLayer);
+    }
 
-    document.getElementById('seatsDropdown').value = model.elements.length;
-    document.getElementById('widthDropdown').value = widthInElements;
-    //document.getElementById('polyminoName').classList.toggle("active");
+    toggleFeaturedModels();
+    updateBackgroundColor(model);
+    updateModelElements(model);
+    handleElementSelection(model);
+    selectDefaultElement(model, 0);  // Select the first element as the default
 
-    filterArrangements();
-    //document.getElementById('polyminoName').classList.toggle("active");
-    document.getElementById(polyminoName).checked = true;
 
 
     // overall width
@@ -1006,127 +348,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     let typeAtMinPosX;
     let rotAtMaxPosX;
     let rotAtMinPosX;
-
-    for (let i = 0; i < model.elements.length; i++) {
-        const elem = model.elements[i];
-
-        // Measure width
-        if (elem.location.posX > maxPosX) {
-            maxPosX = elem.location.posX;
-            [typeAtMaxPosX, rotAtMaxPosX] = [elem.type, elem.location.rot];
-        }
-
-        if (elem.location.posX < minPosX) {
-            minPosX = elem.location.posX;
-            [typeAtMinPosX, rotAtMinPosX] = [elem.type, elem.location.rot];
-        }
-
-        // Set radio buttons and checkboxes
-        const radioTypeId = `${i + 1}-${elem.type}`;
-        document.getElementById(radioTypeId).checked = true;
-
-        const checkboxes = {
-            xl: `xl-${i + 1}`,
-            cushion: `cushion-${i + 1}`,
-            frontcushion: `frontcushion-${i + 1}`
-        };
-
-        elem.cushion = ['hocker_84', 'hocker_96'].includes(elem.type) ? false : elem.cushion;
-
-        document.getElementById(checkboxes.cushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
-        document.getElementById(checkboxes.frontcushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
-
-        for (const checkbox of Object.values(checkboxes)) {
-            document.getElementById(checkbox).checked = elem[checkbox.split('-')[0]];
-        }
-
-        document.getElementById(checkboxes.frontcushion).disabled = !elem.cushion;
-
-        // Event listeners for radio buttons
-        document.querySelectorAll(`input[type=radio][name='type-${i + 1}']`).forEach((typeValue) => {
-            typeValue.onclick = (item) => {
-                elem.type = item.target.value;
-
-                updateControlPanel(model, `element_${i + 1}`);
-                updateFeaturedModel(model);
-                showSelected(false);
-            };
-        });
-
-        // Event listeners for checkboxes
-        const handleCheckboxClick = (checkboxId, property) => {
-            const checkbox = document.getElementById(checkboxId);
-            elem[property] = checkbox.checked;
-
-            updateControlPanel(model, `element_${i + 1}`);
-            updateFeaturedModel(model);
-            showSelected(false);
-        };
-
-        document.getElementById(`xl-${i + 1}`).onclick = () => handleCheckboxClick(`xl-${i + 1}`, 'xl');
-        document.getElementById(`cushion-${i + 1}`).onclick = () => handleCheckboxClick(`cushion-${i + 1}`, 'cushion');
-        document.getElementById(`frontcushion-${i + 1}`).onclick = () => handleCheckboxClick(`frontcushion-${i + 1}`, 'frontcushion');
-
-        // Display SVGs
-        const typeSvgMap = {
-            'chair_96': ALLARRANGEMENTS.elements.chair_96.svg,
-            'noArmrestsRight_96': ALLARRANGEMENTS.elements.noArmrestsRight_96.svg,
-            'noArmrestsLeft_96': ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg,
-            'noArmrests_84': ALLARRANGEMENTS.elements.noArmrests_84.svg,
-            'armrestRight_96': ALLARRANGEMENTS.elements.armrestRight_96.svg,
-            'armrestLeft_96': ALLARRANGEMENTS.elements.armrestLeft_96.svg,
-            'hocker_84': ALLARRANGEMENTS.elements.hocker_84.svg,
-            'hocker_96': ALLARRANGEMENTS.elements.hocker_96.svg,
-        };
-
-        document.getElementById(`type_${i + 1}Text`).innerHTML = typeSvgMap[elem.type] || '';
-
-        //upholstery
-        const upholsteryColor = elem.upholstery.upholstery;
-        var upholsteryColorIndex = ALLCOLORS.upholsteryColors.findIndex((item) => item.colorHex == upholsteryColor);
-
-        var upholsteryColorValue = document.querySelectorAll(`.upholsteryColors${i + 1}_colorButton`);
-
-        /*
-                if (parser.getDevice().type != 'mobile' && parser.getDevice().type != 'tablet') {
-                    upholsteryColorValue.forEach(item => item.addEventListener('mouseover', () => {
-                        //document.getElementById('upholsteryColorsText').style.visibility = 'visible';
-                        //document.getElementById('upholsteryColorsText').innerHTML = '<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: ' + document.getElementById(item.id).style.backgroundColor + ';">&nbsp;&nbsp;&nbsp;&nbsp;' + document.getElementById(item.id).alt + '';
-                        //document.getElementById('upholsteryColorsText').classList.add('fst-italic');
-                        updateFeaturedModel(model, false);
-                        showSelected(false);
-                    }));
-        
-                    upholsteryColorValue.forEach(item => item.addEventListener('mouseout', () => {
-                        //document.getElementById('upholsteryColorsText').style.visibility = 'hidden';
-                        //document.getElementById('upholsteryColorsText').classList.remove('fst-italic');
-                        updateFeaturedModel(model, false);
-                        showSelected(false);
-                    }));
-                }
-        */
-        upholsteryColorValue.forEach(item => item.addEventListener('click', () => {
-
-            upholsteryColorValue.forEach(item => { item.classList.remove('colorButtonActive') });
-            const upholsteryColorId = item.id.split('_');
-            upholsteryColorIndex = upholsteryColorId[1];
-
-            model.elements[i].upholstery.upholstery = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorHex;
-            document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.add('colorButtonActive');
-
-            updateControlPanel(model, `element_${i + 1}`);
-            updateFeaturedModel(model);
-            showSelected(false);
-        }));
-        //model.upholstery.code = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorCode;
-        //model.upholstery.name = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorName;
-        //document.getElementById('upholsteryColorsText').innerHTML = '<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: #' + elem.upholstery.upholstery + ';">&nbsp;&nbsp;&nbsp;&nbsp;' + elem.upholstery.name;
-        document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.remove('colorButton');
-        document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.add('colorButtonActive');
-
-
-        document.getElementById(`color_${i + 1}Text`).innerHTML = `<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: #${elem.upholstery.upholstery}">`;
-    }
 
     const difference = maxPosX - minPosX;
     arrWidth = difference * 24;
@@ -1147,11 +368,11 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
         arrWidth += 48;
     }
 
-    document.getElementById('widthText').textContent = arrWidth + ' cm';
+    document.getElementById('dimensionsText').textContent = arrWidth + ' cm';
 
     //updateCamera(arrWidth, arrWidth);
-    //updateControlPanel(model, undefined, 'arrangement');
-    //updateFeaturedModel(model);
+    // updateControlPanel(model, undefined, 'arrangement');
+    // updateFeaturedModel(model);
     // showSelected();
 
     document.getElementById('numberOfSeatsText').textContent = model.elements.length + '-zits';
@@ -1160,6 +381,315 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
 
     // is global FEATUREDMODEL for pdf really necessary?
     FEATUREDMODEL = model;
+}
+
+function toggleFeaturedModels() {
+    let featuredModels = document.getElementById('featuredModels');
+    if (urlParams.has('noFeaturedModels')) {
+        featuredModels.classList.remove('d-block');
+        featuredModels.classList.add('d-none');
+    } else {
+        featuredModels.classList.remove('d-none');
+        featuredModels.classList.add('d-block');
+    }
+}
+
+function updateBackgroundColor(model) {
+    if (model.background.lighter === undefined) {
+        let bgColor = pSBC(0, `#${model.background.original}`);
+        model.background = {
+            original: model.background.original,
+            lighter: bgColor.substring(1)
+        };
+    }
+}
+
+function updateModelElements(model) {
+    const container = document.getElementById('sofaContainer');
+    const scaleFactor = 24;
+    const orderMap = getOrderMap();
+
+    // Sort elements based on orderMap
+    model.elements.sort((a, b) => orderMap[a.type] - orderMap[b.type]);
+
+    model.elements.forEach(({ type, cushion, frontcushion, xl, location: { posX, posY, rot } }, index) => {
+        const svgContent = ALLARRANGEMENTS.elements[type].svg;
+        const group = createSvgGroup(index, type, cushion, frontcushion, xl, posX, posY, rot, scaleFactor, svgContent);
+        container.appendChild(group);
+    });
+}
+
+function getOrderMap() {
+    return {
+        'sideTable': 0,
+        'oakTable': 0,
+        'quarterround': 1,
+        'hocker_96': 1,
+        'hocker_84': 1,
+        'noArmrestsLeft_96': 2,
+        'noArmrestsRight_96': 2,
+        'noArmrests_84': 2,
+        'armrestRight_172': 3,
+        'armrestLeft_172': 3,
+        'armrestLeft_96': 3,
+        'armrestRight_96': 3,
+        'chair_96': 4
+    };
+}
+
+function createSvgGroup(index, type, cushion, frontcushion, xl, posX, posY, rot, scaleFactor, svgContent) {
+    const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    group.setAttribute('id', `${index + 1}-${type}`);
+    group.setAttribute('class', 'svgArrangement');
+    if (type == 'quarterround') {
+        group.setAttribute('transform', `translate(${(posX) * scaleFactor}, ${-posY * scaleFactor}) rotate(${rot}, 50, 50)`);
+    } else {
+        group.setAttribute('transform', `translate(${posX * scaleFactor}, ${-posY * scaleFactor}) rotate(${rot}, 62, 56)`);
+    }
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = svgContent;
+
+    const svgElement = tempDiv.querySelector('svg');
+    if (svgElement) {
+        svgElement.setAttribute('id', `svg-${index + 1}-${type}`);
+
+        const seat = svgElement.querySelector('g[name="seat"]');
+        if (xl) {
+            if (seat) {
+                const rect = seat.querySelector('rect');
+                if (rect) {
+                    rect.setAttribute('height', '100');
+                }
+            }
+        }
+    }
+
+    group.innerHTML = tempDiv.innerHTML;
+    return group;
+}
+
+function handleElementSelection(model) {
+    let previousClickedElement = null;
+    const svgArrangements = document.querySelectorAll('.svgArrangement');
+
+    svgArrangements.forEach(item => {
+        item.addEventListener('click', () => {
+            const selectedElementIndex = parseInt(item.id.split('-')[0], 10) - 1;
+            handleElementClick(item, selectedElementIndex, model, previousClickedElement);
+            previousClickedElement = item;
+
+            var typeName = item.id.split('-')[1];
+            var elementKey = Object.keys(ALLARRANGEMENTS.elements).find(key => key.includes(typeName));
+            var nameNl = ALLARRANGEMENTS.elements[elementKey]["name-nl"];
+            document.getElementById('typeText').textContent = nameNl;
+
+
+            const elem = model.elements[selectedElementIndex];
+
+
+
+ document.getElementById(typeName).checked = true;
+
+ const checkboxes = {
+     xl: `xl`,
+     cushion: `cushion`,
+     frontcushion: `frontcushion`
+ };
+
+ elem.cushion = ['hocker_84', 'hocker_96'].includes(typeName) ? false : elem.cushion;
+
+ document.getElementById(checkboxes.cushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
+ document.getElementById(checkboxes.frontcushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
+
+ for (const checkbox of Object.values(checkboxes)) {
+     document.getElementById(checkbox).checked = typeName[checkbox.split('-')[0]];
+ }
+
+ document.getElementById(checkboxes.frontcushion).disabled = !typeName.cushion;
+
+ // Event listeners for radio buttons
+ document.querySelectorAll(`input[type=radio][name='type']`).forEach((typeValue) => {
+     typeValue.onclick = (item) => {
+         elem.type = item.target.value;
+
+         updateControlPanel(model);
+         updateFeaturedModel(model);
+         showSelected(false);
+     };
+ });
+
+ // Event listeners for checkboxes
+ const handleCheckboxClick = (checkboxId, property) => {
+     const checkbox = document.getElementById(checkboxId);
+     thistypeNameElement[property] = checkbox.checked;
+
+     updateControlPanel(model);
+     updateFeaturedModel(model);
+     showSelected(false);
+ };
+
+ document.getElementById(`xl`).onclick = () => handleCheckboxClick(`xl`, 'xl');
+ document.getElementById(`cushion`).onclick = () => handleCheckboxClick(`cushion`, 'cushion');
+ document.getElementById(`frontcushion`).onclick = () => handleCheckboxClick(`frontcushion`, 'frontcushion');
+
+
+
+
+
+
+        });
+    });
+}
+
+function handleElementClick(item, selectedElementIndex, model, previousClickedElement) {
+    resetPreviousElementColor(previousClickedElement);
+    setElementColor(item, 'lightgrey');
+
+    if (selectedElementIndex >= 0 && selectedElementIndex < model.elements.length) {
+        const thisElement = model.elements[selectedElementIndex];
+        measureWidth(thisElement);
+        setRadioButtonsAndCheckboxes(selectedElementIndex, thisElement);
+        addEventListenersToButtonsAndCheckboxes(selectedElementIndex, thisElement, model);
+    }
+}
+
+function resetPreviousElementColor(previousClickedElement) {
+    if (previousClickedElement) {
+        const previousSvgElement = document.getElementById(`svg-${previousClickedElement.id}`);
+        if (previousSvgElement) {
+            previousSvgElement.querySelectorAll('*').forEach(element => {
+                element.setAttribute('fill', 'white');
+            });
+        }
+    }
+}
+
+function setElementColor(item, color) {
+    const svgElement = document.getElementById(`svg-${item.id}`);
+    console.log(`svg-${item.id}`);
+    if (svgElement) {
+        svgElement.querySelectorAll('*').forEach(element => {
+            element.setAttribute('fill', color);
+        });
+    }
+
+
+
+
+    //updateControlPanel(model, 'element');
+    //updateFeaturedModel(model);
+    //showSelected(false);
+}
+
+function measureWidth(thisElement) {
+    let maxPosX = Number.NEGATIVE_INFINITY;
+    let minPosX = Number.POSITIVE_INFINITY;
+    let typeAtMaxPosX;
+    let typeAtMinPosX;
+    let rotAtMaxPosX;
+    let rotAtMinPosX;
+
+    if (thisElement && thisElement.location) {
+        if (thisElement.location.posX > maxPosX) {
+            maxPosX = thisElement.location.posX;
+            [typeAtMaxPosX, rotAtMaxPosX] = [thisElement.type, thisElement.location.rot];
+        }
+
+        if (thisElement.location.posX < minPosX) {
+            minPosX = thisElement.location.posX;
+            [typeAtMinPosX, rotAtMinPosX] = [thisElement.type, thisElement.location.rot];
+        }
+    }
+}
+
+function setRadioButtonsAndCheckboxes(selectedElementIndex, thisElement) {
+    const radioTypeId = `${selectedElementIndex + 1}-${thisElement.type}`;
+    const radioElement = document.getElementById(radioTypeId);
+    if (radioElement) {
+        radioElement.checked = true;
+    }
+
+    const checkboxes = getCheckboxes(selectedElementIndex);
+    disableCheckboxes(checkboxes, thisElement);
+
+    for (const checkboxId of Object.values(checkboxes)) {
+        const checkbox = document.getElementById(checkboxId);
+        if (checkbox) {
+            checkbox.checked = thisElement[checkboxId.split('-')[0]];
+        }
+    }
+
+    const frontcushionCheckbox = document.getElementById(checkboxes.frontcushion);
+    if (frontcushionCheckbox) {
+        frontcushionCheckbox.disabled = !thisElement.cushion;
+    }
+}
+
+function getCheckboxes(selectedElementIndex) {
+    return {
+        xl: `xl-${selectedElementIndex + 1}`,
+        cushion: `cushion-${selectedElementIndex + 1}`,
+        frontcushion: `frontcushion-${selectedElementIndex + 1}`
+    };
+}
+
+function disableCheckboxes(checkboxes, thisElement) {
+    const typesToDisable = ['hocker_84', 'hocker_96'];
+    for (const checkboxId of Object.values(checkboxes)) {
+        const checkbox = document.getElementById(checkboxId);
+        if (checkbox) {
+            checkbox.disabled = typesToDisable.includes(thisElement.type);
+        }
+    }
+}
+
+function addEventListenersToButtonsAndCheckboxes(selectedElementIndex, thisElement, model) {
+    document.querySelectorAll(`input[type=radio][name='type-${selectedElementIndex + 1}']`).forEach((typeValue) => {
+        typeValue.onclick = (item) => {
+            thisElement.type = item.target.value;
+            updateControlPanel(model);
+            updateFeaturedModel(model);
+            showSelected(false);
+        };
+    });
+
+    const checkboxes = getCheckboxes(selectedElementIndex);
+    for (const [key, checkboxId] of Object.entries(checkboxes)) {
+        const checkbox = document.getElementById(checkboxId);
+        if (checkbox) {
+            checkbox.onclick = () => handleCheckboxClick(checkboxId, key, thisElement, model, selectedElementIndex);
+        }
+    }
+}
+
+function handleCheckboxClick(checkboxId, property, thisElement, model, selectedElementIndex) {
+    const checkbox = document.getElementById(checkboxId);
+    if (checkbox) {
+        thisElement[property] = checkbox.checked;
+        updateControlPanel(model);
+        updateFeaturedModel(model);
+        showSelected(false);
+    }
+}
+
+function selectDefaultElement(model, defaultIndex) {
+    const svgArrangements = document.querySelectorAll('.svgArrangement');
+    if (svgArrangements.length > defaultIndex) {
+        const defaultElement = svgArrangements[defaultIndex];
+
+        if (defaultElement instanceof HTMLElement) {
+            if (typeof defaultElement.click === 'function') {
+                defaultElement.click();
+            }
+        } else if (defaultElement instanceof SVGElement) {
+            const clickEvent = new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true
+            });
+            defaultElement.dispatchEvent(clickEvent); // Dispatch the click event
+        }
+    }
 }
 
 function showFeaturedModel(model) {
@@ -1174,7 +704,8 @@ function showFeaturedModelByIndex(index) {
 
 async function handleModelSelection() {
     var canvas = document.getElementById("modelviewer");
-    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
+    //var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
+    var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
     var config = {
         dataUrl: `${buildUrl}/Build/${brand}-${product}.data`,
         frameworkUrl: `${buildUrl}/Build/${brand}-${product}.framework.js`,
@@ -1241,58 +772,31 @@ function initSettings(model) {
         noDecor = "d-block";
     }
     accordions.arrangement = {
-        "title": "opstelling",
-        "options": ['numberOfSeats', 'width'],
-        "display": noArrangement,
-        "code": /*html*/ `
-        <div class="row m-0 p-0">
-        <div class="d-flex justify-content-start m-0 p-0">
-    
-            <div class="card border-0 me-5">
-                <label class="mb-3" for="seatsDropdown">aantal zitplaatsen</label>
-                <select class="form-select rounded-0" id="seatsDropdown" onchange="filterArrangements()">
-                    <!--<option id="nosAll" value="all">tot 6</option>-->
-                    <option id="nos1" value="1">1</option>
-                    <option id="nos2" value="2">2</option>
-                    <option id="nos3" value="3">3</option>
-                    <option id="nos4" value="4">4</option>
-                    <option id="nos5" value="5">5</option>
-                    <option id="nos6" value="6">6</option>
-                </select> 
-            </div>
-            <div class="card border-0">
-                <label class="mb-3" for="widthDropdown">breedte</label>
-                <select class="form-select rounded-0" id="widthDropdown" onchange="filterArrangements()">
-                    <!--<option id="wAll" value="all">84 - 504 cm</option>-->
-                    <option id="w1" value="1">84 - 120 cm</option>
-                    <option id="w2" value="2">168 - 216 cm</option>
-                    <option id="w3" value="3">252 - 312 cm</option>
-                    <option id="w4" value="4">336 - 408 cm</option>
-                    <option id="w5" value="5">429 - 504 cm</option>
-                </select>
-            </div>
-    
-        </div>
-        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="col-12 m-0 p-0">
-                <div class="row m-0 p-0 pb-2">
-                    <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                        <div id="arrangementContainer" class="m-0 p-0 mt-3">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`
-    }
-    accordions.arrangementNew = {
         title: "opstelling",
-        options: ['numberOfSeats', 'width'],
-        display: noArrangementNew,
+        options: ['numberOfSeats', 'dimensions'],
+        display: noArrangement,
+        collapsible: false,
         code: /*html*/ `
-        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+       <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
             <div class="col-12 m-0 p-0">
                 <div class="row m-0 p-0 pb-2">
+                <div class="d-flex justify content start">
+                <button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">refresh</span></button>
+                <button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_left_alt</span></button>
+                <button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_right_alt</span></button>
+<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_upward_alt</span></button>
+<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_downward_alt</span></button>
+
+ <button type="button" class="btn btn-primary d-flex align-items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="194" height="124">
+      <g name="tabletop">
+        <rect x="1" y="1" width="190" height="50" fill="white" stroke="black" stroke-width="1" />
+      </g>
+    </svg>
+    <span class="ml-2">tafel eiken</span>
+  </button>
+                </div>
+                
                     <div class="row m-0 p-0">
                         <svg id="sofaContainer" viewBox="-350 -150 800 400" xmlns="http://www.w3.org/2000/svg">
                             <!-- SVG elements will be dynamically inserted here -->
@@ -1300,666 +804,154 @@ function initSettings(model) {
                     </div>
                 </div>
             </div>
-        </div>`,
-        onload: function () {
-            const container = document.getElementById('sofaContainer');
-            const elements = model.elements;
-            const scaleFactor = 24;
+        </div>`
+    }
+    accordions.element = {
+        "title": "element",
+        "options": ['type'],
+        "display": "d-block",
+        "code": /*html*/ ` 
+<div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+    <div class="d-flex justify-content-start m-0 p-0 pt-2">
+        <div class="card border-0 grid gap row-gap-3 me-5">
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="chair_96" value="chair_96">
+                <label class="form-check-label" for="chair_96">
+                    ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
+                </label>
+            </div>
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="noArmrestsRight_96" value="noArmrestsRight_96">
+                <label class="form-check-label" for="noArmrestsRight_96">
+                    ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen r
+                </label>
+            </div>
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="noArmrestsLeft_96" value="noArmrestsLeft_96">
+                <label class="form-check-label" for="noArmrestsLeft_96">
+                    ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen l
+                </label>
+            </div>
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="noArmrests_84" value="noArmrests_84">
+                <label class="form-check-label" for="noArmrests_84">
+                    ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
+                </label>
+            </div>
+        </div>
+        <div class="card border-0 grid gap row-gap-3">
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="armrestLeft_96" value="armrestLeft_96">
+                <label class="form-check-label" for="armrestLeft_96">
+                    ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
+                </label>
+            </div>
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="armrestRight_96" value="armrestRight_96">
+                <label class="form-check-label" for="armrestRight_96">
+                    ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
+                </label>
+            </div>
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="hocker_84" value="hocker_84">
+                <label class="form-check-label" for="hocker_84">
+                    ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
+                </label>
+            </div>
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="hocker_96" value="hocker_96">
+                <label class="form-check-label" for="hocker_96">
+                    ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
+                </label>
+            </div>
+        </div>
+        <div class="card border-0 grid gap row-gap-3">
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="quarterround" value="quarterround">
+                <label class="form-check-label" for="quarterround">
+                    ${ALLARRANGEMENTS.elements.quarterround.svg}&nbsp;&nbsp;&nbsp;kwartrond
+                </label>
+            </div>
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="armrestRight_172" value="armrestRight_172">
+                <label class="form-check-label" for="armrestRight_172">
+                    ${ALLARRANGEMENTS.elements.armrestRight_172.svg}&nbsp;&nbsp;&nbsp;2,5 zits armleuning rechts
+                </label>
+            </div>
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="armrestLeft_172" value="armrestLeft_172">
+                <label class="form-check-label" for="armrestLeft_172">
+                    ${ALLARRANGEMENTS.elements.armrestLeft_172.svg}&nbsp;&nbsp;&nbsp;2,5 zits armleuning links
+                </label>
+            </div>
+        </div>
+    </div>
 
-            elements.forEach(({ type, location: { posX, posY, rot } }) => {
-                const svgContent = ALLARRANGEMENTS.elements[type].svg;
-                const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                group.setAttribute('id', `element-${index}`);
-                group.setAttribute('transform', `translate(${posX * scaleFactor}, ${-posY * scaleFactor}), rotate(${rot}, 62, 56)`);
-                group.innerHTML = svgContent;
-                container.appendChild(group);
-            });
+    <div class="d-flex justify-content-start m-0 p-0 pt-2">
+        <div class="card border-0 grid gap row-gap-3 me-5">
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="sideTable" value="sideTable">
+                <label class="form-check-label" for="sideTable">
+                    ${ALLARRANGEMENTS.elements.sideTable.svg}&nbsp;&nbsp;&nbsp;salontafel
+                </label>
+            </div>
+        </div>
+        <div class="card border-0 grid gap row-gap-3 me-5">
+            <div class="h6 fw-normal form-check">
+                <input type="radio" class="form-check-input" name="type" id="oakTable" value="oakTable">
+                <label class="form-check-label" for="oakTable">
+                    ${ALLARRANGEMENTS.elements.oakTable.svg}&nbsp;&nbsp;&nbsp;tafel eiken
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+        <div class="d-flex justify-content-start m-0 p-0 pt-4">
+            <div class="card border-0 grid gap row-gap-3 me-5">
+                <div class="h6 fw-normal form-check">
+                    <input type="checkbox" class="form-check-input" id="cushion" value="cushion">
+                    <label class="form-check-label" for="cushion">rugkussen</label>
+                </div>
+                <div class="h6 fw-normal form-check">
+                    <input type="checkbox" class="form-check-input" id="xl" value="xl">
+                    <label class="form-check-label" for="xl">xl</label>
+                </div>
+            </div>
+            <div class="card border-0 grid gap row-gap-3">
+                <div class="h6 fw-normal form-check">
+                    <input type="checkbox" class="form-check-input" id="frontcushion" value="frontcushion">
+                    <label class="form-check-label" for="frontcushion">extra rugkussen</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+`
+    },
+    accordions.upholstery = {
+        "title": "bekleding",
+        "options": ['color'],
+        "display": "d-block",
+        "code": /*html*/ ` 
+
+
+        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+            <div class="col-xxl-5 col-xl-5 col-12 m-0 p-0">
+                <div class="row m-0 p-0 pb-2">
+                    <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
+                        <div class="h6 fw-normal card border-0 pb-2">structure&nbsp;</div>
+                        <div id="upholsteryColorPicker" class="m-0 p-0">
+
+                    </div>
+                </div>
+            </div>
+        </div>`,
+        "onload": function () {
+            let containerElem = document.getElementById("upholsteryColorPicker");
+            addTextures('upholsteryColors', ALLCOLORS.upholsteryColors, containerElem);
         }
     }
-    if (model.elements.length >= 1) {
-        accordions.element_1 = {
-            "title": "element 1",
-            "options": ['type_1', 'color_1'],
-            "display": "d-block",
-            "code": /*html*/ ` 
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="d-flex justify-content-start m-0 p-0 pt-2">
-                <div class="card border-0 grid gap row-gap-3 me-5">
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-1" id="1-chair_96" value="chair_96">
-                        <label class="form-check-label" for="1-chair_96">
-                            ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-1" id="1-noArmrestsRight_96"
-                            value="noArmrestsRight_96">
-                        <label class="form-check-label" for="1-noArmrestsRight_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen r
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-1" id="1-noArmrestsLeft_96"
-                            value="noArmrestsLeft_96">
-                        <label class="form-check-label" for="1-noArmrestsLeft_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen l
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-1" id="1-noArmrests_84" value="noArmrests_84">
-                        <label class="form-check-label" for="1-noArmrests_84">
-                            ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
-                        </label>
-                    </div>
-                </div>
-                <div class="card border-0 grid gap row-gap-3">
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-1" id="1-armrestLeft_96" value="armrestLeft_96">
-                        <label class="form-check-label" for="1-armrestLeft_96">
-                            ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-1" id="1-armrestRight_96"
-                            value="armrestRight_96">
-                        <label class="form-check-label" for="1-armrestRight_96">
-                            ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
-                        </label>
-                    </div>
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-1" id="1-hocker_84" value="hocker_84">
-                        <label class="form-check-label" for="1-hocker_84">
-                            ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-1" id="1-hocker_96" value="hocker_96">
-                        <label class="form-check-label" for="1-hocker_96">
-                            ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
-                        </label>
-                    </div>
-                                    </div>
-                <div class="card border-0 grid gap row-gap-3">
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-1" id="1-quarterround" value="quarterround">
-                        <label class="form-check-label" for="1-quarterround">
-                            ${ALLARRANGEMENTS.elements.quarterround.svg}&nbsp;&nbsp;&nbsp; kwartrond
-                        </label>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0 pt-4">
-                    <div class="card border-0 grid gap row-gap-3 me-5">
 
-
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="cushion-1" value="cushion">
-                            <label class="form-check-label" for="cushion-1">rugkussen</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="xl-1" value="xl">
-                            <label class="form-check-label" for="xl-1">xl</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 grid gap row-gap-3">           
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="frontcushion-1" value="frontcushion">
-                            <label class="form-check-label" for="frontcushion-1">extra rugkussen</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="col-12 m-0 p-0">
-                    <div class="row m-0 p-0 pb-2">
-                        <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                            <div id="upholsteryColorPickerOne" class="m-0 p-0"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        </div>`,
-            "onload": function () {
-                let containerElemOne = document.getElementById("upholsteryColorPickerOne");
-                addTextures('upholsteryColors1', ALLCOLORS.upholsteryColors, containerElemOne);
-            }
-        }
-    }
-    if (model.elements.length >= 2) {
-        accordions.element_2 = {
-            "title": "element 2",
-            "options": ['type_2', 'color_2'],
-            "display": "d-block",
-            "code": /*html*/ ` 
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="d-flex justify-content-start m-0 p-0 pt-2">
-                <div class="card border-0 grid gap row-gap-3 me-5">
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-2" id="2-chair_96" value="chair_96">
-                        <label class="form-check-label" for="2-chair_96">
-                            ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-2" id="2-noArmrestsRight_96" value="noArmrestsRight_96">
-                        <label class="form-check-label" for="2-noArmrestsRight_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen r
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-2" id="2-noArmrestsLeft_96"
-                            value="noArmrestsLeft_96">
-                        <label class="form-check-label" for="2-noArmrestsLeft_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen l
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-2" id="2-noArmrests_84" value="noArmrests_84">
-                        <label class="form-check-label" for="2-noArmrests_84">
-                            ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
-                        </label>
-                    </div>
-                </div>
-                <div class="card border-0 grid gap row-gap-3">
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-2" id="2-armrestLeft_96" value="armrestLeft_96">
-                        <label class="form-check-label" for="2-armrestLeft_96">
-                            ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-2" id="2-armrestRight_96"
-                            value="armrestRight_96">
-                        <label class="form-check-label" for="2-armrestRight_96">
-                            ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
-                        </label>
-                    </div>
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-2" id="2-hocker_84" value="hocker_84">
-                        <label class="form-check-label" for="2-hocker_84">
-                            ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-2" id="2-hocker_96" value="hocker_96">
-                        <label class="form-check-label" for="2-hocker_96">
-                            ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
-                        </label>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0 pt-4">
-                    <div class="card border-0 grid gap row-gap-3 me-5">
-
-
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="cushion-2" value="cushion">
-                            <label class="form-check-label" for="cushion-2">rugkussen</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="xl-2" value="xl">
-                            <label class="form-check-label" for="xl-2">xl</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 grid gap row-gap-3">           
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="frontcushion-2" value="frontcushion">
-                            <label class="form-check-label" for="frontcushion-2">extra rugkussen</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="col-12 m-0 p-0">
-                    <div class="row m-0 p-0 pb-2">
-                        <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                            <div id="upholsteryColorPickerTwo" class="m-0 p-0"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        </div>`,
-            "onload": function () {
-                let containerElemTwo = document.getElementById("upholsteryColorPickerTwo");
-                addTextures('upholsteryColors2', ALLCOLORS.upholsteryColors, containerElemTwo);
-            }
-        }
-    }
-    if (model.elements.length >= 3) {
-        accordions.element_3 = {
-            "title": "element 3",
-            "options": ['type_3', 'color_3'],
-            "display": "d-block",
-            "code": /*html*/ ` 
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="d-flex justify-content-start m-0 p-0 pt-2">
-                <div class="card border-0 grid gap row-gap-3 me-5">
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-3" id="3-chair_96" value="chair_96">
-                        <label class="form-check-label" for="3-chair_96">
-                            ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-3" id="3-noArmrestsRight_96" value="noArmrestsRight_96">
-                        <label class="form-check-label" for="3-noArmrestsRight_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen r
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-3" id="3-noArmrestsLeft_96"
-                            value="noArmrestsLeft_96">
-                        <label class="form-check-label" for="3-noArmrestsLeft_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen l
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-3" id="3-noArmrests_84" value="noArmrests_84">
-                        <label class="form-check-label" for="3-noArmrests_84">
-                            ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
-                        </label>
-                    </div>
-                </div>
-                <div class="card border-0 grid gap row-gap-3">
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-3" id="3-armrestLeft_96" value="armrestLeft_96">
-                        <label class="form-check-label" for="3-armrestLeft_96">
-                            ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-3" id="3-armrestRight_96"
-                            value="armrestRight_96">
-                        <label class="form-check-label" for="3-armrestRight_96">
-                            ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
-                        </label>
-                    </div>
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-3" id="3-hocker_84" value="hocker_84">
-                        <label class="form-check-label" for="3-hocker_84">
-                            ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-3" id="3-hocker_96" value="hocker_96">
-                        <label class="form-check-label" for="3-hocker_96">
-                            ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
-                        </label>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0 pt-4">
-                    <div class="card border-0 grid gap row-gap-3 me-5">
-
-
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="cushion-3" value="cushion">
-                            <label class="form-check-label" for="cushion-3">rugkussen</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="xl-3" value="xl">
-                            <label class="form-check-label" for="xl-3">xl</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 grid gap row-gap-3">           
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="frontcushion-3" value="frontcushion">
-                            <label class="form-check-label" for="frontcushion-3">extra rugkussen</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="col-12 m-0 p-0">
-                    <div class="row m-0 p-0 pb-2">
-                        <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                            <div id="upholsteryColorPickerThree" class="m-0 p-0"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        </div>`,
-            "onload": function () {
-                let containerElemThree = document.getElementById("upholsteryColorPickerThree");
-                addTextures('upholsteryColors3', ALLCOLORS.upholsteryColors, containerElemThree);
-            }
-        }
-    }
-    if (model.elements.length >= 4) {
-        accordions.element_4 = {
-            "title": "element 4",
-            "options": ['type_4', 'color_4'],
-            "display": "d-block",
-            "code": /*html*/ ` 
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="d-flex justify-content-start m-0 p-0 pt-2">
-                <div class="card border-0 grid gap row-gap-3 me-5">
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-4" id="4-chair_96" value="chair_96">
-                        <label class="form-check-label" for="4-chair_96">
-                            ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-4" id="4-noArmrestsRight_96" value="noArmrestsRight_96">
-                        <label class="form-check-label" for="4-noArmrestsRight_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen r
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-4" id="4-noArmrestsLeft_96"
-                            value="noArmrestsLeft_96">
-                        <label class="form-check-label" for="4-noArmrestsLeft_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen l
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-4" id="4-noArmrests_84" value="noArmrests_84">
-                        <label class="form-check-label" for="4-noArmrests_84">
-                            ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
-                        </label>
-                    </div>
-                </div>
-                <div class="card border-0 grid gap row-gap-3">
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-4" id="4-armrestLeft_96" value="armrestLeft_96">
-                        <label class="form-check-label" for="4-armrestLeft_96">
-                            ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-4" id="4-armrestRight_96"
-                            value="armrestRight_96">
-                        <label class="form-check-label" for="4-armrestRight_96">
-                            ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
-                        </label>
-                    </div>
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-4" id="4-hocker_84" value="hocker_84">
-                        <label class="form-check-label" for="4-hocker_84">
-                            ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-4" id="4-hocker_96" value="hocker_96">
-                        <label class="form-check-label" for="4-hocker_96">
-                            ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
-                        </label>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0 pt-4">
-                    <div class="card border-0 grid gap row-gap-3 me-5">
-
-
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="cushion-4" value="cushion">
-                            <label class="form-check-label" for="cushion-4">rugkussen</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="xl-4" value="xl">
-                            <label class="form-check-label" for="xl-4">xl</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 grid gap row-gap-3">           
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="frontcushion-4" value="frontcushion">
-                            <label class="form-check-label" for="frontcushion-4">extra rugkussen</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="col-12 m-0 p-0">
-                    <div class="row m-0 p-0 pb-2">
-                        <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                            <div id="upholsteryColorPickerFour" class="m-0 p-0"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        </div>`,
-            "onload": function () {
-                let containerElemFour = document.getElementById("upholsteryColorPickerFour");
-                addTextures('upholsteryColors4', ALLCOLORS.upholsteryColors, containerElemFour);
-            }
-        }
-    }
-    if (model.elements.length >= 5) {
-        accordions.element_5 = {
-            "title": "element 5",
-            "options": ['type_5', 'color_5'],
-            "display": "d-block",
-            "code": /*html*/ ` 
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="d-flex justify-content-start m-0 p-0 pt-2">
-                <div class="card border-0 grid gap row-gap-3 me-5">
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-5" id="5-chair_96" value="chair_96">
-                        <label class="form-check-label" for="5-chair_96">
-                            ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-5" id="5-noArmrestsRight_96" value="noArmrestsRight_96">
-                        <label class="form-check-label" for="5-noArmrestsRight_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen r
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-5" id="5-noArmrestsLeft_96"
-                            value="noArmrestsLeft_96">
-                        <label class="form-check-label" for="5-noArmrestsLeft_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen l
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-5" id="5-noArmrests_84" value="noArmrests_84">
-                        <label class="form-check-label" for="5-noArmrests_84">
-                            ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
-                        </label>
-                    </div>
-                </div>
-                <div class="card border-0 grid gap row-gap-3">
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-5" id="5-armrestLeft_96" value="armrestLeft_96">
-                        <label class="form-check-label" for="5-armrestLeft_96">
-                            ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-5" id="5-armrestRight_96"
-                            value="armrestRight_96">
-                        <label class="form-check-label" for="5-armrestRight_96">
-                            ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
-                        </label>
-                    </div>
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-5" id="5-hocker_84" value="hocker_84">
-                        <label class="form-check-label" for="5-hocker_84">
-                            ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-5" id="5-hocker_96" value="hocker_96">
-                        <label class="form-check-label" for="5-hocker_96">
-                            ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
-                        </label>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0 pt-4">
-                    <div class="card border-0 grid gap row-gap-3 me-5">
-
-
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="cushion-5" value="cushion">
-                            <label class="form-check-label" for="cushion-5">rugkussen</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="xl-5" value="xl">
-                            <label class="form-check-label" for="xl-5">xl</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 grid gap row-gap-3">           
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="frontcushion-5" value="frontcushion">
-                            <label class="form-check-label" for="frontcushion-5">extra rugkussen</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="col-12 m-0 p-0">
-                    <div class="row m-0 p-0 pb-2">
-                        <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                            <div id="upholsteryColorPickerFive" class="m-0 p-0"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        </div>`,
-            "onload": function () {
-                let containerElemFive = document.getElementById("upholsteryColorPickerFive");
-                addTextures('upholsteryColors5', ALLCOLORS.upholsteryColors, containerElemFive);
-            }
-        }
-    }
-    if (model.elements.length >= 6) {
-        accordions.element_6 = {
-            "title": "element 6",
-            "options": ['type_6', 'color_6'],
-            "display": "d-block",
-            "code": /*html*/ ` 
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="d-flex justify-content-start m-0 p-0 pt-2">
-                <div class="card border-0 grid gap row-gap-3 me-5">
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-6" id="6-chair_96" value="chair_96">
-                        <label class="form-check-label" for="6-chair_96">
-                            ${ALLARRANGEMENTS.elements.chair_96.svg}&nbsp;&nbsp;&nbsp;fauteuil
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-6" id="6-noArmrestsRight_96" value="noArmrestsRight_96">
-                        <label class="form-check-label" for="6-noArmrestsRight_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen r
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-6" id="6-noArmrestsLeft_96"
-                            value="noArmrestsLeft_96">
-                        <label class="form-check-label" for="6-noArmrestsLeft_96">
-                            ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}&nbsp;&nbsp;&nbsp;geen armleuningen l
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-6" id="6-noArmrests_84" value="noArmrests_84">
-                        <label class="form-check-label" for="6-noArmrests_84">
-                            ${ALLARRANGEMENTS.elements.noArmrests_84.svg}&nbsp;&nbsp;&nbsp;geen armleuningen
-                        </label>
-                    </div>
-                </div>
-                <div class="card border-0 grid gap row-gap-3">
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-6" id="6-armrestLeft_96" value="armrestLeft_96">
-                        <label class="form-check-label" for="6-armrestLeft_96">
-                            ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}&nbsp;&nbsp;&nbsp;armleuning links
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-6" id="6-armrestRight_96"
-                            value="armrestRight_96">
-                        <label class="form-check-label" for="6-armrestRight_96">
-                            ${ALLARRANGEMENTS.elements.armrestRight_96.svg}&nbsp;&nbsp;&nbsp;armleuning rechts
-                        </label>
-                    </div>
-        
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-6" id="6-hocker_84" value="hocker_84">
-                        <label class="form-check-label" for="6-hocker_84">
-                            ${ALLARRANGEMENTS.elements.hocker_84.svg}&nbsp;&nbsp;&nbsp;hocker 84cm breed
-                        </label>
-                    </div>
-                    <div class="h6 fw-normal form-check">
-                        <input type="radio" class="form-check-input" name="type-6" id="6-hocker_96" value="hocker_96">
-                        <label class="form-check-label" for="6-hocker_96">
-                            ${ALLARRANGEMENTS.elements.hocker_96.svg}&nbsp;&nbsp;&nbsp;hocker 96cm breed
-                        </label>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="d-flex justify-content-start m-0 p-0 pt-4">
-                    <div class="card border-0 grid gap row-gap-3 me-5">
-
-
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="cushion-6" value="cushion">
-                            <label class="form-check-label" for="cushion-6">rugkussen</label>
-                        </div>
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="xl-6" value="xl">
-                            <label class="form-check-label" for="xl-6">xl</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 grid gap row-gap-3">           
-                        <div class="h6 fw-normal form-check">
-                            <input type="checkbox" class="form-check-input" id="frontcushion-6" value="frontcushion">
-                            <label class="form-check-label" for="frontcushion-6">extra rugkussen</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-                <div class="col-12 m-0 p-0">
-                    <div class="row m-0 p-0 pb-2">
-                        <div class="row m-0 p-0 pb-2 d-flex justify-content-start m-0 p-0">
-                            <div id="upholsteryColorPickerSix" class="m-0 p-0"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        </div>`,
-            "onload": function () {
-                let containerElemSix = document.getElementById("upholsteryColorPickerSix");
-                addTextures('upholsteryColors6', ALLCOLORS.upholsteryColors, containerElemSix);
-            }
-        }
-    }
     return { accordions };
 }

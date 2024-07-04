@@ -24,7 +24,7 @@ async function generateRenderTexture(medium, model) {
         heightForImage: model.height,
         depthForImage: 37
     };
-    await UNITY_INSTANCE.SendMessage('Amsterdammer', 'SaveRenderTexture', JSON.stringify(renderTexture));
+    await UNITY_INSTANCE.SendMessage('VanDoesburg', 'SaveRenderTexture', JSON.stringify(renderTexture));
 }
 
 // used by FromUnityToJavascript.jslib
