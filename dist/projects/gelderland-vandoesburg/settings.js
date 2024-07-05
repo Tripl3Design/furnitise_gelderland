@@ -486,57 +486,87 @@ function handleElementSelection(model) {
 
             const elem = model.elements[selectedElementIndex];
 
+            document.getElementById('rotate90').onclick = () => {
+                elem.location.rot = (elem.location.rot + 90) % 360;
 
+                updateControlPanel(model);
+                updateFeaturedModel(model);
+                showSelected(false);
+            };
+            document.getElementById('moveToLeft').onclick = () => {
+                elem.location.posX = elem.location.posX - 0.25;
 
- document.getElementById(typeName).checked = true;
+                updateControlPanel(model);
+                updateFeaturedModel(model);
+                showSelected(false);
+            };
+            document.getElementById('moveToRight').onclick = () => {
+                elem.location.posX = elem.location.posX + 0.25;
 
- const checkboxes = {
-     xl: `xl`,
-     cushion: `cushion`,
-     frontcushion: `frontcushion`
- };
+                updateControlPanel(model);
+                updateFeaturedModel(model);
+                showSelected(false);
+            };
+            document.getElementById('moveUp').onclick = () => {
+                elem.location.posY = elem.location.posY + 0.25;
 
- elem.cushion = ['hocker_84', 'hocker_96'].includes(typeName) ? false : elem.cushion;
+                updateControlPanel(model);
+                updateFeaturedModel(model);
+                showSelected(false);
+            };
+            document.getElementById('moveDown').onclick = () => {
+                elem.location.posY = elem.location.posY - 0.25;
 
- document.getElementById(checkboxes.cushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
- document.getElementById(checkboxes.frontcushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
-
- for (const checkbox of Object.values(checkboxes)) {
-     document.getElementById(checkbox).checked = typeName[checkbox.split('-')[0]];
- }
-
- document.getElementById(checkboxes.frontcushion).disabled = !typeName.cushion;
-
- // Event listeners for radio buttons
- document.querySelectorAll(`input[type=radio][name='type']`).forEach((typeValue) => {
-     typeValue.onclick = (item) => {
-         elem.type = item.target.value;
-
-         updateControlPanel(model);
-         updateFeaturedModel(model);
-         showSelected(false);
-     };
- });
-
- // Event listeners for checkboxes
- const handleCheckboxClick = (checkboxId, property) => {
-     const checkbox = document.getElementById(checkboxId);
-     thistypeNameElement[property] = checkbox.checked;
-
-     updateControlPanel(model);
-     updateFeaturedModel(model);
-     showSelected(false);
- };
-
- document.getElementById(`xl`).onclick = () => handleCheckboxClick(`xl`, 'xl');
- document.getElementById(`cushion`).onclick = () => handleCheckboxClick(`cushion`, 'cushion');
- document.getElementById(`frontcushion`).onclick = () => handleCheckboxClick(`frontcushion`, 'frontcushion');
+                updateControlPanel(model);
+                updateFeaturedModel(model);
+                showSelected(false);
+            };
 
 
 
+            document.getElementById(typeName).checked = true;
 
+            const checkboxes = {
+                xl: `xl`,
+                cushion: `cushion`,
+                frontcushion: `frontcushion`
+            };
 
+            elem.cushion = ['hocker_84', 'hocker_96'].includes(typeName) ? false : elem.cushion;
 
+            document.getElementById(checkboxes.cushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
+            document.getElementById(checkboxes.frontcushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
+
+            for (const checkbox of Object.values(checkboxes)) {
+                document.getElementById(checkbox).checked = typeName[checkbox.split('-')[0]];
+            }
+
+            document.getElementById(checkboxes.frontcushion).disabled = !typeName.cushion;
+
+            // Event listeners for radio buttons
+            document.querySelectorAll(`input[type=radio][name='type']`).forEach((typeValue) => {
+                typeValue.onclick = (item) => {
+                    elem.type = item.target.value;
+
+                    updateControlPanel(model);
+                    updateFeaturedModel(model);
+                    showSelected(false);
+                };
+            });
+
+            // Event listeners for checkboxes
+            const handleCheckboxClick = (checkboxId, property) => {
+                const checkbox = document.getElementById(checkboxId);
+                thistypeNameElement[property] = checkbox.checked;
+
+                updateControlPanel(model);
+                updateFeaturedModel(model);
+                showSelected(false);
+            };
+
+            document.getElementById(`xl`).onclick = () => handleCheckboxClick(`xl`, 'xl');
+            document.getElementById(`cushion`).onclick = () => handleCheckboxClick(`cushion`, 'cushion');
+            document.getElementById(`frontcushion`).onclick = () => handleCheckboxClick(`frontcushion`, 'frontcushion');
         });
     });
 }
@@ -704,8 +734,8 @@ function showFeaturedModelByIndex(index) {
 
 async function handleModelSelection() {
     var canvas = document.getElementById("modelviewer");
-    //var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
-    var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
+    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
+    //var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
     var config = {
         dataUrl: `${buildUrl}/Build/${brand}-${product}.data`,
         frameworkUrl: `${buildUrl}/Build/${brand}-${product}.framework.js`,
@@ -781,12 +811,12 @@ function initSettings(model) {
             <div class="col-12 m-0 p-0">
                 <div class="row m-0 p-0 pb-2">
                 <div class="d-flex justify content start">
-                <button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">refresh</span></button>
-                <button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_left_alt</span></button>
-                <button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_right_alt</span></button>
-<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_upward_alt</span></button>
-<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_downward_alt</span></button>
-
+                <button id="rotate90" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">refresh</span></button>
+                <button id="moveToLeft" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_left_alt</span></button>
+                <button id="moveToRight" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_right_alt</span></button>
+                <button id="moveUp" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_upward_alt</span></button>
+                <button id="moveDown" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_downward_alt</span></button>
+<!--
  <button type="button" class="btn btn-primary d-flex align-items-center">
     <svg xmlns="http://www.w3.org/2000/svg" width="194" height="124">
       <g name="tabletop">
@@ -795,6 +825,7 @@ function initSettings(model) {
     </svg>
     <span class="ml-2">tafel eiken</span>
   </button>
+  -->
                 </div>
                 
                     <div class="row m-0 p-0">
@@ -929,11 +960,11 @@ function initSettings(model) {
 </div>
 `
     },
-    accordions.upholstery = {
-        "title": "bekleding",
-        "options": ['color'],
-        "display": "d-block",
-        "code": /*html*/ ` 
+        accordions.upholstery = {
+            "title": "bekleding",
+            "options": ['color'],
+            "display": "d-block",
+            "code": /*html*/ ` 
 
 
         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
@@ -947,11 +978,11 @@ function initSettings(model) {
                 </div>
             </div>
         </div>`,
-        "onload": function () {
-            let containerElem = document.getElementById("upholsteryColorPicker");
-            addTextures('upholsteryColors', ALLCOLORS.upholsteryColors, containerElem);
+            "onload": function () {
+                let containerElem = document.getElementById("upholsteryColorPicker");
+                addTextures('upholsteryColors', ALLCOLORS.upholsteryColors, containerElem);
+            }
         }
-    }
 
     return { accordions };
 }
