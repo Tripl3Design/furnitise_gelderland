@@ -284,6 +284,10 @@ function controlPanel(settings, allModels, containerElem, expandedLayer) {
     for (const name in settings["accordions"]) {
         controlPanel_addLayer(name, settings, !(expandedLayer && name == expandedLayer));
     }
+
+// enable Bootstrap tooltips
+    //const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    //const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 }
 
 function setCarouselActive(slide) {

@@ -478,96 +478,102 @@ function handleElementSelection(model) {
             handleElementClick(item, selectedElementIndex, model, previousClickedElement);
             previousClickedElement = item;
 
-            var typeName = item.id.split('-')[1];
-            var elementKey = Object.keys(ALLARRANGEMENTS.elements).find(key => key.includes(typeName));
-            var nameNl = ALLARRANGEMENTS.elements[elementKey]["name-nl"];
+            const typeName = item.id.split('-')[1];
+            const elementKey = Object.keys(ALLARRANGEMENTS.elements).find(key => key.includes(typeName));
+            const nameNl = ALLARRANGEMENTS.elements[elementKey]["name-nl"];
             document.getElementById('typeText').textContent = nameNl;
-
 
             const elem = model.elements[selectedElementIndex];
 
-            document.getElementById('rotate90').onclick = () => {
-                elem.location.rot = (elem.location.rot + 90) % 360;
-
-                updateControlPanel(model);
-                updateFeaturedModel(model);
-                showSelected(false);
-            };
-            document.getElementById('moveToLeft').onclick = () => {
-                elem.location.posX = elem.location.posX - 0.25;
-
-                updateControlPanel(model);
-                updateFeaturedModel(model);
-                showSelected(false);
-            };
-            document.getElementById('moveToRight').onclick = () => {
-                elem.location.posX = elem.location.posX + 0.25;
-
-                updateControlPanel(model);
-                updateFeaturedModel(model);
-                showSelected(false);
-            };
-            document.getElementById('moveUp').onclick = () => {
-                elem.location.posY = elem.location.posY + 0.25;
-
-                updateControlPanel(model);
-                updateFeaturedModel(model);
-                showSelected(false);
-            };
-            document.getElementById('moveDown').onclick = () => {
-                elem.location.posY = elem.location.posY - 0.25;
-
-                updateControlPanel(model);
-                updateFeaturedModel(model);
-                showSelected(false);
+            const controls = {
+                rotate90: () => {
+                    elem.location.rot = (elem.location.rot + 90) % 360;
+                },
+                moveToLeft: () => {
+                    elem.location.posX -= 0.25;
+                },
+                moveToRight: () => {
+                    elem.location.posX += 0.25;
+                },
+                moveUp: () => {
+                    elem.location.posY += 0.25;
+                },
+                moveDown: () => {
+                    elem.location.posY -= 0.25;
+                },
+                delete: () => {
+                    console.log('DELETE');
+                    model.elements.splice(selectedElementIndex, 1);
+                }
             };
 
-
-
-            document.getElementById(typeName).checked = true;
-
-            const checkboxes = {
-                xl: `xl`,
-                cushion: `cushion`,
-                frontcushion: `frontcushion`
-            };
-
-            elem.cushion = ['hocker_84', 'hocker_96'].includes(typeName) ? false : elem.cushion;
-
-            document.getElementById(checkboxes.cushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
-            document.getElementById(checkboxes.frontcushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
-
-            for (const checkbox of Object.values(checkboxes)) {
-                document.getElementById(checkbox).checked = typeName[checkbox.split('-')[0]];
-            }
-
-            document.getElementById(checkboxes.frontcushion).disabled = !typeName.cushion;
-
-            // Event listeners for radio buttons
-            document.querySelectorAll(`input[type=radio][name='type']`).forEach((typeValue) => {
-                typeValue.onclick = (item) => {
-                    elem.type = item.target.value;
-
+            Object.keys(controls).forEach(controlId => {
+                document.getElementById(controlId).onclick = () => {
+                    controls[controlId]();
                     updateControlPanel(model);
                     updateFeaturedModel(model);
                     showSelected(false);
                 };
             });
+        
 
-            // Event listeners for checkboxes
-            const handleCheckboxClick = (checkboxId, property) => {
-                const checkbox = document.getElementById(checkboxId);
-                thistypeNameElement[property] = checkbox.checked;
 
-                updateControlPanel(model);
-                updateFeaturedModel(model);
-                showSelected(false);
-            };
 
-            document.getElementById(`xl`).onclick = () => handleCheckboxClick(`xl`, 'xl');
-            document.getElementById(`cushion`).onclick = () => handleCheckboxClick(`cushion`, 'cushion');
-            document.getElementById(`frontcushion`).onclick = () => handleCheckboxClick(`frontcushion`, 'frontcushion');
-        });
+    document.getElementById(typeName).checked = true;
+
+    const checkboxes = {
+        xl: `xl`,
+        cushion: `cushion`,
+        frontcushion: `frontcushion`
+    };
+
+    elem.cushion = ['hocker_84', 'hocker_96'].includes(typeName) ? false : elem.cushion;
+
+    document.getElementById(checkboxes.cushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
+    document.getElementById(checkboxes.frontcushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
+
+    for (const checkbox of Object.values(checkboxes)) {
+        document.getElementById(checkbox).checked = typeName[checkbox.split('-')[0]];
+    }
+
+    document.getElementById(checkboxes.frontcushion).disabled = !typeName.cushion;
+
+    Array.from(document.getElementsByClassName('icon-container')).forEach((typeValue) => {
+        typeValue.onclick = (item) => {
+            console.log(typeValue.id);
+            elem.type = typeValue.id;
+
+            updateControlPanel(model);
+            updateFeaturedModel(model);
+            showSelected(false);
+        };
+    });
+
+    // Event listeners for radio buttons
+    document.querySelectorAll(`input[type=radio][name='type']`).forEach((typeValue) => {
+        typeValue.onclick = (item) => {
+            elem.type = item.target.value;
+
+            updateControlPanel(model);
+            updateFeaturedModel(model);
+            showSelected(false);
+        };
+    });
+
+    // Event listeners for checkboxes
+    const handleCheckboxClick = (checkboxId, property) => {
+        const checkbox = document.getElementById(checkboxId);
+        thistypeNameElement[property] = checkbox.checked;
+
+        updateControlPanel(model);
+        updateFeaturedModel(model);
+        showSelected(false);
+    };
+
+    document.getElementById(`xl`).onclick = () => handleCheckboxClick(`xl`, 'xl');
+    document.getElementById(`cushion`).onclick = () => handleCheckboxClick(`cushion`, 'cushion');
+    document.getElementById(`frontcushion`).onclick = () => handleCheckboxClick(`frontcushion`, 'frontcushion');
+});
     });
 }
 
@@ -734,8 +740,8 @@ function showFeaturedModelByIndex(index) {
 
 async function handleModelSelection() {
     var canvas = document.getElementById("modelviewer");
-    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
-    //var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
+    //var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
+    var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
     var config = {
         dataUrl: `${buildUrl}/Build/${brand}-${product}.data`,
         frameworkUrl: `${buildUrl}/Build/${brand}-${product}.framework.js`,
@@ -807,31 +813,86 @@ function initSettings(model) {
         display: noArrangement,
         collapsible: false,
         code: /*html*/ `
-       <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
             <div class="col-12 m-0 p-0">
-                <div class="row m-0 p-0 pb-2">
-                <div class="d-flex justify content start">
-                <button id="rotate90" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">refresh</span></button>
-                <button id="moveToLeft" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_left_alt</span></button>
-                <button id="moveToRight" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_right_alt</span></button>
-                <button id="moveUp" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_upward_alt</span></button>
-                <button id="moveDown" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_downward_alt</span></button>
-<!--
- <button type="button" class="btn btn-primary d-flex align-items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" width="194" height="124">
-      <g name="tabletop">
-        <rect x="1" y="1" width="190" height="50" fill="white" stroke="black" stroke-width="1" />
-      </g>
-    </svg>
-    <span class="ml-2">tafel eiken</span>
-  </button>
-  -->
+                <div class="row m-0 p-0">
+                    <div class="d-flex">
+                        <button id="rotate90" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">refresh</span></button>
+                        <button id="moveToLeft" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_left_alt</span></button>
+                        <button id="moveToRight" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_right_alt</span></button>
+                        <button id="moveUp" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_upward_alt</span></button>
+                        <button id="moveDown" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_downward_alt</span></button>
+                        <button id="delete" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">delete</span></button>
+                    </div>
                 </div>
-                
-                    <div class="row m-0 p-0">
-                        <svg id="sofaContainer" viewBox="-350 -150 800 400" xmlns="http://www.w3.org/2000/svg">
-                            <!-- SVG elements will be dynamically inserted here -->
-                        </svg>
+                <div class="row m-0 p-0">
+                    <svg id="sofaContainer" viewBox="-350 -150 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- SVG elements will be dynamically inserted here -->
+                    </svg>
+                </div>
+                <style>
+                .icon-container {
+                    width: 10%;
+                    height: 10%;
+                    display: block;
+                }
+    
+        
+                .icon-container svg {
+                    width: 75%;
+                    height: 75%;
+                    display: block;
+                }
+            </style>
+                <div class="row justify-content-center m-0 p-0">
+                    <div id="chair_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.chair_96.name_nl}">
+                        ${ALLARRANGEMENTS.elements.chair_96.svg}
+                    </div>
+                    <div id="noArmrestsRight_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.noArmrestsRight_96.name_nl}">
+                        ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}
+                    </div>
+                    <div  id="noArmrestsLeft_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.noArmrestsLeft_96.name_nl}">
+                        ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}
+                    </div>
+                    <div id="armrestRight_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.armrestRight_96.name_nl}">
+                        ${ALLARRANGEMENTS.elements.armrestRight_96.svg}
+                    </div>
+                    <div id="armrestLeft_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.armrestLeft_96.name_nl}">
+                        ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}
+                    </div>
+                    <div id="hocker_84" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.hocker_84.name_nl}">
+                    ${ALLARRANGEMENTS.elements.hocker_84.svg}
+                </div>
+                <div id="hocker_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.hocker_96.name_nl}">
+                    ${ALLARRANGEMENTS.elements.hocker_96.svg}
+                </div>
+                    </div>
+                    <div class="row justify-content-center m-0 p-0">
+
+                    <div id="armrestRight_172" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.armrestRight_172.name_nl}">
+                        ${ALLARRANGEMENTS.elements.armrestRight_172.svg}
+                    </div>
+                    <div id="armrestLeft_172" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.armrestLeft_172.name_nl}">
+                        ${ALLARRANGEMENTS.elements.armrestLeft_172.svg}
+                    </div>
+                    <div id="noArmrests_84" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.noArmrests_84.name_nl}">
+                        ${ALLARRANGEMENTS.elements.noArmrests_84.svg}
+                    </div>
+                    <div id="quarterround" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.quarterround.name_nl}">
+                        ${ALLARRANGEMENTS.elements.quarterround.svg}
+                    </div>
+       
+                    </div>
+                    <div class="row justify-content-center m-0 p-0">
+               
+                    <div id="sideTable" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.sideTable.name_nl}">
+                        ${ALLARRANGEMENTS.elements.sideTable.svg}
+                    </div>
+                    <div id="oakTable" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.oakTable.name_nl}">
+                        ${ALLARRANGEMENTS.elements.oakTable.svg}
+                    </div>
+                    <div id="glassTable" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.glassTable.name_nl}">
+                        ${ALLARRANGEMENTS.elements.glassTable.svg}
                     </div>
                 </div>
             </div>
@@ -843,6 +904,7 @@ function initSettings(model) {
         "display": "d-block",
         "code": /*html*/ ` 
 <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+<!--
     <div class="d-flex justify-content-start m-0 p-0 pt-2">
         <div class="card border-0 grid gap row-gap-3 me-5">
             <div class="h6 fw-normal form-check">
@@ -917,6 +979,7 @@ function initSettings(model) {
             </div>
         </div>
     </div>
+ 
 
     <div class="d-flex justify-content-start m-0 p-0 pt-2">
         <div class="card border-0 grid gap row-gap-3 me-5">
@@ -936,7 +999,7 @@ function initSettings(model) {
             </div>
         </div>
     </div>
-
+   -->
     <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
         <div class="d-flex justify-content-start m-0 p-0 pt-4">
             <div class="card border-0 grid gap row-gap-3 me-5">
@@ -983,6 +1046,5 @@ function initSettings(model) {
                 addTextures('upholsteryColors', ALLCOLORS.upholsteryColors, containerElem);
             }
         }
-
     return { accordions };
 }
