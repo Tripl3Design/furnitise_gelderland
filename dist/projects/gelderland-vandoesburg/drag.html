@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Sofa Representation</title>
+
+    <style>
+        rect {
+            border-style: solid;
+        }
+
+        #parentSVG {
+            height: 100vh;
+            width: 99.5%;
+            border-style: solid;
+            position: absolute;
+        }
+
+        .cloneableObject {
+            cursor: pointer;
+        }
+
+        .grid-line {
+            stroke: lightgray;
+            stroke-width: 1;
+        }
+
+        #mainSVG1,
+        #mainSVG2 {
+            width: 600px;
+            height: 600px;
+            border-style: solid;
+        }
+
+        .selected rect {
+            fill: lightgrey;
+            /* Change the fill color to light grey */
+        }
+    </style>
+
+    <script>
+        var isDragging = false;
+        var objectToClone, objectReplica;
+        var ghostImage = { 'isAppendedToOrigin': false, 'isAppendedToDestination': false };
+
+        function objectCloneGet(element) {
+            objectToClone = element;
+            isDragging = true;
+
+            objectReplica = objectToClone.cloneNode(true);
+            objectReplica.style.opacity = "0.5";
+            objectReplica.id = "dragImage";
+            objectReplica.style.position = "absolute";
+            document.getElementById('mainSVG1').appendChild(objectReplica);
+        }
+
+        function objectCloneDragOrigin(ev, element) {
+            if (isDragging) {
+                var dragImage = document.getElementById('dragImage');
+
+                if (!ghostImage.isAppendedToOrigin) {
+                    element.appendChild(dragImage);
+                    ghostImage.isAppendedToOrigin = true;
+                    ghostImage.isAppendedToDestination = false;
+                }
+
+                dragImage.setAttribute('x', ev.offsetX);
+                dragImage.setAttribute('y', ev.offsetY);
+            }
+        }
+
+        function objectCloneDragDestination(ev, element) {
+            if (isDragging) {
+                var dragImage = document.getElementById('dragImage');
+
+                if (!ghostImage.isAppendedToDestination) {
+                    element.appendChild(dragImage);
+                    ghostImage.isAppendedToDestination = true;
+                    ghostImage.isAppendedToOrigin = false;
+                }
+
+                dragImage.setAttribute('x', ev.offsetX);
+                dragImage.setAttribute('y', ev.offsetY);
+            }
+        }
+
+        function objectCloneDrop(ev, dropzone) {
+            if (isDragging) {
+                var objectReplica = objectToClone.cloneNode(true);
+
+                // Snap to grid
+                var snappedPosition = snapToGrid(ev.offsetX, ev.offsetY);
+                objectReplica.setAttribute('x', snappedPosition.x);
+                objectReplica.setAttribute('y', snappedPosition.y);
+
+                objectReplica.removeAttribute('onmousedown');
+                objectReplica.removeAttribute('onmousemove');
+                objectReplica.removeAttribute('onmouseup');
+                objectReplica.removeAttribute('onmouseleave');
+                objectReplica.setAttribute('onmousedown', 'enableMove(this)');
+                objectReplica.setAttribute('onmouseup', 'disableMove(this)');
+                objectReplica.id = 'appendedObject';
+
+                // Add class for selection
+                objectReplica.classList.add('selectable');
+
+                document.getElementById('mainSVG2').removeChild(document.getElementById('dragImage'));
+                dropzone.appendChild(objectReplica);
+
+                isDragging = false;
+                //lastReplica = null; // Reset the last replica to handle the next clone
+            }
+        }
+
+
+        function disableDrag(e) {
+            if (isDragging) {
+                e.removeChild(document.getElementById('dragImage'));
+                isDragging = false;
+                ghostImage.isAppendedToOrigin = false;
+                ghostImage.isAppendedToDestination = false;
+            }
+        }
+
+        function indicateDrag(dropzone) {
+            if (isDragging) {
+                dropzone.style.cursor = "pointer";
+            }
+        }
+
+        var targetObject = {
+            'isMoveable': false,
+            'isClickedOnce': false,
+            'toReAppend': null,
+            'toRePosition': null
+        };
+
+        function enableMove(ele) {
+            // Deselect all other elements
+            var selectedObjects = document.querySelectorAll('.selectable');
+            selectedObjects.forEach(function (obj) {
+                obj.classList.remove('selected');
+            });
+
+            // Select the current element
+            ele.classList.add('selected');
+
+            targetObject.isMoveable = true;
+            targetObject.toReAppend = ele;
+            targetObject.toRePosition = ele;
+        }
+
+        function reAppend(dropzone) {
+            if (targetObject.toReAppend && !targetObject.toReAppend.parentNode) {
+                dropzone.appendChild(targetObject.toReAppend);
+            }
+        }
+
+        function moveObject(ev, target) {
+            if (targetObject.isMoveable) {
+                if (targetObject.isClickedOnce) {
+                    offx = ev.pageX - targetObject.toRePosition.getAttribute('x');
+                    offy = ev.pageY - targetObject.toRePosition.getAttribute('y');
+                    targetObject.isClickedOnce = false;
+                }
+
+                objx = (ev.pageX - offx);
+                objy = (ev.pageY - offy);
+
+                // Snap to grid
+                var snappedPosition = snapToGrid(objx, objy);
+                targetObject.toRePosition.setAttribute('x', snappedPosition.x);
+                targetObject.toRePosition.setAttribute('y', snappedPosition.y);
+            }
+        }
+
+        function disableMove() {
+            targetObject.isMoveable = false;
+            targetObject.isClickedOnce = true;
+        }
+
+        function snapToGrid(x, y) {
+            var gridSize = 6; // 6cm in pixels (1cm = 1px)
+            return {
+                x: Math.round(x / gridSize) * gridSize,
+                y: Math.round(y / gridSize) * gridSize
+            };
+        }
+
+        function deleteSelected() {
+            var selectedObject = document.querySelector('.selected');
+            if (selectedObject) {
+                selectedObject.parentNode.removeChild(selectedObject);
+                // Clear the reference to the deleted object
+                targetObject.toReAppend = null;
+            }
+        }
+
+        function rotateSelected() {
+            var selectedObject = document.querySelector('.selected');
+            if (selectedObject) {
+                var currentRotation = parseFloat(selectedObject.getAttribute('data-rotation') || 0);
+                var newRotation = currentRotation + 90;
+
+                // Calculate rotation origin (center of the object)
+                var x = parseFloat(selectedObject.getAttribute('x'));
+                var y = parseFloat(selectedObject.getAttribute('y'));
+                var width = parseFloat(selectedObject.getAttribute('width'));
+                var height = parseFloat(selectedObject.getAttribute('height'));
+                var cx = x + width / 2;
+                var cy = y + height / 2;
+
+                selectedObject.setAttribute('transform', 'rotate(' + newRotation + ' ' + cx + ' ' + cy + ')');
+                selectedObject.setAttribute('data-rotation', newRotation);
+            }
+        }
+
+    </script>
+</head>
+
+<body style="height:100vh;margin:0;">
+
+    <svg id="mainSVG1" onmousemove="objectCloneDragOrigin(event, this)" onmouseup="disableDrag(this)" width="600"
+        height="600">
+        <foreignObject width="100%" height="100%">
+            <p style="user-select:none;cursor:default;">GET ELEMENTS HERE</p>
+        </foreignObject>
+
+        <!-- Include the SVG element as cloneable -->
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124"
+            x="50" y="50" onmousedown="objectCloneGet(this)">
+            <g name="seat">
+                <rect fill="white" x="14" y="14" width="96" height="84" stroke="black" stroke-width="2"></rect>
+            </g>
+            <g name="armrests">
+                <rect x="2" y="2" width="24" height="96" fill="white" stroke="black" stroke-width="2" />
+                <rect x="98" y="2" width="24" height="96" fill="white" stroke="black" stroke-width="2" />
+                <rect x="26" y="2" width="72" height="24" fill="white" stroke="black" stroke-width="2" />
+                <line x1="14" y1="14" x2="110" y2="14" stroke="black" stroke-width="1" stroke-dasharray="4" />
+                <line x1="14" y1="14" x2="14" y2="98" stroke="black" stroke-width="1" stroke-dasharray="4" />
+                <line x1="110" y1="14" x2="110" y2="98" stroke="black" stroke-width="1" stroke-dasharray="4" />
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 124 124' width='124' height='124'
+            x="150" y="150" onmousedown="objectCloneGet(this)">
+            <g name='seat'>
+                <rect fill='white' x='14' y='14' width='96' height='84' stroke='black' stroke-width='2'></rect>
+            </g>
+            <g name="armrests">
+                <rect x='14' y='2' width='84' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                <line x1='14' y1='14' x2='96' y2='14' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+            </g>
+        </svg>
+    </svg>
+
+    <svg id="mainSVG2" onmousedown="reAppend(this)" onmouseup="objectCloneDrop(event, this); disableMove();"
+        onmousemove="indicateDrag(this); moveObject(event, this); objectCloneDragDestination(event, this)"
+        onmouseleave="disableMove()" width="600" height="600">
+        <!-- Rotate button -->
+        <rect id="rotateButton" x="60" y="10" width="40" height="20" fill="blue" stroke="black" stroke-width="1"
+            style="cursor:pointer;" onclick="rotateSelected()"></rect>
+        <text x="70" y="25" font-family="Verdana" font-size="12" fill="white" style="pointer-events:none;">Rotate</text>
+
+        <!-- Delete button -->
+        <rect id="deleteButton" x="10" y="10" width="40" height="20" fill="red" stroke="black" stroke-width="1"
+            style="cursor:pointer;" onclick="deleteSelected()"></rect>
+        <text x="20" y="25" font-family="Verdana" font-size="12" fill="white" style="pointer-events:none;">Delete</text>
+    </svg>
+
+</body>
+
+</html>
