@@ -270,6 +270,7 @@ function initSettings(model) {
     </style>
         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
             <div class="col-12 m-0 p-0 pb-2">
+            button
                         <button onclick="deleteSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined m-0 p-0">delete</span>verwijder</button>
                         <button onclick="rotateSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">rotate_90_degrees_cw</span>roteer</button>
                         <button onclick="mirrorSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">flip</span>spiegel</button>
