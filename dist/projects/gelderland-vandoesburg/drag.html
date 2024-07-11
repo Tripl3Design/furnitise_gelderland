@@ -7,13 +7,6 @@
     <title>Modular Sofa Representation</title>
 
     <style>
-        #parentSVG {
-            height: 100vh;
-            width: 99.5%;
-            border: solid 1px black;
-            position: absolute;
-        }
-
         .cloneableObject {
             cursor: pointer;
         }
@@ -23,8 +16,8 @@
             stroke-width: 1;
         }
 
-        #mainSVG1,
-        #mainSVG2 {
+        #svgContainer,
+        #svgDragzone {
             width: 600px;
             height: 600px;
             border: solid 1px black;
@@ -33,11 +26,6 @@
         .selected rect,
         .selected path {
             fill: lightgrey;
-        }
-
-        #rotateButton,
-        #deleteButton {
-            cursor: pointer;
         }
     </style>
 
@@ -54,7 +42,8 @@
             objectReplica.style.opacity = "0.5";
             objectReplica.id = "dragImage";
             objectReplica.style.position = "absolute";
-            document.getElementById('mainSVG1').appendChild(objectReplica);
+
+            document.getElementById('svgContainer').appendChild(objectReplica);
         }
 
         function objectCloneDragOrigin(ev, element) {
@@ -116,7 +105,7 @@
                     });
                 }
 
-                document.getElementById('mainSVG2').removeChild(document.getElementById('dragImage'));
+                document.getElementById('svgDragzone').removeChild(document.getElementById('dragImage'));
                 dropzone.appendChild(objectReplica);
 
                 isDragging = false;
@@ -124,7 +113,7 @@
         }
 
         function checkForCollisions(newSeat) {
-            var existingSeats = document.querySelectorAll('#mainSVG2 .selectable g[name="seat"]');
+            var existingSeats = document.querySelectorAll('#svgDragzone .selectable g[name="seat"]');
             var collidingSeats = [];
 
             existingSeats.forEach(function (existingSeat) {
@@ -167,9 +156,10 @@
         function indicateDrag(dropzone) {
             if (isDragging) {
                 dropzone.style.cursor = "pointer";
+            } else {
+                dropzone.style.cursor = "auto";
             }
         }
-
         var targetObject = {
             'isMoveable': false,
             'isClickedOnce': false,
@@ -234,33 +224,39 @@
             if (selectedObject) {
                 selectedObject.parentNode.removeChild(selectedObject);
                 // Clear the reference to the deleted object
-                targetObject.toReAppend = null;
+                targetObject.toReAppend = null; // Assuming targetObject.toReAppend was defined somewhere else
             }
         }
 
         function rotateSelected() {
             var selectedObject = document.querySelector('.selected');
-
             if (selectedObject) {
                 var rotationGroup = selectedObject.querySelector('g');
-
                 if (rotationGroup) {
                     var currentTransform = rotationGroup.getAttribute('transform');
                     var currentRotation = parseFloat(currentTransform.match(/rotate\(([-]*\d+)/)[1]) || 0;
-                    var newRotation = (currentRotation + 90) % 360; // Example: Increment by 90 degrees
+                    var newRotation = (currentRotation + 90) % 360; // Rotate by 90 degrees clockwise
                     var newTransform = currentTransform.replace(/rotate\(([-]*\d+)/, 'rotate(' + newRotation);
 
                     rotationGroup.setAttribute('transform', newTransform);
                 }
             }
         }
+
+        // Event listener for keydown events to handle delete and rotate functionalities
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Delete' || event.key === 'Backspace' || event.keyCode === 46) {
+                deleteSelected();
+            } else if (event.key === 'r' || event.key === 'R') {
+                rotateSelected();
+            }
+        });
     </script>
 </head>
 
-<body style="height:100vh;margin:0;">
+<body>
 
-    <svg id="mainSVG1" onmousemove="objectCloneDragOrigin(event, this)" onmouseup="disableDrag(this)" width="600"
-        height="600">
+    <svg id="svgContainer" onmousemove="objectCloneDragOrigin(event, this)" onmouseup="disableDrag(this)">
         <foreignObject width="100%" height="100%">
 
         </foreignObject>
@@ -278,7 +274,8 @@
                     <rect x="26" y="14" width="72" height="24" fill="white" stroke="black" stroke-width="2"></rect>
                     <line x1="14" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
                     <line x1="14" y1="26" x2="14" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
-                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4">
+                    </line>
                 </g>
             </g>
         </svg>
@@ -319,7 +316,8 @@
                     <rect x="98" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
                     <rect x="14" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
                     <line x1="14" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
-                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4">
+                    </line>
                 </g>
             </g>
         </svg>
@@ -343,7 +341,7 @@
             x="10" y="360" onmousedown="objectCloneGet(this)">
             <g name="armrestLeft_172" transform="rotate(0, 95, 95)">
                 <g name='seat'>
-                    <rect fill='white' x='2' y='44' width='174' height='102' stroke='black' stroke-width='2'>
+                    <rect fill='white' x='2' y='50' width='174' height='102' stroke='black' stroke-width='2'>
                 </g>
                 <g name="rests">
                     <rect x='164' y='38' width='24' height='96' fill='white' stroke='black' stroke-width='2' />
@@ -358,7 +356,7 @@
             x="250" y="360" onmousedown="objectCloneGet(this)">
             <g name="armrestRight_172" transform="rotate(0, 95, 95)">
                 <g name='seat'>
-                    <rect fill='white' x='14' y='44' width='174' height='102' stroke='black' stroke-width='2'>
+                    <rect fill='white' x='14' y='50' width='174' height='102' stroke='black' stroke-width='2'>
                 </g>
                 <g name="rests">
                     <rect x='2' y='38' width='24' height='96' fill='white' stroke='black' stroke-width='2' />
@@ -409,11 +407,30 @@
                 </g>
             </g>
         </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 106 106' width='106' height='106'
+            x="350" y="100" onmousedown="objectCloneGet(this)">
+            <g name="coffeetable" transform="rotate(0, 53, 53)">
+                <g name='tabletop'>
+                    <rect x='2' y='2' width='78' height='102' fill='white' stroke='black' stroke-width='1' />
+                    <path d='M 18 104 L 18 57 Q 18 53 14 53 L 2 53' stroke='black' stroke-width='1' fill='none' />
+                </g>
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 196 196' width='196' height='196'
+            x="350" y="100" onmousedown="objectCloneGet(this)">
+            <g name="sidetable" transform="rotate(0, 97, 97)">
+                <g name='tabletop'>
+                    <rect x='2' y='2' width='192' height='48' fill='white' stroke='black' stroke-width='1' />
+                </g>
+            </g>
+        </svg>
     </svg>
 
-    <svg id="mainSVG2" onmousedown="reAppend(this)" onmouseup="objectCloneDrop(event, this); disableMove();"
+    <svg id="svgDragzone" onmousedown="reAppend(this)" onmouseup="objectCloneDrop(event, this); disableMove();"
         onmousemove="indicateDrag(this); moveObject(event, this); objectCloneDragDestination(event, this)"
-        onmouseleave="disableMove()" width="600" height="600">
+        onmouseleave="disableMove()">
         <!-- Rotate button -->
         <rect id="rotateButton" x="60" y="10" width="40" height="20" fill="blue" stroke="black" stroke-width="1"
             onclick="rotateSelected()"></rect>

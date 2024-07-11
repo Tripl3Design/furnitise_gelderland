@@ -85,7 +85,6 @@ function updateCamera(modelWidth, modelHeight) {
     UNITY_INSTANCE.SendMessage('VanDoesburg', 'SetFLCamera', JSON.stringify(size));
 }
 
-/*
 function updateControlPanel(model, selectedLayer, expandedLayer) {
     const settings = initSettings(model);
     const elem = document.getElementById('controlpanelContainer');
@@ -94,252 +93,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     } else {
         controlPanel(settings, ALLMODELS, elem, expandedLayer);
     }
-
-    //toggle featuredModels carrousel
-    let featuredModels = document.getElementById('featuredModels');
-    if (urlParams.has('noFeaturedModels')) {
-        featuredModels.classList.remove('d-block');
-        featuredModels.classList.add('d-none');
-    } else {
-        featuredModels.classList.remove('d-none');
-        featuredModels.classList.add('d-block');
-    }
-
-    //background
-    if (model.background.lighter == undefined) {
-        var bgColor = pSBC(0, '#' + model.background.original);
-        model.background = { "original": model.background.original, "lighter": bgColor.substring(1) };
-    }
-
-    // overall width
-    let maxPosX = Number.NEGATIVE_INFINITY;
-    let minPosX = Number.POSITIVE_INFINITY;
-    let typeAtMaxPosX;
-    let typeAtMinPosX;
-    let rotAtMaxPosX;
-    let rotAtMinPosX;
-
-    const container = document.getElementById('sofaContainer');
-    const scaleFactor = 24;
-
-    const orderMap = {
-        'quarterround': 1,
-        'hocker_96': 1,
-        'hocker_84': 1,
-        'noArmrestsLeft_96': 2,
-        'noArmrestsRight_96': 2,
-        'noArmrests_84': 2,
-        'armrestRight_172': 3,
-        'armrestLeft_172': 3,
-        'armrestLeft_96': 3,
-        'armrestRight_96': 3,
-        'chair_96': 4
-    };
-
-    // Sort elements based on orderMap
-    model.elements.sort((a, b) => orderMap[a.type] - orderMap[b.type]);
-
-    model.elements.forEach(({ type, location: { posX, posY, rot } }, index) => {
-        const svgContent = ALLARRANGEMENTS.elements[type].svg;
-        const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        group.setAttribute('id', `${index + 1}-${type}`);
-        group.setAttribute('class', 'svgArrangement');
-        group.setAttribute('transform', `translate(${posX * scaleFactor}, ${-posY * scaleFactor}) rotate(${rot}, 62, 56)`);
-
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = svgContent;
-
-        const svgElement = tempDiv.querySelector('svg');
-        if (svgElement) {
-            svgElement.setAttribute('id', `svg-${index + 1}-${type}`);
-        }
-
-        group.innerHTML = tempDiv.innerHTML;
-
-        container.appendChild(group);
-    });
-
-    let previousClickedElement = null; // To store the previously clicked element
-
-    const svgArrangements = document.querySelectorAll('.svgArrangement');
-    var selectedElementIndex;
-    svgArrangements.forEach(item => {
-        item.addEventListener('click', () => {
-            let selectedElement = item.id;
-            console.log('selected element = ' + selectedElement);
-            let selectedElementNumber = selectedElement.split('-');
-            selectedElementIndex = parseInt(selectedElementNumber[1], 10);
-
-
-            // If there is a previously clicked element, reset its fill color to white
-            if (previousClickedElement) {
-                const previousSvgElement = document.getElementById(`svg-${previousClickedElement.id}`);
-                if (previousSvgElement) {
-                    const previousSvgElements = previousSvgElement.querySelectorAll('*');
-                    previousSvgElements.forEach(element => {
-                        element.setAttribute('fill', 'white');
-                    });
-                }
-            }
-
-            // Set the fill color of the currently clicked element to light grey
-            const svgElement = document.getElementById(`svg-${item.id}`);
-            if (svgElement) {
-                const svgElements = svgElement.querySelectorAll('*');
-                svgElements.forEach(element => {
-                    element.setAttribute('fill', 'lightgrey');
-                });
-            } else {
-                console.warn(`SVG element with id 'svg-${item.id}' not found`);
-            }
-
-            // Update the previously clicked element
-            previousClickedElement = item;
-
-            updateControlPanel(model, 'arrangement');
-            updateFeaturedModel(model);
-            showSelected(false);
-        });
-    });
-
-    console.log(selectedElementIndex);
-    const thisElement = model.elements[selectedElementIndex];
-    console.log(thisElement);
-
-    // Measure width
-    if (thisElement.location.posX > maxPosX) {
-        maxPosX = thisElement.location.posX;
-        [typeAtMaxPosX, rotAtMaxPosX] = [thisElement.type, thisElement.location.rot];
-    }
-
-    if (thisElement.location.posX < minPosX) {
-        minPosX = thisElement.location.posX;
-        [typeAtMinPosX, rotAtMinPosX] = [thisElement.type, thisElement.location.rot];
-    }
-
-    // Set radio buttons and checkboxes
-    const radioTypeId = `${selectedElementIndex + 1}-${thisElement.type}`;
-    document.getElementById(radioTypeId).checked = true;
-
-    const checkboxes = {
-        xl: `xl-${selectedElementIndex + 1}`,
-        cushion: `cushion-${selectedElementIndex + 1}`,
-        frontcushion: `frontcushion-${selectedElementIndex + 1}`
-    };
-
-    thisElement.cushion = ['hocker_84', 'hocker_96'].includes(thisElement.type) ? false : thisElement.cushion;
-
-    document.getElementById(checkboxes.cushion).disabled = ['hocker_84', 'hocker_96'].includes(thisElement.type);
-    document.getElementById(checkboxes.frontcushion).disabled = ['hocker_84', 'hocker_96'].includes(thisElement.type);
-
-    for (const checkbox of Object.values(checkboxes)) {
-        document.getElementById(checkbox).checked = thisElement[checkbox.split('-')[0]];
-    }
-
-    document.getElementById(checkboxes.frontcushion).disabled = !thisElement.cushion;
-
-    // Event listeners for radio buttons
-    document.querySelectorAll(`input[type=radio][name='type-${selectedElementIndex + 1}']`).forEach((typeValue) => {
-        typeValue.onclick = (item) => {
-            thisElement.type = item.target.value;
-
-            updateControlPanel(model, `element_${selectedElementIndex + 1}`);
-            updateFeaturedModel(model);
-            showSelected(false);
-        };
-    });
-
-    // Event listeners for checkboxes
-    const handleCheckboxClick = (checkboxId, property) => {
-        const checkbox = document.getElementById(checkboxId);
-        thisElement[property] = checkbox.checked;
-
-        updateControlPanel(model, `element_${selectedElementIndex + 1}`);
-        updateFeaturedModel(model);
-        showSelected(false);
-    };
-
-    document.getElementById(`xl-${selectedElementIndex + 1}`).onclick = () => handleCheckboxClick(`xl-${selectedElementIndex + 1}`, 'xl');
-    document.getElementById(`cushion-${selectedElementIndex + 1}`).onclick = () => handleCheckboxClick(`cushion-${selectedElementIndex + 1}`, 'cushion');
-    document.getElementById(`frontcushion-${selectedElementIndex + 1}`).onclick = () => handleCheckboxClick(`frontcushion-${selectedElementIndex + 1}`, 'frontcushion');
-
-    // Display SVGs
-    const typeSvgMap = {
-        'chair_96': ALLARRANGEMENTS.elements.chair_96.svg,
-        'noArmrestsRight_96': ALLARRANGEMENTS.elements.noArmrestsRight_96.svg,
-        'noArmrestsLeft_96': ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg,
-        'noArmrests_84': ALLARRANGEMENTS.elements.noArmrests_84.svg,
-        'armrestRight_96': ALLARRANGEMENTS.elements.armrestRight_96.svg,
-        'armrestLeft_96': ALLARRANGEMENTS.elements.armrestLeft_96.svg,
-        'hocker_84': ALLARRANGEMENTS.elements.hocker_84.svg,
-        'hocker_96': ALLARRANGEMENTS.elements.hocker_96.svg,
-    };
-
-    document.getElementById(`type_${selectedElementIndex + 1}Text`).innerHTML = typeSvgMap[thisElement.type] || '';
-
-    //upholstery
-    const upholsteryColor = thisElement.upholstery.upholstery;
-    var upholsteryColorIndex = ALLCOLORS.upholsteryColors.findIndex((item) => item.colorHex == upholsteryColor);
-
-    var upholsteryColorValue = document.querySelectorAll(`.upholsteryColors${selectedElementIndex + 1}_colorButton`);
-
-   
-            if (parser.getDevice().type != 'mobile' && parser.getDevice().type != 'tablet') {
-                upholsteryColorValue.forEach(item => item.addEventListener('mouseover', () => {
-                    //document.getElementById('upholsteryColorsText').style.visibility = 'visible';
-                    //document.getElementById('upholsteryColorsText').innerHTML = '<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: ' + document.getElementById(item.id).style.backgroundColor + ';">&nbsp;&nbsp;&nbsp;&nbsp;' + document.getElementById(item.id).alt + '';
-                    //document.getElementById('upholsteryColorsText').classList.add('fst-italic');
-                    updateFeaturedModel(model, false);
-                    showSelected(false);
-                }));
-    
-                upholsteryColorValue.forEach(item => item.addEventListener('mouseout', () => {
-                    //document.getElementById('upholsteryColorsText').style.visibility = 'hidden';
-                    //document.getElementById('upholsteryColorsText').classList.remove('fst-italic');
-                    updateFeaturedModel(model, false);
-                    showSelected(false);
-                }));
-            }
-    
-    upholsteryColorValue.forEach(item => item.addEventListener('click', () => {
-
-        upholsteryColorValue.forEach(item => { item.classList.remove('colorButtonActive') });
-        const upholsteryColorId = item.id.split('_');
-        upholsteryColorIndex = upholsteryColorId[1];
-
-        model.elements[i].upholstery.upholstery = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorHex;
-        document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.add('colorButtonActive');
-
-        updateControlPanel(model, `element_${i + 1}`);
-        updateFeaturedModel(model);
-        showSelected(false);
-    }));
-    //model.upholstery.code = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorCode;
-    //model.upholstery.name = ALLCOLORS.upholsteryColors[upholsteryColorIndex].colorName;
-    //document.getElementById('upholsteryColorsText').innerHTML = '<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: #' + elem.upholstery.upholstery + ';">&nbsp;&nbsp;&nbsp;&nbsp;' + elem.upholstery.name;
-    document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.remove('colorButton');
-    document.getElementById(`upholsteryColors${i + 1}Index_${upholsteryColorIndex}`).classList.add('colorButtonActive');
-
-
-    document.getElementById(`color_${i + 1}Text`).innerHTML = `<img src="img/transparant.png" class="rounded-pill shadow" style="width: calc(1rem + 1vw); background-color: #${elem.upholstery.upholstery}">`;
-}
-*/
-function updateControlPanel(model, selectedLayer, expandedLayer) {
-    const settings = initSettings(model);
-    const elem = document.getElementById('controlpanelContainer');
-    if (selectedLayer !== undefined) {
-        controlPanel_updateLayer(selectedLayer, settings);
-    } else {
-        controlPanel(settings, ALLMODELS, elem, expandedLayer);
-    }
-
-    toggleFeaturedModels();
-    updateBackgroundColor(model);
-    updateModelElements(model);
-    handleElementSelection(model);
-    selectDefaultElement(model, 0);  // Select the first element as the default
-
-
 
     // overall width
     let maxPosX = Number.NEGATIVE_INFINITY;
@@ -394,229 +147,6 @@ function toggleFeaturedModels() {
     }
 }
 
-function updateBackgroundColor(model) {
-    if (model.background.lighter === undefined) {
-        let bgColor = pSBC(0, `#${model.background.original}`);
-        model.background = {
-            original: model.background.original,
-            lighter: bgColor.substring(1)
-        };
-    }
-}
-
-function updateModelElements(model) {
-    const container = document.getElementById('sofaContainer');
-    const scaleFactor = 24;
-    const orderMap = getOrderMap();
-
-    // Sort elements based on orderMap
-    model.elements.sort((a, b) => orderMap[a.type] - orderMap[b.type]);
-
-    model.elements.forEach(({ type, cushion, frontcushion, xl, location: { posX, posY, rot } }, index) => {
-        const svgContent = ALLARRANGEMENTS.elements[type].svg;
-        const group = createSvgGroup(index, type, cushion, frontcushion, xl, posX, posY, rot, scaleFactor, svgContent);
-        container.appendChild(group);
-    });
-}
-
-function getOrderMap() {
-    return {
-        'sideTable': 0,
-        'oakTable': 0,
-        'quarterround': 1,
-        'hocker_96': 1,
-        'hocker_84': 1,
-        'noArmrestsLeft_96': 2,
-        'noArmrestsRight_96': 2,
-        'noArmrests_84': 2,
-        'armrestRight_172': 3,
-        'armrestLeft_172': 3,
-        'armrestLeft_96': 3,
-        'armrestRight_96': 3,
-        'chair_96': 4
-    };
-}
-
-function createSvgGroup(index, type, cushion, frontcushion, xl, posX, posY, rot, scaleFactor, svgContent) {
-    const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    group.setAttribute('id', `${index + 1}-${type}`);
-    group.setAttribute('class', 'svgArrangement');
-    if (type == 'quarterround') {
-        group.setAttribute('transform', `translate(${(posX) * scaleFactor}, ${-posY * scaleFactor}) rotate(${rot}, 50, 50)`);
-    } else {
-        group.setAttribute('transform', `translate(${posX * scaleFactor}, ${-posY * scaleFactor}) rotate(${rot}, 62, 56)`);
-    }
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = svgContent;
-
-    const svgElement = tempDiv.querySelector('svg');
-    if (svgElement) {
-        svgElement.setAttribute('id', `svg-${index + 1}-${type}`);
-
-        const seat = svgElement.querySelector('g[name="seat"]');
-        if (xl) {
-            if (seat) {
-                const rect = seat.querySelector('rect');
-                if (rect) {
-                    rect.setAttribute('height', '100');
-                }
-            }
-        }
-    }
-
-    group.innerHTML = tempDiv.innerHTML;
-    return group;
-}
-
-function handleElementSelection(model) {
-    let previousClickedElement = null;
-    const svgArrangements = document.querySelectorAll('.svgArrangement');
-
-    svgArrangements.forEach(item => {
-        item.addEventListener('click', () => {
-            const selectedElementIndex = parseInt(item.id.split('-')[0], 10) - 1;
-            handleElementClick(item, selectedElementIndex, model, previousClickedElement);
-            previousClickedElement = item;
-
-            const typeName = item.id.split('-')[1];
-            const elementKey = Object.keys(ALLARRANGEMENTS.elements).find(key => key.includes(typeName));
-            const nameNl = ALLARRANGEMENTS.elements[elementKey]["name-nl"];
-            document.getElementById('typeText').textContent = nameNl;
-
-            const elem = model.elements[selectedElementIndex];
-
-            const controls = {
-                rotate90: () => {
-                    elem.location.rot = (elem.location.rot + 90) % 360;
-                },
-                moveToLeft: () => {
-                    elem.location.posX -= 0.25;
-                },
-                moveToRight: () => {
-                    elem.location.posX += 0.25;
-                },
-                moveUp: () => {
-                    elem.location.posY += 0.25;
-                },
-                moveDown: () => {
-                    elem.location.posY -= 0.25;
-                },
-                delete: () => {
-                    console.log('DELETE');
-                    model.elements.splice(selectedElementIndex, 1);
-                }
-            };
-
-            Object.keys(controls).forEach(controlId => {
-                document.getElementById(controlId).onclick = () => {
-                    controls[controlId]();
-                    updateControlPanel(model);
-                    updateFeaturedModel(model);
-                    showSelected(false);
-                };
-            });
-        
-
-
-
-    document.getElementById(typeName).checked = true;
-
-    const checkboxes = {
-        xl: `xl`,
-        cushion: `cushion`,
-        frontcushion: `frontcushion`
-    };
-
-    elem.cushion = ['hocker_84', 'hocker_96'].includes(typeName) ? false : elem.cushion;
-
-    document.getElementById(checkboxes.cushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
-    document.getElementById(checkboxes.frontcushion).disabled = ['hocker_84', 'hocker_96'].includes(elem.type);
-
-    for (const checkbox of Object.values(checkboxes)) {
-        document.getElementById(checkbox).checked = typeName[checkbox.split('-')[0]];
-    }
-
-    document.getElementById(checkboxes.frontcushion).disabled = !typeName.cushion;
-
-    Array.from(document.getElementsByClassName('icon-container')).forEach((typeValue) => {
-        typeValue.onclick = (item) => {
-            console.log(typeValue.id);
-            elem.type = typeValue.id;
-
-            updateControlPanel(model);
-            updateFeaturedModel(model);
-            showSelected(false);
-        };
-    });
-
-    // Event listeners for radio buttons
-    document.querySelectorAll(`input[type=radio][name='type']`).forEach((typeValue) => {
-        typeValue.onclick = (item) => {
-            elem.type = item.target.value;
-
-            updateControlPanel(model);
-            updateFeaturedModel(model);
-            showSelected(false);
-        };
-    });
-
-    // Event listeners for checkboxes
-    const handleCheckboxClick = (checkboxId, property) => {
-        const checkbox = document.getElementById(checkboxId);
-        thistypeNameElement[property] = checkbox.checked;
-
-        updateControlPanel(model);
-        updateFeaturedModel(model);
-        showSelected(false);
-    };
-
-    document.getElementById(`xl`).onclick = () => handleCheckboxClick(`xl`, 'xl');
-    document.getElementById(`cushion`).onclick = () => handleCheckboxClick(`cushion`, 'cushion');
-    document.getElementById(`frontcushion`).onclick = () => handleCheckboxClick(`frontcushion`, 'frontcushion');
-});
-    });
-}
-
-function handleElementClick(item, selectedElementIndex, model, previousClickedElement) {
-    resetPreviousElementColor(previousClickedElement);
-    setElementColor(item, 'lightgrey');
-
-    if (selectedElementIndex >= 0 && selectedElementIndex < model.elements.length) {
-        const thisElement = model.elements[selectedElementIndex];
-        measureWidth(thisElement);
-        setRadioButtonsAndCheckboxes(selectedElementIndex, thisElement);
-        addEventListenersToButtonsAndCheckboxes(selectedElementIndex, thisElement, model);
-    }
-}
-
-function resetPreviousElementColor(previousClickedElement) {
-    if (previousClickedElement) {
-        const previousSvgElement = document.getElementById(`svg-${previousClickedElement.id}`);
-        if (previousSvgElement) {
-            previousSvgElement.querySelectorAll('*').forEach(element => {
-                element.setAttribute('fill', 'white');
-            });
-        }
-    }
-}
-
-function setElementColor(item, color) {
-    const svgElement = document.getElementById(`svg-${item.id}`);
-    console.log(`svg-${item.id}`);
-    if (svgElement) {
-        svgElement.querySelectorAll('*').forEach(element => {
-            element.setAttribute('fill', color);
-        });
-    }
-
-
-
-
-    //updateControlPanel(model, 'element');
-    //updateFeaturedModel(model);
-    //showSelected(false);
-}
-
 function measureWidth(thisElement) {
     let maxPosX = Number.NEGATIVE_INFINITY;
     let minPosX = Number.POSITIVE_INFINITY;
@@ -634,96 +164,6 @@ function measureWidth(thisElement) {
         if (thisElement.location.posX < minPosX) {
             minPosX = thisElement.location.posX;
             [typeAtMinPosX, rotAtMinPosX] = [thisElement.type, thisElement.location.rot];
-        }
-    }
-}
-
-function setRadioButtonsAndCheckboxes(selectedElementIndex, thisElement) {
-    const radioTypeId = `${selectedElementIndex + 1}-${thisElement.type}`;
-    const radioElement = document.getElementById(radioTypeId);
-    if (radioElement) {
-        radioElement.checked = true;
-    }
-
-    const checkboxes = getCheckboxes(selectedElementIndex);
-    disableCheckboxes(checkboxes, thisElement);
-
-    for (const checkboxId of Object.values(checkboxes)) {
-        const checkbox = document.getElementById(checkboxId);
-        if (checkbox) {
-            checkbox.checked = thisElement[checkboxId.split('-')[0]];
-        }
-    }
-
-    const frontcushionCheckbox = document.getElementById(checkboxes.frontcushion);
-    if (frontcushionCheckbox) {
-        frontcushionCheckbox.disabled = !thisElement.cushion;
-    }
-}
-
-function getCheckboxes(selectedElementIndex) {
-    return {
-        xl: `xl-${selectedElementIndex + 1}`,
-        cushion: `cushion-${selectedElementIndex + 1}`,
-        frontcushion: `frontcushion-${selectedElementIndex + 1}`
-    };
-}
-
-function disableCheckboxes(checkboxes, thisElement) {
-    const typesToDisable = ['hocker_84', 'hocker_96'];
-    for (const checkboxId of Object.values(checkboxes)) {
-        const checkbox = document.getElementById(checkboxId);
-        if (checkbox) {
-            checkbox.disabled = typesToDisable.includes(thisElement.type);
-        }
-    }
-}
-
-function addEventListenersToButtonsAndCheckboxes(selectedElementIndex, thisElement, model) {
-    document.querySelectorAll(`input[type=radio][name='type-${selectedElementIndex + 1}']`).forEach((typeValue) => {
-        typeValue.onclick = (item) => {
-            thisElement.type = item.target.value;
-            updateControlPanel(model);
-            updateFeaturedModel(model);
-            showSelected(false);
-        };
-    });
-
-    const checkboxes = getCheckboxes(selectedElementIndex);
-    for (const [key, checkboxId] of Object.entries(checkboxes)) {
-        const checkbox = document.getElementById(checkboxId);
-        if (checkbox) {
-            checkbox.onclick = () => handleCheckboxClick(checkboxId, key, thisElement, model, selectedElementIndex);
-        }
-    }
-}
-
-function handleCheckboxClick(checkboxId, property, thisElement, model, selectedElementIndex) {
-    const checkbox = document.getElementById(checkboxId);
-    if (checkbox) {
-        thisElement[property] = checkbox.checked;
-        updateControlPanel(model);
-        updateFeaturedModel(model);
-        showSelected(false);
-    }
-}
-
-function selectDefaultElement(model, defaultIndex) {
-    const svgArrangements = document.querySelectorAll('.svgArrangement');
-    if (svgArrangements.length > defaultIndex) {
-        const defaultElement = svgArrangements[defaultIndex];
-
-        if (defaultElement instanceof HTMLElement) {
-            if (typeof defaultElement.click === 'function') {
-                defaultElement.click();
-            }
-        } else if (defaultElement instanceof SVGElement) {
-            const clickEvent = new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: true
-            });
-            defaultElement.dispatchEvent(clickEvent); // Dispatch the click event
         }
     }
 }
@@ -813,87 +253,206 @@ function initSettings(model) {
         display: noArrangement,
         collapsible: false,
         code: /*html*/ `
-        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="col-12 m-0 p-0">
-                <div class="row m-0 p-0">
-                    <div class="d-flex">
-                        <button id="rotate90" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">refresh</span></button>
-                        <button id="moveToLeft" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_left_alt</span></button>
-                        <button id="moveToRight" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_right_alt</span></button>
-                        <button id="moveUp" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_upward_alt</span></button>
-                        <button id="moveDown" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">arrow_downward_alt</span></button>
-                        <button id="delete" type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">delete</span></button>
-                    </div>
-                </div>
-                <div class="row m-0 p-0">
-                    <svg id="sofaContainer" viewBox="-350 -150 800 400" xmlns="http://www.w3.org/2000/svg">
-                        <!-- SVG elements will be dynamically inserted here -->
-                    </svg>
-                </div>
-                <style>
-                .icon-container {
-                    width: 10%;
-                    height: 10%;
-                    display: block;
-                }
-    
-        
-                .icon-container svg {
-                    width: 75%;
-                    height: 75%;
-                    display: block;
-                }
-            </style>
-                <div class="row justify-content-center m-0 p-0">
-                    <div id="chair_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.chair_96.name_nl}">
-                        ${ALLARRANGEMENTS.elements.chair_96.svg}
-                    </div>
-                    <div id="noArmrestsRight_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.noArmrestsRight_96.name_nl}">
-                        ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}
-                    </div>
-                    <div  id="noArmrestsLeft_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.noArmrestsLeft_96.name_nl}">
-                        ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}
-                    </div>
-                    <div id="armrestRight_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.armrestRight_96.name_nl}">
-                        ${ALLARRANGEMENTS.elements.armrestRight_96.svg}
-                    </div>
-                    <div id="armrestLeft_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.armrestLeft_96.name_nl}">
-                        ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}
-                    </div>
-                    <div id="hocker_84" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.hocker_84.name_nl}">
-                    ${ALLARRANGEMENTS.elements.hocker_84.svg}
-                </div>
-                <div id="hocker_96" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.hocker_96.name_nl}">
-                    ${ALLARRANGEMENTS.elements.hocker_96.svg}
-                </div>
-                    </div>
-                    <div class="row justify-content-center m-0 p-0">
+        <style>
+        .cloneableObject {
+            cursor: pointer;
+        }
+      
+        .grid-line {
+            stroke: lightgray;
+            stroke-width: 1;
+        }       
 
-                    <div id="armrestRight_172" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.armrestRight_172.name_nl}">
-                        ${ALLARRANGEMENTS.elements.armrestRight_172.svg}
+        .selected rect,
+        .selected path {
+            fill: lightgrey;
+        }
+    </style>
+        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+            <div class="col-12 m-0 p-0 pb-2">
+                        <button onclick="deleteSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined m-0 p-0">delete</span>verwijder</button>
+                        <button onclick="rotateSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">rotate_90_degrees_cw</span>roteer</button>
+                        <button onclick="mirrorSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">flip</span>spiegel</button>
+                        <button onclick="#" type="button" class="btn btn-outline-dark rounded-0 m-0">XL versie</button>
+                        <button onclick="#" type="button" class="btn btn-outline-dark rounded-0 m-0">extra kussen</button>
+                  </div>
+                <div class="row m-0 p-0">
+                    <svg id="svgDragzone" style="width: 100%; height: 500px;" class="border border-1 border-black m-0 p-0" onmousedown="reAppend(this)" onmouseup="objectCloneDrop(event, this); disableMove();"
+                        onmousemove="indicateDrag(this); moveObject(event, this); objectCloneDragDestination(event, this)"
+                        onmouseleave="disableMove()"> 
+
+                    </svg>
+
+                    
+
                     </div>
-                    <div id="armrestLeft_172" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.armrestLeft_172.name_nl}">
-                        ${ALLARRANGEMENTS.elements.armrestLeft_172.svg}
+                    <div class="row m-0 p-0">
+
+
+
+
+
+
+
+
+
+                    <div id="svgContainer" class="d-flex flex-wrap align-items-start overflow-hidden" onmousemove="objectCloneDragOrigin(event, this)" onmouseup="disableDrag(this)">
+             
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
+                            <g name="chair_96" transform="rotate(0, 62, 62)">
+                                <g name="seat">
+                                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                                </g>
+                                <g name="rests">
+                                    <rect x="2" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                                    <rect x="98" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                                    <rect x="26" y="14" width="72" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                    <line x1="14" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                    <line x1="14" y1="26" x2="14" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
-                    <div id="noArmrests_84" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.noArmrests_84.name_nl}">
-                        ${ALLARRANGEMENTS.elements.noArmrests_84.svg}
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
+                            <g name="noArmrestsRight_96" transform="rotate(0, 62, 62)">
+                                <g name="seat">
+                                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                                </g>
+                                <g name="rests">
+                                    <rect x="14" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                    <line x1="14" y1="26" x2="96" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
-                    <div id="quarterround" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.quarterround.name_nl}">
-                        ${ALLARRANGEMENTS.elements.quarterround.svg}
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
+                            <g name="armrestRight_96" transform="rotate(0, 62, 62)">
+                                <g name="seat">
+                                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                                </g>
+                                <g name="rests">
+                                    <rect x="98" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                                    <rect x="14" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                    <line x1="14" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
-       
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 124 124' width="124" height="124" onmousedown="objectCloneGet(this)">
+                            <g name="noArmrests_84" transform="rotate(0, 56, 56)">
+                                <g name='seat'>
+                                    <rect fill='white' x='14' y='14' width='84' height='84' stroke='black' stroke-width='2'></rect>
+                                </g>
+                                <g name="rests">
+                                    <rect x='14' y='2' width='84' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                                    <line x1='14' y1='14' x2='96' y2='14' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
-                    <div class="row justify-content-center m-0 p-0">
-               
-                    <div id="sideTable" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.sideTable.name_nl}">
-                        ${ALLARRANGEMENTS.elements.sideTable.svg}
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
+                            <g name="noArmrests_100" transform="rotate(0, 62, 62)">
+                                <g name='seat'>
+                                    <rect fill='white' x='14' y='14' width='102' height='108' stroke='black' stroke-width='2'></rect>
+                                </g>
+                                <g name="rests">
+                                    <rect x='14' y='14' width='102' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                                    <line x1='14' y1='14' x2='102' y2='14' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
-                    <div id="oakTable" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.oakTable.name_nl}">
-                        ${ALLARRANGEMENTS.elements.oakTable.svg}
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 196 196' width="196" height="196" onmousedown="objectCloneGet(this)">
+                            <g name="armrestLeft_172" transform="rotate(0, 95, 95)">
+                                <g name='seat'>
+                                    <rect fill='white' x='2' y='50' width='174' height='102' stroke='black' stroke-width='2'></rect>
+                                </g>
+                                <g name="rests">
+                                    <rect x='164' y='38' width='24' height='96' fill='white' stroke='black' stroke-width='2'></rect>
+                                    <rect x='2' y='38' width='162' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                                    <line x1='2' y1='50' x2='174' y2='50' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                    <line x1='176' y1='50' x2='176' y2='132' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
-                    <div id="glassTable" class="m-0 p-0 icon-container" data-bs-toggle="tooltip" data-bs-title="${ALLARRANGEMENTS.elements.glassTable.name_nl}">
-                        ${ALLARRANGEMENTS.elements.glassTable.svg}
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" width="106" height="106" onmousedown="objectCloneGet(this)">
+                            <g name="quarterround" transform="rotate(0, 53, 53)">
+                                <g name="seat">
+                                    <path d="M 2,2 L 104,2 A 104,104 0 0,1 2,104 L 2,2 Z" fill="white" stroke="black" stroke-width="2"></path>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
+                            <g name="hocker_96" transform="rotate(0, 62, 62)">
+                                <g name="seat">
+                                    <rect x='2' y='14' width='96' height='84' fill='white' stroke='black' stroke-width='2'></rect>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 118" width="118" height="118" onmousedown="objectCloneGet(this)">
+                            <g name="hocker_84" transform="rotate(0, 62, 62)">
+                                <g name="seat">
+                                    <rect x='14' y='14' width='84' height='84' fill='white' stroke='black' stroke-width='2'></rect>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" width="106" height="106" onmousedown="objectCloneGet(this)">
+                            <g name="coffeetable" transform="rotate(0, 53, 53)">
+                                <g name="tabletop">
+                                    <rect x='2' y='2' width='78' height='102' fill='white' stroke='black' stroke-width='1'></rect>
+                                    <path d='M 18 104 L 18 57 Q 18 53 14 53 L 2 53' stroke='black' stroke-width='1' fill='none'></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+            
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 196" width="196" height="196" onmousedown="objectCloneGet(this)">
+                            <g name="sidetable" transform="rotate(0, 97, 97)">
+                                <g name="tabletop">
+                                    <rect x='2' y='2' width='192' height='48' fill='white' stroke='black' stroke-width='1'></rect>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>`
