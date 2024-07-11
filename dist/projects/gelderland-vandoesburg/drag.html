@@ -7,14 +7,10 @@
     <title>Modular Sofa Representation</title>
 
     <style>
-        rect {
-            border-style: solid;
-        }
-
         #parentSVG {
             height: 100vh;
             width: 99.5%;
-            border-style: solid;
+            border: solid 1px black;
             position: absolute;
         }
 
@@ -31,12 +27,17 @@
         #mainSVG2 {
             width: 600px;
             height: 600px;
-            border-style: solid;
+            border: solid 1px black;
         }
 
-        .selected rect {
+        .selected rect,
+        .selected path {
             fill: lightgrey;
-            /* Change the fill color to light grey */
+        }
+
+        #rotateButton,
+        #deleteButton {
+            cursor: pointer;
         }
     </style>
 
@@ -106,14 +107,53 @@
                 // Add class for selection
                 objectReplica.classList.add('selectable');
 
+                // Check for collisions with existing seats
+                var collidingSeats = checkForCollisions(objectReplica);
+
+                if (collidingSeats.length > 0) {
+                    collidingSeats.forEach(function (seat) {
+                        seat.querySelector('rect, path').setAttribute('stroke', 'red');
+                    });
+                }
+
                 document.getElementById('mainSVG2').removeChild(document.getElementById('dragImage'));
                 dropzone.appendChild(objectReplica);
 
                 isDragging = false;
-                //lastReplica = null; // Reset the last replica to handle the next clone
             }
         }
 
+        function checkForCollisions(newSeat) {
+            var existingSeats = document.querySelectorAll('#mainSVG2 .selectable g[name="seat"]');
+            var collidingSeats = [];
+
+            existingSeats.forEach(function (existingSeat) {
+                var newSeatElement = newSeat.querySelector('rect, path');
+                var existingSeatElement = existingSeat.querySelector('rect, path');
+
+                // Get positions and dimensions of new seat
+                var newSeatX = parseFloat(newSeatElement.getAttribute('x'));
+                var newSeatY = parseFloat(newSeatElement.getAttribute('y'));
+                var newSeatWidth = parseFloat(newSeatElement.getAttribute('width'));
+                var newSeatHeight = parseFloat(newSeatElement.getAttribute('height'));
+
+                // Get positions and dimensions of existing seat
+                var existingSeatX = parseFloat(existingSeatElement.getAttribute('x'));
+                var existingSeatY = parseFloat(existingSeatElement.getAttribute('y'));
+                var existingSeatWidth = parseFloat(existingSeatElement.getAttribute('width'));
+                var existingSeatHeight = parseFloat(existingSeatElement.getAttribute('height'));
+
+                // Check for collision
+                if (newSeatX < existingSeatX + existingSeatWidth &&
+                    newSeatX + newSeatWidth > existingSeatX &&
+                    newSeatY < existingSeatY + existingSeatHeight &&
+                    newSeatY + newSeatHeight > existingSeatY) {
+                    collidingSeats.push(existingSeat);
+                }
+            });
+
+            return collidingSeats;
+        }
 
         function disableDrag(e) {
             if (isDragging) {
@@ -200,23 +240,20 @@
 
         function rotateSelected() {
             var selectedObject = document.querySelector('.selected');
+
             if (selectedObject) {
-                var currentRotation = parseFloat(selectedObject.getAttribute('data-rotation') || 0);
-                var newRotation = currentRotation + 90;
+                var rotationGroup = selectedObject.querySelector('g');
 
-                // Calculate rotation origin (center of the object)
-                var x = parseFloat(selectedObject.getAttribute('x'));
-                var y = parseFloat(selectedObject.getAttribute('y'));
-                var width = parseFloat(selectedObject.getAttribute('width'));
-                var height = parseFloat(selectedObject.getAttribute('height'));
-                var cx = x + width / 2;
-                var cy = y + height / 2;
+                if (rotationGroup) {
+                    var currentTransform = rotationGroup.getAttribute('transform');
+                    var currentRotation = parseFloat(currentTransform.match(/rotate\(([-]*\d+)/)[1]) || 0;
+                    var newRotation = (currentRotation + 90) % 360; // Example: Increment by 90 degrees
+                    var newTransform = currentTransform.replace(/rotate\(([-]*\d+)/, 'rotate(' + newRotation);
 
-                selectedObject.setAttribute('transform', 'rotate(' + newRotation + ' ' + cx + ' ' + cy + ')');
-                selectedObject.setAttribute('data-rotation', newRotation);
+                    rotationGroup.setAttribute('transform', newTransform);
+                }
             }
         }
-
     </script>
 </head>
 
@@ -225,33 +262,151 @@
     <svg id="mainSVG1" onmousemove="objectCloneDragOrigin(event, this)" onmouseup="disableDrag(this)" width="600"
         height="600">
         <foreignObject width="100%" height="100%">
-            <p style="user-select:none;cursor:default;">GET ELEMENTS HERE</p>
+
         </foreignObject>
 
         <!-- Include the SVG element as cloneable -->
         <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124"
-            x="50" y="50" onmousedown="objectCloneGet(this)">
-            <g name="seat">
-                <rect fill="white" x="14" y="14" width="96" height="84" stroke="black" stroke-width="2"></rect>
-            </g>
-            <g name="armrests">
-                <rect x="2" y="2" width="24" height="96" fill="white" stroke="black" stroke-width="2" />
-                <rect x="98" y="2" width="24" height="96" fill="white" stroke="black" stroke-width="2" />
-                <rect x="26" y="2" width="72" height="24" fill="white" stroke="black" stroke-width="2" />
-                <line x1="14" y1="14" x2="110" y2="14" stroke="black" stroke-width="1" stroke-dasharray="4" />
-                <line x1="14" y1="14" x2="14" y2="98" stroke="black" stroke-width="1" stroke-dasharray="4" />
-                <line x1="110" y1="14" x2="110" y2="98" stroke="black" stroke-width="1" stroke-dasharray="4" />
+            x="10" y="10" onmousedown="objectCloneGet(this)">
+            <g name="chair_96" transform="rotate(0, 62, 62)">
+                <g name="seat">
+                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                </g>
+                <g name="rests">
+                    <rect x="2" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                    <rect x="98" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                    <rect x="26" y="14" width="72" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                    <line x1="14" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                    <line x1="14" y1="26" x2="14" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                </g>
             </g>
         </svg>
 
-        <svg class="cloneableObject" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 124 124' width='124' height='124'
-            x="150" y="150" onmousedown="objectCloneGet(this)">
-            <g name='seat'>
-                <rect fill='white' x='14' y='14' width='96' height='84' stroke='black' stroke-width='2'></rect>
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124"
+            x="10" y="130" onmousedown="objectCloneGet(this)">
+            <g name="noArmrestsRight_96" transform="rotate(0, 62, 62)">
+                <g name="seat">
+                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                </g>
+                <g name="rests">
+                    <rect x="14" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                    <line x1="14" y1="26" x2="96" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                </g>
             </g>
-            <g name="armrests">
-                <rect x='14' y='2' width='84' height='24' fill='white' stroke='black' stroke-width='2'></rect>
-                <line x1='14' y1='14' x2='96' y2='14' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124"
+            x="130" y="130" onmousedown="objectCloneGet(this)">
+            <g name="noArmrestsLeft_96" transform="rotate(0, 62, 62)">
+                <g name='seat'>
+                    <rect fill='white' x='14' y='26' width='96' height='84' stroke='black' stroke-width='2'>
+                </g>
+                <g name='rests'>
+                    <rect x='26' y='14' width='84' height='24' fill='white' stroke='black' stroke-width='2' />
+                    <line x1='28' y1='26' x2='110' y2='26' stroke='black' stroke-width='1' stroke-dasharray='4' />
+                </g>
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124"
+            x="10" y="240" onmousedown="objectCloneGet(this)">
+            <g name="armrestRight_96" transform="rotate(0, 62, 62)">
+                <g name="seat">
+                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                </g>
+                <g name="rests">
+                    <rect x="98" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                    <rect x="14" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                    <line x1="14" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                </g>
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124"
+            x="150" y="240" onmousedown="objectCloneGet(this)">
+            <g name="armrestLeft_96" transform="rotate(0, 62, 62)">
+                <g name="seat">
+                    <rect fill='white' x='14' y='26' width='96' height='84' stroke='black' stroke-width='2'>
+                </g>
+                <g name="rests">
+                    <rect x='2' y='14' width='24' height='96' fill='white' stroke='black' stroke-width='2' />
+                    <rect x='26' y='14' width='84' height='24' fill='white' stroke='black' stroke-width='2' />
+                    <line x1='14' y1='26' x2='110' y2='26' stroke='black' stroke-width='1' stroke-dasharray='4' />
+                    <line x1='14' y1='26' x2='14' y2='114' stroke='black' stroke-width='1' stroke-dasharray='4' />
+                </g>
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 196 196' width='196' height='196'
+            x="10" y="360" onmousedown="objectCloneGet(this)">
+            <g name="armrestLeft_172" transform="rotate(0, 95, 95)">
+                <g name='seat'>
+                    <rect fill='white' x='2' y='44' width='174' height='102' stroke='black' stroke-width='2'>
+                </g>
+                <g name="rests">
+                    <rect x='164' y='38' width='24' height='96' fill='white' stroke='black' stroke-width='2' />
+                    <rect x='2' y='38' width='162' height='24' fill='white' stroke='black' stroke-width='2' />
+                    <line x1='2' y1='50' x2='174' y2='50' stroke='black' stroke-width='1' stroke-dasharray='4' />
+                    <line x1='176' y1='50' x2='176' y2='132' stroke='black' stroke-width='1' stroke-dasharray='4' />
+                </g>
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 196 196' width='196' height='196'
+            x="250" y="360" onmousedown="objectCloneGet(this)">
+            <g name="armrestRight_172" transform="rotate(0, 95, 95)">
+                <g name='seat'>
+                    <rect fill='white' x='14' y='44' width='174' height='102' stroke='black' stroke-width='2'>
+                </g>
+                <g name="rests">
+                    <rect x='2' y='38' width='24' height='96' fill='white' stroke='black' stroke-width='2' />
+                    <rect x='26' y='38' width='162' height='24' fill='white' stroke='black' stroke-width='2' />
+                    <line x1='14' y1='50' x2='184' y2='50' stroke='black' stroke-width='1' stroke-dasharray='4' />
+                    <line x1='14' y1='50' x2='14' y2='132' stroke='black' stroke-width='1' stroke-dasharray='4' />
+                </g>
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 124 124' width='124' height='124'
+            x="140" y="10" onmousedown="objectCloneGet(this)">
+            <g name="noArmrests_84" transform="rotate(0, 56, 56)">
+                <g name='seat'>
+                    <rect fill='white' x='14' y='14' width='84' height='84' stroke='black' stroke-width='2'></rect>
+                </g>
+                <g name="rests">
+                    <rect x='14' y='2' width='84' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                    <line x1='14' y1='14' x2='96' y2='14' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                </g>
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" width="106" height="106"
+            x="350" y="10" onmousedown="objectCloneGet(this)">
+            <g name="quarterround" transform="rotate(0, 53, 53)">
+                <g name="seat">
+                    <path d="M 2,2 L 104,2 A 104,104 0 0,1 2,104 L 2,2 Z" fill="white" stroke="black"
+                        stroke-width="2" />
+                </g>
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 118 118' width='118' height='118'
+            x="350" y="200" onmousedown="objectCloneGet(this)">
+            <g name="hocker_84" transform="rotate(0, 62, 62)">
+                <g name='seat'>
+                    <rect x='14' y='14' width='84' height='84' fill='white' stroke='black' stroke-width='2' />
+                </g>
+            </g>
+        </svg>
+
+        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 124 124' width='124' height='124'
+            x="350" y="100" onmousedown="objectCloneGet(this)">
+            <g name="hocker_96" transform="rotate(0, 62, 62)">
+                <g name='seat'>
+                    <rect x='2' y='14' width='96' height='84' fill='white' stroke='black' stroke-width='2' />
+                </g>
             </g>
         </svg>
     </svg>
@@ -261,12 +416,12 @@
         onmouseleave="disableMove()" width="600" height="600">
         <!-- Rotate button -->
         <rect id="rotateButton" x="60" y="10" width="40" height="20" fill="blue" stroke="black" stroke-width="1"
-            style="cursor:pointer;" onclick="rotateSelected()"></rect>
+            onclick="rotateSelected()"></rect>
         <text x="70" y="25" font-family="Verdana" font-size="12" fill="white" style="pointer-events:none;">Rotate</text>
 
         <!-- Delete button -->
         <rect id="deleteButton" x="10" y="10" width="40" height="20" fill="red" stroke="black" stroke-width="1"
-            style="cursor:pointer;" onclick="deleteSelected()"></rect>
+            onclick="deleteSelected()"></rect>
         <text x="20" y="25" font-family="Verdana" font-size="12" fill="white" style="pointer-events:none;">Delete</text>
     </svg>
 
