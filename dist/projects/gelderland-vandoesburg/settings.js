@@ -270,7 +270,6 @@ function initSettings(model) {
     </style>
         <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
             <div class="col-12 m-0 p-0 pb-2">
-            button
                         <button onclick="deleteSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined m-0 p-0">delete</span>verwijder</button>
                         <button onclick="rotateSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">rotate_90_degrees_cw</span>roteer</button>
                         <button onclick="mirrorSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">flip</span>spiegel</button>
@@ -349,35 +348,56 @@ function initSettings(model) {
             
                     <div class="cloneableObjectWrapper">
                         <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 124 124' width="124" height="124" onmousedown="objectCloneGet(this)">
-                            <g name="noArmrests_84" transform="rotate(0, 56, 56)">
+                            <g name="noArmrests_84" transform="rotate(0, 62, 62)">
                                 <g name='seat'>
-                                    <rect fill='white' x='14' y='14' width='84' height='84' stroke='black' stroke-width='2'></rect>
+                                    <rect fill='white' x='20' y='26' width='84' height='84' stroke='black' stroke-width='2'></rect>
                                 </g>
                                 <g name="rests">
-                                    <rect x='14' y='2' width='84' height='24' fill='white' stroke='black' stroke-width='2'></rect>
-                                    <line x1='14' y1='14' x2='96' y2='14' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                    <rect x='20' y='14' width='84' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                                    <line x1='20' y1='26' x2='102' y2='26' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
                                 </g>
                             </g>
                         </svg>
                     </div>
-            
+            <!--
                     <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
-                            <g name="noArmrests_100" transform="rotate(0, 62, 62)">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 148" width="148" height="148" onmousedown="objectCloneGet(this)">
+                            <g name="noArmrests_100" transform="rotate(0, 74, 74)">
                                 <g name='seat'>
-                                    <rect fill='white' x='14' y='14' width='102' height='108' stroke='black' stroke-width='2'></rect>
+                                <rect fill='green' x='0' y='0' width='148' height='148'></rect>
+                                    <rect fill='white' x='26' y='38' width='102' height='108' stroke='black' stroke-width='2'></rect>
                                 </g>
                                 <g name="rests">
-                                    <rect x='14' y='14' width='102' height='24' fill='white' stroke='black' stroke-width='2'></rect>
-                                    <line x1='14' y1='14' x2='102' y2='14' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                    <rect x='14' y='26' width='102' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                                    <line x1='14' y1='26' x2='116' y2='26' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
                                 </g>
                             </g>
                         </svg>
                     </div>
+
+-->
+
+                    <div class="cloneableObjectWrapper">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" width="130" height="130" onmousedown="objectCloneGet(this)">
+                            <g name="noArmrests_100" transform="rotate(0, 65, 65)">
+                                <g name="seat">
+                                <rect fill="green" x="0" y="0" width="130" height="130"></rect>
+                                <rect fill="white" x="14" y="26" width="96" height="102" stroke="black" stroke-width="2"></rect>
+                                    <rect fill="white" x="14" y="26" width="96" height="102" stroke="black" stroke-width="2"></rect>
+                                </g>
+                                <g name="rests">
+                                    <rect x="14" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                    <line x1="14" y1="26" x2="96" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+
             
                     <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 196 196' width="196" height="196" onmousedown="objectCloneGet(this)">
-                            <g name="armrestLeft_172" transform="rotate(0, 95, 95)">
+                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 190 190' width="190" height="190" onmousedown="objectCloneGet(this)">
+                            <g name="armrestLeft_172" transform="rotate(0, 95, 86)">
                                 <g name='seat'>
                                     <rect fill='white' x='2' y='50' width='174' height='102' stroke='black' stroke-width='2'></rect>
                                 </g>
@@ -405,7 +425,8 @@ function initSettings(model) {
                         <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
                             <g name="hocker_96" transform="rotate(0, 62, 62)">
                                 <g name="seat">
-                                    <rect x='2' y='14' width='96' height='84' fill='white' stroke='black' stroke-width='2'></rect>
+                                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                                   
                                 </g>
                             </g>
                         </svg>
