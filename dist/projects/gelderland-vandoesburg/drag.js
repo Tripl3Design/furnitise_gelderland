@@ -145,12 +145,6 @@ function enableMove(ele) {
     targetObject.toRePosition = ele;
 }
 
-function reAppend(dropzone) {
-    if (targetObject.toReAppend && !targetObject.toReAppend.parentNode) {
-        dropzone.appendChild(targetObject.toReAppend);
-    }
-}
-
 function moveObject(ev, target) {
     if (targetObject.isMoveable) {
         var x, y;
@@ -215,7 +209,6 @@ function rotateSelected() {
         }
     }
 }
-
 
 // Event listener for keydown events to handle delete and rotate functionalities
 document.addEventListener('keydown', function (event) {
