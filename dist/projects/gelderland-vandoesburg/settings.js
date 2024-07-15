@@ -469,7 +469,7 @@ function initSettings(model) {
                                 </div>
 
                                 <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
-                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" width="79" height="79" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" width="80" height="80" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
                                     <g name="quarterround" transform="rotate(0, 53, 53)">
                                         <g name="seat">
                                             <path d="M 2,2 L 104,2 A 104,104 0 0,1 2,104 L 2,2 Z" fill="white" stroke="black" stroke-width="2"></path>

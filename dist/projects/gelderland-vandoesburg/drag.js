@@ -12,47 +12,16 @@ function objectCloneGet(element) {
     objectReplica.style.position = "absolute";
 
     document.getElementById('svgContainer').appendChild(objectReplica);
-
-    // Add mouse event listeners
-    objectReplica.addEventListener('mousemove', function(ev) {
-        objectCloneDrag(ev, element);
-    }, false);
-
-    objectReplica.addEventListener('mouseup', function(ev) {
-        objectCloneDrop(ev, element);
-    }, false);
-
-    // Add touch event listeners
-    objectReplica.addEventListener('touchmove', function(ev) {
-        ev.preventDefault(); // Prevent scrolling on touch devices
-        var touch = ev.touches[0];
-        objectCloneDrag(touch, element);
-    }, false);
-
-    objectReplica.addEventListener('touchend', function(ev) {
-        var touch = ev.changedTouches[0];
-        objectCloneDrop(touch, element);
-    }, false);
 }
 
-function objectCloneDrag(ev, element) {
+function objectCloneDragOrigin(ev, element) {
     if (isDragging) {
         var dragImage = document.getElementById('dragImage');
 
-        // Determine if the element is being dragged to the original or a destination
-        var destinationElement = determineDestinationElement(ev);
-        if (destinationElement) {
-            if (!ghostImage.isAppendedToDestination) {
-                destinationElement.appendChild(dragImage);
-                ghostImage.isAppendedToDestination = true;
-                ghostImage.isAppendedToOrigin = false;
-            }
-        } else {
-            if (!ghostImage.isAppendedToOrigin) {
-                element.appendChild(dragImage);
-                ghostImage.isAppendedToOrigin = true;
-                ghostImage.isAppendedToDestination = false;
-            }
+        if (!ghostImage.isAppendedToOrigin) {
+            element.appendChild(dragImage);
+            ghostImage.isAppendedToOrigin = true;
+            ghostImage.isAppendedToDestination = false;
         }
 
         dragImage.setAttribute('x', ev.offsetX);
@@ -60,14 +29,19 @@ function objectCloneDrag(ev, element) {
     }
 }
 
-function determineDestinationElement(ev) {
-    // Implement logic to determine if the dragged object is over a valid destination element
-    // Example: Check if ev.target is a valid drop zone
-    var dropzone = document.getElementById('validDropzoneId');
-    if (dropzone && dropzone.contains(ev.target)) {
-        return dropzone;
+function objectCloneDragDestination(ev, element) {
+    if (isDragging) {
+        var dragImage = document.getElementById('dragImage');
+
+        if (!ghostImage.isAppendedToDestination) {
+            element.appendChild(dragImage);
+            ghostImage.isAppendedToDestination = true;
+            ghostImage.isAppendedToOrigin = false;
+        }
+
+        dragImage.setAttribute('x', ev.offsetX);
+        dragImage.setAttribute('y', ev.offsetY);
     }
-    return null;
 }
 
 function objectCloneDrop(ev, dropzone) {
@@ -75,7 +49,7 @@ function objectCloneDrop(ev, dropzone) {
         var objectReplica = objectToClone.cloneNode(true);
 
         // Snap to grid
-        var snappedPosition = snapToGrid(ev.pageX, ev.pageY);
+        var snappedPosition = snapToGrid(ev.offsetX, ev.offsetY);
         objectReplica.setAttribute('x', snappedPosition.x);
         objectReplica.setAttribute('y', snappedPosition.y);
 
@@ -83,8 +57,8 @@ function objectCloneDrop(ev, dropzone) {
         objectReplica.removeAttribute('onmousemove');
         objectReplica.removeAttribute('onmouseup');
         objectReplica.removeAttribute('onmouseleave');
-        objectReplica.setAttribute('ontouchstart', 'enableMove(this)');
-        objectReplica.setAttribute('ontouchend', 'disableMove(this)');
+        objectReplica.setAttribute('onmousedown', 'enableMove(this)');
+        objectReplica.setAttribute('onmouseup', 'disableMove(this)');
         objectReplica.id = 'appendedObject';
 
         // Add class for selection
@@ -136,18 +110,22 @@ function enableMove(ele) {
     targetObject.toRePosition = ele;
 }
 
+function reAppend(dropzone) {
+    if (targetObject.toReAppend && !targetObject.toReAppend.parentNode) {
+        dropzone.appendChild(targetObject.toReAppend);
+    }
+}
+
 function moveObject(ev, target) {
     if (targetObject.isMoveable) {
         if (targetObject.isClickedOnce) {
-            var touch = ev.changedTouches[0];
-            offx = touch.pageX - targetObject.toRePosition.getAttribute('x');
-            offy = touch.pageY - targetObject.toRePosition.getAttribute('y');
+            offx = ev.pageX - targetObject.toRePosition.getAttribute('x');
+            offy = ev.pageY - targetObject.toRePosition.getAttribute('y');
             targetObject.isClickedOnce = false;
         }
 
-        var touch = ev.changedTouches[0];
-        objx = (touch.pageX - offx);
-        objy = (touch.pageY - offy);
+        objx = (ev.pageX - offx);
+        objy = (ev.pageY - offy);
 
         // Snap to grid
         var snappedPosition = snapToGrid(objx, objy);
@@ -162,7 +140,7 @@ function disableMove() {
 }
 
 function snapToGrid(x, y) {
-    var gridSize = 3; // Adjust grid size as needed
+    var gridSize = 3; // 6cm in pixels (1cm = 1px) 3 because 50% in size
     return {
         x: Math.round(x / gridSize) * gridSize,
         y: Math.round(y / gridSize) * gridSize
@@ -193,6 +171,7 @@ function rotateSelected() {
     }
 }
 
+
 // Event listener for keydown events to handle delete and rotate functionalities
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Delete' || event.key === 'Backspace' || event.keyCode === 46) {
@@ -201,19 +180,3 @@ document.addEventListener('keydown', function (event) {
         rotateSelected();
     }
 });
-
-// Event listeners for touch events
-document.addEventListener('touchstart', function(event) {
-    var touch = event.touches[0];
-    // Implement touch start logic if needed
-}, false);
-
-document.addEventListener('touchend', function(event) {
-    var touch = event.changedTouches[0];
-    // Implement touch end logic if needed
-}, false);
-
-document.addEventListener('touchmove', function(event) {
-    var touch = event.touches[0];
-    moveObject(touch, targetObject.toRePosition);
-}, false);
