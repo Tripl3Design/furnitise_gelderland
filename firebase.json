@@ -22,8 +22,6 @@
       "**/.*",
       "package-lock.json",
       "package.json",
-      "webpack.config.js",
-      "**/node_modules/**",
       "**/TemplateData/**",
 
       "**/projects/gelderland-vandoesburg/index.html"

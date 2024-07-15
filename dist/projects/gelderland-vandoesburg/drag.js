@@ -11,6 +11,19 @@ function objectCloneGet(element) {
     objectReplica.id = "dragImage";
     objectReplica.style.position = "absolute";
 
+    // Mouse events
+    objectReplica.onmousedown = function(ev) {
+        ev.preventDefault(); // Prevent default behavior to avoid selection
+        objectCloneDragOrigin(ev, this.parentNode);
+    };
+
+    // Touch events
+    objectReplica.ontouchstart = function(ev) {
+        ev.preventDefault(); // Prevent default behavior like scrolling
+        var touch = ev.touches[0];
+        objectCloneDragOrigin(touch, this.parentNode);
+    };
+
     document.getElementById('svgContainer').appendChild(objectReplica);
 }
 
@@ -24,8 +37,18 @@ function objectCloneDragOrigin(ev, element) {
             ghostImage.isAppendedToDestination = false;
         }
 
-        dragImage.setAttribute('x', ev.offsetX);
-        dragImage.setAttribute('y', ev.offsetY);
+        var x, y;
+        if (ev.type === 'touchmove') {
+            var touch = ev.touches[0];
+            x = touch.pageX;
+            y = touch.pageY;
+        } else {
+            x = ev.pageX;
+            y = ev.pageY;
+        }
+
+        dragImage.setAttribute('x', x);
+        dragImage.setAttribute('y', y);
     }
 }
 
@@ -48,8 +71,20 @@ function objectCloneDrop(ev, dropzone) {
     if (isDragging) {
         var objectReplica = objectToClone.cloneNode(true);
 
+        // Mouse events
+        objectReplica.onmousedown = function(ev) {
+            ev.preventDefault(); // Prevent default behavior to avoid selection
+            enableMove(this);
+        };
+
+        // Touch events
+        objectReplica.ontouchstart = function(ev) {
+            ev.preventDefault(); // Prevent default behavior like scrolling
+            enableMove(this);
+        };
+
         // Snap to grid
-        var snappedPosition = snapToGrid(ev.offsetX, ev.offsetY);
+        var snappedPosition = snapToGrid(ev.pageX, ev.pageY);
         objectReplica.setAttribute('x', snappedPosition.x);
         objectReplica.setAttribute('y', snappedPosition.y);
 
@@ -118,14 +153,24 @@ function reAppend(dropzone) {
 
 function moveObject(ev, target) {
     if (targetObject.isMoveable) {
+        var x, y;
+        if (ev.type === 'touchmove') {
+            var touch = ev.touches[0];
+            x = touch.pageX;
+            y = touch.pageY;
+        } else {
+            x = ev.pageX;
+            y = ev.pageY;
+        }
+
         if (targetObject.isClickedOnce) {
-            offx = ev.pageX - targetObject.toRePosition.getAttribute('x');
-            offy = ev.pageY - targetObject.toRePosition.getAttribute('y');
+            offx = x - targetObject.toRePosition.getAttribute('x');
+            offy = y - targetObject.toRePosition.getAttribute('y');
             targetObject.isClickedOnce = false;
         }
 
-        objx = (ev.pageX - offx);
-        objy = (ev.pageY - offy);
+        objx = (x - offx);
+        objy = (y - offy);
 
         // Snap to grid
         var snappedPosition = snapToGrid(objx, objy);
@@ -179,4 +224,30 @@ document.addEventListener('keydown', function (event) {
     } else if (event.key === 'r' || event.key === 'R') {
         rotateSelected();
     }
+});
+
+// Event listeners for mouse events
+document.addEventListener('mousedown', function(ev) {
+    objectCloneGet(ev.target);
+});
+
+document.addEventListener('mousemove', function(ev) {
+    objectCloneDragOrigin(ev, document.body);
+});
+
+document.addEventListener('mouseup', function(ev) {
+    objectCloneDrop(ev, document.body);
+});
+
+// Event listeners for touch events
+document.addEventListener('touchstart', function(ev) {
+    objectCloneGet(ev.targetTouches[0].target);
+});
+
+document.addEventListener('touchmove', function(ev) {
+    objectCloneDragOrigin(ev, document.body);
+});
+
+document.addEventListener('touchend', function(ev) {
+    objectCloneDrop(ev.changedTouches[0], document.body);
 });
