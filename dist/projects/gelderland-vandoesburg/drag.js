@@ -11,55 +11,48 @@ function objectCloneGet(element) {
     objectReplica.id = "dragImage";
     objectReplica.style.position = "absolute";
 
-    // Mouse events
-    objectReplica.onmousedown = function(ev) {
-        ev.preventDefault(); // Prevent default behavior to avoid selection
-        objectCloneDragOrigin(ev, this.parentNode);
-    };
-
-    // Touch events
-    objectReplica.ontouchstart = function(ev) {
-        ev.preventDefault(); // Prevent default behavior like scrolling
-        var touch = ev.touches[0];
-        objectCloneDragOrigin(touch, this.parentNode);
-    };
-
     document.getElementById('svgContainer').appendChild(objectReplica);
+
+    // Add mouse event listeners
+    objectReplica.addEventListener('mousemove', function(ev) {
+        objectCloneDrag(ev, element);
+    }, false);
+
+    objectReplica.addEventListener('mouseup', function(ev) {
+        objectCloneDrop(ev, element);
+    }, false);
+
+    // Add touch event listeners
+    objectReplica.addEventListener('touchmove', function(ev) {
+        ev.preventDefault(); // Prevent scrolling on touch devices
+        var touch = ev.touches[0];
+        objectCloneDrag(touch, element);
+    }, false);
+
+    objectReplica.addEventListener('touchend', function(ev) {
+        var touch = ev.changedTouches[0];
+        objectCloneDrop(touch, element);
+    }, false);
 }
 
-function objectCloneDragOrigin(ev, element) {
+function objectCloneDrag(ev, element) {
     if (isDragging) {
         var dragImage = document.getElementById('dragImage');
 
-        if (!ghostImage.isAppendedToOrigin) {
-            element.appendChild(dragImage);
-            ghostImage.isAppendedToOrigin = true;
-            ghostImage.isAppendedToDestination = false;
-        }
-
-        var x, y;
-        if (ev.type === 'touchmove') {
-            var touch = ev.touches[0];
-            x = touch.pageX;
-            y = touch.pageY;
+        // Determine if the element is being dragged to the original or a destination
+        var destinationElement = determineDestinationElement(ev);
+        if (destinationElement) {
+            if (!ghostImage.isAppendedToDestination) {
+                destinationElement.appendChild(dragImage);
+                ghostImage.isAppendedToDestination = true;
+                ghostImage.isAppendedToOrigin = false;
+            }
         } else {
-            x = ev.pageX;
-            y = ev.pageY;
-        }
-
-        dragImage.setAttribute('x', x);
-        dragImage.setAttribute('y', y);
-    }
-}
-
-function objectCloneDragDestination(ev, element) {
-    if (isDragging) {
-        var dragImage = document.getElementById('dragImage');
-
-        if (!ghostImage.isAppendedToDestination) {
-            element.appendChild(dragImage);
-            ghostImage.isAppendedToDestination = true;
-            ghostImage.isAppendedToOrigin = false;
+            if (!ghostImage.isAppendedToOrigin) {
+                element.appendChild(dragImage);
+                ghostImage.isAppendedToOrigin = true;
+                ghostImage.isAppendedToDestination = false;
+            }
         }
 
         dragImage.setAttribute('x', ev.offsetX);
@@ -67,21 +60,19 @@ function objectCloneDragDestination(ev, element) {
     }
 }
 
+function determineDestinationElement(ev) {
+    // Implement logic to determine if the dragged object is over a valid destination element
+    // Example: Check if ev.target is a valid drop zone
+    var dropzone = document.getElementById('validDropzoneId');
+    if (dropzone && dropzone.contains(ev.target)) {
+        return dropzone;
+    }
+    return null;
+}
+
 function objectCloneDrop(ev, dropzone) {
     if (isDragging) {
         var objectReplica = objectToClone.cloneNode(true);
-
-        // Mouse events
-        objectReplica.onmousedown = function(ev) {
-            ev.preventDefault(); // Prevent default behavior to avoid selection
-            enableMove(this);
-        };
-
-        // Touch events
-        objectReplica.ontouchstart = function(ev) {
-            ev.preventDefault(); // Prevent default behavior like scrolling
-            enableMove(this);
-        };
 
         // Snap to grid
         var snappedPosition = snapToGrid(ev.pageX, ev.pageY);
@@ -92,8 +83,8 @@ function objectCloneDrop(ev, dropzone) {
         objectReplica.removeAttribute('onmousemove');
         objectReplica.removeAttribute('onmouseup');
         objectReplica.removeAttribute('onmouseleave');
-        objectReplica.setAttribute('onmousedown', 'enableMove(this)');
-        objectReplica.setAttribute('onmouseup', 'disableMove(this)');
+        objectReplica.setAttribute('ontouchstart', 'enableMove(this)');
+        objectReplica.setAttribute('ontouchend', 'disableMove(this)');
         objectReplica.id = 'appendedObject';
 
         // Add class for selection
@@ -147,24 +138,16 @@ function enableMove(ele) {
 
 function moveObject(ev, target) {
     if (targetObject.isMoveable) {
-        var x, y;
-        if (ev.type === 'touchmove') {
-            var touch = ev.touches[0];
-            x = touch.pageX;
-            y = touch.pageY;
-        } else {
-            x = ev.pageX;
-            y = ev.pageY;
-        }
-
         if (targetObject.isClickedOnce) {
-            offx = x - targetObject.toRePosition.getAttribute('x');
-            offy = y - targetObject.toRePosition.getAttribute('y');
+            var touch = ev.changedTouches[0];
+            offx = touch.pageX - targetObject.toRePosition.getAttribute('x');
+            offy = touch.pageY - targetObject.toRePosition.getAttribute('y');
             targetObject.isClickedOnce = false;
         }
 
-        objx = (x - offx);
-        objy = (y - offy);
+        var touch = ev.changedTouches[0];
+        objx = (touch.pageX - offx);
+        objy = (touch.pageY - offy);
 
         // Snap to grid
         var snappedPosition = snapToGrid(objx, objy);
@@ -179,7 +162,7 @@ function disableMove() {
 }
 
 function snapToGrid(x, y) {
-    var gridSize = 3; // 6cm in pixels (1cm = 1px) 3 because 50% in size
+    var gridSize = 3; // Adjust grid size as needed
     return {
         x: Math.round(x / gridSize) * gridSize,
         y: Math.round(y / gridSize) * gridSize
@@ -219,28 +202,18 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
-// Event listeners for mouse events
-document.addEventListener('mousedown', function(ev) {
-    objectCloneGet(ev.target);
-});
-
-document.addEventListener('mousemove', function(ev) {
-    objectCloneDragOrigin(ev, document.body);
-});
-
-document.addEventListener('mouseup', function(ev) {
-    objectCloneDrop(ev, document.body);
-});
-
 // Event listeners for touch events
-document.addEventListener('touchstart', function(ev) {
-    objectCloneGet(ev.targetTouches[0].target);
-});
+document.addEventListener('touchstart', function(event) {
+    var touch = event.touches[0];
+    // Implement touch start logic if needed
+}, false);
 
-document.addEventListener('touchmove', function(ev) {
-    objectCloneDragOrigin(ev, document.body);
-});
+document.addEventListener('touchend', function(event) {
+    var touch = event.changedTouches[0];
+    // Implement touch end logic if needed
+}, false);
 
-document.addEventListener('touchend', function(ev) {
-    objectCloneDrop(ev.changedTouches[0], document.body);
-});
+document.addEventListener('touchmove', function(event) {
+    var touch = event.touches[0];
+    moveObject(touch, targetObject.toRePosition);
+}, false);
