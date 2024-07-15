@@ -140,7 +140,7 @@ function disableMove() {
 }
 
 function snapToGrid(x, y) {
-    var gridSize = 6; // 6cm in pixels (1cm = 1px)
+    var gridSize = 3; // 6cm in pixels (1cm = 1px) 3 because 50% in size
     return {
         x: Math.round(x / gridSize) * gridSize,
         y: Math.round(y / gridSize) * gridSize
@@ -167,39 +167,6 @@ function rotateSelected() {
             var newTransform = currentTransform.replace(/rotate\(([-]*\d+)/, 'rotate(' + newRotation);
 
             rotationGroup.setAttribute('transform', newTransform);
-        }
-    }
-}
-
-function mirrorSelected() {
-    var selectedObject = document.querySelector('.selected');
-    if (selectedObject) {
-        var transformationGroup = selectedObject.querySelector('g'); // Assuming transformations are applied within a <g> element
-        if (transformationGroup) {
-            var currentTransform = transformationGroup.getAttribute('transform');
-            var scaleX = currentTransform.includes('scaleX(-1)') ? 1 : -1; // Toggle scaleX between -1 and 1
-
-            var newTransform;
-            if (scaleX === -1) {
-                newTransform = currentTransform + ' scaleX(-1)';
-            } else {
-                newTransform = currentTransform.replace(' scaleX(-1)', '');
-            }
-
-            transformationGroup.setAttribute('transform', newTransform);
-        } else {
-            // If there's no transformation group, apply scaleX directly to the selected object
-            var currentScale = selectedObject.getAttribute('transform');
-            var scaleX = currentScale.includes('scaleX(-1)') ? 1 : -1; // Toggle scaleX between -1 and 1
-
-            var newScale;
-            if (scaleX === -1) {
-                newScale = currentScale + ' scaleX(-1)';
-            } else {
-                newScale = currentScale.replace(' scaleX(-1)', '');
-            }
-
-            selectedObject.setAttribute('transform', newScale);
         }
     }
 }

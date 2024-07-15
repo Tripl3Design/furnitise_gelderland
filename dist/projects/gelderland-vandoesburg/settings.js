@@ -256,213 +256,285 @@ function initSettings(model) {
         <style>
         .cloneableObject {
             cursor: pointer;
-        }
-      
-        .grid-line {
-            stroke: lightgray;
-            stroke-width: 1;
-        }       
-
+        }    
         .selected rect,
         .selected path {
             fill: lightgrey;
         }
+
+
+
+
+
+        #svgDragzone {
+    width: 100%;
+    height: 400px;
+}
+
     </style>
-        <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
-            <div class="col-12 m-0 p-0 pb-2">
-                        <button onclick="deleteSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined m-0 p-0">delete</span>verwijder</button>
-                        <button onclick="rotateSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">rotate_90_degrees_cw</span>roteer</button>
-                        <button onclick="mirrorSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">flip</span>spiegel</button>
-                        <button onclick="#" type="button" class="btn btn-outline-dark rounded-0 m-0">XL versie</button>
-                        <button onclick="#" type="button" class="btn btn-outline-dark rounded-0 m-0">extra kussen</button>
-                  </div>
-                <div class="row m-0 p-0">
-                    <svg id="svgDragzone" style="width: 100%; height: 500px;" class="border border-1 border-black m-0 p-0" onmousedown="reAppend(this)" onmouseup="objectCloneDrop(event, this); disableMove();"
-                        onmousemove="indicateDrag(this); moveObject(event, this); objectCloneDragDestination(event, this)"
-                        onmouseleave="disableMove()"> 
+
+
+    </style>
+    <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
+    <div class="col-12 m-0 p-0 pb-2">
+        <button onclick="deleteSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined m-0 p-0">delete</span></button>
+        <button onclick="rotateSelected()" type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">rotate_90_degrees_cw</span></button>
+        <button type="button" class="btn btn-outline-dark rounded-0"><span class="material-symbols-outlined">recenter</span></button>
+    </div>
+    <div class="row m-0 p-0">
+        <svg id="svgDragzone" class="border border-1 border-black m-0 p-0"
+             onmousedown="reAppend(this)"
+             onmouseup="objectCloneDrop(event, this); disableMove();"
+             onmousemove="indicateDrag(this); moveObject(event, this); objectCloneDragDestination(event, this)"
+             onmouseleave="disableMove()">
+
+
+
+
+                    <!-- premade -->
+                    <svg class="cloneableObject selectable selected" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 136" width="136" height="136" preserveAspectRatio="xMidYMid meet" x="180" y="228" onmousedown="enableMove(this)" onmouseup="disableMove(this)" id="appendedObject">
+                        <g name="chair_96" transform="rotate(0, 68, 68)">
+                            <g name="seat">
+                                <rect fill="white" x="20" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                            </g>
+                            <g name="rests">
+                                <rect x="8" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                                <rect x="104" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                                <rect x="32" y="14" width="72" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                <line x1="20" y1="26" x2="112" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                <line x1="20" y1="26" x2="20" y2="110" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                <line x1="116" y1="26" x2="116" y2="110" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                            </g>
+                            <circle r="3" cx="68" cy="68" fill="red"></circle>
+                        </g>
+                    </svg>
+
+
 
                     </svg>
 
-                    
+                </div>
 
-                    </div>
-                    <div class="row m-0 p-0">
-
-
-
-
-
-
-
-
+                <div class="row m-0 p-0">
 
                     <div id="svgContainer" class="d-flex flex-wrap align-items-start overflow-hidden" onmousemove="objectCloneDragOrigin(event, this)" onmouseup="disableDrag(this)">
+
+                        <ul class="nav nav-tabs w-100" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="10000-tab" data-bs-toggle="tab" data-bs-target="#10000-tab-pane" type="button" role="tab" aria-controls="10000-tab-pane" aria-selected="true">10000</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="10005-tab" data-bs-toggle="tab" data-bs-target="#10005-tab-pane" type="button" role="tab" aria-controls="10005-tab-pane" aria-selected="false">10005</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">10009</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false">10000 tafels</button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content w-100" id="myTabContent">
+                        <div class="tab-pane fade show active" id="10000-tab-pane" role="tabpanel" aria-labelledby="10000-tab" tabindex="0">
+                            <div class="row">
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 136" width="102" height="102" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="chair_96" transform="rotate(0, 68, 68)">
+                                        <g name="seat">
+                                            <rect fill="white" x="20" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                                        </g>
+                                        <g name="rests">
+                                            <rect x="8" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                                            <rect x="104" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                                            <rect x="32" y="14" width="72" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                            <line x1="20" y1="26" x2="112" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                            <line x1="20" y1="26" x2="20" y2="110" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                            <line x1="116" y1="26" x2="116" y2="110" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                        </g>
+                                        <circle r="3" cx="68" cy="68" fill="red" />
+                                    </g>
+                                </svg>
+                                </div>
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 136" width="102" height="102" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="noArmrestsRight_96" transform="rotate(0, 68, 68)">
+                                        <g name="seat">
+                                        <rect fill="white" x="20" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                                        </g>
+                                        <g name="rests">
+                                            <rect x="20" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                            <line x1="20" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                        </g>
+                                        <circle r="3" cx="68" cy="68" fill="red" />
+                                    </g>
+                                </svg>
+                                </div>
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 136" width="102" height="102" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                <g name="noArmrestsLeft_96" transform="rotate(0, 68, 68)">
+                                    <g name="seat">
+                                        <rect fill="white" x="20" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                                    </g>
+                                    <g name="rests">
+                                        <rect x="32" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                        <line x1="20" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                    </g>
+                                    <circle r="3" cx="68" cy="68" fill="red" />
+                                </g>
+                                </svg>
+                                </div>
+
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 136" width="102" height="102" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="armrestRight_96" transform="rotate(0, 68, 68)">
+                                        <g name="seat">
+                                        <rect fill="white" x="20" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
+                                        </g>
+                                        <g name="rests">
+                                            <rect x="104" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
+                                            <rect x="20" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                            <line x1="20" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                            <line x1="116" y1="26" x2="116" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                        </g>
+                                        <circle r="3" cx="68" cy="68" fill="red" />
+                                    </g>
+                                </svg>
+                                </div>
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 136 136' width="102" height="102" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="noArmrests_84" transform="rotate(0, 68, 68)">
+                                        <g name='seat'>
+                                        <rect fill="white" x="26" y="26" width="84" height="84" stroke="black" stroke-width="2"></rect>
+                                        </g>
+                                        <g name="rests">
+                                            <rect x='26' y='14' width='84' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                                            <line x1='26' y1='26' x2='102' y2='26' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                        </g>
+                                        <circle r="3" cx="68" cy="68" fill="red" />
+                                    </g>
+                                </svg>
+                                </div>
+                                <!--
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 148" width="148" height="148" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="noArmrests_100" transform="rotate(0, 74, 74)">
+                                        <g name='seat'>
+                                        <rect fill='green' x='0' y='0' width='148' height='148'></rect>
+                                            <rect fill='white' x='26' y='38' width='102' height='108' stroke='black' stroke-width='2'></rect>
+                                        </g>
+                                        <g name="rests">
+                                            <rect x='14' y='26' width='102' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                                            <line x1='14' y1='26' x2='116' y2='26' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                        </g>
+                                    </g>
+                                </svg>
+                                </div>
+
+                                -->
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 142 142" width="106" height="106" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="noArmrests_100" transform="rotate(0, 71, 71)">
+                                        <g name="seat">
+                                            <rect fill="white" x="20" y="24" width="102" height="96" stroke="black" stroke-width="2"></rect>
+                                        </g>
+                                        <g name="rests">
+                                            <rect x="20" y="14" width="102" height="24" fill="white" stroke="black" stroke-width="2"></rect>
+                                            <line x1="20" y1="26" x2="122" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
+                                        </g>
+                                        <circle r="3" cx="71" cy="71" fill="red" />
+                                    </g>
+                                </svg>
+                                </div>
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 190 190' width="142" height="142" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="armrestLeft_172" transform="rotate(0, 95, 86)">
+                                        <g name='seat'>
+                                        <rect fill="green" x="0" y="0" width="190" height="190"></rect>
+                                            <rect fill='white' x='2' y='50' width='174' height='102' stroke='black' stroke-width='2'></rect>
+                                        </g>
+                                        <!-- <g name="rests">
+                                            <rect x='164' y='38' width='24' height='96' fill='white' stroke='black' stroke-width='2'></rect>
+                                            <rect x='2' y='38' width='162' height='24' fill='white' stroke='black' stroke-width='2'></rect>
+                                            <line x1='2' y1='50' x2='174' y2='50' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                            <line x1='176' y1='50' x2='176' y2='132' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
+                                        </g>-->
+                                        <circle r="3" cx="95" cy="86" fill="red" />
+                                    </g>
+                                </svg>
+                                </div>
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" width="79" height="79" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="quarterround" transform="rotate(0, 53, 53)">
+                                        <g name="seat">
+                                            <path d="M 2,2 L 104,2 A 104,104 0 0,1 2,104 L 2,2 Z" fill="white" stroke="black" stroke-width="2"></path>
+                                        </g>
+                                    </g>
+                                    <circle r="3" cx="53" cy="53" fill="red" />
+                                </svg>
+                                </div>
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 136" width="102" height="102" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="hocker_96" transform="rotate(0, 68, 68)">
+                                        <g name="seat">
+                                        <rect fill="white" x="20" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect> 
+                                        </g>
+                                        <circle r="3" cx="68" cy="68" fill="red" />
+                                    </g>
+                                </svg>
+                                </div>
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 136" width="102" height="102" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="hocker_84" transform="rotate(0, 68, 68)">
+                                        <g name="seat">
+                                            <rect x='26' y='26' width='84' height='84' fill='white' stroke='black' stroke-width='2'></rect>
+                                        </g>
+                                    </g>
+                                    <circle r="3" cx="68" cy="68" fill="red" />
+                                </svg>
+                                </div>
+
+                                </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="10005" tabindex="0">10005</div>
+                                <div class="d-flex tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="tafels" tabindex="0">
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" width="106" height="106" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                <g name="coffeetable" transform="rotate(0, 53, 53)">
+                                    <g name="tabletop">
+                                        <rect x='14' y='2' width='78' height='102' fill='white' stroke='black' stroke-width='1'></rect>
+                                        <path d='M 32 104 L 32 57 Q 32 53 28 53 L 16 53' stroke='black' stroke-width='1' fill='none'></path>
+                                    </g>
+                                </g>
+                                <circle r="3" cx="53" cy="53" fill="red" />
+                                </svg>
+                                </div>
+
+                                <div class="col-6 col-md-4 col-lg-3 cloneableObjectWrapper">
+                                <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 196" width="196" height="196" preserveAspectRatio="xMidYMid meet" onmousedown="objectCloneGet(this)">
+                                    <g name="sidetable" transform="rotate(0, 98, 98)">
+                                        <g name="tabletop">
+                                            <rect x='2' y='74' width='192' height='48' fill='white' stroke='black' stroke-width='1'></rect>
+                                        </g>
+                                    </g>
+                                    <circle r="3" cx="98" cy="98" fill="red" />
+                                </svg>
+                                </div>
+                                </div>
+                                <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="overige" tabindex="0">overige</div>
+                                </div>
+
+
              
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
-                            <g name="chair_96" transform="rotate(0, 62, 62)">
-                                <g name="seat">
-                                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
-                                </g>
-                                <g name="rests">
-                                    <rect x="2" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
-                                    <rect x="98" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
-                                    <rect x="26" y="14" width="72" height="24" fill="white" stroke="black" stroke-width="2"></rect>
-                                    <line x1="14" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
-                                    <line x1="14" y1="26" x2="14" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
-                                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-            
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
-                            <g name="noArmrestsRight_96" transform="rotate(0, 62, 62)">
-                                <g name="seat">
-                                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
-                                </g>
-                                <g name="rests">
-                                    <rect x="14" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
-                                    <line x1="14" y1="26" x2="96" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-            
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
-                            <g name="armrestRight_96" transform="rotate(0, 62, 62)">
-                                <g name="seat">
-                                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
-                                </g>
-                                <g name="rests">
-                                    <rect x="98" y="14" width="24" height="96" fill="white" stroke="black" stroke-width="2"></rect>
-                                    <rect x="14" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
-                                    <line x1="14" y1="26" x2="110" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
-                                    <line x1="110" y1="26" x2="110" y2="114" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-            
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 124 124' width="124" height="124" onmousedown="objectCloneGet(this)">
-                            <g name="noArmrests_84" transform="rotate(0, 62, 62)">
-                                <g name='seat'>
-                                    <rect fill='white' x='20' y='26' width='84' height='84' stroke='black' stroke-width='2'></rect>
-                                </g>
-                                <g name="rests">
-                                    <rect x='20' y='14' width='84' height='24' fill='white' stroke='black' stroke-width='2'></rect>
-                                    <line x1='20' y1='26' x2='102' y2='26' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-            <!--
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 148" width="148" height="148" onmousedown="objectCloneGet(this)">
-                            <g name="noArmrests_100" transform="rotate(0, 74, 74)">
-                                <g name='seat'>
-                                <rect fill='green' x='0' y='0' width='148' height='148'></rect>
-                                    <rect fill='white' x='26' y='38' width='102' height='108' stroke='black' stroke-width='2'></rect>
-                                </g>
-                                <g name="rests">
-                                    <rect x='14' y='26' width='102' height='24' fill='white' stroke='black' stroke-width='2'></rect>
-                                    <line x1='14' y1='26' x2='116' y2='26' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-
--->
-
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" width="130" height="130" onmousedown="objectCloneGet(this)">
-                            <g name="noArmrests_100" transform="rotate(0, 65, 65)">
-                                <g name="seat">
-                                <rect fill="green" x="0" y="0" width="130" height="130"></rect>
-                                <rect fill="white" x="14" y="26" width="96" height="102" stroke="black" stroke-width="2"></rect>
-                                    <rect fill="white" x="14" y="26" width="96" height="102" stroke="black" stroke-width="2"></rect>
-                                </g>
-                                <g name="rests">
-                                    <rect x="14" y="14" width="84" height="24" fill="white" stroke="black" stroke-width="2"></rect>
-                                    <line x1="14" y1="26" x2="96" y2="26" stroke="black" stroke-width="1" stroke-dasharray="4"></line>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-
-
-            
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox='0 0 190 190' width="190" height="190" onmousedown="objectCloneGet(this)">
-                            <g name="armrestLeft_172" transform="rotate(0, 95, 86)">
-                                <g name='seat'>
-                                    <rect fill='white' x='2' y='50' width='174' height='102' stroke='black' stroke-width='2'></rect>
-                                </g>
-                                <g name="rests">
-                                    <rect x='164' y='38' width='24' height='96' fill='white' stroke='black' stroke-width='2'></rect>
-                                    <rect x='2' y='38' width='162' height='24' fill='white' stroke='black' stroke-width='2'></rect>
-                                    <line x1='2' y1='50' x2='174' y2='50' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
-                                    <line x1='176' y1='50' x2='176' y2='132' stroke='black' stroke-width='1' stroke-dasharray='4'></line>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-            
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" width="106" height="106" onmousedown="objectCloneGet(this)">
-                            <g name="quarterround" transform="rotate(0, 53, 53)">
-                                <g name="seat">
-                                    <path d="M 2,2 L 104,2 A 104,104 0 0,1 2,104 L 2,2 Z" fill="white" stroke="black" stroke-width="2"></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-            
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124" width="124" height="124" onmousedown="objectCloneGet(this)">
-                            <g name="hocker_96" transform="rotate(0, 62, 62)">
-                                <g name="seat">
-                                    <rect fill="white" x="14" y="26" width="96" height="84" stroke="black" stroke-width="2"></rect>
-                                   
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-            
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 118" width="118" height="118" onmousedown="objectCloneGet(this)">
-                            <g name="hocker_84" transform="rotate(0, 62, 62)">
-                                <g name="seat">
-                                    <rect x='14' y='14' width='84' height='84' fill='white' stroke='black' stroke-width='2'></rect>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-            
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" width="106" height="106" onmousedown="objectCloneGet(this)">
-                            <g name="coffeetable" transform="rotate(0, 53, 53)">
-                                <g name="tabletop">
-                                    <rect x='2' y='2' width='78' height='102' fill='white' stroke='black' stroke-width='1'></rect>
-                                    <path d='M 18 104 L 18 57 Q 18 53 14 53 L 2 53' stroke='black' stroke-width='1' fill='none'></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-            
-                    <div class="cloneableObjectWrapper">
-                        <svg class="cloneableObject" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 196" width="196" height="196" onmousedown="objectCloneGet(this)">
-                            <g name="sidetable" transform="rotate(0, 97, 97)">
-                                <g name="tabletop">
-                                    <rect x='2' y='2' width='192' height='48' fill='white' stroke='black' stroke-width='1'></rect>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                </div>
+                 
 
 
 
