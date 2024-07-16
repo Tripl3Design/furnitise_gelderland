@@ -140,7 +140,7 @@ function disableMove() {
 }
 
 function snapToGrid(x, y) {
-    var gridSize = 3; // 6cm in pixels (1cm = 1px) 3 because 50% in size
+    var gridSize = 3; // 6cm in pixels (1cm = 1px)
     return {
         x: Math.round(x / gridSize) * gridSize,
         y: Math.round(y / gridSize) * gridSize
