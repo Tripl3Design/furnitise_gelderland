@@ -12,6 +12,15 @@ function objectCloneGet(element) {
     objectReplica.style.position = "absolute";
 
     document.getElementById('svgContainer').appendChild(objectReplica);
+
+    // Remove 'selected' class from any previously selected element
+    var previouslySelected = document.querySelector('.selected');
+    if (previouslySelected) {
+        previouslySelected.classList.remove('selected');
+    }
+
+    // Add 'selected' class to the element being cloned
+    element.classList.add('selected');
 }
 
 function objectCloneDragOrigin(ev, element) {
@@ -61,8 +70,17 @@ function objectCloneDrop(ev, dropzone) {
         objectReplica.setAttribute('onmouseup', 'disableMove(this)');
         objectReplica.id = 'appendedObject';
 
+        // Remove 'selected' class from any previously selected element
+        var previouslySelected = document.querySelector('.selected');
+        if (previouslySelected) {
+            previouslySelected.classList.remove('selected');
+        }
+
         // Add class for selection
         objectReplica.classList.add('selectable');
+
+        // Add 'selected' class to the objectReplica
+        objectReplica.classList.add('selected');
 
         document.getElementById('svgDragzone').removeChild(document.getElementById('dragImage'));
         dropzone.appendChild(objectReplica);
@@ -170,7 +188,6 @@ function rotateSelected() {
         }
     }
 }
-
 
 // Event listener for keydown events to handle delete and rotate functionalities
 document.addEventListener('keydown', function (event) {

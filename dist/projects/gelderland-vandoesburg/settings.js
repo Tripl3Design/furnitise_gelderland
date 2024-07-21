@@ -135,9 +135,7 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     const fragment = document.createDocumentFragment();
     let isFirstElement = true;
     
-    model.elements.forEach(element => {
-        console.log(element.type);
-    
+    model.elements.forEach(element => {   
         const type = element.type;
         const svgContent = ALLARRANGEMENTS.elements[type].svg;
     
@@ -147,8 +145,6 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
             const svgElement = doc.querySelector('svg');
     
             if (svgElement) {
-                console.log(svgElement);
-    
                 const x = element.location.x !== undefined ? element.location.x : 0;
                 const y = element.location.y !== undefined ? element.location.y : 0;
     
@@ -230,8 +226,8 @@ function showFeaturedModelByIndex(index) {
 
 async function handleModelSelection() {
     var canvas = document.getElementById("modelviewer");
-    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
-    //var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
+    //var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
+    var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
     var config = {
         dataUrl: `${buildUrl}/Build/${brand}-${product}.data`,
         frameworkUrl: `${buildUrl}/Build/${brand}-${product}.framework.js`,
@@ -328,11 +324,12 @@ function initSettings(model) {
         position: relative;
         /* Ensure position context for absolutely positioned children */
     }
-
+/*
     .cloneableObjectWrapper,
     #svgDragzone {
         transform: scale(0.65);
     }
+        */
 </style>
 
 <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
@@ -515,10 +512,7 @@ function initSettings(model) {
                         class="material-symbols-outlined">recenter</span></button>
             </div>
         
-    </div>
-
-
-`
+    </div>`
     }
     accordions.element = {
         "title": "element",
