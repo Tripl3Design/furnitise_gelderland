@@ -134,20 +134,20 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
     const container = document.getElementById('svgDragzone');
     const fragment = document.createDocumentFragment();
     let isFirstElement = true;
-    
-    model.elements.forEach(element => {   
+
+    model.elements.forEach(element => {
         const type = element.type;
         const svgContent = ALLARRANGEMENTS.elements[type].svg;
-    
+
         if (svgContent) {
             const parser = new DOMParser();
             const doc = parser.parseFromString(svgContent, 'image/svg+xml');
             const svgElement = doc.querySelector('svg');
-    
+
             if (svgElement) {
                 const x = element.location.x !== undefined ? element.location.x : 0;
                 const y = element.location.y !== undefined ? element.location.y : 0;
-    
+
                 // Set id attribute to the root <svg> element
                 svgElement.setAttributeNS(null, 'id', 'appendedObject');
                 svgElement.setAttributeNS(null, 'onmousedown', 'enableMove(this)');
@@ -162,18 +162,18 @@ function updateControlPanel(model, selectedLayer, expandedLayer) {
                 }
 
                 const gElement = svgElement.querySelector('g');
-    
+
                 if (gElement) {
                     let transformAttr = gElement.getAttributeNS(null, 'transform') || '';
                     transformAttr = transformAttr.replace(/rotate\([0-9.-]+\b/, `rotate(${element.location.rot}`);
                     gElement.setAttributeNS(null, 'transform', transformAttr);
                 }
-    
+
                 fragment.appendChild(svgElement);
             }
         }
     });
-    
+
     container.appendChild(fragment);
 
     pricing(model);
@@ -226,8 +226,8 @@ function showFeaturedModelByIndex(index) {
 
 async function handleModelSelection() {
     var canvas = document.getElementById("modelviewer");
-    //var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
-    var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
+    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
+    //var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
     var config = {
         dataUrl: `${buildUrl}/Build/${brand}-${product}.data`,
         frameworkUrl: `${buildUrl}/Build/${brand}-${product}.framework.js`,
@@ -299,39 +299,49 @@ function initSettings(model) {
         display: noArrangement,
         collapsible: false,
         code: /*html*/`
-<style>
-    .cloneableObject {
-        cursor: pointer;
+            <style>
+                .cloneableObject {
+                    cursor: pointer;
+                }
+
+                .selected rect,
+                .selected path {
+                    fill: lightgrey;
+                }
+
+                #svgDragzone {
+                    width: 800px;
+                    height: 400px;
+                }
+
+                .elementContainer {
+                    transform: scale(0.65);
+                    transform-origin: top left; /* Adjust if necessary */
+                    width: 100%; /* Adjust width to fit scaled content */
+                }
+
+                .scroll-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: 120px;
     }
 
-    .selected rect,
-    .selected path {
-        fill: lightgrey;
-    }
+.scroll-container::-webkit-scrollbar {
+    height: 8px;  /* Width of the scrollbar */
+}
 
-    #svgDragzone {
-        width: 100%;
-        height: 400px;
-    }
+.scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;  /* Track color */
+}
 
-    #svgContainer {
-        width: 100%;
-        /* Example width */
-        height: 100%;
-        /* Example height */
-        overflow: hidden;
-        /* Prevent overflow */
-        position: relative;
-        /* Ensure position context for absolutely positioned children */
-    }
-/*
-    .cloneableObjectWrapper,
-    #svgDragzone {
-        transform: scale(0.65);
-    }
-        */
-</style>
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #aaa;  /* Thumb color */
+}
 
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;  /* Thumb color on hover */
+}
+            </style>
 <div class="row m-0 p-0 pb-xxl-4 pb-xl-4 pb-3">
     <div class="row m-0 p-0" id="svgContainer" onmousemove="objectCloneDragOrigin(event, this)"
         onmouseup="disableDrag(this)">
@@ -365,154 +375,128 @@ function initSettings(model) {
         <div class="tab-content border border-top-0 border-1 border-lightgrey m-0 p-0" id="myTabContent">
 
             <div class="tab-pane fade show active" id="10000-tab-pane" role="tabpanel" aria-labelledby="10000-tab" tabindex="0">
-                <div class="d-flex flex-nowrap overflow-x-auto">
-
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.chair_96.svg}
-                        ${ALLARRANGEMENTS.elements.chair_96.name_nl}
+                <div style="height: 120px;" class="scroll-container m-0 p-0">
+                    <div  class="elementContainer d-flex flex-nowrap m-2 p-0">
+                        <div>
+                            ${ALLARRANGEMENTS.elements.chair_96.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.armrestRight_96.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.noArmrests_84.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.quarterround.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.hocker_96.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.hocker_84.svg}
+                        </div>
                     </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.noArmrestsRight_96.svg}
-                        ${ALLARRANGEMENTS.elements.noArmrestsRight_96.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.svg}
-                        ${ALLARRANGEMENTS.elements.noArmrestsLeft_96.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.armrestRight_96.svg}
-                        ${ALLARRANGEMENTS.elements.armrestRight_96.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.armrestLeft_96.svg}
-                        ${ALLARRANGEMENTS.elements.armrestLeft_96.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.noArmrests_84.svg}
-                        ${ALLARRANGEMENTS.elements.noArmrests_84.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.quarterround.svg}
-                        ${ALLARRANGEMENTS.elements.quarterround.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.hocker_96.svg}
-                        ${ALLARRANGEMENTS.elements.hocker_96.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.hocker_84.svg}
-                        ${ALLARRANGEMENTS.elements.hocker_84.name_nl}
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="10005-tab-pane" role="tabpanel" aria-labelledby="10005-tab" tabindex="0">
-                <div class="d-flex flex-nowrap overflow-x-auto">
-
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.chair_96_xl.svg}
-                        ${ALLARRANGEMENTS.elements.chair_96_xl.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.noArmrestsRight_96_xl.svg}
-                        ${ALLARRANGEMENTS.elements.noArmrestsRight_96_xl.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.noArmrestsLeft_96_xl.svg}
-                        ${ALLARRANGEMENTS.elements.noArmrestsLeft_96_xl.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.armrestRight_96_xl.svg}
-                        ${ALLARRANGEMENTS.elements.armrestRight_96_xl.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.armrestLeft_96_xl.svg}
-                        ${ALLARRANGEMENTS.elements.armrestLeft_96_xl.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.noArmrests_84_xl.svg}
-                        ${ALLARRANGEMENTS.elements.noArmrests_84_xl.name_nl}
-                    </div>   
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.hocker_96_xl.svg}
-                        ${ALLARRANGEMENTS.elements.hocker_96_xl.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.hocker_84_xl.svg}
-                        ${ALLARRANGEMENTS.elements.hocker_84_xl.name_nl}
-                    </div>
-        
                 </div>
             </div>
 
             <div class="tab-pane fade" id="10000-tafels-tab-pane" role="tabpanel" aria-labelledby="10000-tafels-tab" tabindex="0">
-                <div class="d-flex flex-nowrap overflow-x-auto">
-
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.sideTable.svg}
-                        ${ALLARRANGEMENTS.elements.sideTable.name_nl}
-                    </div>
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.sideTable.svg}
-                        ${ALLARRANGEMENTS.elements.sideTable.name_nl}
+                <div style="height: 120px;" class="scroll-container overflow-x-auto overflow-y-hidden">
+                    <div  class="elementContainer d-flex flex-nowrap m-2 p-0">
+                        <div>
+                            ${ALLARRANGEMENTS.elements.sideTable.svg}
+                            ${ALLARRANGEMENTS.elements.sideTable.name_nl}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.sideTable.svg}
+                            ${ALLARRANGEMENTS.elements.sideTable.name_nl}
+                        </div>
                     </div>
                 </div>
-
             </div>
 
-        <div class="tab-pane fade" id="10007-tab-pane" role="tabpanel" aria-labelledby="10007-tab" tabindex="0">
-            <div class="d-flex flex-nowrap overflow-x-auto">
-
-                <div class="cloneableObjectWrapper">
-                    ${ALLARRANGEMENTS.elements.noArmrests_100.svg}
-                    ${ALLARRANGEMENTS.elements.noArmrests_100.name_nl}
+            <div class="tab-pane fade" id="10005-tab-pane" role="tabpanel" aria-labelledby="10005-tab" tabindex="0">
+                <div style="height: 120px;" class="scroll-container overflow-x-auto overflow-y-hidden">
+                    <div  class="elementContainer d-flex flex-nowrap m-2 p-0">
+                        <div>
+                            ${ALLARRANGEMENTS.elements.chair_96_xl.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.noArmrestsRight_96_xl.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.noArmrestsLeft_96_xl.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.armrestRight_96_xl.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.armrestLeft_96_xl.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.noArmrests_84_xl.svg}
+                        </div>   
+                        <div>
+                            ${ALLARRANGEMENTS.elements.hocker_96_xl.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.hocker_84_xl.svg}
+                        </div>
+                    </div>
                 </div>
-
             </div>
-        </div>
 
-            <div class="tab-pane fade"
-                id="10009-tab-pane" role="tabpanel" aria-labelledby="10009-tab" tabindex="0">
-
-                <div class="d-flex flex-nowrap overflow-x-auto">
-
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.armrestRight_172.svg}
-                        ${ALLARRANGEMENTS.elements.armrestRight_172.name_nl}
+            <div class="tab-pane fade" id="10007-tab-pane" role="tabpanel" aria-labelledby="10007-tab" tabindex="0">
+                <div style="height: 120px;" class="scroll-container overflow-x-auto overflow-y-hidden">
+                    <div class="elementContainer d-flex flex-nowrap m-2 p-0">
+                        <div>
+                            ${ALLARRANGEMENTS.elements.noArmrests_100.svg}
+                        </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="cloneableObjectWrapper">
-                        ${ALLARRANGEMENTS.elements.armrestLeft_172.svg}
-                        ${ALLARRANGEMENTS.elements.armrestLeft_172.name_nl}
+            <div class="tab-pane fade" id="10009-tab-pane" role="tabpanel" aria-labelledby="10009-tab" tabindex="0">
+                <div style="height: 120px;" class="scroll-container overflow-x-auto overflow-y-hidden">
+                    <div class="elementContainer d-flex flex-nowrap m-2 p-0">
+                        <div>
+                            ${ALLARRANGEMENTS.elements.armrestRight_172.svg}
+                        </div>
+                        <div>
+                            ${ALLARRANGEMENTS.elements.armrestLeft_172.svg}
+                        </div>
                     </div>
-
                 </div>
             </div>
 
         </div>
     </div>
-
-    <div class="position-relative border border-1 border-lightgrey m-0 p-0">
-        <svg id="svgDragzone"
-            onmousedown="reAppend(this)"
-            onmouseup="objectCloneDrop(event, this); disableMove();"
-            onmousemove="indicateDrag(this); moveObject(event, this); objectCloneDragDestination(event, this)"
-            onmouseleave="disableMove()">
-        </svg>
+    <div id="svgDragzoneWrapper" class="position-relative border border-1 border-lightgrey overflow-aut0 m-0 p-0">
+<svg id="svgDragzone"
+    onmousedown="reAppend(this)"
+    onmouseup="objectCloneDrop(event, this); disableMove();"
+    onmousemove="indicateDrag(this); moveObject(event, this); objectCloneDragDestination(event, this)"
+    onmouseleave="disableMove()">
+    <foreignObject x="5" y="5" width="160" height="160">  
+        <button onclick="deleteSelected()" type="button" class="btn btn-outline-dark rounded-0"><span
+                class="material-symbols-outlined m-0 p-0">delete</span></button>
+        <button onclick="rotateSelected()" type="button" class="btn btn-outline-dark rounded-0"><span
+                class="material-symbols-outlined">rotate_90_degrees_cw</span></button>
+        <!--<button type="button" class="btn btn-outline-dark rounded-0"><span
+                class="material-symbols-outlined">recenter</span></button>-->
+ 
+    </foreignObject>
+</svg>
 </div>
-        <!-- Buttons container outside SVG -->
-   
-            <div class="col-12 m-0 p-0 ps-2 pt-2">
-                <button onclick="deleteSelected()" type="button" class="btn btn-outline-dark rounded-0"><span
-                        class="material-symbols-outlined m-0 p-0">delete</span></button>
-                <button onclick="rotateSelected()" type="button" class="btn btn-outline-dark rounded-0"><span
-                        class="material-symbols-outlined">rotate_90_degrees_cw</span></button>
-                <button type="button" class="btn btn-outline-dark rounded-0"><span
-                        class="material-symbols-outlined">recenter</span></button>
-            </div>
-        
-    </div>`
+    `
     }
     accordions.element = {
         "title": "element",
