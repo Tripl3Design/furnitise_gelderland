@@ -308,12 +308,12 @@ function initSettings(model) {
                 .selected path {
                     fill: lightgrey;
                 }
-
+/*
                 #svgDragzone {
                     width: 800px;
                     height: 400px;
                 }
-
+*/
                 .elementContainer {
                     transform: scale(0.65);
                     transform-origin: top left; /* Adjust if necessary */
@@ -479,23 +479,24 @@ function initSettings(model) {
 
         </div>
     </div>
-    <div id="svgDragzoneWrapper" class="position-relative border border-1 border-lightgrey overflow-aut0 m-0 p-0">
-<svg id="svgDragzone"
-    onmousedown="reAppend(this)"
-    onmouseup="objectCloneDrop(event, this); disableMove();"
-    onmousemove="indicateDrag(this); moveObject(event, this); objectCloneDragDestination(event, this)"
-    onmouseleave="disableMove()">
-    <foreignObject x="5" y="5" width="160" height="160">  
-        <button onclick="deleteSelected()" type="button" class="btn btn-outline-dark rounded-0"><span
-                class="material-symbols-outlined m-0 p-0">delete</span></button>
-        <button onclick="rotateSelected()" type="button" class="btn btn-outline-dark rounded-0"><span
-                class="material-symbols-outlined">rotate_90_degrees_cw</span></button>
-        <!--<button type="button" class="btn btn-outline-dark rounded-0"><span
-                class="material-symbols-outlined">recenter</span></button>-->
- 
-    </foreignObject>
-</svg>
-</div>
+
+
+    <div id="svgDragzoneWrapper" class="position-relative border border-1 border-lightgrey overflow-auto m-0 p-0" style="width: 100%; height: 100%;">
+        <svg id="svgDragzone" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%;"
+        onmousedown="reAppend(this)"
+        onmouseup="objectCloneDrop(event, this); disableMove();"
+        onmousemove="indicateDrag(this); moveObject(event, this); objectCloneDragDestination(event, this)"
+        onmouseleave="disableMove()">
+            <foreignObject x="5" y="5" width="160" height="160">
+                    <button onclick="deleteSelected()" type="button" class="btn btn-outline-dark rounded-0">
+                        <span class="material-symbols-outlined m-0 p-0">delete</span>
+                    </button>
+                    <button onclick="rotateSelected()" type="button" class="btn btn-outline-dark rounded-0">
+                        <span class="material-symbols-outlined">rotate_90_degrees_cw</span>
+                    </button>
+            </foreignObject>
+        </svg>
+    </div>
     `
     }
     accordions.element = {
