@@ -226,8 +226,8 @@ function showFeaturedModelByIndex(index) {
 
 async function handleModelSelection() {
     var canvas = document.getElementById("modelviewer");
-    var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
-    //var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
+    //var buildUrl = `https://${brand}-${product}.web.app/projects/${brand}-${product}`;
+    var buildUrl = `http://127.0.0.1:5000/projects/${brand}-${product}`;
     var config = {
         dataUrl: `${buildUrl}/Build/${brand}-${product}.data`,
         frameworkUrl: `${buildUrl}/Build/${brand}-${product}.framework.js`,
